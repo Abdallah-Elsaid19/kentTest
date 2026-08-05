@@ -1,0 +1,16 @@
+export const queryKeys = {
+  site: ["site"] as const,
+  navigation: ["navigation"] as const,
+  page: (slug: string) => ["page", slug] as const,
+  colleges: (query: string) => ["colleges", query] as const,
+  college: (slug: string) => ["college", slug] as const,
+  programmes: (query: string) => ["programmes", query] as const,
+  programme: (slug: string) => ["programme", slug] as const,
+  events: (query: string) => ["events", query] as const,
+  event: (slug: string) => ["event", slug] as const,
+  people: (query: string) => ["people", query] as const,
+  stories: (query: string) => ["stories", query] as const,
+  story: (slug: string) => ["story", slug] as const,
+  articles: (query: string) => ["articles", query] as const,
+  article: (slug: string) => ["article", slug] as const,
+};

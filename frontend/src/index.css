@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+  * {
+    box-sizing: border-box;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    color: #1a1a1a;
+    background: #f8fafc;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .prose {
+    color: #334155;
+    line-height: 1.75;
+  }
+  .prose h2,
+  .prose h3,
+  .prose h4 {
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    color: #0f172a;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+  }
+  .prose h2 { font-size: 1.875rem; }
+  .prose h3 { font-size: 1.5rem; }
+  .prose p,
+  .prose ul,
+  .prose ol { margin: 1rem 0; }
+  .prose ul,
+  .prose ol { padding-left: 1.5rem; }
+  .prose ul { list-style: disc; }
+  .prose ol { list-style: decimal; }
+  .prose a { color: #5a2570; text-decoration: underline; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

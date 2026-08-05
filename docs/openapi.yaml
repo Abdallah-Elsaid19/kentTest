@@ -1,0 +1,1919 @@
+openapi: 3.0.3
+info:
+  title: Kent Business College API
+  version: 1.0.0
+  description: Versioned public content and form API. WordPress is not a runtime dependency.
+paths:
+  /api/v1/articles/:
+    get:
+      operationId: api_v1_articles_list
+      parameters:
+      - in: query
+        name: categories__slug
+        schema:
+          type: string
+      - in: query
+        name: is_featured
+        schema:
+          type: boolean
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      - name: perPage
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
+      - in: query
+        name: tags__slug
+        schema:
+          type: string
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedArticleList'
+          description: ''
+  /api/v1/articles/{slug}/:
+    get:
+      operationId: api_v1_articles_retrieve
+      parameters:
+      - in: path
+        name: slug
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Article'
+          description: ''
+  /api/v1/colleges/:
+    get:
+      operationId: api_v1_colleges_list
+      parameters:
+      - in: query
+        name: is_featured
+        schema:
+          type: boolean
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      - name: perPage
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedCollegeList'
+          description: ''
+  /api/v1/colleges/{slug}/:
+    get:
+      operationId: api_v1_colleges_retrieve
+      parameters:
+      - in: path
+        name: slug
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/College'
+          description: ''
+  /api/v1/events/:
+    get:
+      operationId: api_v1_events_list
+      parameters:
+      - in: query
+        name: category
+        schema:
+          type: string
+      - in: query
+        name: from_date
+        schema:
+          type: string
+          format: date-time
+        description: from
+      - in: query
+        name: is_online
+        schema:
+          type: boolean
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      - name: perPage
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
+      - in: query
+        name: status
+        schema:
+          type: string
+      - in: query
+        name: to
+        schema:
+          type: string
+          format: date-time
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedEventListList'
+          description: ''
+  /api/v1/events/{slug}/:
+    get:
+      operationId: api_v1_events_retrieve
+      parameters:
+      - in: path
+        name: slug
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventDetail'
+          description: ''
+  /api/v1/forms/contact/:
+    post:
+      operationId: api_v1_forms_contact_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContactSubmission'
+        required: true
+      security:
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactSubmission'
+          description: ''
+  /api/v1/forms/eligibility/:
+    post:
+      operationId: api_v1_forms_eligibility_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EligibilitySubmission'
+        required: true
+      security:
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EligibilitySubmission'
+          description: ''
+  /api/v1/forms/employer-agreement/:
+    post:
+      operationId: api_v1_forms_employer_agreement_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmployerAgreementSubmission'
+        required: true
+      security:
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmployerAgreementSubmission'
+          description: ''
+  /api/v1/forms/support/:
+    post:
+      operationId: api_v1_forms_support_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SupportSubmission'
+        required: true
+      security:
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SupportSubmission'
+          description: ''
+  /api/v1/health/:
+    get:
+      operationId: api_v1_health_retrieve
+      tags:
+      - api
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Health'
+          description: ''
+  /api/v1/navigation/:
+    get:
+      operationId: api_v1_navigation_retrieve
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NavigationMenu'
+          description: ''
+  /api/v1/newsletter/subscribe/:
+    post:
+      operationId: api_v1_newsletter_subscribe_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewsletterSubscription'
+        required: true
+      security:
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NewsletterSubscription'
+          description: ''
+  /api/v1/pages/{slug}/:
+    get:
+      operationId: api_v1_pages_retrieve
+      parameters:
+      - in: path
+        name: slug
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Page'
+          description: ''
+  /api/v1/people/:
+    get:
+      operationId: api_v1_people_list
+      parameters:
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      - name: perPage
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedPersonList'
+          description: ''
+  /api/v1/programmes/:
+    get:
+      operationId: api_v1_programmes_list
+      parameters:
+      - in: query
+        name: college
+        schema:
+          type: string
+      - in: query
+        name: featured
+        schema:
+          type: boolean
+      - in: query
+        name: funding
+        schema:
+          type: string
+      - in: query
+        name: level
+        schema:
+          type: integer
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      - name: perPage
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedProgrammeListList'
+          description: ''
+  /api/v1/programmes/{slug}/:
+    get:
+      operationId: api_v1_programmes_retrieve
+      parameters:
+      - in: path
+        name: slug
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProgrammeDetail'
+          description: ''
+  /api/v1/search/:
+    get:
+      operationId: api_v1_search_retrieve
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResult'
+          description: ''
+  /api/v1/site/:
+    get:
+      operationId: api_v1_site_retrieve
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SiteSettings'
+          description: ''
+  /api/v1/social-posts/:
+    get:
+      operationId: api_v1_social_posts_list
+      parameters:
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      - name: perPage
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - in: query
+        name: platform
+        schema:
+          type: string
+          enum:
+          - facebook
+          - instagram
+          - linkedin
+          - x
+        description: |-
+          * `linkedin` - LinkedIn
+          * `instagram` - Instagram
+          * `facebook` - Facebook
+          * `x` - X
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedSocialPostList'
+          description: ''
+  /api/v1/stories/:
+    get:
+      operationId: api_v1_stories_list
+      parameters:
+      - in: query
+        name: is_featured
+        schema:
+          type: boolean
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      - name: perPage
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - in: query
+        name: programme__slug
+        schema:
+          type: string
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
+      - in: query
+        name: story_type
+        schema:
+          type: string
+          enum:
+          - case-study
+          - learner-story
+          - star-learner
+        description: |-
+          * `learner-story` - Learner story
+          * `case-study` - Case study
+          * `star-learner` - Star learner
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedStoryList'
+          description: ''
+  /api/v1/stories/{slug}/:
+    get:
+      operationId: api_v1_stories_retrieve
+      parameters:
+      - in: path
+        name: slug
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Story'
+          description: ''
+  /health/:
+    get:
+      operationId: health_retrieve
+      tags:
+      - health
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Health'
+          description: ''
+components:
+  schemas:
+    Article:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        slug:
+          type: string
+          maxLength: 180
+          pattern: ^[-a-zA-Z0-9_]+$
+        title:
+          type: string
+          maxLength: 250
+        summary:
+          type: string
+        body:
+          type: string
+        author:
+          type: object
+          additionalProperties: {}
+          nullable: true
+          readOnly: true
+        categories:
+          type: array
+          items:
+            $ref: '#/components/schemas/ArticleCategory'
+          readOnly: true
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/ArticleTag'
+          readOnly: true
+        image:
+          allOf:
+          - $ref: '#/components/schemas/MediaAsset'
+          readOnly: true
+        is_featured:
+          type: boolean
+        seo:
+          type: object
+          additionalProperties: {}
+          readOnly: true
+        published_at:
+          type: string
+          format: date-time
+          nullable: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - author
+      - categories
+      - id
+      - image
+      - seo
+      - slug
+      - tags
+      - title
+      - updated_at
+    ArticleCategory:
+      type: object
+      properties:
+        slug:
+          type: string
+          maxLength: 120
+          pattern: ^[-a-zA-Z0-9_]+$
+        name:
+          type: string
+          maxLength: 150
+      required:
+      - name
+      - slug
+    ArticleTag:
+      type: object
+      properties:
+        slug:
+          type: string
+          maxLength: 120
+          pattern: ^[-a-zA-Z0-9_]+$
+        name:
+          type: string
+          maxLength: 150
+      required:
+      - name
+      - slug
+    College:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        slug:
+          type: string
+          maxLength: 160
+          pattern: ^[-a-zA-Z0-9_]+$
+        title:
+          type: string
+          maxLength: 200
+        summary:
+          type: string
+        description:
+          type: string
+        image:
+          allOf:
+          - $ref: '#/components/schemas/MediaAsset'
+          readOnly: true
+        sort_order:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+        is_featured:
+          type: boolean
+        seo:
+          type: object
+          additionalProperties: {}
+          readOnly: true
+        published_at:
+          type: string
+          format: date-time
+          nullable: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - id
+      - image
+      - seo
+      - slug
+      - title
+      - updated_at
+    ContactSubmission:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 200
+        email:
+          type: string
+          format: email
+          maxLength: 254
+        phone:
+          type: string
+          maxLength: 50
+        organisation:
+          type: string
+          maxLength: 200
+        interest:
+          type: string
+          maxLength: 200
+        message:
+          type: string
+        consent:
+          type: boolean
+        source_page:
+          type: string
+          maxLength: 300
+        captcha_token:
+          type: string
+          writeOnly: true
+      required:
+      - email
+      - name
+    DeliveryModeEnum:
+      enum:
+      - online
+      - in-person
+      - blended
+      type: string
+      description: |-
+        * `online` - Online
+        * `in-person` - In person
+        * `blended` - Blended
+    EligibilitySubmission:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 200
+        email:
+          type: string
+          format: email
+          maxLength: 254
+        phone:
+          type: string
+          maxLength: 50
+        programme:
+          type: integer
+          nullable: true
+        employment_status:
+          type: string
+          maxLength: 100
+        message:
+          type: string
+        consent:
+          type: boolean
+        source_page:
+          type: string
+          maxLength: 300
+        captcha_token:
+          type: string
+          writeOnly: true
+      required:
+      - email
+      - name
+    EmployerAgreementSubmission:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 200
+        email:
+          type: string
+          format: email
+          maxLength: 254
+        phone:
+          type: string
+          maxLength: 50
+        organisation:
+          type: string
+          maxLength: 200
+        job_title:
+          type: string
+          maxLength: 200
+        employee_count:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+          nullable: true
+        message:
+          type: string
+        consent:
+          type: boolean
+        source_page:
+          type: string
+          maxLength: 300
+        captcha_token:
+          type: string
+          writeOnly: true
+      required:
+      - email
+      - name
+      - organisation
+    EventAgenda:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        title:
+          type: string
+          maxLength: 200
+        description:
+          type: string
+        starts_at:
+          type: string
+          format: date-time
+        ends_at:
+          type: string
+          format: date-time
+        speaker:
+          allOf:
+          - $ref: '#/components/schemas/Person'
+          readOnly: true
+        sort_order:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+      required:
+      - ends_at
+      - id
+      - speaker
+      - starts_at
+      - title
+    EventCategory:
+      type: object
+      properties:
+        slug:
+          type: string
+          maxLength: 120
+          pattern: ^[-a-zA-Z0-9_]+$
+        name:
+          type: string
+          maxLength: 150
+      required:
+      - name
+      - slug
+    EventDetail:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        slug:
+          type: string
+          maxLength: 180
+          pattern: ^[-a-zA-Z0-9_]+$
+        title:
+          type: string
+          maxLength: 250
+        status:
+          type: string
+          readOnly: true
+        start_at:
+          type: string
+          format: date-time
+        end_at:
+          type: string
+          format: date-time
+        timezone:
+          type: string
+          readOnly: true
+        location:
+          type: string
+          maxLength: 250
+        address:
+          type: string
+        is_online:
+          type: boolean
+        booking_url:
+          type: string
+          format: uri
+          maxLength: 200
+        categories:
+          type: array
+          items:
+            $ref: '#/components/schemas/EventCategory'
+          readOnly: true
+        summary:
+          type: string
+        image:
+          allOf:
+          - $ref: '#/components/schemas/MediaAsset'
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        description:
+          type: string
+        speakers:
+          type: array
+          items:
+            $ref: '#/components/schemas/EventSpeaker'
+          readOnly: true
+        agenda:
+          type: array
+          items:
+            $ref: '#/components/schemas/EventAgenda'
+          readOnly: true
+        seo:
+          type: object
+          additionalProperties: {}
+          readOnly: true
+        published_at:
+          type: string
+          format: date-time
+          nullable: true
+      required:
+      - agenda
+      - categories
+      - end_at
+      - id
+      - image
+      - seo
+      - slug
+      - speakers
+      - start_at
+      - status
+      - timezone
+      - title
+      - updated_at
+    EventList:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        slug:
+          type: string
+          maxLength: 180
+          pattern: ^[-a-zA-Z0-9_]+$
+        title:
+          type: string
+          maxLength: 250
+        status:
+          type: string
+          readOnly: true
+        start_at:
+          type: string
+          format: date-time
+        end_at:
+          type: string
+          format: date-time
+        timezone:
+          type: string
+          readOnly: true
+        location:
+          type: string
+          maxLength: 250
+        address:
+          type: string
+        is_online:
+          type: boolean
+        booking_url:
+          type: string
+          format: uri
+          maxLength: 200
+        categories:
+          type: array
+          items:
+            $ref: '#/components/schemas/EventCategory'
+          readOnly: true
+        summary:
+          type: string
+        image:
+          allOf:
+          - $ref: '#/components/schemas/MediaAsset'
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - categories
+      - end_at
+      - id
+      - image
+      - slug
+      - start_at
+      - status
+      - timezone
+      - title
+      - updated_at
+    EventSpeaker:
+      type: object
+      properties:
+        person:
+          allOf:
+          - $ref: '#/components/schemas/Person'
+          readOnly: true
+        role:
+          type: string
+          maxLength: 150
+        sort_order:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+      required:
+      - person
+    Health:
+      type: object
+      properties:
+        status:
+          type: string
+        database:
+          type: string
+      required:
+      - database
+      - status
+    LocationEnum:
+      enum:
+      - header
+      - footer
+      - utility
+      type: string
+      description: |-
+        * `header` - Header
+        * `footer` - Footer
+        * `utility` - Utility
+    MediaAsset:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          readOnly: true
+        alt_text:
+          type: string
+          maxLength: 250
+        caption:
+          type: string
+        width:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+          nullable: true
+        height:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+          nullable: true
+        mime_type:
+          type: string
+          maxLength: 100
+        file_size:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+      required:
+      - id
+      - mime_type
+      - url
+    NavigationMenu:
+      type: object
+      properties:
+        location:
+          $ref: '#/components/schemas/LocationEnum'
+        items:
+          type: array
+          items:
+            type: object
+            additionalProperties: {}
+          readOnly: true
+      required:
+      - items
+      - location
+    NewsletterSubscription:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+          maxLength: 254
+        consent:
+          type: boolean
+        source_page:
+          type: string
+          maxLength: 300
+        captcha_token:
+          type: string
+          writeOnly: true
+      required:
+      - email
+    Page:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        slug:
+          type: string
+          maxLength: 200
+          pattern: ^[-a-zA-Z0-9_]+$
+        title:
+          type: string
+          maxLength: 250
+        summary:
+          type: string
+        sections:
+          type: array
+          items:
+            type: object
+            additionalProperties: {}
+          readOnly: true
+        seo:
+          type: object
+          additionalProperties: {}
+          readOnly: true
+        published_at:
+          type: string
+          format: date-time
+          nullable: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - id
+      - sections
+      - seo
+      - slug
+      - title
+      - updated_at
+    PaginatedArticleList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Article'
+    PaginatedCollegeList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/College'
+    PaginatedEventListList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/EventList'
+    PaginatedPersonList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Person'
+    PaginatedProgrammeListList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProgrammeList'
+    PaginatedSocialPostList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/SocialPost'
+    PaginatedStoryList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Story'
+    Person:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        slug:
+          type: string
+          maxLength: 180
+          pattern: ^[-a-zA-Z0-9_]+$
+        name:
+          type: string
+          maxLength: 200
+        job_title:
+          type: string
+          maxLength: 200
+        bio:
+          type: string
+        photo:
+          allOf:
+          - $ref: '#/components/schemas/MediaAsset'
+          readOnly: true
+        linkedin_url:
+          type: string
+          format: uri
+          maxLength: 200
+        roles:
+          type: array
+          items:
+            $ref: '#/components/schemas/RolesEnum'
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - id
+      - name
+      - photo
+      - roles
+      - slug
+      - updated_at
+    PlatformEnum:
+      enum:
+      - linkedin
+      - instagram
+      - facebook
+      - x
+      type: string
+      description: |-
+        * `linkedin` - LinkedIn
+        * `instagram` - Instagram
+        * `facebook` - Facebook
+        * `x` - X
+    ProgrammeCertification:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        title:
+          type: string
+          maxLength: 200
+        awarding_body:
+          type: string
+          maxLength: 150
+        url:
+          type: string
+          format: uri
+          maxLength: 200
+        sort_order:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+      required:
+      - id
+      - title
+    ProgrammeDetail:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        slug:
+          type: string
+          maxLength: 180
+          pattern: ^[-a-zA-Z0-9_]+$
+        title:
+          type: string
+          maxLength: 250
+        college:
+          type: object
+          additionalProperties: {}
+          readOnly: true
+        level:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+        funding:
+          type: object
+          additionalProperties: {}
+          readOnly: true
+        duration:
+          type: object
+          additionalProperties: {}
+          readOnly: true
+        summary:
+          type: string
+        delivery_mode:
+          $ref: '#/components/schemas/DeliveryModeEnum'
+        image:
+          allOf:
+          - $ref: '#/components/schemas/MediaAsset'
+          readOnly: true
+        is_featured:
+          type: boolean
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        description:
+          type: string
+        modules:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProgrammeModule'
+          readOnly: true
+        certifications:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProgrammeCertification'
+          readOnly: true
+        eligibility:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProgrammeEligibility'
+          readOnly: true
+        delivery:
+          type: object
+          additionalProperties: {}
+          readOnly: true
+        cta:
+          type: object
+          additionalProperties: {}
+          readOnly: true
+        seo:
+          type: object
+          additionalProperties: {}
+          readOnly: true
+        published_at:
+          type: string
+          format: date-time
+          nullable: true
+      required:
+      - certifications
+      - college
+      - cta
+      - delivery
+      - delivery_mode
+      - duration
+      - eligibility
+      - funding
+      - id
+      - image
+      - level
+      - modules
+      - seo
+      - slug
+      - summary
+      - title
+      - updated_at
+    ProgrammeEligibility:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        text:
+          type: string
+          maxLength: 400
+        sort_order:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+      required:
+      - id
+      - text
+    ProgrammeList:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        slug:
+          type: string
+          maxLength: 180
+          pattern: ^[-a-zA-Z0-9_]+$
+        title:
+          type: string
+          maxLength: 250
+        college:
+          type: object
+          additionalProperties: {}
+          readOnly: true
+        level:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+        funding:
+          type: object
+          additionalProperties: {}
+          readOnly: true
+        duration:
+          type: object
+          additionalProperties: {}
+          readOnly: true
+        summary:
+          type: string
+        delivery_mode:
+          $ref: '#/components/schemas/DeliveryModeEnum'
+        image:
+          allOf:
+          - $ref: '#/components/schemas/MediaAsset'
+          readOnly: true
+        is_featured:
+          type: boolean
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - college
+      - delivery_mode
+      - duration
+      - funding
+      - id
+      - image
+      - level
+      - slug
+      - summary
+      - title
+      - updated_at
+    ProgrammeModule:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        title:
+          type: string
+          maxLength: 200
+        summary:
+          type: string
+        sort_order:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+      required:
+      - id
+      - title
+    RolesEnum:
+      enum:
+      - coach
+      - instructor
+      - expert
+      - staff
+      - speaker
+      type: string
+      description: |-
+        * `coach` - Coach
+        * `instructor` - Instructor
+        * `expert` - Expert
+        * `staff` - Staff
+        * `speaker` - Speaker
+    SearchResult:
+      type: object
+      properties:
+        type:
+          type: string
+        title:
+          type: string
+        summary:
+          type: string
+        path:
+          type: string
+      required:
+      - path
+      - summary
+      - title
+      - type
+    SiteSettings:
+      type: object
+      properties:
+        organisation_name:
+          type: string
+          maxLength: 200
+        tagline:
+          type: string
+          maxLength: 300
+        logo:
+          allOf:
+          - $ref: '#/components/schemas/MediaAsset'
+          readOnly: true
+        alternate_logo:
+          allOf:
+          - $ref: '#/components/schemas/MediaAsset'
+          readOnly: true
+        contact:
+          type: object
+          additionalProperties: {}
+          readOnly: true
+        social_links: {}
+        external_links:
+          type: object
+          additionalProperties: {}
+          readOnly: true
+        privacy_policy_url:
+          type: string
+          maxLength: 300
+        terms_url:
+          type: string
+          maxLength: 300
+        cookie_policy_url:
+          type: string
+          maxLength: 300
+        default_seo_title:
+          type: string
+          maxLength: 70
+        default_seo_description:
+          type: string
+          maxLength: 170
+        default_open_graph_image:
+          allOf:
+          - $ref: '#/components/schemas/MediaAsset'
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - alternate_logo
+      - contact
+      - default_open_graph_image
+      - external_links
+      - logo
+      - organisation_name
+      - updated_at
+    SocialPost:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        platform:
+          $ref: '#/components/schemas/PlatformEnum'
+        content:
+          type: string
+        url:
+          type: string
+          format: uri
+          maxLength: 200
+        media:
+          allOf:
+          - $ref: '#/components/schemas/MediaAsset'
+          readOnly: true
+        platform_published_at:
+          type: string
+          format: date-time
+      required:
+      - content
+      - id
+      - media
+      - platform
+      - platform_published_at
+      - url
+    Story:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        slug:
+          type: string
+          maxLength: 180
+          pattern: ^[-a-zA-Z0-9_]+$
+        title:
+          type: string
+          maxLength: 250
+        story_type:
+          $ref: '#/components/schemas/StoryTypeEnum'
+        summary:
+          type: string
+        body:
+          type: string
+        person:
+          type: object
+          additionalProperties: {}
+          nullable: true
+          readOnly: true
+        programme:
+          type: object
+          additionalProperties: {}
+          nullable: true
+          readOnly: true
+        employer:
+          type: string
+          maxLength: 200
+        role:
+          type: string
+          maxLength: 200
+        quote:
+          type: string
+        image:
+          allOf:
+          - $ref: '#/components/schemas/MediaAsset'
+          readOnly: true
+        is_featured:
+          type: boolean
+        testimonials:
+          type: array
+          items:
+            type: object
+            additionalProperties: {}
+          readOnly: true
+        seo:
+          type: object
+          additionalProperties: {}
+          readOnly: true
+        published_at:
+          type: string
+          format: date-time
+          nullable: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - id
+      - image
+      - person
+      - programme
+      - seo
+      - slug
+      - story_type
+      - testimonials
+      - title
+      - updated_at
+    StoryTypeEnum:
+      enum:
+      - learner-story
+      - case-study
+      - star-learner
+      type: string
+      description: |-
+        * `learner-story` - Learner story
+        * `case-study` - Case study
+        * `star-learner` - Star learner
+    SupportSubmission:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 200
+        email:
+          type: string
+          format: email
+          maxLength: 254
+        phone:
+          type: string
+          maxLength: 50
+        subject:
+          type: string
+          maxLength: 200
+        message:
+          type: string
+        consent:
+          type: boolean
+        source_page:
+          type: string
+          maxLength: 300
+        captcha_token:
+          type: string
+          writeOnly: true
+      required:
+      - email
+      - name
+      - subject
+  securitySchemes:
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid

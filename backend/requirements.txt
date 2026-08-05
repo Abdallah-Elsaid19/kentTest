@@ -1,0 +1,13 @@
+Django>=5.2,<5.3
+djangorestframework>=3.16,<3.17
+django-filter>=25.1,<26
+django-cors-headers>=4.7,<5
+drf-spectacular>=0.28,<0.29
+dj-database-url>=2.3,<3
+psycopg[binary]>=3.2,<4
+bleach>=6.2,<7
+Pillow>=11.2,<12
+gunicorn>=23,<24
+whitenoise>=6.9,<7
+django-storages[s3]>=1.14,<2
+requests>=2.32,<3
