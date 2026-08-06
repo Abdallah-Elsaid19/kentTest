@@ -69,7 +69,7 @@ export function Header() {
       { label: "Resources", path: isLearnerHome ? "#learner-events" : "#resources" },
     ];
     const mobileFooter = isLearnerHome
-      ? <div className="grid gap-3"><NavigationButton to="/eligibility" fullWidth onClick={closeMobileMenu}>Apply now</NavigationButton><NavigationButton to="/contact" variant="secondary" fullWidth onClick={closeMobileMenu}>Get advice</NavigationButton></div>
+      ? <div className="grid gap-3"><NavigationButton to="/employer-agreement" fullWidth onClick={closeMobileMenu}>Apply now</NavigationButton><NavigationButton to="/contact" variant="secondary" fullWidth onClick={closeMobileMenu}>Get advice</NavigationButton></div>
       : <div className="grid gap-3"><NavigationButton to="/book-session" fullWidth onClick={closeMobileMenu}>Book consultation</NavigationButton><NavigationButton to="/contact" variant="secondary" fullWidth onClick={closeMobileMenu}>Contact sales</NavigationButton></div>;
     return (
       <header className={`figma-header ${isLearnerHome ? "is-learner" : ""} ${homeScrolled ? "is-scrolled" : ""}`} ref={headerRef}>
@@ -81,7 +81,7 @@ export function Header() {
             <nav className="figma-header__nav" aria-label="Primary navigation">
               {sectionLinks.map(([label, href]) => <a href={href} key={label}>{label}</a>)}<a className="figma-header__resources" href={isLearnerHome ? "#learner-events" : "#resources"}>Resources <ChevronDown aria-hidden="true" /></a>
             </nav>
-            <div className="figma-header__actions">{isLearnerHome ? <><Link className="figma-header__advice" to="/contact">Get advice</Link><Link className="figma-btn figma-header__apply" to="/eligibility">Apply now</Link></> : <><Link to="/contact">Contact sales</Link><Link className="figma-btn figma-header__consultation" to="/book-session">Book consultation</Link></>}<button ref={menuButtonRef} type="button" className={`figma-header__toggle ${homeScrolled ? "!text-kbc-purple-950" : "!text-white"}`} aria-expanded={mobileOpen} aria-controls="mobile-menu" aria-label="Open menu" onClick={() => setMobileOpen(true)}><Menu /></button></div>
+            <div className="figma-header__actions">{isLearnerHome ? <><Link className="figma-header__advice" to="/contact">Get advice</Link><NavigationButton className="figma-btn figma-header__apply" to="/employer-agreement">Apply now</NavigationButton></> : <><Link to="/contact">Contact sales</Link><Link className="figma-btn figma-header__consultation" to="/book-session">Book consultation</Link></>}<button ref={menuButtonRef} type="button" className={`figma-header__toggle ${homeScrolled ? "!text-kbc-purple-950" : "!text-white"}`} aria-expanded={mobileOpen} aria-controls="mobile-menu" aria-label="Open menu" onClick={() => setMobileOpen(true)}><Menu /></button></div>
           </div>
         </div>
         <MobileMenu isOpen={mobileOpen} onClose={closeMobileMenu} currentPath={`${location.pathname}${location.hash}`} returnFocusRef={menuButtonRef} items={mobileItems} footer={mobileFooter} />
@@ -103,7 +103,7 @@ export function Header() {
       <div className="kbc-header__main"><div className="kbc-container kbc-header__inner">
         <Link to="/" className="kbc-brand" aria-label="Kent Business College home"><img src="/assets/logos/kbc-logo.png" alt="Kent Business College" /></Link>
         <nav className="kbc-desktop-nav" aria-label="Primary navigation">{primaryNavigation.map((item) => <DesktopItem key={item.label} item={item} open={desktopOpen === item.label} onOpen={() => setDesktopOpen(item.label)} onClose={() => setDesktopOpen(null)} />)}</nav>
-        <div className="kbc-header__actions"><Link className="kbc-button kbc-button--primary kbc-header__apply" to="/employer-agreement">Apply Now</Link><button ref={menuButtonRef} type="button" className="kbc-menu-toggle" aria-expanded={mobileOpen} aria-controls="mobile-menu" aria-label="Open menu" onClick={() => setMobileOpen(true)}><Menu /></button></div>
+        <div className="kbc-header__actions"><NavigationButton className="kbc-button kbc-button--primary kbc-header__apply" to="/employer-agreement">Apply Now</NavigationButton><button ref={menuButtonRef} type="button" className="kbc-menu-toggle" aria-expanded={mobileOpen} aria-controls="mobile-menu" aria-label="Open menu" onClick={() => setMobileOpen(true)}><Menu /></button></div>
       </div></div>
       <MobileMenu isOpen={mobileOpen} onClose={closeMobileMenu} currentPath={`${location.pathname}${location.hash}`} returnFocusRef={menuButtonRef} items={genericMobileItems} footer={genericMobileFooter} />
     </header>

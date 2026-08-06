@@ -46,7 +46,7 @@ class SecurityHeadersMiddleware:
             "Content-Security-Policy",
             "default-src 'self'; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; "
             "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' https://challenges.cloudflare.com; "
-            "frame-src https://challenges.cloudflare.com https://*.zoho.com https://outlook.office.com; "
+            "frame-src https://challenges.cloudflare.com https://*.zoho.com https://forms.zohopublic.com https://outlook.office.com; "
             "connect-src 'self' https://challenges.cloudflare.com",
         )
         return response

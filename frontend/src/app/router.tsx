@@ -47,7 +47,7 @@ export const router = createBrowserRouter([
     { path: "contact", element: <FormPage kind="contact" /> },
     { path: "support", element: <FormPage kind="support" /> },
     { path: "eligibility", element: <FormPage kind="eligibility" /> },
-    { path: "apply", element: <Navigate to="/eligibility" replace /> },
+    { path: "apply", element: <Navigate to="/employer-agreement" replace /> },
     { path: "search", element: <SearchPage /> },
     { path: "store", element: <CommercePage title="Store" /> },
     { path: "cart", element: <CommercePage title="Cart" /> },
