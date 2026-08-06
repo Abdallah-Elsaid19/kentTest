@@ -4,9 +4,11 @@ import os
 from pathlib import Path
 
 import dj_database_url
+from dotenv import load_dotenv
 
 
 BASE_DIR = Path(__file__).resolve().parents[2]
+load_dotenv(BASE_DIR / ".env")
 
 
 def env(name: str, default: str = "") -> str:
@@ -151,6 +153,8 @@ SPECTACULAR_SETTINGS = {
 TURNSTILE_SECRET_KEY = env("TURNSTILE_SECRET_KEY")
 EMAIL_API_KEY = env("EMAIL_API_KEY")
 ZOHO_API_SECRET = env("ZOHO_API_SECRET")
+EVENTBRITE_PRIVATE_TOKEN = env("EVENTBRITE_PRIVATE_TOKEN")
+EVENTBRITE_ORGANIZATION_ID = env("EVENTBRITE_ORGANIZATION_ID")
 COMMERCE_ENABLED = env_bool("COMMERCE_ENABLED")
 DEFAULT_FROM_EMAIL = env("DEFAULT_FROM_EMAIL", "no-reply@localhost")
 

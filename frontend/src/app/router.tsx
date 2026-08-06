@@ -11,8 +11,10 @@ const CommercePage = lazy(() => import("@/pages/CommercePage/page"));
 const ContentPage = lazy(() => import("@/pages/ContentPage/page"));
 const EventDetailPage = lazy(() => import("@/pages/EventDetailPage/page"));
 const EventsPage = lazy(() => import("@/pages/EventsPage/page"));
+const EmployerAgreementPage = lazy(() => import("@/pages/EmployerAgreementPage/page"));
 const FormPage = lazy(() => import("@/pages/FormPage/page"));
-const HomePage = lazy(() => import("@/pages/HomePage/page"));
+const HomePage = lazy(() => import("@/pages/home/page"));
+const LearnersHomePage = lazy(() => import("@/pages/home/learners/page"));
 const NotFoundPage = lazy(() => import("@/pages/NotFoundPage/page"));
 const PeoplePage = lazy(() => import("@/pages/PeoplePage/page"));
 const ProgrammeDetailPage = lazy(() => import("@/pages/ProgrammeDetailPage/page"));
@@ -22,8 +24,10 @@ const StoriesPage = lazy(() => import("@/pages/StoriesPage/page"));
 const StoryDetailPage = lazy(() => import("@/pages/StoryDetailPage/page"));
 
 export const router = createBrowserRouter([
+  { path: "/employer-agreement", element: <EmployerAgreementPage /> },
   { path: "/", element: <MainLayout />, children: [
     { index: true, element: <HomePage /> },
+    { path: "learners", element: <LearnersHomePage /> },
     { path: "colleges", element: <CollegesPage /> },
     { path: "colleges/:collegeSlug", element: <CollegeDetailPage /> },
     { path: "programmes", element: <ProgrammeListingPage /> },
@@ -43,7 +47,6 @@ export const router = createBrowserRouter([
     { path: "contact", element: <FormPage kind="contact" /> },
     { path: "support", element: <FormPage kind="support" /> },
     { path: "eligibility", element: <FormPage kind="eligibility" /> },
-    { path: "employer-agreement", element: <FormPage kind="employerAgreement" /> },
     { path: "apply", element: <Navigate to="/eligibility" replace /> },
     { path: "search", element: <SearchPage /> },
     { path: "store", element: <CommercePage title="Store" /> },

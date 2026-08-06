@@ -11,3 +11,4 @@ gunicorn>=23,<24
 whitenoise>=6.9,<7
 django-storages[s3]>=1.14,<2
 requests>=2.32,<3
+python-dotenv>=1.0,<2

@@ -8,6 +8,15 @@ export function RouteMeta({ seo, fallbackTitle, fallbackDescription = "" }: { se
   const description = seo?.description || fallbackDescription;
   const canonical = seo?.canonical || `${environment.VITE_SITE_URL}${window.location.pathname}`;
   const socialImage = seo?.openGraph?.image?.url || `${environment.VITE_SITE_URL}/og-kent-business-college.png`;
+  const organisationSchema = {
+    "@context": "https://schema.org",
+    "@type": "CollegeOrUniversity",
+    name: "Kent Business College",
+    url: environment.VITE_SITE_URL,
+    logo: `${environment.VITE_SITE_URL}/assets/logos/kbc-logo.png`,
+    telephone: "+44 1622 958955",
+    email: "office@kentbusinesscollege.org",
+  };
   return (
     <Helmet>
       <title>{title}</title>
@@ -22,6 +31,7 @@ export function RouteMeta({ seo, fallbackTitle, fallbackDescription = "" }: { se
       <meta property="og:image:alt" content={seo?.openGraph?.image?.altText || "Kent Business College"} />
       <meta name="twitter:card" content={seo?.twitterCard || "summary_large_image"} />
       <meta name="twitter:image" content={socialImage} />
+      <script type="application/ld+json">{JSON.stringify(organisationSchema)}</script>
       {(seo?.schema || []).map((schema, index) => <script key={index} type="application/ld+json">{JSON.stringify(schema)}</script>)}
     </Helmet>
   );

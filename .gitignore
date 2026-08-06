@@ -23,6 +23,7 @@ frontend/node_modules/
 frontend/out/
 frontend/dist/
 frontend/coverage/
+frontend/.cache/
 *.tsbuildinfo
 
 # Editors and operating systems
