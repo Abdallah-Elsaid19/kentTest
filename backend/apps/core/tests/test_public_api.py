@@ -1,5 +1,6 @@
 from datetime import timedelta
 
+from django.core.exceptions import ValidationError
 from django.test import TestCase, override_settings
 from django.utils import timezone
 from rest_framework.test import APIClient
@@ -7,6 +8,7 @@ from rest_framework.test import APIClient
 from apps.colleges.models import College
 from apps.events.models import Event
 from apps.pages.models import Page, PageSection
+from apps.people.models import Person
 from apps.programmes.models import Programme
 from apps.redirects.models import RedirectRule
 
@@ -52,6 +54,59 @@ class PublicApiContractTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(len(response.json()["sections"]), 1)
         self.assertEqual(response.json()["sections"][0]["type"], "hero")
+
+    def test_seeded_about_page_exposes_structured_published_content(self):
+        response = self.client.get("/api/v1/pages/who-we-are/")
+        self.assertEqual(response.status_code, 200)
+        payload = response.json()
+        self.assertEqual(payload["slug"], "who-we-are")
+        self.assertGreaterEqual(len(payload["sections"]), 14)
+        self.assertEqual(payload["sections"][0]["type"], "aboutHero")
+        self.assertEqual(payload["sections"][0]["data"]["primaryCta"]["href"], "/colleges")
+        self.assertEqual(payload["sections"][0]["data"]["highlight"], "workplace capability.")
+        domains = next(section for section in payload["sections"] if section["type"] == "aboutDomains")
+        self.assertEqual(domains["data"]["items"][0]["id"], "project-management")
+        partners = next(section for section in payload["sections"] if section["type"] == "aboutPartners")
+        self.assertEqual([item["name"] for item in partners["data"]["items"]], ["Watts", "VIRTUS", "Shell", "Wincanton", "BMT", "Mercedes-Benz", "University of Hull", "Indeed Flex"])
+        self.assertEqual(payload["seo"]["robots"], "index,follow")
+
+    def test_seeded_about_sections_pass_editor_validation(self):
+        page = Page.objects.get(slug="who-we-are")
+        for section in page.sections.all():
+            section.full_clean()
+
+    def test_pdf_approved_expert_copy_is_published(self):
+        expert = Person.published.get(slug="ray-mead")
+        self.assertEqual(expert.name, "Dr. Ray Maed")
+        self.assertIn("sustainable change", expert.bio)
+
+    def test_about_section_schema_rejects_incomplete_editor_data(self):
+        section = PageSection(
+            page=Page.objects.get(slug="who-we-are"), section_type="aboutHero", sort_order=999,
+            data={"heading": "Incomplete"}, status="draft",
+        )
+        with self.assertRaises(ValidationError) as raised:
+            section.full_clean()
+        self.assertIn("data", raised.exception.message_dict)
+
+    def test_about_section_schema_rejects_unsafe_cta_targets(self):
+        section = PageSection(
+            page=Page.objects.get(slug="who-we-are"), section_type="aboutHero", sort_order=999,
+            data={
+                "eyebrow": "Who we are", "heading": "Heading", "highlight": "Highlight", "body": "Body",
+                "image": {"src": "/safe-image.webp", "alt": "Useful description"},
+                "glance": [{"id": "provider", "label": "Provider", "value": "UKPRN 10093689"}],
+                "stats": [{"id": "learners", "value": "500+", "label": "Students enrolled"}],
+                "primaryCta": {"label": "Unsafe", "href": "javascript:alert(1)"},
+                "secondaryCta": {"label": "Safe", "href": "/programmes"},
+            }, status="draft",
+        )
+        with self.assertRaises(ValidationError):
+            section.full_clean()
+
+    def test_public_page_endpoint_does_not_allow_content_mutation(self):
+        response = self.client.post("/api/v1/pages/who-we-are/", {"title": "Changed"}, format="json")
+        self.assertEqual(response.status_code, 405)
 
     def test_event_status_is_derived_from_dates(self):
         event = Event.objects.create(
@@ -108,3 +163,9 @@ class FormApiTests(TestCase):
         response = self.client.post("/api/v1/forms/contact/", payload, format="json")
         self.assertEqual(response.status_code, 422)
         self.assertIn("consent", response.json()["error"]["details"])
+
+    def test_invalid_email_returns_field_level_validation_error(self):
+        payload = {**self.payload, "email": "not-an-email"}
+        response = self.client.post("/api/v1/forms/contact/", payload, format="json")
+        self.assertEqual(response.status_code, 422)
+        self.assertIn("email", response.json()["error"]["details"])

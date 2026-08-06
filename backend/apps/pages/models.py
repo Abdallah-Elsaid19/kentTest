@@ -3,11 +3,13 @@ from django.db import models
 
 from apps.core.models import PublicationModel, PublishedManager
 from apps.core.sanitization import sanitize_html
+from .schemas import ABOUT_SECTION_SCHEMAS, validate_page_section_data
 
 
 SECTION_TYPES = {
     "hero", "richText", "programmeCards", "benefits", "testimonials", "events", "people",
     "stories", "logoCloud", "CTA", "contactDetails", "statistics", "FAQ", "form", "media", "externalEmbed",
+    *ABOUT_SECTION_SCHEMAS.keys(),
 }
 
 
@@ -49,3 +51,4 @@ class PageSection(PublicationModel):
             raise ValidationError({"data": "Section data must be an object."})
         if self.section_type == "richText" and "html" in self.data:
             self.data["html"] = sanitize_html(str(self.data["html"]))
+        validate_page_section_data(self.section_type, self.data)

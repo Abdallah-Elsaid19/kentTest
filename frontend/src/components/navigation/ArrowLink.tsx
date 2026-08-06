@@ -7,6 +7,7 @@ interface ArrowLinkProps {
   to: string;
   children: ReactNode;
   direction?: "right" | "up-right" | "down-right";
+  tone?: "brand" | "inverse" | "ink";
   external?: boolean;
   newTab?: boolean;
   className?: string;
@@ -18,6 +19,7 @@ export function ArrowLink({
   to,
   children,
   direction = "right",
+  tone = "brand",
   external,
   newTab = false,
   className,
@@ -25,7 +27,10 @@ export function ArrowLink({
   onClick,
 }: ArrowLinkProps) {
   const classes = joinNavigationClasses(
-    "group inline-flex min-h-11 items-center gap-2 font-semibold text-kbc-purple-700 transition-colors hover:text-kbc-purple-800 motion-reduce:transition-none",
+    "group inline-flex min-h-11 items-center gap-2 font-semibold transition-colors motion-reduce:transition-none",
+    tone === "brand" && "text-kbc-purple-700 hover:text-kbc-purple-800",
+    tone === "inverse" && "text-white hover:text-white/80",
+    tone === "ink" && "text-kbc-purple-950 hover:text-kbc-purple-700",
     className,
   );
   const icon = direction === "up-right"

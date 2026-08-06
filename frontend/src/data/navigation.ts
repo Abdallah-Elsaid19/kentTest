@@ -28,7 +28,7 @@ export const primaryNavigation: NavItem[] = [
   },
   { label: "Courses", href: "/courses" },
   { label: "Events", href: "/events" },
-  { label: "Who We Are", href: "/who-we-are" },
+  { label: "Who We Are", href: "/about" },
   {
     label: "More",
     children: [

@@ -4,6 +4,7 @@ import { createBrowserRouter, Navigate } from "react-router-dom";
 import { MainLayout } from "@/components/layout/MainLayout";
 
 const ArticlePage = lazy(() => import("@/pages/ArticlePage/page"));
+const AboutPage = lazy(() => import("@/pages/AboutPage/page"));
 const BlogPage = lazy(() => import("@/pages/BlogPage/page"));
 const CollegeDetailPage = lazy(() => import("@/pages/CollegeDetailPage/page"));
 const CollegesPage = lazy(() => import("@/pages/CollegesPage/page"));
@@ -56,7 +57,8 @@ export const router = createBrowserRouter([
     { path: "terms", element: <ContentPage slug="terms" /> },
     { path: "cookies", element: <ContentPage slug="cookie-policy" /> },
     { path: "book-session", element: <ContentPage slug="book-information-session" /> },
-    { path: "who-we-are", element: <ContentPage slug="who-we-are" /> },
+    { path: "about", element: <AboutPage /> },
+    { path: "who-we-are", element: <Navigate to="/about" replace /> },
     { path: "faq", element: <ContentPage slug="faq" /> },
     { path: "our-partners", element: <ContentPage slug="our-partners" /> },
     { path: "governance-board", element: <ContentPage slug="governance-board" /> },
