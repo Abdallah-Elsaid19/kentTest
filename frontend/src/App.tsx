@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import { RouterProvider } from "react-router-dom";
 
-import { router } from "@/app/router";
+import { router } from "@/router/router";
 import { LoadingState } from "@/components/ui/AsyncState";
 
 export default function App() {

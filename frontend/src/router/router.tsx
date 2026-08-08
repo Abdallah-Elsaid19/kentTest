@@ -58,7 +58,6 @@ export const router = createBrowserRouter([
     { path: "cookies", element: <ContentPage slug="cookie-policy" /> },
     { path: "book-session", element: <ContentPage slug="book-information-session" /> },
     { path: "about", element: <AboutPage /> },
-    { path: "who-we-are", element: <Navigate to="/about" replace /> },
     { path: "faq", element: <ContentPage slug="faq" /> },
     { path: "our-partners", element: <ContentPage slug="our-partners" /> },
     { path: "governance-board", element: <ContentPage slug="governance-board" /> },
