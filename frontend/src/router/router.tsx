@@ -4,6 +4,8 @@ import { createBrowserRouter, Navigate } from "react-router-dom";
 import { MainLayout } from "@/components/layout/MainLayout";
 
 const ArticlePage = lazy(() => import("@/pages/ArticlePage/page"));
+const ApprenticeStoriesPage = lazy(() => import("@/pages/ApprenticeStoriesPage/page"));
+const ApprenticeStoryDetailPage = lazy(() => import("@/pages/ApprenticeStoryDetailPage/page"));
 const AboutPage = lazy(() => import("@/pages/AboutPage/page"));
 const BlogPage = lazy(() => import("@/pages/BlogPage/page"));
 const CollegeDetailPage = lazy(() => import("@/pages/CollegeDetailPage/page"));
@@ -42,7 +44,8 @@ export const router = createBrowserRouter([
     { path: "star-learners", element: <StoriesPage /> },
     { path: "stories", element: <StoriesPage /> },
     { path: "stories/:storySlug", element: <StoryDetailPage /> },
-    { path: "apprentices/stories", element: <StoriesPage /> },
+    { path: "apprentices/stories", element: <ApprenticeStoriesPage /> },
+    { path: "apprentices/stories/:storySlug", element: <ApprenticeStoryDetailPage /> },
     { path: "blog", element: <BlogPage /> },
     { path: "blog/:articleSlug", element: <ArticlePage /> },
     { path: "contact", element: <FormPage kind="contact" /> },

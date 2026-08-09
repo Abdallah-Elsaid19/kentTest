@@ -428,7 +428,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 @layer figmaLegacy {
 .kbc-figma-home { --fh-purple: #24102d; --fh-purple-2: #32133f; --fh-plum: #541347; --fh-gold: #e5bd48; --fh-cream: #f3f0e9; --fh-ink: #1e1721; --fh-muted: #706975; background: white; color: var(--fh-ink); }
 .figma-shell { width: min(1180px, calc(100% - 48px)); margin-inline: auto; }
-.kbc-figma-home h1, .kbc-figma-home h2, .kbc-figma-home h3, .figma-footer h2 { font-family: Georgia, "Times New Roman", serif; letter-spacing: -.035em; }
+.kbc-figma-home h1, .kbc-figma-home h2, .kbc-figma-home h3, .figma-footer h2 { font-family: Poppins, Arial, sans-serif; letter-spacing: -.035em; }
 .figma-eyebrow { display: block; margin-bottom: 14px; color: #7c557f; font-size: 10px; font-weight: 700; letter-spacing: .23em; text-transform: uppercase; }
 .figma-section-heading { max-width: 690px; }
 .figma-section-heading.is-centered { margin-inline: auto; text-align: center; }
@@ -500,12 +500,12 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .figma-model__steps button:last-child { border-bottom: 0; }
 .figma-model__steps button.is-active { background: #fbf7ff; color: #5b1d73; }
 .figma-model__steps button > span { color: #88608c; font-size: 11px; font-weight: 700; }
-.figma-model__steps button strong { font-family: Georgia, serif; font-size: 18px; font-weight: 400; }
+.figma-model__steps button strong { font-family: Poppins, Arial, sans-serif; font-size: 18px; font-weight: 400; }
 .figma-model__steps button svg { width: 17px; }
 .figma-model__canvas { position: relative; min-height: 430px; overflow: hidden; border-radius: 12px; background: radial-gradient(circle at 64% 44%, #ead289 0 11%, transparent 11.5%), radial-gradient(circle at 64% 44%, transparent 0 26%, rgba(91,45,83,.12) 26.5% 27%, transparent 27.5% 42%, rgba(91,45,83,.09) 42.5% 43%, transparent 43.5%), linear-gradient(135deg, #f7e8b8, #ead596); }
 .figma-model__core { position: absolute; top: 36%; left: 57%; display: grid; width: 120px; height: 120px; place-items: center; align-content: center; border-radius: 50%; background: #f7e4a7; box-shadow: 0 16px 50px rgba(66,40,34,.13); }
 .figma-model__core small { color: #745a2e; font-size: 9px; letter-spacing: .2em; }
-.figma-model__core strong { font-family: Georgia, serif; font-size: 18px; }
+.figma-model__core strong { font-family: Poppins, Arial, sans-serif; font-size: 18px; }
 .figma-model__orbit { position: absolute; padding: 7px 10px; border-radius: 99px; background: white; color: #403942; font-size: 8px; font-weight: 700; box-shadow: 0 8px 25px rgba(38,24,43,.12); }
 .figma-model__orbit--one { top: 18%; left: 64%; }.figma-model__orbit--two { top: 49%; right: 3%; }.figma-model__orbit--three { right: 18%; bottom: 9%; }.figma-model__orbit--four { bottom: 15%; left: 48%; }
 .figma-model__canvas article { position: absolute; bottom: 34px; left: 28px; width: min(310px, 48%); padding: 22px; border: 1px solid rgba(63,49,49,.12); border-radius: 8px; background: rgba(255,255,255,.94); box-shadow: 0 14px 40px rgba(58,42,31,.12); }
@@ -517,7 +517,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .figma-model__stats { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 22px; overflow: hidden; border-radius: 8px; background: #252122; color: white; }
 .figma-model__stats div { display: grid; gap: 2px; padding: 20px 24px; border-right: 1px solid rgba(255,255,255,.1); }
 .figma-model__stats div:last-child { border-right: 0; }
-.figma-model__stats strong { color: var(--fh-gold); font-family: Georgia, serif; font-size: 20px; font-weight: 400; }
+.figma-model__stats strong { color: var(--fh-gold); font-family: Poppins, Arial, sans-serif; font-size: 20px; font-weight: 400; }
 .figma-model__stats span { color: rgba(255,255,255,.58); font-size: 9px; }
 
 .figma-portfolio { padding: 112px 0; background: white; }
@@ -526,7 +526,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .figma-college-card { position: relative; display: flex; min-height: 294px; flex-direction: column; overflow: hidden; padding: 28px; border-radius: 12px; color: white; box-shadow: 0 12px 34px rgba(24,13,29,.1); transition: translate .25s ease, box-shadow .25s ease; }
 .figma-college-card:hover { translate: 0 -5px; box-shadow: 0 22px 46px rgba(24,13,29,.16); }
 .figma-college-card.is-navy { background: #213d5d; }.figma-college-card.is-teal { background: #0d6768; }.figma-college-card.is-coral { background: linear-gradient(135deg,#a22e5e,#e55061 56%,#f09a46); }.figma-college-card.is-plum { background: #561238; }
-.figma-college-card__initials { position: absolute; top: -20px; right: -4px; color: rgba(255,255,255,.08); font: 80px Georgia,serif; }
+.figma-college-card__initials { position: absolute; top: -20px; right: -4px; color: rgba(255,255,255,.08); font: 80px Poppins, Arial, sans-serif; }
 .figma-college-card > p:first-of-type { color: rgba(255,255,255,.7); font-size: 9px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
 .figma-college-card h3 { margin-top: auto; color: white; font-size: 28px; font-weight: 400; }
 .figma-college-card h3 + p { margin-top: 10px; color: rgba(255,255,255,.7); font-size: 11px; line-height: 1.55; }
@@ -579,7 +579,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .figma-story__portrait img { width: 100%; height: 560px; object-fit: cover; }
 .figma-story__portrait span { position: absolute; bottom: 20px; left: 20px; padding: 8px 12px; border-radius: 4px; background: white; color: #6d2878; font-size: 9px; font-weight: 700; }
 .figma-story article h2 { color: var(--fh-ink); font-size: clamp(42px,4.5vw,64px); font-weight: 400; line-height: .94; }
-.figma-story blockquote { margin: 30px 0 22px; color: #332c35; font-family: Georgia,serif; font-size: 20px; font-weight: 700; line-height: 1.4; }
+.figma-story blockquote { margin: 30px 0 22px; color: #332c35; font-family: Poppins, Arial, sans-serif; font-size: 20px; font-weight: 700; line-height: 1.4; }
 .figma-story article h3 { font-family: Poppins,Arial,sans-serif; font-size: 14px; letter-spacing: 0; }
 .figma-story article h3 + p { margin-top: 4px; color: #777079; font-size: 9px; }
 .figma-story article ul { display: grid; gap: 9px; margin: 20px 0 26px; padding: 0; list-style: none; }

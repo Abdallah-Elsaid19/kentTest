@@ -3,10 +3,25 @@ import { ArrowLink, NavigationButton } from "@/components/navigation";
 
 export function HeroSection() {
   return (
-    <section className="figma-hero !min-h-0 !pb-16 !pt-[140px] sm:!pb-20 sm:!pt-[154px] lg:!pb-24 xl:!pt-44" aria-labelledby="home-hero-heading">
+    <section className="figma-hero figma-hero--video !pb-16 !pt-[140px] sm:!pb-20 sm:!pt-[154px] lg:!pb-24 xl:!pt-44" aria-labelledby="home-hero-heading">
+      <video
+        className="figma-hero__background-video"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        poster="/assets/images/figma-home/hero-group.png"
+        aria-hidden="true"
+        tabIndex={-1}
+      >
+        <source src="/assets/video/home-hero.webm" type="video/webm" />
+        <source src="/assets/video/home-hero.mp4" type="video/mp4" />
+      </video>
+      <div className="figma-hero__video-overlay" aria-hidden="true" />
       <div className="figma-hero__line-motif figma-hero__line-motif--left" aria-hidden="true"><i /><i /><i /><i /></div>
       <div className="figma-hero__line-motif figma-hero__line-motif--right" aria-hidden="true"><i /><i /><i /><i /></div>
-      <div className="figma-shell figma-hero__grid !grid-cols-1 !gap-10 lg:!grid-cols-[1.02fr_.98fr] lg:!gap-14 xl:!gap-[76px]">
+      <div className="figma-shell figma-hero__grid !grid-cols-1 !gap-10">
         <div className="figma-hero__copy">
           <p className="figma-hero__eyebrow">For employers · funded workforce development</p>
           <h1 className="!text-[clamp(2.5rem,13vw,3rem)] sm:!text-6xl lg:!text-7xl xl:!text-[82px]" id="home-hero-heading">Build capability that <span>performs at work.</span></h1>

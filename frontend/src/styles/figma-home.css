@@ -18,7 +18,7 @@
 .kbc-figma-home h1,
 .kbc-figma-home h2,
 .kbc-figma-home h3 {
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: Poppins, Arial, sans-serif;
   font-weight: 400;
   letter-spacing: -.045em;
 }
@@ -583,7 +583,7 @@
 }
 
 .figma-model__core strong {
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: Poppins, Arial, sans-serif;
   font-size: 18px;
 }
 
@@ -1146,7 +1146,7 @@
   padding-left: 18px;
   border-left: 3px solid var(--figma-gold);
   color: #2c252d;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: Poppins, Arial, sans-serif;
   font-size: 16px;
   font-weight: 700;
   line-height: 1.45;
@@ -1617,7 +1617,7 @@
 .kbc-figma-home h1,
 .kbc-figma-home h2,
 .kbc-figma-home h3 {
-  font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
+  font-family: Poppins, Arial, sans-serif;
   font-style: normal;
   font-weight: 600;
 }
@@ -1650,7 +1650,7 @@
 .figma-header__actions,
 .figma-header__mobile,
 .figma-header .figma-btn {
-  font-family: "Source Serif 4", Georgia, "Times New Roman", serif !important;
+  font-family: Poppins, Arial, sans-serif !important;
 }
 
 .figma-header.is-scrolled {
@@ -1761,6 +1761,67 @@
   box-shadow: 0 12px 30px rgba(214,176,78,.25);
 }
 
+/* The public KBC navigation topics, presented in the current site style. */
+.figma-header.is-reference-nav .figma-header__inner {
+  grid-template-columns: 240px minmax(0, 1fr) auto;
+  gap: 12px;
+}
+
+.figma-header.is-reference-nav .figma-header__nav {
+  min-width: 0;
+  justify-content: center;
+  gap: 0;
+}
+
+.figma-header.is-reference-nav .kbc-nav-dropdown {
+  flex: 0 0 auto;
+  height: 78px;
+}
+
+.figma-header.is-reference-nav .figma-header__nav .kbc-nav-link {
+  padding: 10px clamp(5px, .55vw, 10px);
+  border: 0;
+  background: transparent;
+  color: currentColor;
+  font-family: Poppins, Arial, sans-serif;
+  font-size: clamp(11px, .9vw, 14px);
+  font-weight: 600;
+  line-height: 1.2;
+  opacity: .87;
+}
+
+.figma-header.is-reference-nav .figma-header__nav .kbc-nav-link:hover,
+.figma-header.is-reference-nav .figma-header__nav .kbc-nav-link[aria-expanded="true"] {
+  color: currentColor;
+  opacity: 1;
+}
+
+.figma-header.is-reference-nav .figma-header__nav .kbc-nav-link svg {
+  width: 13px;
+  height: 13px;
+  transition: transform .2s ease;
+}
+
+.figma-header.is-reference-nav .figma-header__actions {
+  width: auto;
+}
+
+.figma-header.is-reference-nav .kbc-mega-menu {
+  color: #27212d;
+  font-family: "DM Sans", Poppins, Arial, sans-serif;
+}
+
+.figma-header.is-reference-nav .kbc-mega-menu__links a {
+  color: #4f4857;
+  font-family: "DM Sans", Poppins, Arial, sans-serif;
+  font-size: 11px;
+  opacity: 1;
+}
+
+.figma-header.is-reference-nav .kbc-mega-menu__links a:hover {
+  color: var(--color-primary);
+}
+
 /* Hero */
 .figma-hero {
   min-height: 780px;
@@ -1785,7 +1846,7 @@
 .figma-hero h1 {
   max-width: 730px;
   color: #fff;
-  font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
+  font-family: Poppins, Arial, sans-serif;
   font-size: clamp(58px, 6.8vw, 92px);
   font-style: normal;
   font-weight: 600;
@@ -1903,7 +1964,7 @@
 /* Main sections */
 .figma-trusted { padding: 68px 0; }
 .figma-trusted__heading { max-width: 780px; margin-bottom: 35px; }
-.figma-trusted__heading h2 { margin-top: 9px; font-size: clamp(33px, 4vw, 50px); font-family: "Source Serif 4", Georgia, serif; font-weight: 600; }
+.figma-trusted__heading h2 { margin-top: 9px; font-size: clamp(33px, 4vw, 50px); font-family: Poppins, Arial, sans-serif; font-weight: 600; }
 .figma-trusted__heading p { margin-top: 8px; font-size: 14px; }
 .figma-logo-grid__item { height: 104px; padding: 20px; }
 .figma-logo-grid__item img { max-width: 140px; max-height: 58px; }
@@ -1985,11 +2046,11 @@
 .figma-story__grid { grid-template-columns: 1.02fr .98fr; gap: 64px; }
 .figma-story__portrait { height: 580px; border-radius: 22px 140px 22px 22px; }
 .figma-story article h2 { font-size: clamp(40px, 4.4vw, 58px); }
-.figma-story blockquote { margin: 26px 0; padding-left: 22px; font-family: "Source Serif 4", Georgia, serif; font-size: 24px; font-weight: 500; }
+.figma-story blockquote { margin: 26px 0; padding-left: 22px; font-family: Poppins, Arial, sans-serif; font-size: 24px; font-weight: 500; }
 
 .figma-funding { padding: 118px 0; }
 .figma-funding__card { min-height: 330px; padding: 56px; border-radius: 20px; }
-.figma-funding__card h2 { font-family: "Source Serif 4", Georgia, serif; font-size: clamp(43px, 5vw, 66px); font-weight: 600; }
+.figma-funding__card h2 { font-family: Poppins, Arial, sans-serif; font-size: clamp(43px, 5vw, 66px); font-weight: 600; }
 .figma-funding__card p { font-size: 17px; }
 
 @media (max-width: 1180px) {
@@ -2036,7 +2097,7 @@
 
 /* Keep the reference editorial typeface above the site's global Poppins rule. */
 .kbc-figma-home :is(h1, h2, h3) {
-  font-family: "Source Serif 4", Georgia, "Times New Roman", serif !important;
+  font-family: Poppins, Arial, sans-serif !important;
   font-style: normal;
 }
 
@@ -2075,3 +2136,67 @@
 }
 
 .kbc-figma-home .figma-hero__actions > a:hover svg { transform: translateX(6px); }
+
+/* Use the KBC sans-serif type system throughout both homepage experiences. */
+:is(.kbc-figma-home, .learner-home, .figma-header),
+:is(.kbc-figma-home, .learner-home, .figma-header) * {
+  font-family: Poppins, Arial, sans-serif !important;
+}
+
+/* Full-bleed homepage hero video. */
+.figma-hero--video {
+  min-height: min(900px, 100svh);
+  display: flex;
+  align-items: center;
+  isolation: isolate;
+  background: #1c0d28;
+}
+
+.figma-hero__background-video,
+.figma-hero__video-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.figma-hero__background-video {
+  z-index: -3;
+  object-fit: cover;
+  object-position: center;
+}
+
+.figma-hero__video-overlay {
+  z-index: -2;
+  background:
+    linear-gradient(90deg, rgba(22, 7, 30, .94) 0%, rgba(29, 10, 39, .8) 46%, rgba(25, 8, 34, .28) 78%, rgba(25, 8, 34, .46) 100%),
+    linear-gradient(0deg, rgba(20, 7, 27, .52), rgba(20, 7, 27, .12) 55%, rgba(20, 7, 27, .45));
+}
+
+.figma-hero--video::before {
+  z-index: -1;
+  background: radial-gradient(circle at 16% 84%, rgba(214,176,78,.14), transparent 28%);
+}
+
+.figma-hero--video .figma-hero__grid {
+  position: relative;
+  z-index: 1;
+}
+
+.figma-hero--video .figma-hero__copy {
+  max-width: 720px;
+}
+
+.figma-hero--video .figma-hero__visual {
+  display: none;
+}
+
+@media (max-width: 820px) {
+  .figma-hero--video {
+    min-height: 760px;
+  }
+
+  .figma-hero__video-overlay {
+    background: linear-gradient(90deg, rgba(22, 7, 30, .94), rgba(29, 10, 39, .7)), linear-gradient(0deg, rgba(20, 7, 27, .6), transparent 55%);
+  }
+}

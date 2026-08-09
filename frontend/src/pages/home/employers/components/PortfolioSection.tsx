@@ -24,7 +24,7 @@ export function PortfolioSection() {
               <h3>{college.title}</h3>
               <p>{college.description}</p>
               <ul>{college.tags.map((tag) => <li key={tag}>{tag}</li>)}</ul>
-              <ArrowLink to={college.href} direction="up-right">Enter the college</ArrowLink>
+              <ArrowLink className="!text-white hover:!text-white" to={college.href} direction="up-right">Enter the college</ArrowLink>
             </article>
           ))}
         </div>

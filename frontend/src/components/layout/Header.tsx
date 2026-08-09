@@ -47,41 +47,23 @@ export function Header() {
   }, [isExperienceHome]);
 
   if (isExperienceHome) {
-    const sectionLinks = isLearnerHome
-      ? [
-          ["Programmes", "#learner-programmes"],
-          ["How it works", "#learner-how"],
-          ["Learner support", "#learner-support"],
-          ["Career progression", "#learner-recognition"],
-          ["Stories", "#learner-stories"],
-        ]
-      : [
-          ["KBC", "#solutions"],
-          ["Solutions", "#solutions"],
-          ["Programmes", "#programmes"],
-          ["Results", "/stories"],
-          ["Funding", "#funding"],
-        ];
-    const mobileItems: MobileMenuItem[] = [
-      { label: "Employers", path: "/" },
-      { label: "Learners", path: "/learners" },
-      ...sectionLinks.map(([label, path]) => ({ label, path })),
-      { label: "Resources", path: isLearnerHome ? "#learner-events" : "#resources" },
-    ];
-    const mobileFooter = isLearnerHome
-      ? <div className="grid gap-3"><NavigationButton to="/employer-agreement" fullWidth onClick={closeMobileMenu}>Apply now</NavigationButton><NavigationButton to="/contact" variant="secondary" fullWidth onClick={closeMobileMenu}>Get advice</NavigationButton></div>
-      : <div className="grid gap-3"><NavigationButton to="/book-session" fullWidth onClick={closeMobileMenu}>Book consultation</NavigationButton><NavigationButton to="/contact" variant="secondary" fullWidth onClick={closeMobileMenu}>Contact sales</NavigationButton></div>;
+    const mobileItems: MobileMenuItem[] = primaryNavigation.map((item) => ({
+      label: item.label,
+      path: item.href,
+      external: item.external,
+      children: item.children?.map((child) => ({ label: child.label, path: child.href, external: child.external })),
+    }));
+    const mobileFooter = <div className="grid gap-3"><NavigationButton to="/employer-agreement" fullWidth onClick={closeMobileMenu}>Apply Now</NavigationButton><NavigationButton to="/book-session" variant="secondary" fullWidth onClick={closeMobileMenu}>Book an Information Session</NavigationButton></div>;
     return (
-      <header className={`figma-header ${isLearnerHome ? "is-learner" : ""} ${homeScrolled ? "is-scrolled" : ""}`} ref={headerRef}>
+      <header className={`figma-header is-reference-nav ${isLearnerHome ? "is-learner" : ""} ${homeScrolled ? "is-scrolled" : ""}`} ref={headerRef}>
         <div className="figma-header__notice !gap-3 !px-4 !text-[9px] sm:!gap-5 sm:!px-5 sm:!text-xs"><span className="min-w-0">Fully funded apprenticeship pathways for eligible employers and professionals.</span><Link className="shrink-0" to="/book-session">Check your route</Link></div>
         <div className="figma-header__main">
           <div className="figma-header__inner">
             <Link to="/" className="figma-header__brand" aria-label="Kent Business College home"><img src={homeScrolled ? "/assets/logos/kbc-logo.png" : "/assets/logos/kbc-logo-light.webp"} alt="Kent Business College" /></Link>
-            <div className="figma-header__audience" aria-label="Choose your audience"><Link className={!isLearnerHome ? "is-active" : ""} to="/">Employers</Link><Link className={isLearnerHome ? "is-active" : ""} to="/learners">Learners</Link></div>
             <nav className="figma-header__nav" aria-label="Primary navigation">
-              {sectionLinks.map(([label, href]) => <a href={href} key={label}>{label}</a>)}<a className="figma-header__resources" href={isLearnerHome ? "#learner-events" : "#resources"}>Resources <ChevronDown aria-hidden="true" /></a>
+              {primaryNavigation.map((item) => <DesktopItem key={item.label} item={item} open={desktopOpen === item.label} onOpen={() => setDesktopOpen(item.label)} onClose={() => setDesktopOpen(null)} />)}
             </nav>
-            <div className="figma-header__actions">{isLearnerHome ? <><Link className="figma-header__advice" to="/contact">Get advice</Link><NavigationButton className="figma-btn figma-header__apply" to="/employer-agreement">Apply now</NavigationButton></> : <><Link to="/contact">Contact sales</Link><Link className="figma-btn figma-header__consultation" to="/book-session">Book consultation</Link></>}<button ref={menuButtonRef} type="button" className={`figma-header__toggle ${homeScrolled ? "!text-kbc-purple-950" : "!text-white"}`} aria-expanded={mobileOpen} aria-controls="mobile-menu" aria-label="Open menu" onClick={() => setMobileOpen(true)}><Menu /></button></div>
+            <div className="figma-header__actions"><NavigationButton className="figma-btn figma-header__apply" to="/employer-agreement">Apply Now</NavigationButton><button ref={menuButtonRef} type="button" className={`figma-header__toggle ${homeScrolled ? "!text-kbc-purple-950" : "!text-white"}`} aria-expanded={mobileOpen} aria-controls="mobile-menu" aria-label="Open menu" onClick={() => setMobileOpen(true)}><Menu /></button></div>
           </div>
         </div>
         <MobileMenu isOpen={mobileOpen} onClose={closeMobileMenu} currentPath={`${location.pathname}${location.hash}`} returnFocusRef={menuButtonRef} items={mobileItems} footer={mobileFooter} />

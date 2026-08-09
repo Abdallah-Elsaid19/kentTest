@@ -28,7 +28,8 @@ export const primaryNavigation: NavItem[] = [
   },
   { label: "Courses", href: "/courses" },
   { label: "Events", href: "/events" },
-  { label: "Who We Are", href: "/about" },
+  { label: "Case Studies", href: "/stories" },
+  { label: "Who we are", href: "/about" },
   {
     label: "More",
     children: [
@@ -49,7 +50,7 @@ export const primaryNavigation: NavItem[] = [
       { label: "Apprentices", href: "/apprentices" },
       { label: "Login to LMS", href: "https://kentbusinesscollege.org/", external: true },
       { label: "Login to APTEM", href: "https://kentbusinesscollege.aptem.co.uk/", external: true },
-      { label: "Apprentices’ Stories", href: "/apprentices/stories" },
+      { label: "Apprentice Stories", href: "/apprentices/stories" },
     ],
   },
   {
