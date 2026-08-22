@@ -7,9 +7,9 @@ export function TrustedOrganisations() {
     <section className="figma-trusted !py-16 sm:!py-20 xl:!py-24" aria-labelledby="trusted-title">
       <div className="figma-shell">
         <div className="figma-trusted__heading !max-w-full">
-          <span className="figma-eyebrow">Trusted by</span>
-          <h2 className="!text-4xl sm:!text-5xl xl:!text-[50px]" id="trusted-title">Professionals from leading<br />organisations</h2>
-          <p>Employees from respected organisations choose KBC to strengthen practical, role-ready capability.</p>
+          <span className="figma-eyebrow !text-xs !font-bold !leading-5 !tracking-widest !uppercase">Trusted by</span>
+          <h2 className="!text-4xl !font-semibold !leading-none !tracking-tight sm:!text-5xl xl:!text-6xl" id="trusted-title">Professionals from leading<br />organisations</h2>
+          <p className="!text-sm !leading-relaxed sm:!text-base">Employees from respected organisations choose KBC to strengthen practical, role-ready capability.</p>
         </div>
         <div className="figma-logo-grid motion-reduce:!overflow-x-auto motion-reduce:[scrollbar-width:none] motion-reduce:[&::-webkit-scrollbar]:hidden" aria-label="Organisations whose professionals learn with Kent Business College">
           <div className="figma-logo-grid__track !flex !w-max motion-reduce:!animate-none" style={{ animationDuration: `${trustedOrganisationLogos.length * 4}s` }}>

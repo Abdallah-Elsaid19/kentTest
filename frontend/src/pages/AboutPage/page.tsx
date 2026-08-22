@@ -15,9 +15,7 @@ const paper = "bg-[#f4f0e9]";
 function SectionHeading({ eyebrow, heading, description, light = false }: { eyebrow: string; heading: string; description?: string; light?: boolean }) {
   return (
     <div className="max-w-[650px]">
-      <p className={`mb-4 flex items-center gap-3 text-[9px] font-bold uppercase tracking-[0.2em] ${light ? "text-[#dcbb51]" : "text-[#6f2a7d]"}`}>
-        <span className="h-px w-6 bg-current" aria-hidden="true" />{eyebrow}
-      </p>
+      <p className={`kbc-eyebrow-arc mb-4 text-[9px] font-bold uppercase tracking-[0.2em] ${light ? "text-[#dcbb51]" : "text-[#6f2a7d]"}`}>{eyebrow}</p>
       <h2 className={`font-serif text-4xl leading-[.98] tracking-[-0.045em] sm:text-5xl lg:text-[58px] ${light ? "text-white" : "text-[#211126]"}`}>{heading}</h2>
       {description && <p className={`mt-5 max-w-xl text-sm leading-7 sm:text-base ${light ? "text-white/65" : "text-[#6f6870]"}`}>{description}</p>}
     </div>
@@ -35,7 +33,7 @@ function Hero({ data }: { data: Record<string, unknown> }) {
       <div className={`${shell} relative`}>
         <div className="grid min-w-0 items-center gap-12 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,.95fr)] lg:gap-16">
           <div className="min-w-0">
-            <p className="mb-5 text-[9px] font-bold uppercase tracking-[.22em] text-[#dcbb51]">{asText(data.eyebrow)}</p>
+            <p className="kbc-eyebrow-arc mb-5 text-[9px] font-bold uppercase tracking-[.22em] text-[#dcbb51]">{asText(data.eyebrow)}</p>
             <h1 id="about-title" className="max-w-2xl break-words font-serif text-[clamp(2.75rem,12vw,3.35rem)] leading-[.92] tracking-[-.055em] text-white sm:text-6xl lg:text-[70px]">
               {asText(data.heading)} <span className="text-[#dff28b]">{asText(data.highlight)}</span>
             </h1>
@@ -284,7 +282,7 @@ function FinalCta({ data }: { data: Record<string, unknown> }) {
   return (
     <section className="bg-[#250b30] py-14 text-white sm:py-16">
       <div className={`${shell} grid items-center gap-9 lg:grid-cols-[1fr_auto]`}>
-        <div><p className="text-[9px] font-bold uppercase tracking-[.2em] text-[#dcbb51]">{asText(data.eyebrow)}</p><h2 className="mt-5 max-w-2xl font-serif text-4xl leading-[.98] text-white sm:text-5xl">{asText(data.heading)}</h2><p className="mt-5 max-w-2xl text-sm leading-7 text-white/65">{asText(data.body)}</p></div>
+        <div><p className="kbc-eyebrow-arc text-[9px] font-bold uppercase tracking-[.2em] text-[#dcbb51]">{asText(data.eyebrow)}</p><h2 className="mt-5 max-w-2xl font-serif text-4xl leading-[.98] text-white sm:text-5xl">{asText(data.heading)}</h2><p className="mt-5 max-w-2xl text-sm leading-7 text-white/65">{asText(data.body)}</p></div>
         <div className="flex min-w-56 flex-col gap-3"><NavigationButton variant="accent" to={asText(primary.href)}>{asText(primary.label)}</NavigationButton><NavigationButton variant="inverse" to={asText(secondary.href)}>{asText(secondary.label)}</NavigationButton></div>
       </div>
     </section>

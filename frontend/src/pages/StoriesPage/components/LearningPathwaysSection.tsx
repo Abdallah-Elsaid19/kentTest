@@ -1,5 +1,5 @@
 import { ArrowLink } from "@/components/navigation";
-import { FigmaSectionHeading } from "@/pages/home/employers/components/FigmaSectionHeading";
+import { FigmaSectionHeading } from "@/components/ui/FigmaSectionHeading";
 import { learningPathways } from "../data";
 
 const pathwayContent = [

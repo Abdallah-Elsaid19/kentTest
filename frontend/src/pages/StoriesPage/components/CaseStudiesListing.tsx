@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { ArrowLink } from "@/components/navigation";
-import { FigmaSectionHeading } from "@/pages/home/employers/components/FigmaSectionHeading";
+import { FigmaSectionHeading } from "@/components/ui/FigmaSectionHeading";
 import type { DisplayStory } from "../data";
 
 function StoryTags({ story }: { story: DisplayStory }) {

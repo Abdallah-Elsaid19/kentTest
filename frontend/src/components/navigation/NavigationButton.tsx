@@ -17,7 +17,7 @@ interface NavigationButtonProps {
 }
 
 const variantClasses: Record<NavigationButtonVariant, string> = {
-  primary: "bg-kbc-purple-700 text-white hover:bg-kbc-purple-800",
+  primary: "bg-[#371347] text-white hover:bg-[#260d32]",
   secondary: "border border-[#d8cec3] bg-transparent text-kbc-purple-950 hover:bg-kbc-purple-50",
   accent: "bg-kbc-gold-500 text-kbc-purple-950 hover:bg-kbc-gold-400",
   inverse: "border border-white/30 bg-transparent text-white hover:bg-white/10",
@@ -35,7 +35,7 @@ export function NavigationButton({
   onClick,
 }: NavigationButtonProps) {
   const classes = joinNavigationClasses(
-    "inline-flex min-h-14 items-center justify-center px-4 text-center text-sm font-semibold transition-colors motion-reduce:transition-none",
+    "inline-flex min-h-14 items-center justify-center rounded-md px-4 text-center text-sm font-semibold transition-[color,background-color,border-color,transform,box-shadow] hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:translate-y-0",
     variantClasses[variant],
     fullWidth && "w-full",
     className,
