@@ -973,16 +973,6 @@
   margin-bottom: 50px;
 }
 
-.figma-programmes__heading-row > a {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 7px;
-  color: #672475;
-}
-
-.figma-programmes__heading-row svg { width: 11px; }
-
 .figma-programmes__grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -1790,8 +1780,55 @@
 
 .figma-header.is-reference-nav .figma-header__nav .kbc-nav-link:hover,
 .figma-header.is-reference-nav .figma-header__nav .kbc-nav-link[aria-expanded="true"] {
-  color: currentColor;
   opacity: 1;
+}
+
+.kbc-desktop-nav .kbc-nav-link,
+.figma-header.is-reference-nav .figma-header__nav .kbc-nav-link {
+  position: relative;
+}
+
+.kbc-nav-link.is-active,
+.kbc-desktop-nav .kbc-nav-link:hover,
+.kbc-desktop-nav .kbc-nav-link[aria-expanded="true"],
+.figma-header.is-reference-nav .figma-header__nav .kbc-nav-link:hover,
+.figma-header.is-reference-nav .figma-header__nav .kbc-nav-link[aria-expanded="true"],
+.figma-header.is-reference-nav .figma-header__nav .kbc-nav-link.is-active {
+  color: #702b7f;
+  opacity: 1;
+}
+
+.kbc-desktop-nav .kbc-nav-link::after,
+.figma-header.is-reference-nav .figma-header__nav .kbc-nav-link::after {
+  position: absolute;
+  bottom: 1px;
+  left: 7px;
+  width: calc(100% - 14px);
+  height: 8px;
+  border-top: 1.5px solid currentColor;
+  border-radius: 50% 50% 0 0;
+  content: "";
+  opacity: 0;
+  pointer-events: none;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: opacity .2s ease, transform .45s cubic-bezier(.22, 1, .36, 1);
+}
+
+.kbc-desktop-nav .kbc-nav-link:hover::after,
+.kbc-desktop-nav .kbc-nav-link[aria-expanded="true"]::after,
+.kbc-desktop-nav .kbc-nav-link.is-active::after,
+.figma-header.is-reference-nav .figma-header__nav .kbc-nav-link:hover::after,
+.figma-header.is-reference-nav .figma-header__nav .kbc-nav-link[aria-expanded="true"]::after,
+.figma-header.is-reference-nav .figma-header__nav .kbc-nav-link.is-active::after {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.figma-header.is-reference-nav:not(.is-scrolled) .figma-header__nav .kbc-nav-link:hover,
+.figma-header.is-reference-nav:not(.is-scrolled) .figma-header__nav .kbc-nav-link[aria-expanded="true"],
+.figma-header.is-reference-nav:not(.is-scrolled) .figma-header__nav .kbc-nav-link.is-active {
+  color: #fff;
 }
 
 .figma-header.is-reference-nav .figma-header__nav .kbc-nav-link svg {

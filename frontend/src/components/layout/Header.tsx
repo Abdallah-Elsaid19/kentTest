@@ -5,15 +5,25 @@ import { primaryNavigation, type NavItem } from "@/data/navigation";
 import { NavigationButton } from "@/components/navigation";
 import MobileMenu, { type MobileMenuItem } from "./MobileMenu";
 
-function SmartLink({ href, external, children, className, onClick }: { href: string; external?: boolean; children: React.ReactNode; className?: string; onClick?: () => void }) {
-  return external ? <a href={href} className={className} target="_blank" rel="noreferrer" onClick={onClick}>{children}</a> : <Link to={href} className={className} onClick={onClick}>{children}</Link>;
+function SmartLink({ href, external, children, className, ariaCurrent, onClick }: { href: string; external?: boolean; children: React.ReactNode; className?: string; ariaCurrent?: "page"; onClick?: () => void }) {
+  return external ? <a href={href} className={className} target="_blank" rel="noreferrer" aria-current={ariaCurrent} onClick={onClick}>{children}</a> : <Link to={href} className={className} aria-current={ariaCurrent} onClick={onClick}>{children}</Link>;
 }
 
-function DesktopItem({ item, open, onOpen, onClose }: { item: NavItem; open: boolean; onOpen: () => void; onClose: () => void }) {
-  if (!item.children || !item.children.length) return <SmartLink href={item.href || "/"} external={item.external} className="kbc-nav-link">{item.label}</SmartLink>;
+function isCurrentPath(href: string | undefined, external: boolean | undefined, currentPath: string) {
+  if (!href || external) return false;
+  const path = href.split(/[?#]/, 1)[0];
+  return path === "/" ? currentPath === "/" : currentPath === path || currentPath.startsWith(`${path}/`);
+}
+
+function DesktopItem({ item, currentPath, open, onOpen, onClose }: { item: NavItem; currentPath: string; open: boolean; onOpen: () => void; onClose: () => void }) {
+  const isActive = isCurrentPath(item.href, item.external, currentPath)
+    || Boolean(item.children?.some((child) => isCurrentPath(child.href, child.external, currentPath)));
+  const linkClassName = `kbc-nav-link${isActive ? " is-active" : ""}`;
+
+  if (!item.children || !item.children.length) return <SmartLink href={item.href || "/"} external={item.external} className={linkClassName} ariaCurrent={isActive ? "page" : undefined}>{item.label}</SmartLink>;
   return (
     <div className="kbc-nav-dropdown" onMouseEnter={onOpen} onMouseLeave={onClose} onFocus={onOpen} onBlur={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) onClose(); }}>
-      <button className="kbc-nav-link" type="button" aria-expanded={open} onClick={() => open ? onClose() : onOpen()}>{item.label}<ChevronDown size={14} aria-hidden="true" /></button>
+      <button className={linkClassName} type="button" aria-expanded={open} onClick={() => open ? onClose() : onOpen()}>{item.label}<ChevronDown size={14} aria-hidden="true" /></button>
       {open && <div className={`kbc-mega-menu ${item.label === "Colleges" ? "kbc-mega-menu--wide" : ""}`}>
         <p className="kbc-mega-menu__title">{item.label}</p>
         <div className="kbc-mega-menu__links">{item.children.map((child) => <SmartLink key={child.label} href={child.href} external={child.external}>{child.label}<span aria-hidden="true">→</span></SmartLink>)}</div>
@@ -61,7 +71,7 @@ export function Header() {
           <div className="figma-header__inner">
             <Link to="/" className="figma-header__brand" aria-label="Kent Business College home"><img src={homeScrolled ? "/assets/logos/kbc-logo.png" : "/assets/logos/kbc-logo-light.webp"} alt="Kent Business College" /></Link>
             <nav className="figma-header__nav" aria-label="Primary navigation">
-              {primaryNavigation.map((item) => <DesktopItem key={item.label} item={item} open={desktopOpen === item.label} onOpen={() => setDesktopOpen(item.label)} onClose={() => setDesktopOpen(null)} />)}
+              {primaryNavigation.map((item) => <DesktopItem key={item.label} item={item} currentPath={location.pathname} open={desktopOpen === item.label} onOpen={() => setDesktopOpen(item.label)} onClose={() => setDesktopOpen(null)} />)}
             </nav>
             <div className="figma-header__actions"><NavigationButton className="figma-btn figma-header__apply" to="/employer-agreement">Apply Now</NavigationButton><button ref={menuButtonRef} type="button" className={`figma-header__toggle ${homeScrolled ? "!text-kbc-purple-950" : "!text-white"}`} aria-expanded={mobileOpen} aria-controls="mobile-menu" aria-label="Open menu" onClick={() => setMobileOpen(true)}><Menu /></button></div>
           </div>
@@ -84,7 +94,7 @@ export function Header() {
       <div className="kbc-topbar" aria-hidden="true" />
       <div className="kbc-header__main"><div className="kbc-container kbc-header__inner">
         <Link to="/" className="kbc-brand" aria-label="Kent Business College home"><img src="/assets/logos/kbc-logo.png" alt="Kent Business College" /></Link>
-        <nav className="kbc-desktop-nav" aria-label="Primary navigation">{primaryNavigation.map((item) => <DesktopItem key={item.label} item={item} open={desktopOpen === item.label} onOpen={() => setDesktopOpen(item.label)} onClose={() => setDesktopOpen(null)} />)}</nav>
+        <nav className="kbc-desktop-nav" aria-label="Primary navigation">{primaryNavigation.map((item) => <DesktopItem key={item.label} item={item} currentPath={location.pathname} open={desktopOpen === item.label} onOpen={() => setDesktopOpen(item.label)} onClose={() => setDesktopOpen(null)} />)}</nav>
         <div className="kbc-header__actions"><NavigationButton className="kbc-button kbc-button--primary kbc-header__apply" to="/employer-agreement">Apply Now</NavigationButton><button ref={menuButtonRef} type="button" className="kbc-menu-toggle" aria-expanded={mobileOpen} aria-controls="mobile-menu" aria-label="Open menu" onClick={() => setMobileOpen(true)}><Menu /></button></div>
       </div></div>
       <MobileMenu isOpen={mobileOpen} onClose={closeMobileMenu} currentPath={`${location.pathname}${location.hash}`} returnFocusRef={menuButtonRef} items={genericMobileItems} footer={genericMobileFooter} />

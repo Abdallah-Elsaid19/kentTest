@@ -12,9 +12,8 @@ export function FigmaProgrammesSection() {
   return (
     <section className="figma-programmes !py-16 sm:!py-20 xl:!py-[118px]" id="programmes" aria-labelledby="programmes-title">
       <div className="figma-shell">
-        <div className="figma-programmes__heading-row !flex-col !items-start !gap-5 lg:!flex-row lg:!items-end lg:!gap-8">
-          <FigmaSectionHeading id="programmes-title" eyebrow="Popular funded programmes" title={<>Develop the capability your<br />organisation needs next.</>} />
-          <ArrowLink className="!text-sm !font-semibold !leading-5" to="/programmes">Browse all programmes</ArrowLink>
+        <div className="figma-programmes__heading-row !block">
+          <FigmaSectionHeading id="programmes-title" eyebrow="Popular funded programmes" title={<>Develop the capability your<br />organisation needs next.</>} align="center" />
         </div>
         <div className="figma-programmes__grid !grid-cols-1 md:!grid-cols-2 xl:!grid-cols-4">
           {programmes.map((programme) => (
@@ -28,6 +27,9 @@ export function FigmaProgrammesSection() {
               </div>
             </article>
           ))}
+        </div>
+        <div className="mt-6 flex justify-end sm:mt-8">
+          <ArrowLink className="!text-sm !font-semibold !leading-5" to="/programmes">Browse all programmes</ArrowLink>
         </div>
       </div>
     </section>
