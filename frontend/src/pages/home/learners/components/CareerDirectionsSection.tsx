@@ -43,7 +43,6 @@ export function CareerDirectionsSection() {
           id="learner-paths-title"
           eyebrow="Choose your direction"
           title="Start with the career outcome not the course title."
-          description="Select the professional capability you want to build, then compare programmes designed for your current role and next step."
         />
         <div className="career-path-grid !grid-cols-1 md:!grid-cols-2">
           {paths.map(([number, discipline, title, description, tone]) => (

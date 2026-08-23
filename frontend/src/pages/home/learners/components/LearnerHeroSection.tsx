@@ -7,11 +7,11 @@ export function LearnerHeroSection() {
       <div className="learner-shell learner-hero__grid !grid-cols-1 !gap-10 lg:!gap-14 xl:!grid-cols-[1.02fr_.98fr] xl:!gap-[76px]">
         <div className="learner-hero__copy">
           <span className="learner-eyebrow">For working professionals</span>
-          <h1 className="!text-[clamp(2.5rem,13vw,3rem)] sm:!text-6xl lg:!text-7xl xl:!text-[86px]" id="learner-hero-title">Build skills that move your <em>career forward.</em></h1>
+          <h1 className="kbc-hero-title" id="learner-hero-title">Build skills that move your <em>career forward.</em></h1>
           <p>Learn while you work through role-relevant apprenticeships, specialist coaching and pathways towards recognised professional qualifications.</p>
           <div className="learner-hero__actions !grid !grid-cols-1 sm:!flex">
             <NavigationButton className="learner-btn learner-btn--gold !w-full sm:!w-auto" to="#learner-programmes">Find your programme <ArrowRight aria-hidden="true" /></NavigationButton>
-            <NavigationButton className="learner-btn learner-btn--light !w-full sm:!w-auto" to="https://kentbusinesscollege.com/apply-now/" variant="secondary">Check your eligibility</NavigationButton>
+            <NavigationButton className="learner-btn learner-btn--light !w-full sm:!w-auto" to="/eligibility" variant="secondary">Check your eligibility</NavigationButton>
           </div>
           <div className="learner-hero__proof !grid !grid-cols-1 sm:!grid-cols-3">
             <div><strong>Learn in your role</strong><span>Apply new capability in the workplace</span></div>

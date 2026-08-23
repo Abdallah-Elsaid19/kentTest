@@ -44,7 +44,7 @@ export function EventsSection() {
                 </ul>
                 <div className="kbc-event-card__actions">
                   {event.bookingUrl && <a className="kbc-button kbc-button--primary" href={event.bookingUrl} target="_blank" rel="noreferrer">Secure Your Seat</a>}
-                  {isFallback ? <a className="kbc-arrow-link" href="https://kentbusinesscollege.com/events/">More Details <ArrowRight size={16} aria-hidden="true" /></a> : <Link className="kbc-arrow-link" to={`/events/${event.slug}`}>More Details <ArrowRight size={16} aria-hidden="true" /></Link>}
+                  {isFallback ? <Link className="kbc-arrow-link" to="/events">More Details <ArrowRight size={16} aria-hidden="true" /></Link> : <Link className="kbc-arrow-link" to={`/events/${event.slug}`}>More Details <ArrowRight size={16} aria-hidden="true" /></Link>}
                 </div>
               </article>
             );

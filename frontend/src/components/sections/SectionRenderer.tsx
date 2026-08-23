@@ -10,7 +10,7 @@ export function SectionRenderer({ section }: { section: PageSection }) {
   if (section.type === "hero") {
     return (
       <section className="relative overflow-hidden bg-kbc-purple-800 px-4 py-20 text-white md:py-28">
-        <div className="mx-auto max-w-7xl"><p className="text-sm font-semibold uppercase tracking-[0.2em] text-kbc-gold-400">{text(data.eyebrow)}</p><h1 className="mt-3 max-w-4xl font-heading text-4xl font-bold leading-tight md:text-6xl">{text(data.heading)}</h1><p className="mt-5 max-w-2xl text-lg text-white/75">{text(data.body)}</p></div>
+        <div className="mx-auto max-w-7xl"><p className="text-sm font-semibold uppercase tracking-[0.2em] text-kbc-gold-400">{text(data.eyebrow)}</p><h1 className="kbc-hero-title mt-3 max-w-4xl">{text(data.heading)}</h1><p className="mt-5 max-w-2xl text-lg text-white/75">{text(data.body)}</p></div>
       </section>
     );
   }

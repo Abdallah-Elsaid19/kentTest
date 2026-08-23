@@ -18,9 +18,9 @@ export function ResourcesSection() {
             <span>KBC video</span>
             <h3>See professional learning<br />connected to real<br />workplace practice.</h3>
             <p>Watch an example from Kent Business College and explore how funded professional development supports practical capability, recognised progression and career growth.</p>
-            <ArrowLink to="https://www.youtube.com/" newTab>Explore the KBC video library</ArrowLink>
+            <ArrowLink to="/video-library">Explore the KBC video library</ArrowLink>
           </div>
-          <a className="figma-video-card__media !min-h-[280px] sm:!min-h-[340px] lg:!min-h-[420px]" href="https://www.youtube.com/" target="_blank" rel="noreferrer" aria-label="Watch Kent Business College video">
+          <a className="figma-video-card__media !min-h-[280px] sm:!min-h-[340px] lg:!min-h-[420px]" href="/video-library" aria-label="Watch Kent Business College video">
             <img src="/assets/images/figma-home/apm-chpp.png" alt="APM Chartered Project Professional" loading="lazy" />
             <div className="figma-video-card__title"><img src="/assets/logos/kbc-logo-figma.png" alt="" /><span><strong>Fully Funded Project Control Professional with Chartered Project Professional (APM ChPP)</strong><small>Kent Business College</small></span></div>
             <i aria-hidden="true"><Play fill="currentColor" /></i>

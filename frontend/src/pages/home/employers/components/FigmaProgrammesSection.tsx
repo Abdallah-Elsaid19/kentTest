@@ -2,10 +2,10 @@ import { ArrowLink } from "@/components/navigation";
 import { FigmaSectionHeading } from "./FigmaSectionHeading";
 
 const programmes = [
-  { category: "Project Management", title: "Associate Project Manager", meta: ["Level 4", "12 months"], description: "Build structured capability in planning, delivery, stakeholders and project governance.", image: "/assets/images/figma-home/workplace-teaching.png", href: "https://kentbusinesscollege.com/associate-project-manager-level-4-apprenticeship/" },
-  { category: "Project Controls", title: "Project Controls Professional", meta: ["Level 6", "Professional pathway"], description: "Develop capability across planning, scheduling, cost, risk and performance reporting.", image: "/assets/images/figma-home/project-speaker.png", href: "https://kentbusinesscollege.com/project-control-professional-level-6/" },
-  { category: "Marketing", title: "Marketing Executive", meta: ["Level 4", "CIM pathway"], description: "Strengthen campaign delivery, customer understanding, digital activity and measurement.", image: "/assets/images/figma-home/marketing-event.png", href: "https://kentbusinesscollege.com/marketing-executive-level-4-apprenticeship/" },
-  { category: "Strategic Marketing", title: "Marketing Manager", meta: ["Level 6", "CIM pathway"], description: "Develop strategic, commercial and data-led marketing leadership for organisational growth.", image: "/assets/images/figma-home/hero-group.png", href: "https://kentbusinesscollege.com/marketing-manager-level-6-apprenticeship/" },
+  { category: "Project Management", title: "Associate Project Manager", meta: ["Level 4", "12 months"], description: "Build structured capability in planning, delivery, stakeholders and project governance.", image: "/assets/images/figma-home/workplace-teaching.png", href: "/associate-project-manager-level-4" },
+  { category: "Project Controls", title: "Project Controls Professional", meta: ["Level 6", "Professional pathway"], description: "Develop capability across planning, scheduling, cost, risk and performance reporting.", image: "/assets/images/figma-home/project-speaker.png", href: "/project-controls-professional-level-6" },
+  { category: "Marketing", title: "Marketing Executive", meta: ["Level 4", "CIM pathway"], description: "Strengthen campaign delivery, customer understanding, digital activity and measurement.", image: "/assets/images/figma-home/marketing-event.png", href: "/marketing-executive-level-4" },
+  { category: "Strategic Marketing", title: "Marketing Manager", meta: ["Level 6", "CIM pathway"], description: "Develop strategic, commercial and data-led marketing leadership for organisational growth.", image: "/assets/images/figma-home/hero-group.png", href: "/marketing-manager-level-6" },
 ];
 
 export function FigmaProgrammesSection() {

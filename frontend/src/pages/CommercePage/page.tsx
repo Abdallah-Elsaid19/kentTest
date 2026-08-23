@@ -9,8 +9,8 @@ export default function CommercePage({ title }: { title: string }) {
         title={title}
         summary="Commerce is disabled until the owner approves a non-WordPress provider and operating model."
       />
-      <div className="mx-auto max-w-3xl px-4 py-14">
-        <div className="rounded-2xl border border-amber-200 bg-amber-50 p-6">
+      <div className="mx-auto max-w-3xl px-5 py-16 sm:py-20">
+        <div className="rounded-2xl border border-amber-200 bg-amber-50 p-7 shadow-sm">
           No purchases can be made through this website at present.
         </div>
       </div>

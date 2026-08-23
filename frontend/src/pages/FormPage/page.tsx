@@ -51,8 +51,8 @@ export default function FormPage({ kind }: { kind: Kind }) {
   return <>
     <RouteMeta fallbackTitle={`${page.title} | Kent Business College`} fallbackDescription={page.summary} />
     <PageHero title={page.title} summary={page.summary} />
-    <section className="mx-auto max-w-3xl px-4 py-14">
-      {mutation.isSuccess ? <div className="rounded-2xl border border-green-200 bg-green-50 p-8" role="status"><h2 className="font-heading text-2xl font-semibold">Submission received</h2><p className="mt-2">Reference: {mutation.data.submissionId}</p><button onClick={() => mutation.reset()} className="mt-5 font-semibold text-kbc-purple-700">Send another</button></div> : <form onSubmit={handleSubmit(onSubmit)} className="space-y-5 rounded-2xl bg-white p-6 shadow-sm md:p-8" noValidate>
+    <section className="mx-auto max-w-3xl px-5 py-16 sm:py-20">
+      {mutation.isSuccess ? <div className="rounded-2xl border border-green-200 bg-green-50 p-8 shadow-sm" role="status"><h2 className="font-heading text-3xl font-semibold">Submission received</h2><p className="mt-2">Reference: {mutation.data.submissionId}</p><button onClick={() => mutation.reset()} className="mt-5 min-h-11 font-semibold text-kbc-purple-700">Send another</button></div> : <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 rounded-2xl border border-kbc-purple-100 bg-white p-6 shadow-[0_16px_48px_rgba(33,17,38,.08)] md:p-9" noValidate>
         <div className="grid gap-5 md:grid-cols-2"><Field label="Name" error={errors.name?.message}><input {...register("name")} autoComplete="name" /></Field><Field label="Email" error={errors.email?.message}><input {...register("email")} type="email" autoComplete="email" /></Field></div>
         <Field label="Phone" error={errors.phone?.message}><input {...register("phone")} type="tel" autoComplete="tel" /></Field>
         {kind === "support" && <Field label="Subject" error={errors.subject?.message}><input {...register("subject")} /></Field>}
@@ -65,12 +65,12 @@ export default function FormPage({ kind }: { kind: Kind }) {
         <TurnstileField onToken={setCaptchaToken} />
         <input {...register("website")} tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
         {mutation.isError && <p role="alert" className="rounded-lg bg-red-50 p-3 text-sm text-red-800">{mutation.error.message}</p>}
-        <button disabled={mutation.isPending} className="w-full rounded-lg bg-kbc-purple-700 px-6 py-3 font-semibold text-white disabled:opacity-60">{mutation.isPending ? "Sending…" : "Submit"}</button>
+        <button disabled={mutation.isPending} className="min-h-12 w-full rounded-lg bg-kbc-purple-700 px-6 py-3 font-semibold text-white transition hover:bg-kbc-purple-800 disabled:opacity-60">{mutation.isPending ? "Sending…" : "Submit"}</button>
       </form>}
     </section>
   </>;
 }
 
 function Field({ label, error, children }: { label: string; error?: string; children: React.ReactElement<any> }) {
-  return <label className="block text-sm font-medium text-slate-800">{label}{React.cloneElement(children, { className: "mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 focus:border-kbc-purple-600 focus:outline-none focus:ring-2 focus:ring-kbc-purple-200", "aria-invalid": Boolean(error) })}{error && <span className="mt-1 block text-sm text-red-700">{error}</span>}</label>;
+  return <label className="block text-sm font-semibold text-kbc-purple-950">{label}{React.cloneElement(children, { className: "mt-2 w-full border border-kbc-purple-200 px-4 py-3", "aria-invalid": Boolean(error) })}{error && <span className="mt-1 block text-sm text-red-700">{error}</span>}</label>;
 }

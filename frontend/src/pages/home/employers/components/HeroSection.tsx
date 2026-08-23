@@ -9,7 +9,7 @@ export function HeroSection() {
       <div className="figma-shell figma-hero__grid !grid-cols-1 !gap-10 lg:!grid-cols-[1.02fr_.98fr] lg:!gap-14 xl:!gap-[76px]">
         <div className="figma-hero__copy">
           <p className="figma-hero__eyebrow">For employers · funded workforce development</p>
-          <h1 className="!text-[clamp(2.5rem,13vw,3rem)] sm:!text-6xl lg:!text-7xl xl:!text-[82px]" id="home-hero-heading">Build capability that <span>performs at work.</span></h1>
+          <h1 className="kbc-hero-title" id="home-hero-heading">Build capability that <span>performs at work.</span></h1>
           <p>Kent Business College develops project, project controls, marketing and leadership professionals through role-relevant apprenticeships, specialist coaching and recognised professional pathways.</p>
           <div className="figma-hero__actions !flex-col sm:!flex-row">
             <NavigationButton className="figma-btn figma-btn--gold !w-full sm:!w-auto" to="/book-session">Discuss your workforce needs <ArrowRight aria-hidden="true" /></NavigationButton>

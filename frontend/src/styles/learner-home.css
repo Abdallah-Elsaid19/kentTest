@@ -23,8 +23,7 @@
 .learner-home h3 { font-family: "Source Serif 4", Georgia, "Times New Roman", serif; }
 .learner-shell { width: min(1240px, calc(100% - 40px)); margin-inline: auto; }
 .learner-home section:not(.learner-hero):not(.learner-trust) { padding: 118px 0; }
-.learner-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
-.learner-eyebrow::before { width: 28px; height: 1px; background: currentColor; content: ""; }
+.learner-eyebrow { display: inline-flex; align-items: center; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
 .learner-home .learner-eyebrow { color: var(--learner-purple); }
 
 .learner-btn { display: inline-flex; min-height: 48px; align-items: center; justify-content: center; gap: 10px; padding: 14px 20px; border: 1px solid transparent; border-radius: 6px; font-size: 14px; font-weight: 700; cursor: pointer; transition: transform .28s cubic-bezier(.2,.8,.2,1), background-color .28s ease, border-color .28s ease, color .28s ease, box-shadow .28s ease; }

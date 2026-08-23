@@ -75,21 +75,13 @@ export default function EmployerAgreementPage() {
         fallbackTitle="Employer Agreement Form | Kent Business College"
         fallbackDescription="Complete the Kent Business College employer agreement form."
       />
-      <div className="kbc-employer-brand">
-        <div className="kbc-employer-brand__inner">
-          <a href="/" aria-label="Kent Business College home"><img src="/assets/logos/kbc-logo.png" alt="Kent Business College" /></a>
-          <div aria-hidden="true" />
-        </div>
-      </div>
-      <main>
-        <section className="kbc-employer-hero" aria-labelledby="employer-agreement-title">
-          <h1 id="employer-agreement-title" className="sr-only">Employer Agreement Form</h1>
-          <img src="/assets/images/employer-agreement-hero.webp" alt="Employer Agreement Form" />
-        </section>
-        <section className="mx-auto w-full max-w-7xl px-4 py-10 md:py-14">
-          <AutoHeightZohoForm />
-        </section>
-      </main>
+      <section className="kbc-employer-hero" aria-labelledby="employer-agreement-title">
+        <h1 id="employer-agreement-title" className="sr-only">Employer Agreement Form</h1>
+        <img src="/assets/images/employer-agreement-hero.webp" alt="Employer Agreement Form" />
+      </section>
+      <section className="mx-auto w-full max-w-7xl px-4 py-10 md:py-14">
+        <AutoHeightZohoForm />
+      </section>
     </div>
   );
 }
