@@ -1,0 +1,99 @@
+/* Kent Business College Events page — extends the figma-home design tokens (.kbc-figma-home). */
+
+.events-page {
+  --events-purple: #4B176D;
+  --figma-purple: var(--events-purple);
+  --figma-purple-light: var(--events-purple);
+  --color-primary: var(--events-purple);
+}
+
+.events-page .figma-btn--gold:not(:hover),
+.events-page .events-gold-button:not(:hover),
+.figma-header.is-events-page:not(.is-scrolled) .figma-header__apply:not(:hover) { color: #4B176D !important; }
+.events-page .figma-btn--gold:hover,
+.events-page .events-gold-button:hover,
+.figma-header.is-events-page:not(.is-scrolled) .figma-header__apply:hover {
+  border-color: #F5C94F !important;
+  background: #F5C94F !important;
+  color: #fff !important;
+}
+
+.events-page .figma-eyebrow { color: var(--events-purple); }
+.events-page .figma-hero { background: var(--events-purple); }
+.events-page .figma-hero::before { background: radial-gradient(circle at 78% 14%, rgba(119,55,154,.34), transparent 24%), radial-gradient(circle at 16% 84%, rgba(214,176,78,.12), transparent 28%); }
+.events-page .figma-hero__domain-card,
+.events-page .figma-hero__image-note { background: rgba(29,13,40,.86); }
+.events-page .figma-funding__card { background: var(--events-purple); }
+.figma-header.is-events-page.is-scrolled .figma-header__nav .kbc-nav-link:hover,
+.figma-header.is-events-page.is-scrolled .figma-header__nav .kbc-nav-link[aria-expanded="true"],
+.figma-header.is-events-page.is-scrolled .figma-header__nav .kbc-nav-link.is-active { color: #4B176D; }
+.figma-header.is-events-page.is-scrolled .figma-header__actions .figma-header__apply { border-color: #4B176D; background: #4B176D; }
+.figma-header.is-events-page.is-scrolled .figma-header__actions .figma-header__apply:hover { border-color: #371050; background: #371050; }
+
+.events-page section { padding: 96px 0; }
+.events-page section#upcoming-events { padding-top: 96px; }
+
+/* Section heading row with inline tabs */
+.events-heading-row { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 28px; margin-bottom: 40px; }
+.events-heading-row .figma-section-heading { margin: 0; }
+
+.events-tabs { display: inline-flex; gap: 6px; padding: 5px; border-radius: 99px; background: #f2ecf6; }
+.events-tabs button { display: inline-flex; align-items: center; min-height: 44px; padding: 0 20px; border: 0; border-radius: 99px; background: transparent; color: var(--events-purple); font-family: Poppins, Arial, sans-serif; font-size: 14px; font-weight: 700; letter-spacing: .02em; cursor: pointer; transition: background-color .2s ease, color .2s ease; }
+.events-tabs button:hover { color: var(--figma-purple); }
+.events-tabs button[aria-selected="true"] { background: var(--figma-purple); color: #fff; }
+
+/* Upcoming events grid */
+.events-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+
+/* Consultation strip */
+.events-strip { padding: 30px 34px; border-radius: 14px; background: #f3f0f7; }
+.events-strip__inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; }
+.events-strip h3 { font-size: clamp(24px, 2.2vw, 30px); line-height: 1.2; }
+.events-strip p { max-width: 650px; margin-top: 10px; color: var(--figma-muted); font-size: 16px; line-height: 1.65; }
+
+/* Kent Professional Event Series (dark, image-led) */
+.events-series { position: relative; overflow: hidden; padding: 96px 0; background: var(--events-purple); color: #fff; }
+.events-series::before { position: absolute; inset: 0; background: radial-gradient(circle at 80% 12%, rgba(119,55,154,.32), transparent 26%), radial-gradient(circle at 10% 90%, rgba(245,201,79,.1), transparent 30%); content: ""; }
+.events-series > .figma-shell { position: relative; z-index: 1; }
+.events-series .figma-eyebrow { color: var(--figma-gold); }
+.events-series .figma-section-heading h2 { color: #fff; }
+.events-series .figma-section-heading > p { color: rgba(255,255,255,.68); }
+.events-series__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; margin-top: 48px; border-radius: 16px; overflow: hidden; background: rgba(255,255,255,.12); }
+.events-series__block { padding: 32px; background: rgba(24,11,32,.72); }
+.events-series__block span { display: block; color: var(--figma-gold); font-size: 12px; font-weight: 700; letter-spacing: .1em; }
+.events-series__block h3 { margin-top: 14px; color: #fff; font-size: clamp(24px, 2vw, 30px); line-height: 1.25; }
+.events-series__block p { margin-top: 12px; color: rgba(255,255,255,.74); font-size: 16px; line-height: 1.65; }
+
+/* Who our events support */
+.events-audience-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.events-audience-card { display: flex; min-height: 230px; flex-direction: column; padding: 30px; border-radius: 12px; background: #f8f6fa; }
+.events-audience-card__icon { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 10px; background: var(--events-purple); color: var(--figma-gold); }
+.events-audience-card__icon svg { width: 18px; height: 18px; }
+.events-audience-card h3 { margin-top: 20px; font-size: 22px; line-height: 1.25; }
+.events-audience-card p { margin-top: 10px; color: var(--figma-muted); font-size: 15px; line-height: 1.65; }
+
+/* Registration */
+.events-register { text-align: center; }
+.events-register .figma-section-heading { margin-inline: auto; text-align: center; }
+.events-register .figma-eyebrow { margin-inline: auto; justify-content: center; }
+.events-register__actions { display: flex; justify-content: center; margin-top: 8px; }
+
+@media (max-width: 1180px) {
+  .events-grid { grid-template-columns: repeat(2, 1fr); }
+  .events-series__grid { grid-template-columns: 1fr; }
+  .events-audience-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 820px) {
+  .events-page section { padding: 64px 0; }
+  .events-heading-row { align-items: flex-start; }
+}
+
+@media (max-width: 560px) {
+  .events-grid { grid-template-columns: 1fr; }
+  .events-audience-grid { grid-template-columns: 1fr; }
+  .events-strip__inner { flex-direction: column; align-items: flex-start; }
+  .events-register__actions { flex-direction: column; align-items: stretch; }
+  .events-tabs { width: 100%; }
+  .events-tabs button { flex: 1; }
+}

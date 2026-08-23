@@ -1,12 +1,37 @@
-import { Link, useSearchParams } from "react-router-dom";
+import "@/styles/events-page.css";
+
+import { environment } from "@/app/environment";
 import { RouteMeta } from "@/components/seo/RouteMeta";
-import { EmptyState, ErrorState, LoadingState } from "@/components/ui/AsyncState";
-import { PageHero } from "@/components/ui/PageHero";
 import { useEvents } from "@/features/content/queries";
+import { AudienceSection } from "./components/AudienceSection";
+import { ConsultationStrip } from "./components/ConsultationStrip";
+import { buildEventSchema } from "./components/eventFormatting";
+import { EventFormatsSection } from "./components/EventFormatsSection";
+import { EventSeriesSection } from "./components/EventSeriesSection";
+import { EventsHero } from "./components/EventsHero";
+import { JoinConversationSection } from "./components/JoinConversationSection";
+import { RegistrationSection } from "./components/RegistrationSection";
+import { UpcomingEventsSection } from "./components/UpcomingEventsSection";
 
 export default function EventsPage() {
-  const [params, setParams] = useSearchParams();
-  const status = params.get("status") || "upcoming";
-  const query = useEvents(`?status=${status}`);
-  return <><RouteMeta fallbackTitle="Events | Kent Business College" /><PageHero title="Events" summary="Published events, information sessions and professional learning opportunities." /><section className="kbc-content-shell"><div className="flex flex-wrap gap-2" role="tablist" aria-label="Event status">{["upcoming", "ended", "cancelled"].map((value) => <button key={value} role="tab" aria-selected={status === value} onClick={() => setParams({ status: value })} className={`min-h-11 rounded-full border px-5 py-2 text-sm font-semibold capitalize transition-colors ${status === value ? "border-kbc-purple-700 bg-kbc-purple-700 text-white" : "border-kbc-purple-200 bg-white text-kbc-purple-800 hover:bg-kbc-purple-50"}`}>{value}</button>)}</div>{query.isLoading ? <LoadingState /> : query.isError ? <ErrorState /> : query.data?.items.length ? <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">{query.data.items.map((item) => <article key={item.id} className="kbc-surface-card group"><p className="text-sm font-semibold text-kbc-gold-700">{new Intl.DateTimeFormat("en-GB", { dateStyle: "long", timeStyle: "short", timeZone: item.timezone }).format(new Date(item.startAt))}</p><h2 className="mt-3 font-heading text-2xl font-semibold transition-colors group-hover:text-kbc-purple-700"><Link to={`/events/${item.slug}`}>{item.title}</Link></h2><p className="mt-4 text-kbc-purple-700">{item.summary}</p><p className="mt-5 border-t border-kbc-purple-100 pt-4 text-sm text-kbc-purple-600">{item.isOnline ? "Online" : item.location}</p></article>)}</div> : <EmptyState title={`No ${status} events`} body="Published events will appear here." />}</section></>;
+  const upcoming = useEvents("?status=upcoming&perPage=13");
+  const schema = (upcoming.data?.items || []).slice(0, 10).map((event) => buildEventSchema(event, environment.VITE_SITE_URL));
+
+  return (
+    <div className="kbc-figma-home events-page overflow-hidden">
+      <RouteMeta
+        fallbackTitle="Events | Kent Business College"
+        fallbackDescription="Workshops, information sessions, masterclasses and networking events from Kent Business College across Project Management, Project Controls, Marketing and Leadership."
+        seo={schema.length ? { schema } : undefined}
+      />
+      <EventsHero />
+      <UpcomingEventsSection />
+      <ConsultationStrip />
+      <EventSeriesSection />
+      <EventFormatsSection />
+      <AudienceSection />
+      <RegistrationSection />
+      <JoinConversationSection />
+    </div>
+  );
 }
