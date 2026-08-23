@@ -35,7 +35,8 @@ function DesktopItem({ item, currentPath, open, onOpen, onClose }: { item: NavIt
 export function Header() {
   const location = useLocation();
   const isLearnerHome = location.pathname === "/learners";
-  const isExperienceHome = location.pathname === "/" || isLearnerHome;
+  const isEventsPage = location.pathname === "/events";
+  const isExperienceHome = location.pathname === "/" || isLearnerHome || isEventsPage;
   const [mobileOpen, setMobileOpen] = useState(false);
   const [homeScrolled, setHomeScrolled] = useState(false);
   const [desktopOpen, setDesktopOpen] = useState<string | null>(null);
@@ -65,7 +66,7 @@ export function Header() {
     }));
     const mobileFooter = <div className="grid gap-3"><NavigationButton to="/employer-agreement" fullWidth onClick={closeMobileMenu}>Apply Now</NavigationButton><NavigationButton to="/book-session" variant="secondary" fullWidth onClick={closeMobileMenu}>Book an Information Session</NavigationButton></div>;
     return (
-      <header className={`figma-header is-reference-nav ${isLearnerHome ? "is-learner" : ""} ${homeScrolled ? "is-scrolled" : ""}`} ref={headerRef}>
+      <header className={`figma-header is-reference-nav ${isLearnerHome ? "is-learner" : ""} ${isEventsPage ? "is-events-page" : ""} ${homeScrolled ? "is-scrolled" : ""}`} ref={headerRef}>
         <div className="figma-header__notice !gap-3 !px-4 !text-[9px] sm:!gap-5 sm:!px-5 sm:!text-xs"><span className="min-w-0">Fully funded apprenticeship pathways for eligible employers and professionals.</span><Link className="shrink-0" to="/book-session">Check your route</Link></div>
         <div className="figma-header__main">
           <div className="figma-header__inner">
