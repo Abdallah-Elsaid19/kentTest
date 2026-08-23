@@ -363,7 +363,7 @@ function FinalCta({ data }: { data: Record<string, unknown> }) {
   return (
     <section className="bg-[#250b30] py-14 text-white sm:py-16">
       <div className={`${shell} grid items-center gap-9 lg:grid-cols-[1fr_auto]`}>
-        <div><p className="text-[9px] font-bold uppercase tracking-[.2em] text-[#dcbb51]">{asText(data.eyebrow)}</p><h2 className="mt-5 max-w-2xl font-serif text-4xl leading-[.98] text-white sm:text-5xl">{asText(data.heading)}</h2><p className="mt-5 max-w-2xl text-sm leading-7 text-white/65">{asText(data.body)}</p></div>
+        <div><p className="kbc-eyebrow-arc text-[9px] font-bold uppercase tracking-[.2em] text-[#dcbb51]">{asText(data.eyebrow)}</p><h2 className="mt-5 max-w-2xl font-serif text-4xl leading-[.98] text-white sm:text-5xl">{asText(data.heading)}</h2><p className="mt-5 max-w-2xl text-sm leading-7 text-white/65">{asText(data.body)}</p></div>
         <div className="flex min-w-56 flex-col gap-3"><NavigationButton variant="accent" to={asText(primary.href)}>{asText(primary.label)}</NavigationButton><NavigationButton variant="inverse" to={asText(secondary.href)}>{asText(secondary.label)}</NavigationButton></div>
       </div>
     </section>

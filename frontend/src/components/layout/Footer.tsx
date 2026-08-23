@@ -41,7 +41,6 @@ export function Footer() {
         <nav aria-label="College links"><h2>Colleges</h2>{collegeLinks.map(([label, href]) => <Link to={href} key={label}>{label}</Link>)}</nav>
         <div className="kbc-footer__contact"><h2>Contact Us</h2><a href="tel:+441622958955"><Phone aria-hidden="true" />+441622958955</a><a href="mailto:office@kentbusinesscollege.org"><Mail aria-hidden="true" />office@kentbusinesscollege.org</a><span>Mon-Fri: 8:30AM - 5:00PM</span><p><MapPin aria-hidden="true" />29-37 Maidstone Innovation Centre, Gidds Pond Way, Weavering, Maidstone ME14 5FY</p></div>
       </div>
-      <div className="kbc-footer__bottom"><div className="kbc-container"><span>All Rights Reserved © 2026 ,Developed by Kent Business College Development Team.</span></div></div>
     </footer>
   );
 }

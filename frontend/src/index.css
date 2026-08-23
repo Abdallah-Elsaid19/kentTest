@@ -10,7 +10,7 @@
 @layer base {
 :root {
   color-scheme: light;
-  --color-primary: #5d19e3;
+  --color-primary: #371347;
   --color-primary-dark: #3905a1;
   --color-purple-deep: #4f2d7f;
   --color-accent: #b07822;
@@ -50,7 +50,24 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .kbc-employer-hero img { width: 100%; aspect-ratio: 6 / 1; object-fit: cover; }
 .kbc-container { width: min(calc(100% - 64px), var(--container-max)); margin-inline: auto; }
 .kbc-section { padding: 88px 0; }
+.kbc-eyebrow,
+.kbc-eyebrow-arc { position: relative; display: block; width: fit-content; padding-bottom: 16px; }
 .kbc-eyebrow { margin-bottom: 10px; color: var(--color-primary); font-size: 12px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; }
+.kbc-eyebrow::after,
+.kbc-eyebrow-arc::after {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: min(190px, calc(100% + 24px));
+  height: 11px;
+  border-top: 1.5px solid currentColor;
+  border-radius: 50% 50% 0 0;
+  content: "";
+  pointer-events: none;
+  transform: translateX(-50%);
+}
+.kbc-eyebrow-arc:empty { display: none; }
+.kbc-section-heading:not(.kbc-section-heading--left) .kbc-eyebrow { margin-inline: auto; }
 .kbc-section-heading { max-width: 720px; margin: 0 auto 42px; text-align: center; }
 .kbc-section-heading--left { margin-inline: 0; margin-bottom: 0; text-align: left; }
 .kbc-section-heading h2 { font-size: clamp(30px, 3vw, 42px); letter-spacing: -.035em; }
@@ -62,8 +79,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
 .kbc-button { display: inline-flex; min-height: 50px; align-items: center; justify-content: center; gap: 10px; padding: 12px 22px; border: 1px solid transparent; border-radius: 7px; font-size: 13px; font-weight: 600; line-height: 1.2; transition: transform .25s ease, background .25s ease, color .25s ease, box-shadow .25s ease; }
 .kbc-button:hover { transform: translateY(-3px); }
-.kbc-button--primary { background: var(--color-primary); color: white; box-shadow: 0 10px 28px rgba(93, 25, 227, .24); }
-.kbc-button--primary:hover { background: var(--color-primary-dark); color: white; }
+.kbc-button--primary { background: #371347; color: white; box-shadow: 0 10px 28px rgba(55, 19, 71, .24); }
+.kbc-button--primary:hover { background: #260d32; color: white; }
 .kbc-button--light { background: white; color: var(--color-ink); }
 .kbc-button--light:hover { background: var(--color-gold); }
 .kbc-button--outline { border-color: var(--color-primary); background: transparent; color: var(--color-primary); }
@@ -112,7 +129,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .kbc-hero__ribbon { position: absolute; z-index: 1; top: 0; left: 0; width: 100%; height: 48px; overflow: hidden; pointer-events: none; }
 .kbc-hero__ribbon::before, .kbc-hero__ribbon::after { position: absolute; left: 0; width: 100%; content: ""; }
 .kbc-hero__ribbon::before { top: 0; height: 17px; background: #4f2d7f; box-shadow: 0 3px 8px rgba(79,45,127,.22); }
-.kbc-hero__ribbon::after { top: 12px; height: 36px; background: linear-gradient(100deg, rgba(79,45,127,.04) 0%, rgba(93,25,227,.12) 38%, rgba(129,95,175,.28) 72%, rgba(79,45,127,.42) 100%); clip-path: polygon(0 0, 42% 18%, 68% 4%, 100% 12%, 100% 100%, 0 62%); animation: kbc-ribbon-wave 5s ease-in-out infinite alternate; }
+.kbc-hero__ribbon::after { top: 12px; height: 36px; background: linear-gradient(100deg, rgba(79,45,127,.04) 0%, rgba(55,19,71,.12) 38%, rgba(129,95,175,.28) 72%, rgba(79,45,127,.42) 100%); clip-path: polygon(0 0, 42% 18%, 68% 4%, 100% 12%, 100% 100%, 0 62%); animation: kbc-ribbon-wave 5s ease-in-out infinite alternate; }
 .kbc-hero__content { position: relative; z-index: 2; display: flex; min-height: 100vh; flex-direction: column; align-items: center; justify-content: center; padding-block: 44px 70px; text-align: center; }
 .kbc-hero__image { width: min(86%, 1050px); aspect-ratio: 2045 / 744; margin-bottom: 24px; border-radius: 4px; object-fit: cover; }
 @keyframes kbc-ribbon-wave { from { opacity: .72; clip-path: polygon(0 0, 42% 18%, 68% 4%, 100% 12%, 100% 100%, 0 62%); } to { opacity: 1; clip-path: polygon(0 8%, 34% 2%, 72% 22%, 100% 5%, 100% 100%, 0 88%); } }

@@ -17,7 +17,7 @@ interface NavigationButtonProps {
 }
 
 const variantClasses: Record<NavigationButtonVariant, string> = {
-  primary: "bg-kbc-purple-700 text-white hover:bg-kbc-purple-800",
+  primary: "bg-[#371347] text-white hover:bg-[#260d32]",
   secondary: "border border-[#d8cec3] bg-transparent text-kbc-purple-950 hover:bg-kbc-purple-50",
   accent: "bg-kbc-gold-500 text-kbc-purple-950 hover:bg-kbc-gold-400",
   inverse: "border border-white/30 bg-transparent text-white hover:bg-white/10",
