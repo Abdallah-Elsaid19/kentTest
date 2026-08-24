@@ -2,10 +2,15 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from datetime import datetime
+from html import unescape
+from pathlib import Path
+import re
 from typing import Any, Iterator
+from urllib.parse import urlparse
 
 import requests
 from django.conf import settings
+from django.core.files.base import ContentFile
 from django.db import transaction
 from django.utils import timezone
 from django.utils.dateparse import parse_datetime
@@ -14,9 +19,18 @@ from django.utils.text import slugify
 from apps.core.sanitization import sanitize_html
 from apps.events.models import Event
 from apps.integrations.models import IntegrationLog
+from apps.media_library.models import ALLOWED_MIME_TYPES, MediaAsset
 
 
 EVENTBRITE_API_ROOT = "https://www.eventbriteapi.com/v3"
+EVENTBRITE_IMAGE_HOST_SUFFIXES = ("evbuc.com", "eventbrite.com", "eventbrite.co.uk")
+MAX_EVENT_IMAGE_BYTES = 10 * 1024 * 1024
+IMAGE_EXTENSIONS = {
+    "image/jpeg": ".jpg",
+    "image/png": ".png",
+    "image/webp": ".webp",
+    "image/gif": ".gif",
+}
 
 
 class EventbriteConfigurationError(RuntimeError):
@@ -34,6 +48,72 @@ class SyncResult:
     skipped: int = 0
 
 
+@dataclass(frozen=True)
+class EventbriteImage:
+    content: bytes
+    mime_type: str
+
+
+def _is_approved_eventbrite_url(url: str) -> bool:
+    parsed = urlparse(url)
+    hostname = (parsed.hostname or "").lower()
+    return parsed.scheme == "https" and any(
+        hostname == suffix or hostname.endswith(f".{suffix}")
+        for suffix in EVENTBRITE_IMAGE_HOST_SUFFIXES
+    )
+
+
+class EventbriteImageClient:
+    def __init__(self):
+        self.session = requests.Session()
+        self.session.headers.update({
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/140.0.0.0 Safari/537.36",
+            "Accept-Language": "en-GB,en;q=0.9",
+        })
+
+    def page_image_url(self, page_url: str) -> str:
+        if not _is_approved_eventbrite_url(page_url):
+            raise EventbriteAPIError("Eventbrite event has an unapproved public URL.")
+        try:
+            response = self.session.get(page_url, headers={"Accept": "text/html,application/xhtml+xml"}, timeout=(5, 25))
+        except requests.RequestException as exc:
+            raise EventbriteAPIError("Eventbrite page could not be reached.") from exc
+        if response.status_code >= 400:
+            raise EventbriteAPIError(f"Eventbrite page returned HTTP {response.status_code}.")
+        patterns = (
+            r'<meta[^>]+(?:property|name)=["\u0027]og:image["\u0027][^>]+content=["\u0027]([^"\u0027]+)',
+            r'<meta[^>]+content=["\u0027]([^"\u0027]+)["\u0027][^>]+(?:property|name)=["\u0027]og:image["\u0027]',
+        )
+        match = next((found for pattern in patterns if (found := re.search(pattern, response.text, re.IGNORECASE))), None)
+        if not match:
+            raise EventbriteAPIError("Eventbrite page has no event image metadata.")
+        image_url = unescape(match.group(1)).strip()
+        if not _is_approved_eventbrite_url(image_url):
+            raise EventbriteAPIError("Eventbrite page returned an unapproved image URL.")
+        return image_url
+
+    def download_image(self, url: str) -> EventbriteImage:
+        if not _is_approved_eventbrite_url(url):
+            raise EventbriteAPIError("Eventbrite returned an unapproved image URL.")
+        try:
+            response = self.session.get(
+                url,
+                headers={"Accept": "image/webp,image/png,image/jpeg,image/gif"},
+                timeout=(5, 25),
+            )
+        except requests.RequestException as exc:
+            raise EventbriteAPIError("Eventbrite image could not be reached.") from exc
+        if response.status_code >= 400:
+            raise EventbriteAPIError(f"Eventbrite image returned HTTP {response.status_code}.")
+        content = response.content
+        if not content or len(content) > MAX_EVENT_IMAGE_BYTES:
+            raise EventbriteAPIError("Eventbrite image is empty or exceeds the size limit.")
+        mime_type = response.headers.get("Content-Type", "").split(";", 1)[0].strip().lower()
+        if mime_type not in ALLOWED_MIME_TYPES or mime_type not in IMAGE_EXTENSIONS:
+            raise EventbriteAPIError("Eventbrite returned an unsupported image type.")
+        return EventbriteImage(content=content, mime_type=mime_type)
+
+
 class EventbriteClient:
     def __init__(self, token: str | None = None, organization_id: str | None = None):
         self.token = (token or settings.EVENTBRITE_PRIVATE_TOKEN).strip()
@@ -42,6 +122,7 @@ class EventbriteClient:
             raise EventbriteConfigurationError("EVENTBRITE_PRIVATE_TOKEN is not configured.")
         self.session = requests.Session()
         self.session.headers.update({"Authorization": f"Bearer {self.token}", "Accept": "application/json"})
+        self.image_client = EventbriteImageClient()
 
     def _get(self, path: str, params: dict[str, Any] | None = None) -> dict[str, Any]:
         response = self.session.get(f"{EVENTBRITE_API_ROOT}{path}", params=params, timeout=(5, 25))
@@ -85,6 +166,9 @@ class EventbriteClient:
             if not continuation:
                 break
 
+    def download_image(self, url: str) -> EventbriteImage:
+        return self.image_client.download_image(url)
+
 
 def _event_datetime(payload: dict[str, Any], field: str) -> datetime:
     value = (payload.get(field) or {}).get("utc") or (payload.get(field) or {}).get("local")
@@ -106,6 +190,42 @@ def _unique_slug(title: str, eventbrite_id: str, current: Event | None = None) -
         candidate = f"{base[:180 - len(suffix)]}{suffix}"
         counter += 1
     return candidate
+
+
+def _event_image_asset(client: EventbriteClient | EventbriteImageClient, payload: dict[str, Any], title: str, eventbrite_id: str) -> MediaAsset | None:
+    logo = payload.get("logo") or {}
+    original = logo.get("original") or {}
+    image_url = str(original.get("url") or logo.get("url") or "").strip()
+    if not image_url:
+        return None
+
+    logo_id = str(logo.get("id") or eventbrite_id).strip()
+    source_id = f"eventbrite-logo:{logo_id}"[:64]
+    existing = MediaAsset.objects.filter(legacy_source_id=source_id).first()
+    if existing:
+        return existing
+
+    try:
+        downloaded = client.download_image(image_url)
+    except EventbriteAPIError:
+        return None
+
+    extension = IMAGE_EXTENSIONS[downloaded.mime_type]
+    source_name = Path(urlparse(image_url).path).stem[:80] or f"eventbrite-{eventbrite_id}"
+    asset = MediaAsset(
+        title=title[:200],
+        kind=MediaAsset.Kind.IMAGE,
+        alt_text=f"{title} event image"[:250],
+        mime_type=downloaded.mime_type,
+        file_size=len(downloaded.content),
+        width=original.get("width") or logo.get("width"),
+        height=original.get("height") or logo.get("height"),
+        legacy_source_id=source_id,
+    )
+    asset.file.save(f"{source_name}{extension}", ContentFile(downloaded.content), save=False)
+    asset.full_clean()
+    asset.save()
+    return asset
 
 
 def sync_eventbrite_events(*, dry_run: bool = False, token: str | None = None, organization_id: str | None = None) -> SyncResult:
@@ -145,6 +265,9 @@ def sync_eventbrite_events(*, dry_run: bool = False, token: str | None = None, o
                 event.is_cancelled = eventbrite_status in {"canceled", "cancelled"}
                 event.status = "published"
                 event.published_at = event.published_at or timezone.now()
+                image_asset = _event_image_asset(client, payload, title, eventbrite_id)
+                if image_asset and (event.image_id is None or event.image.legacy_source_id.startswith("eventbrite-logo:")):
+                    event.image = image_asset
                 event.full_clean()
                 event.save()
                 created += int(was_created)

@@ -9,6 +9,7 @@ const ApprenticeStoriesPage = lazy(() => import("@/pages/ApprenticeStoriesPage/p
 const ApprenticeStoryDetailPage = lazy(() => import("@/pages/ApprenticeStoryDetailPage/page"));
 const AboutPage = lazy(() => import("@/pages/AboutPage/page"));
 const BlogPage = lazy(() => import("@/pages/BlogPage/page"));
+const BookConsultationPage = lazy(() => import("@/pages/BookConsultationPage/page"));
 const CollegeDetailPage = lazy(() => import("@/pages/CollegeDetailPage/page"));
 const CollegesPage = lazy(() => import("@/pages/CollegesPage/page"));
 const CommercePage = lazy(() => import("@/pages/CommercePage/page"));
@@ -98,7 +99,8 @@ export const router = createBrowserRouter([
     { path: "privacy", element: <ContentPage slug="privacy-policy" /> },
     { path: "terms", element: <ContentPage slug="terms" /> },
     { path: "cookies", element: <ContentPage slug="cookie-policy" /> },
-    { path: "book-session", element: <ContentPage slug="book-information-session" /> },
+    { path: "book-session", element: <BookConsultationPage /> },
+    { path: "book-consultation", element: <BookConsultationPage /> },
     { path: "about", element: <AboutPage /> },
     { path: "faq", element: <InformationPage kind="faq" /> },
     { path: "our-partners", element: <InformationPage kind="partners" /> },

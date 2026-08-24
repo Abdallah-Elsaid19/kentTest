@@ -1,5 +1,6 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
+import basicSsl from "@vitejs/plugin-basic-ssl";
 import { resolve } from "node:path";
 import AutoImport from "unplugin-auto-import/vite";
 const base = process.env.BASE_PATH || "/";
@@ -10,6 +11,11 @@ export default defineConfig({
     __BASE_PATH__: JSON.stringify(base),
   },
   plugins: [
+    basicSsl({
+      name: "Kent Business College Local Development",
+      domains: ["localhost", "127.0.0.1"],
+      certDir: resolve(tmpdir(), "kent-site-vite-basic-ssl"),
+    }),
     react(),
     AutoImport({
       imports: [
@@ -92,5 +98,15 @@ export default defineConfig({
   server: {
     host: "0.0.0.0",
     strictPort: true,
+    proxy: {
+      "/api": {
+        target: "http://127.0.0.1:8000",
+        changeOrigin: true,
+      },
+      "/media": {
+        target: "http://127.0.0.1:8000",
+        changeOrigin: true,
+      },
+    },
   },
 });

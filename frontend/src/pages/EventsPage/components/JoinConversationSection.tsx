@@ -2,7 +2,7 @@ import { ArrowLink, NavigationButton } from "@/components/navigation";
 
 const links = [
   { title: "Attend", description: "Register for upcoming master classes and club events.", to: "#upcoming-events" },
-  { title: "Speak with us", description: "Ask about programmes, funding routes and eligibility.", to: "/contact" },
+  { title: "Speak with us", description: "Ask about programmes, funding routes and eligibility.", to: "/book-session" },
   { title: "Partner with us", description: "Support events through employer partnership.", to: "/employer-agreement" },
 ];
 
