@@ -48,7 +48,7 @@ export const colleges = [
       "Associate Project Manager Level 4 with PMP® & AI in Projects Certificate",
       "Project Controls Professional Level 6 with APM ChPP, CaSA ICostE & IPC Fellowship",
     ],
-    href: "/college-of-project-management",
+    href: "https://kentbusinesscollege.com/college-of-project-management/",
     image: "/assets/images/programme-project-management.jpg",
   },
   {
@@ -60,7 +60,7 @@ export const colleges = [
       "Marketing Executive Level 4 with CIM Certificate Level 4 in Professional and Digital Marketing",
       "Marketing Manager Level 6 with CIM Diploma Level 6 in Professional and Digital Marketing",
     ],
-    href: "/college-of-marketing",
+    href: "https://kentbusinesscollege.com/college-of-marketing/",
     image: "/assets/images/programme-marketing-executive.jpg",
   },
   {
@@ -76,7 +76,7 @@ export const colleges = [
       "Strategic Leadership",
       "Strategic Financial Management",
     ],
-    href: "/college-of-leadership",
+    href: "https://kentbusinesscollege.com/college-of-leadership/",
     image: "/assets/images/programme-leadership.jpg",
   },
 ];
@@ -90,7 +90,7 @@ export const programmes: HomeProgramme[] = [
     level: "Level 4",
     description:
       "Fully funded training to develop confident project managers with globally recognised project management knowledge and practical AI skills for modern project delivery.",
-    href: "/associate-project-manager-level-4",
+    href: "https://kentbusinesscollege.com/associate-project-manager-level-4-apprenticeship/",
     college: "projects",
   },
   {
@@ -101,7 +101,7 @@ export const programmes: HomeProgramme[] = [
     level: "Level 6",
     description:
       "Develop advanced project controls capability through a Level 6 programme with professional pathways to APM Chartered Project Professional (ChPP), CaSA Incorporated Cost Engineer (ICostE) and Institute of Project Controls Fellowship.",
-    href: "/project-controls-professional-level-6",
+    href: "https://kentbusinesscollege.com/project-control-professional-level-6/",
     college: "projects",
   },
   {
@@ -111,7 +111,7 @@ export const programmes: HomeProgramme[] = [
     level: "Level 4",
     description:
       "Fully funded CIM Level 4 marketing apprenticeship designed to help learners build strong professional and digital marketing skills and employers develop confident, capable and commercially focused marketing talent, with CIM Certificate Level 4 in Professional and Digital Marketing and Associate Fellowship of the Institute of Marketing Professionals.",
-    href: "/marketing-executive-level-4",
+    href: "https://kentbusinesscollege.com/marketing-executive-level-4-apprenticeship/",
     college: "marketing",
   },
   {
@@ -121,7 +121,7 @@ export const programmes: HomeProgramme[] = [
     level: "Level 6",
     description:
       "Fully funded CIM Level 6 marketing apprenticeship designed to help learners progress towards senior marketing roles and employers build stronger, smarter and more commercially focused marketing teams, with a pathway to CIM Chartered Marketer status and Fellowship from the Institute of Marketing Professionals.",
-    href: "/marketing-manager-level-6",
+    href: "https://kentbusinesscollege.com/marketing-manager-level-6-apprenticeship/",
     college: "marketing",
   },
   {
@@ -132,7 +132,7 @@ export const programmes: HomeProgramme[] = [
     level: "Level 7",
     description:
       "Empower your senior leaders with the Level 7 Diploma in Strategy and Leadership, accredited by OTHM. This programme not only sharpens strategic thinking and leadership capability but also offers a direct MBA Top-Up pathway with Cardiff Metropolitan University – giving your organisation world-class leadership talent at minimal cost.",
-    href: "/mba-diploma-level-7",
+    href: "https://kentbusinesscollege.com/college-of-leadership/",
     college: "leadership",
   },
 ];
@@ -182,7 +182,7 @@ export const achievers = [
     message: "Congratulations on your outstanding effort in the Marketing Executive Level 4 Apprenticeship, July cohort 2026. We truly appreciate your top performance and dedication for your company “Black White Denim Ltd”",
     image: "/assets/people/ella-pennells.jpg",
     employerLogo: "/assets/logos/employers/black-white-denim.png",
-    linkedin: "/people",
+    linkedin: "https://www.linkedin.com/in/ella-loretta-pennells-85511a227/",
   },
   {
     name: "Nicola Porteous",
@@ -192,7 +192,7 @@ export const achievers = [
     message: "Congratulations on your outstanding effort in the Marketing Executive Level 4 Apprenticeship, July cohort 2026. We truly appreciate your top performance and dedication for your company “GTT Wireless Ltd”",
     image: "/assets/people/nicola-porteous.jpg",
     employerLogo: "/assets/logos/employers/gtt-wireless.png",
-    linkedin: "/people",
+    linkedin: "https://www.linkedin.com/in/nicolaporteous/?isSelfProfile=false",
   },
   {
     name: "Cheska Hardie",
@@ -202,7 +202,7 @@ export const achievers = [
     message: "Congratulations on your outstanding effort in the Marketing Manager Level 6 Apprenticeship, May cohort 2026. We truly appreciate your top performance and dedication for your company “Bauer Media Group.”",
     image: "/assets/people/cheska-hardie.jpg",
     employerLogo: "/assets/logos/employers/bauer-media-group.png",
-    linkedin: "/people",
+    linkedin: "https://www.linkedin.com/in/cheska-hardie-414b23a6/?isSelfProfile=false",
   },
   {
     name: "Leigh Millington",
@@ -212,7 +212,7 @@ export const achievers = [
     message: "Congratulations on your outstanding effort in the Marketing Manager Level 6 Apprenticeship, May cohort 2026. We truly appreciate your top performance and dedication for your company “Bowker Motor Group.”",
     image: "/assets/people/leigh-millington.jpg",
     employerLogo: "/assets/logos/employers/bowker-motor-group.png",
-    linkedin: "/people",
+    linkedin: "https://www.linkedin.com/in/leigh-millington-a1ab70215/?isSelfProfile=false",
   },
 ];
 
@@ -221,7 +221,7 @@ export const caseStudies = [
     name: "Corinna Denbow",
     programme: "Marketing Manager Level 6",
     image: "/assets/people/corinna-denbow.webp",
-    linkedin: "/people",
+    linkedin: "https://www.linkedin.com/in/corinna-denbow-25631110/",
     quote:
       "I’m currently completing a Level 6 Marketing Manager apprenticeship alongside my role as Marketing Manager at Clevertouch, a global display technology company. I have been with the business for over ten years, working my way up to my current role, so I already had a lot of hands-on experience. The apprenticeship has been really valuable in helping me connect that experience to proper marketing theory.",
   },
@@ -229,7 +229,7 @@ export const caseStudies = [
     name: "Mark Jackson",
     programme: "Project Control Professional Level 6",
     image: "/assets/people/mark-jackson.webp",
-    linkedin: "/people",
+    linkedin: "https://www.linkedin.com/in/drmarkjackson/",
     quote:
       "How My Apprenticeship Supports My Development, and Helps Me in My Job Role. My apprenticeship has played a significant role in both my personal development and my effectiveness within my current job role as a Senior Project Manager working in systems, controls, and business improvement. It has provided me with a structured framework to build on my existing experience while developing new knowledge, behaviours, and technical skills that directly benefit my organisation and career progression.",
   },
@@ -237,7 +237,7 @@ export const caseStudies = [
     name: "Connor Hewitson",
     programme: "Marketing Manager Level 6",
     image: "/assets/people/connor-hewitson.webp",
-    linkedin: "/people",
+    linkedin: "https://www.linkedin.com/in/connor-hewitson-9b9a14b2/",
     quote:
       "I’ll be honest. When I started the Level 6 Marketing Manager apprenticeship, I wasn’t entirely sure what it would add. I know the business I work in, and I had views on what good looked like. What I didn’t expect was how quickly the programme would challenge those views in ways that actually mattered.",
   },
@@ -312,7 +312,7 @@ export const fallbackEvents = [
     endAt: "2026-08-17T15:00:00+01:00",
     timezone: "Europe/London",
     isOnline: true,
-    bookingUrl: "/events",
+    bookingUrl: "https://www.eventbrite.co.uk/e/fully-funded-project-control-with-apm-chartered-project-professionalchpp-tickets-1991852716093",
     categories: [],
   },
   {
@@ -324,7 +324,7 @@ export const fallbackEvents = [
     endAt: "2026-08-18T15:00:00+01:00",
     timezone: "Europe/London",
     isOnline: true,
-    bookingUrl: "/events",
+    bookingUrl: "https://www.eventbrite.co.uk/e/upskill-your-team-with-dfe-and-kent-business-college-funding-tickets-1991852981888",
     categories: [],
   },
   {
@@ -336,7 +336,7 @@ export const fallbackEvents = [
     endAt: "2026-08-20T15:00:00+01:00",
     timezone: "Europe/London",
     isOnline: true,
-    bookingUrl: "/events",
+    bookingUrl: "https://www.eventbrite.co.uk/e/fully-funded-cim-level-4-certificate-in-professional-and-digital-marketing-tickets-1994831576946",
     categories: [],
   },
 ];

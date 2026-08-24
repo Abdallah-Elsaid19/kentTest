@@ -16,7 +16,15 @@ export const useColleges = (query = "") => useQuery({ queryKey: queryKeys.colleg
 export const useCollege = (slug: string) => useQuery({ queryKey: queryKeys.college(slug), queryFn: () => apiGet<College>(endpoints.college(slug)), enabled: Boolean(slug) });
 export const useProgrammes = (query = "") => useQuery({ queryKey: queryKeys.programmes(query), queryFn: () => apiGet<CollectionResponse<Programme>>(endpoints.programmes(query)) });
 export const useProgramme = (slug: string) => useQuery({ queryKey: queryKeys.programme(slug), queryFn: () => apiGet<Programme>(endpoints.programme(slug)), enabled: Boolean(slug) });
-export const useEvents = (query = "") => useQuery({ queryKey: queryKeys.events(query), queryFn: () => apiGet<CollectionResponse<Event>>(endpoints.events(query)) });
+export const useEvents = (query = "") => useQuery({
+  queryKey: queryKeys.events(query),
+  queryFn: () => apiGet<CollectionResponse<Event>>(endpoints.events(query)),
+  staleTime: 2 * 60 * 1_000,
+  gcTime: 15 * 60 * 1_000,
+  refetchInterval: 2 * 60 * 1_000,
+  refetchIntervalInBackground: false,
+  refetchOnWindowFocus: false,
+});
 export const useEvent = (slug: string) => useQuery({ queryKey: queryKeys.event(slug), queryFn: () => apiGet<Event>(endpoints.event(slug)), enabled: Boolean(slug) });
 export const usePeople = (query = "") => useQuery({ queryKey: queryKeys.people(query), queryFn: () => apiGet<CollectionResponse<Person>>(endpoints.people(query)) });
 export const useStories = (query = "") => useQuery({ queryKey: queryKeys.stories(query), queryFn: () => apiGet<CollectionResponse<Story>>(endpoints.stories(query)) });

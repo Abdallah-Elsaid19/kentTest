@@ -11,12 +11,12 @@ export function EventsHero() {
           <p className="!text-base !leading-relaxed sm:!text-lg">Kent Business College runs professional workshops, information sessions, masterclasses and networking events across Project Management, Project Controls, Marketing and Leadership — for learners, employers and working professionals.</p>
           <div className="figma-hero__actions !flex-col !justify-center sm:!flex-row sm:!justify-start">
             <NavigationButton className="figma-btn figma-btn--gold !w-full sm:!w-auto" to="#upcoming-events">View upcoming events</NavigationButton>
-            <NavigationButton className="figma-hero__text-action !w-full !uppercase !tracking-wide sm:!w-auto" to="/contact" variant="inverse"><Mail className="h-4 w-4" aria-hidden="true" />Enquire about events</NavigationButton>
+            <NavigationButton className="figma-hero__text-action !w-full !uppercase !tracking-wide sm:!w-auto" to="/book-session" variant="inverse"><Mail className="h-4 w-4" aria-hidden="true" />Enquire about events</NavigationButton>
           </div>
         </div>
         <div className="figma-hero__visual !min-h-[360px] sm:!min-h-[440px]">
           <div className="figma-hero__domain-card"><span>Event types</span><strong>Workshops · Masterclasses · Sessions · Networking</strong></div>
-          <img src="https://jokdxsdbxorzciulkdyl.supabase.co/storage/v1/object/public/images/f9da7c1c23d244f0a39a9d8a3336cd11.webp" alt="Kent Business College event attendees gathered for a group photo" fetchPriority="high" />
+          <img src="https://jokdxsdbxorzciulkdyl.supabase.co/storage/v1/object/public/images/f9da7c1c23d244f0a39a9d8a3336cd11.webp" alt="Kent Business College event attendees gathered for a group photo" loading="lazy" decoding="async" />
           <div className="figma-hero__image-note"><i aria-hidden="true" /><div><span>Who it's for</span><strong>Learners, employers and working professionals</strong></div></div>
         </div>
       </div>

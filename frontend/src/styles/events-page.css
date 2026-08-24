@@ -8,11 +8,9 @@
 }
 
 .events-page .figma-btn--gold:not(:hover),
-.events-page .events-gold-button:not(:hover),
-.figma-header.is-events-page:not(.is-scrolled) .figma-header__apply:not(:hover) { color: #4B176D !important; }
+.events-page .events-gold-button:not(:hover) { color: #4B176D !important; }
 .events-page .figma-btn--gold:hover,
-.events-page .events-gold-button:hover,
-.figma-header.is-events-page:not(.is-scrolled) .figma-header__apply:hover {
+.events-page .events-gold-button:hover {
   border-color: #F5C94F !important;
   background: #F5C94F !important;
   color: #fff !important;
@@ -24,11 +22,6 @@
 .events-page .figma-hero__domain-card,
 .events-page .figma-hero__image-note { background: rgba(29,13,40,.86); }
 .events-page .figma-funding__card { background: var(--events-purple); }
-.figma-header.is-events-page.is-scrolled .figma-header__nav .kbc-nav-link:hover,
-.figma-header.is-events-page.is-scrolled .figma-header__nav .kbc-nav-link[aria-expanded="true"],
-.figma-header.is-events-page.is-scrolled .figma-header__nav .kbc-nav-link.is-active { color: #4B176D; }
-.figma-header.is-events-page.is-scrolled .figma-header__actions .figma-header__apply { border-color: #4B176D; background: #4B176D; }
-.figma-header.is-events-page.is-scrolled .figma-header__actions .figma-header__apply:hover { border-color: #371050; background: #371050; }
 
 .events-page section { padding: 96px 0; }
 .events-page section#upcoming-events { padding-top: 96px; }
@@ -44,6 +37,29 @@
 
 /* Upcoming events grid */
 .events-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+
+/* Loading state mirrors the real event cards and avoids layout shift. */
+.events-skeleton-card { display: flex; min-width: 0; min-height: 495px; flex-direction: column; overflow: hidden; border: 1px solid #e5e0e8; border-radius: 16px; background: #fff; }
+.events-skeleton-card__media { height: 195px; flex: 0 0 auto; border-radius: 0; background: #ddd8d3; }
+.events-skeleton-card__body { display: grid; min-height: 300px; flex: 1; gap: 20px; padding: 22px; }
+.events-skeleton-card__eyebrow { width: 40%; height: 18px; }
+.events-skeleton-card__title { width: 82%; height: 30px; }
+.events-skeleton-card__details { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.events-skeleton-card__details .events-skeleton-block { height: 18px; }
+.events-skeleton-card__action { width: 100%; height: 44px; margin-top: auto; }
+.events-skeleton-block { position: relative; overflow: hidden; border-radius: 6px; background: #e3dfda; }
+.events-skeleton-block::after,
+.event-card-media::before { position: absolute; inset: 0; background: linear-gradient(100deg, transparent 18%, rgba(255,255,255,.68) 48%, transparent 78%); content: ""; transform: translateX(-100%); animation: events-skeleton-shimmer 1.35s ease-in-out infinite; }
+.event-card-media::before { z-index: 0; background-color: #e3dfda; }
+
+@keyframes events-skeleton-shimmer {
+  to { transform: translateX(100%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .events-skeleton-block::after,
+  .event-card-media::before { animation: none; }
+}
 
 /* Consultation strip */
 .events-strip { padding: 30px 34px; border-radius: 14px; background: #f3f0f7; }

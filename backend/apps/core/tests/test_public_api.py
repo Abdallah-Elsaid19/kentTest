@@ -112,14 +112,47 @@ class PublicApiContractTests(TestCase):
         event = Event.objects.create(
             slug="past-event",
             title="Past Event",
-            start_at=timezone.now() - timedelta(days=2),
-            end_at=timezone.now() - timedelta(days=1),
-            status="published",
-            published_at=timezone.now(),
+            starts_at=timezone.now() - timedelta(days=2),
+            ends_at=timezone.now() - timedelta(days=1),
+            status="completed",
+            is_published=True,
+            event_type="Workshop",
+            eventbrite_url="https://www.eventbrite.co.uk/e/past-event-123",
+            image_url="https://img.evbuc.com/past-event.jpg",
+            venue_name="Kent Business College",
+            location="Maidstone, Kent",
+            details_content={"summary": "A completed Eventbrite workshop."},
         )
         response = self.client.get(f"/api/v1/events/{event.slug}/")
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.json()["status"], "ended")
+        payload = response.json()
+        self.assertEqual(payload["status"], "ended")
+        self.assertEqual(payload["bookingUrl"], "https://www.eventbrite.co.uk/e/past-event-123")
+        self.assertEqual(payload["categories"], [{"slug": "workshop", "name": "Workshop"}])
+        self.assertEqual(payload["image"]["url"], "https://img.evbuc.com/past-event.jpg")
+        self.assertEqual(payload["summary"], "A completed Eventbrite workshop.")
+
+    def test_event_list_uses_thumbnail_and_detail_uses_original_image(self):
+        event = Event.objects.create(
+            slug="event-with-image-renditions",
+            title="Event with image renditions",
+            starts_at=timezone.now() + timedelta(days=2),
+            ends_at=timezone.now() + timedelta(days=2, hours=2),
+            status="live",
+            is_published=True,
+            image_url="https://img.evbuc.com/event-original.jpg",
+            image_thumbnail_url="https://img.evbuc.com/event-thumbnail.jpg",
+        )
+
+        list_response = self.client.get("/api/v1/events/?status=upcoming")
+        detail_response = self.client.get(f"/api/v1/events/{event.slug}/")
+
+        self.assertEqual(list_response.status_code, 200)
+        listed_event = next(item for item in list_response.json()["items"] if item["id"] == event.pk)
+        self.assertEqual(listed_event["image"]["url"], "https://img.evbuc.com/event-thumbnail.jpg")
+        self.assertEqual(listed_event["imageFeaturedUrl"], "https://img.evbuc.com/event-original.jpg")
+        self.assertEqual(detail_response.status_code, 200)
+        self.assertEqual(detail_response.json()["image"]["url"], "https://img.evbuc.com/event-original.jpg")
 
     def test_missing_resource_uses_error_contract(self):
         response = self.client.get("/api/v1/programmes/not-found/")

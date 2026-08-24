@@ -21,9 +21,9 @@ export function HeroSection() {
       <div className="figma-hero__video-overlay" aria-hidden="true" />
       <div className="figma-shell figma-hero__grid !grid-cols-1 !gap-10">
         <div className="figma-hero__copy">
-          <p className="figma-hero__eyebrow">For employers · funded workforce development</p>
-          <h1 className="kbc-hero-title" id="home-hero-heading">Build capability that <span>performs at work.</span></h1>
-          <p>Kent Business College develops project, project controls, marketing and leadership professionals through role-relevant apprenticeships, specialist coaching and recognised professional pathways.</p>
+          <p className="figma-hero__eyebrow !text-xs !font-bold !leading-5 !tracking-widest !uppercase">For working professionals</p>
+          <h1 className="!text-5xl !font-medium !leading-none !tracking-tight sm:!text-6xl lg:!text-7xl xl:!text-[82px]" id="home-hero-heading">Build skills that move your <span>career forward.</span></h1>
+          <p className="!text-base !leading-relaxed sm:!text-lg">Learn while you work through role relevant apprenticeships, specialist coaching and pathways towards recognised professional qualifications.</p>
           <div className="figma-hero__actions !flex-col sm:!flex-row">
             <NavigationButton className="figma-btn figma-btn--gold !w-full sm:!w-auto" to="#programmes">Find your programme <ArrowRight aria-hidden="true" /></NavigationButton>
             <NavigationButton className="figma-hero__text-action !w-full sm:!w-auto" to="https://kentbusinesscollege.com/apply-now/" variant="inverse">Check your eligibility</NavigationButton>
@@ -36,7 +36,7 @@ export function HeroSection() {
         </div>
         <div className="figma-hero__visual !mt-4 !min-h-[420px] sm:!min-h-[500px] lg:!mt-0">
           <div className="figma-hero__domain-card"><span>Professional domains</span><strong>Project · Controls · Marketing · Leadership</strong></div>
-          <img src="/assets/images/figma-home/hero-group.png" alt="Kent Business College professional learning event" fetchPriority="high" />
+          <img src="/assets/images/figma-home/hero-group.png" alt="Kent Business College professional learning event" loading="lazy" decoding="async" />
           <div className="figma-hero__image-note"><i aria-hidden="true" /><div><span>Pathway design</span><strong>Funding → learning → professional progression</strong></div></div>
         </div>
       </div>

@@ -20,7 +20,7 @@ export function LearnerHeroSection() {
           </div>
         </div>
         <div className="learner-hero__media !mt-2 !min-h-[410px] sm:!min-h-[500px] xl:!mt-0 xl:!min-h-[520px]">
-          <img className="!relative !h-[340px] !w-full sm:!h-[440px] xl:!absolute xl:!h-[455px] xl:!w-[88%]" src="/assets/images/learner-home/hero.webp" alt="A working professional presenting at a Kent Business College event" fetchPriority="high" />
+          <img className="!relative !h-[340px] !w-full sm:!h-[440px] xl:!absolute xl:!h-[455px] xl:!w-[88%]" src="/assets/images/learner-home/hero.webp" alt="A working professional presenting at a Kent Business College event" loading="lazy" decoding="async" />
           <div className="learner-hero__card !bottom-0 !w-[min(270px,78%)] !p-4 sm:!w-[300px] sm:!p-[22px]"><span>Your next step</span><strong>Find the right programme for your role.</strong><p>Compare level, duration, professional pathway and workplace outcomes.</p></div>
           <div className="learner-hero__badge !bottom-2 !right-0 !h-24 !w-24 sm:!right-5 sm:!h-[126px] sm:!w-[126px]"><span><b>Learn</b> Apply · Progress</span></div>
         </div>

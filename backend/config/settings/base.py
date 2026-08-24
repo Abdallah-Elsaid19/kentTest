@@ -103,6 +103,16 @@ DATABASES = {
     else {"ENGINE": "django.db.backends.sqlite3", "NAME": BASE_DIR / "db.sqlite3"}
 }
 
+# Public content changes far less often than it is read. A short in-process
+# cache removes repeated Neon round-trips while keeping synced events fresh.
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
+        "LOCATION": "kent-site-public-content",
+    }
+}
+EVENTS_API_CACHE_SECONDS = int(env("EVENTS_API_CACHE_SECONDS", "120"))
+
 AUTH_USER_MODEL = "users.User"
 AUTH_PASSWORD_VALIDATORS = [
     {"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"},

@@ -28,7 +28,7 @@ export default function ApprenticeStoryDetailPage() {
           </div>
           <div className="relative mx-auto w-full max-w-lg">
             <div className="pointer-events-none absolute -inset-14 bg-[radial-gradient(ellipse_at_center,rgba(180,135,211,.28)_0%,rgba(103,48,130,.17)_42%,transparent_72%)] blur-2xl" aria-hidden="true" />
-            <img className="relative aspect-[4/3] w-full rounded-2xl border border-white/15 object-cover object-top shadow-[0_26px_60px_rgba(0,0,0,.35)]" src={story.image} alt={story.name} />
+            <img className="relative aspect-[4/3] w-full rounded-2xl border border-white/15 object-cover object-top shadow-[0_26px_60px_rgba(0,0,0,.35)]" src={story.image} alt={story.name} loading="lazy" decoding="async" />
           </div>
         </div>
       </header>
