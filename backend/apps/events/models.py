@@ -1,8 +1,8 @@
-from django.core.exceptions import ValidationError
 from django.db import models
 from django.utils import timezone
+from django.utils.html import strip_tags
 
-from apps.core.models import PublicationModel, PublishedManager, TimeStampedModel
+from apps.core.models import TimeStampedModel
 from apps.core.sanitization import sanitize_html
 from apps.core.validators import validate_external_booking_url
 
@@ -19,42 +19,84 @@ class EventCategory(TimeStampedModel):
         return self.name
 
 
-class Event(PublicationModel):
-    slug = models.SlugField(max_length=180, unique=True)
-    title = models.CharField(max_length=250)
-    start_at = models.DateTimeField(db_index=True)
-    end_at = models.DateTimeField(db_index=True)
-    timezone = models.CharField(max_length=50, default="Europe/London", editable=False)
-    location = models.CharField(max_length=250, blank=True)
-    address = models.TextField(blank=True)
-    is_online = models.BooleanField(default=False)
-    booking_url = models.URLField(blank=True, validators=[validate_external_booking_url])
-    categories = models.ManyToManyField(EventCategory, blank=True, related_name="events")
-    summary = models.TextField(blank=True)
+class PublishedEventManager(models.Manager):
+    def get_queryset(self):
+        return super().get_queryset().filter(
+            is_published=True,
+            is_hidden_on_site=False,
+            starts_at__isnull=False,
+            ends_at__isnull=False,
+        )
+
+
+class Event(models.Model):
+    title = models.CharField(max_length=220)
+    slug = models.SlugField(max_length=240, unique=True)
+    event_type = models.CharField(max_length=40, default="Event", blank=True)
     description = models.TextField(blank=True)
-    image = models.ForeignKey("media_library.MediaAsset", blank=True, null=True, on_delete=models.SET_NULL)
-    is_cancelled = models.BooleanField(default=False, db_index=True)
-    legacy_source_id = models.CharField(max_length=64, blank=True, db_index=True)
+    location = models.CharField(max_length=220, blank=True)
+    region = models.CharField(max_length=120, blank=True)
+    starts_at = models.DateTimeField(blank=True, null=True)
+    ends_at = models.DateTimeField(blank=True, null=True)
+    capacity = models.PositiveIntegerField(blank=True, null=True)
+    is_published = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    eventbrite_id = models.CharField(max_length=64, blank=True, null=True, unique=True)
+    eventbrite_url = models.URLField(max_length=500, blank=True, validators=[validate_external_booking_url])
+    image_url = models.URLField(max_length=500, blank=True)
+    venue_name = models.CharField(max_length=220, blank=True)
+    status = models.CharField(max_length=32, default="draft", blank=True)
+    is_online_event = models.BooleanField(default=False)
+    is_featured = models.BooleanField(default=False)
+    is_hidden_on_site = models.BooleanField(default=False)
+    max_tickets_per_registration = models.PositiveSmallIntegerField(default=10)
+    registration_closes_at = models.DateTimeField(blank=True, null=True)
+    registration_description = models.TextField(blank=True)
+    registration_opens_at = models.DateTimeField(blank=True, null=True)
+    registration_title = models.CharField(max_length=120, default="Register for this event", blank=True)
+    timezone = models.CharField(max_length=64, default="Europe/London")
+    image_thumbnail_url = models.URLField(max_length=500, blank=True)
+    details_content = models.JSONField(default=dict, blank=True)
     objects = models.Manager()
-    published = PublishedManager()
+    published = PublishedEventManager()
 
     class Meta:
-        ordering = ["start_at", "title"]
-        indexes = [models.Index(fields=["status", "start_at", "is_cancelled"])]
-        constraints = [models.CheckConstraint(condition=models.Q(end_at__gte=models.F("start_at")), name="event_end_after_start")]
+        ordering = ["starts_at", "title"]
+        indexes = [
+            models.Index(fields=["event_type", "starts_at"], name="events_even_event_t_3fa0e1_idx"),
+            models.Index(fields=["eventbrite_id"], name="events_even_eventbr_b0f256_idx"),
+            models.Index(fields=["is_published", "starts_at"], name="events_even_is_publ_415ff6_idx"),
+            models.Index(fields=["slug"], name="events_even_slug_30eb0f_idx"),
+        ]
+        constraints = [
+            models.CheckConstraint(
+                condition=models.Q(ends_at__isnull=True)
+                | models.Q(starts_at__isnull=True)
+                | models.Q(ends_at__gte=models.F("starts_at")),
+                name="event_ends_at_gte_starts_at",
+            )
+        ]
 
     def __str__(self):
         return self.title
 
     @property
     def event_status(self):
-        if self.is_cancelled:
+        if self.status.lower() in {"canceled", "cancelled"}:
             return "cancelled"
-        return "ended" if self.end_at < timezone.now() else "upcoming"
+        if self.ends_at and self.ends_at < timezone.now():
+            return "ended"
+        return "upcoming"
+
+    @property
+    def summary(self) -> str:
+        configured_summary = self.details_content.get("summary", "") if isinstance(self.details_content, dict) else ""
+        if configured_summary:
+            return str(configured_summary)
+        return strip_tags(self.description).strip()[:500]
 
     def clean(self):
-        if self.end_at and self.start_at and self.end_at < self.start_at:
-            raise ValidationError({"end_at": "End time must not be before start time."})
         self.description = sanitize_html(self.description)
 
 

@@ -1,0 +1,96 @@
+.event-countdown {
+  --countdown-primary: var(--color-primary, #371347);
+  --countdown-accent: var(--event-gold, #f5c94f);
+  width: fit-content;
+  max-width: 100%;
+  margin-top: 28px;
+}
+
+.event-countdown > p {
+  margin-bottom: 10px;
+  color: var(--countdown-accent);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+
+.event-countdown__units {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+}
+
+.event-countdown__unit {
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+}
+
+.event-countdown__digits {
+  display: flex;
+  gap: 5px;
+}
+
+.event-countdown__digits span {
+  position: relative;
+  display: grid;
+  width: 43px;
+  height: 64px;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, .14);
+  border-radius: 8px;
+  background: var(--countdown-primary);
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--countdown-primary) 72%, white) 0%,
+    color-mix(in srgb, var(--countdown-primary) 88%, white) 49%,
+    color-mix(in srgb, var(--countdown-primary) 90%, black) 50%,
+    color-mix(in srgb, var(--countdown-primary) 70%, black) 100%
+  );
+  color: #fff;
+  font-family: Poppins, Arial, sans-serif;
+  font-size: 37px;
+  font-weight: 600;
+  line-height: 1;
+  text-shadow: 0 2px 2px rgba(0, 0, 0, .24);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .2),
+    inset 0 -12px 18px rgba(7, 2, 10, .12),
+    0 12px 25px rgba(10, 4, 14, .22);
+}
+
+.event-countdown__digits span::before {
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 50%;
+  height: 1px;
+  background: rgba(10, 4, 14, .42);
+  content: "";
+}
+
+.event-countdown__unit small {
+  color: var(--countdown-accent);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .17em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 560px) {
+  .event-countdown__units { gap: 7px; }
+  .event-countdown__digits { gap: 3px; }
+  .event-countdown__digits span {
+    width: clamp(29px, 8vw, 36px);
+    height: 53px;
+    border-radius: 6px;
+    font-size: 29px;
+  }
+  .event-countdown__unit small { font-size: 7px; letter-spacing: .1em; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .event-countdown__digits span { transition: none; }
+}

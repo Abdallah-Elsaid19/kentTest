@@ -4,4 +4,5 @@ DEBUG = False
 SECRET_KEY = "test-key-not-for-production"
 PASSWORD_HASHERS = ["django.contrib.auth.hashers.MD5PasswordHasher"]
 DATABASES = {"default": {"ENGINE": "django.db.backends.sqlite3", "NAME": ":memory:"}}
+EVENTS_API_CACHE_SECONDS = 0
 EMAIL_BACKEND = "django.core.mail.backends.locmem.EmailBackend"

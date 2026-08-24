@@ -1,25 +1,21 @@
-import { ArrowUpRight, Check, Compass, Lightbulb, Mail, MapPin, Phone, Sparkles } from "lucide-react";
+import { Compass, HeartHandshake, Lightbulb, Mail, MapPin, Phone } from "lucide-react";
 import { Fragment, type ReactNode } from "react";
-import { Link } from "react-router-dom";
 
 import { ArrowLink, NavigationButton } from "@/components/navigation";
 import { RouteMeta } from "@/components/seo/RouteMeta";
-import { EmptyState } from "@/components/ui/AsyncState";
+import { EmptyState, LoadingState } from "@/components/ui/AsyncState";
 import { usePage, usePeople, useSite } from "@/features/content/queries";
 import type { Person } from "@/types/event";
-import { fallbackAboutPage, fallbackExperts } from "./fallback";
 import { asObject, asObjects, asText, parseAboutSections, type AboutSection } from "./schema";
 
 const shell = "figma-shell";
-const sectionSpace = "py-16 sm:py-20 lg:py-28";
+const sectionSpace = "py-16 sm:py-20 lg:py-24";
 const paper = "bg-[#f4f0e9]";
 
 function SectionHeading({ eyebrow, heading, description, light = false }: { eyebrow: string; heading: string; description?: string; light?: boolean }) {
   return (
     <div className="max-w-[650px]">
-      <p className={`mb-4 flex items-center gap-3 text-[9px] font-bold uppercase tracking-[0.2em] ${light ? "text-[#dcbb51]" : "text-[#6f2a7d]"}`}>
-        {eyebrow}
-      </p>
+      <p className={`kbc-eyebrow-arc mb-4 text-[9px] font-bold uppercase tracking-[0.2em] ${light ? "text-[#dcbb51]" : "text-[#6f2a7d]"}`}>{eyebrow}</p>
       <h2 className={`font-serif text-4xl leading-[.98] tracking-[-0.045em] sm:text-5xl lg:text-[58px] ${light ? "text-white" : "text-[#211126]"}`}>{heading}</h2>
       {description && <p className={`mt-5 max-w-xl text-sm leading-7 sm:text-base ${light ? "text-white/65" : "text-[#6f6870]"}`}>{description}</p>}
     </div>
@@ -31,44 +27,38 @@ function Hero({ data }: { data: Record<string, unknown> }) {
   const secondary = asObject(data.secondaryCta);
   const image = asObject(data.image);
   return (
-    <section className="relative overflow-visible bg-[#240b30] pt-16 text-white sm:pt-20 lg:pt-24" aria-labelledby="about-title">
-      <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
-        <div className="absolute -right-32 -top-40 h-96 w-96 rounded-full border border-white/10" />
-        <div className="absolute -bottom-72 -left-40 h-[520px] w-[520px] rounded-full border-[70px] border-[#54205f]/30" />
-      </div>
+    <section className="relative overflow-hidden bg-[#240b30] pb-14 pt-16 text-white sm:pb-20 sm:pt-20 lg:pt-24" aria-labelledby="about-title">
+      <div className="absolute -right-32 -top-40 h-96 w-96 rounded-full border border-white/10" aria-hidden="true" />
+      <div className="absolute -bottom-72 -left-40 h-[520px] w-[520px] rounded-full border-[70px] border-[#54205f]/30" aria-hidden="true" />
       <div className={`${shell} relative`}>
         <div className="grid min-w-0 items-center gap-12 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,.95fr)] lg:gap-16">
           <div className="min-w-0">
-            <p className="mb-5 text-[9px] font-bold uppercase tracking-[.22em] text-[#dcbb51]">{asText(data.eyebrow)}</p>
-            <h1 id="about-title" className="kbc-hero-title max-w-2xl break-words">
+            <p className="kbc-eyebrow-arc mb-5 text-[9px] font-bold uppercase tracking-[.22em] text-[#dcbb51]">{asText(data.eyebrow)}</p>
+            <h1 id="about-title" className="max-w-2xl break-words font-serif text-[clamp(2.75rem,12vw,3.35rem)] leading-[.92] tracking-[-.055em] text-white sm:text-6xl lg:text-[70px]">
               {asText(data.heading)} <span className="text-[#dff28b]">{asText(data.highlight)}</span>
             </h1>
             <p className="mt-6 max-w-xl text-sm leading-7 text-white/65 sm:text-base">{asText(data.body)}</p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <NavigationButton className="min-h-11 px-5 text-xs" variant="accent" to={asText(primary.href)}>{asText(primary.label)}</NavigationButton>
-              <NavigationButton className="min-h-11 px-5 text-xs" variant="inverse" to={asText(secondary.href)}>{asText(secondary.label)}</NavigationButton>
+              <NavigationButton variant="accent" to={asText(primary.href)}>{asText(primary.label)}</NavigationButton>
+              <NavigationButton variant="inverse" to={asText(secondary.href)}>{asText(secondary.label)}</NavigationButton>
             </div>
           </div>
           <div className="mx-auto min-w-0 w-full max-w-md lg:max-w-none">
             <div className="relative">
               <div className="absolute -left-3 -top-3 h-full w-full rounded-lg border border-[#dcbb51]/60" aria-hidden="true" />
-              <img className="relative aspect-[1.65/1] w-full max-w-full rounded-lg object-cover" src={asText(image.src)} alt={asText(image.alt)} fetchPriority="high" />
+              <img className="relative aspect-[4/3] w-full max-w-full rounded-lg object-cover" src={asText(image.src)} alt={asText(image.alt)} loading="lazy" decoding="async" />
             </div>
-            <div className="relative -mt-7 ml-auto w-[92%] overflow-hidden rounded-lg border border-white/10 bg-[#17071f] p-5 shadow-2xl sm:w-[72%] sm:p-6">
-              <p className="text-[8px] font-bold uppercase tracking-[.2em] text-[#dcbb51]">KBC at a glance</p>
-              <h2 className="mt-3 max-w-[260px] font-serif text-2xl leading-[1.02] text-white">An institution built around professional progress.</h2>
-              <dl className="mt-5 divide-y divide-white/10">
-                {asObjects(data.glance).map((item) => (
-                  <div className="grid grid-cols-[88px_1fr] gap-3 py-3 first:pt-0 last:pb-0" key={asText(item.id)}>
-                    <dt className="text-[8px] font-bold uppercase tracking-[.12em] text-white/45">{asText(item.label)}</dt>
-                    <dd className="text-[10px] font-semibold leading-4 text-white">{asText(item.value)}</dd>
-                  </div>
-                ))}
-              </dl>
+            <div className="relative -mt-4 ml-4 grid gap-px overflow-hidden rounded-lg border border-white/10 bg-white/10 sm:grid-cols-2">
+              {asObjects(data.glance).map((item) => (
+                <div className="bg-[#17071f] p-4" key={asText(item.id)}>
+                  <span className="block text-[8px] font-bold uppercase tracking-[.16em] text-[#dcbb51]">{asText(item.label)}</span>
+                  <strong className="mt-1 block text-[11px] leading-5 text-white">{asText(item.value)}</strong>
+                </div>
+              ))}
             </div>
           </div>
         </div>
-        <dl className="relative z-10 mt-10 grid translate-y-1/2 gap-px overflow-hidden rounded-lg border border-white/10 bg-white/10 shadow-2xl sm:grid-cols-2 lg:grid-cols-4">
+        <dl className="relative z-10 mt-12 grid gap-px overflow-hidden rounded-lg border border-white/10 bg-white/10 shadow-2xl sm:grid-cols-2 lg:grid-cols-4">
           {asObjects(data.stats).map((stat) => (
             <div className="bg-[#1a0823] px-5 py-5" key={asText(stat.id)}>
               <dd className="font-serif text-3xl text-white">{asText(stat.value)}</dd>
@@ -82,18 +72,12 @@ function Hero({ data }: { data: Record<string, unknown> }) {
 }
 
 function Overview({ data }: { data: Record<string, unknown> }) {
-  const heading = asText(data.heading);
-  const highlightedWords = "move forward.";
   return (
-    <section className={`${sectionSpace} bg-white pt-28 sm:pt-32 lg:pt-40`} aria-labelledby="about-overview">
+    <section className={`${sectionSpace} bg-white`} aria-labelledby="about-overview">
       <div className={`${shell} grid gap-7 lg:grid-cols-[.92fr_1.08fr] lg:gap-12`}>
         <div className="relative overflow-hidden rounded-lg bg-[#eee6ff] p-7 sm:p-9 lg:min-h-[430px]">
           <span className="absolute -bottom-5 -right-4 font-serif text-8xl text-[#7b43de]/10" aria-hidden="true">Capability</span>
-          <p className="mb-4 flex items-center text-[9px] font-bold uppercase tracking-[0.2em] text-[#6f2a7d]">{asText(data.eyebrow)}</p>
-          <h2 id="about-overview" className="relative font-serif text-4xl leading-[.98] tracking-[-.045em] text-[#211126] sm:text-5xl lg:text-[58px]">
-            {heading.endsWith(highlightedWords) ? <>{heading.slice(0, -highlightedWords.length)}<span className="text-[#6429e8]">{highlightedWords}</span></> : heading}
-          </h2>
-          <p className="relative mt-7 max-w-xl text-sm leading-7 text-[#6f6870] sm:text-base">{asText(data.description)}</p>
+          <SectionHeading eyebrow={asText(data.eyebrow)} heading={asText(data.heading)} description={asText(data.description)} />
         </div>
         <ol className="space-y-3 lg:pt-8">
           {asObjects(data.items).map((item) => (
@@ -112,9 +96,10 @@ function Overview({ data }: { data: Record<string, unknown> }) {
 
 function CardGrid({ section, icon }: { section: AboutSection; icon: ReactNode }) {
   const items = asObjects(section.data.items);
-  const cardTones = ["bg-white", "bg-white", "bg-white"];
+  const isSupport = section.type === "aboutSupport";
+  const cardTones = isSupport ? ["bg-white", "bg-[#e7f7a8]", "bg-[#eee5ff]"] : ["bg-white", "bg-white", "bg-white"];
   return (
-    <section className={`${sectionSpace} bg-white`}>
+    <section className={`${sectionSpace} ${isSupport ? paper : "bg-white"}`}>
       <div className={shell}>
         <SectionHeading eyebrow={asText(section.data.eyebrow)} heading={asText(section.data.heading)} description={asText(section.data.description)} />
         <div className="mt-10 grid gap-4 md:grid-cols-3">
@@ -132,69 +117,23 @@ function CardGrid({ section, icon }: { section: AboutSection; icon: ReactNode })
   );
 }
 
-function Support({ data }: { data: Record<string, unknown> }) {
-  const items = asObjects(data.items);
-  const first = items[0];
-  const secondary = items.slice(1);
-  return (
-    <section className={`${sectionSpace} ${paper}`}>
-      <div className={shell}>
-        <SectionHeading eyebrow={asText(data.eyebrow)} heading={asText(data.heading)} description={asText(data.description)} />
-        <div className="mt-10 grid gap-4 lg:grid-cols-[1.12fr_.88fr]">
-          {first && <article className="overflow-hidden rounded-lg border border-[#ded7df] bg-white">
-            <img className="aspect-[1.75/1] w-full object-cover" src="/assets/images/about-campus.jpg" alt="Kent Business College learning campus" loading="lazy" />
-            <div className="p-6 sm:p-8">
-              <span className="grid h-10 w-10 place-items-center rounded-full bg-[#f4f0e9] text-[#b77c06]"><Sparkles className="h-4 w-4" aria-hidden="true" /></span>
-              <h3 className="mt-5 font-serif text-3xl leading-tight text-[#211126]">{asText(first.title)}</h3>
-              <p className="mt-3 text-sm leading-6 text-[#6f6870]">{asText(first.body)}</p>
-              <FeatureList features={first.features} />
-            </div>
-          </article>}
-          <div className="grid gap-4">
-            {secondary.map((item, index) => <article className={`rounded-lg border border-[#ded7df] p-6 sm:p-8 ${index ? "bg-[#eee5ff]" : "bg-[#e7f7a8]"}`} key={asText(item.id)}>
-              <span className="grid h-10 w-10 place-items-center rounded-full bg-white text-[#6f2ce9]"><Compass className="h-4 w-4" aria-hidden="true" /></span>
-              <h3 className="mt-5 font-serif text-3xl leading-tight text-[#211126]">{asText(item.title)}</h3>
-              <p className="mt-3 text-sm leading-6 text-[#6f6870]">{asText(item.body)}</p>
-              <FeatureList features={item.features} />
-            </article>)}
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function FeatureList({ features }: { features: unknown }) {
-  if (!Array.isArray(features)) return null;
-  return <ul className="mt-5 space-y-2">{features.map((feature) => <li className="flex gap-2 text-xs leading-5 text-[#5f5961]" key={asText(feature)}><Check className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[#6f2ce9]" aria-hidden="true" />{asText(feature)}</li>)}</ul>;
-}
-
 const domainTones: Record<string, string> = { navy: "bg-[#284765]", teal: "bg-[#11716f]", coral: "bg-gradient-to-br from-[#c94368] to-[#ec8952]", plum: "bg-[#601434]" };
-const domainLinks: Record<string, string> = {
-  "project-management": "/college-of-project-management",
-  "project-controls": "/project-controls-professional-level-6",
-  marketing: "/college-of-marketing",
-  leadership: "/college-of-leadership",
-};
 function Domains({ data }: { data: Record<string, unknown> }) {
   return (
     <section className={`${sectionSpace} ${paper}`}>
       <div className={shell}>
         <SectionHeading eyebrow={asText(data.eyebrow)} heading={asText(data.heading)} description={asText(data.description)} />
         <div className="mt-10 grid gap-4 md:grid-cols-2">
-          {asObjects(data.items).map((item) => {
-            const href = domainLinks[asText(item.id)] || asText(item.href);
-            return (
-            <Link className={`group relative flex min-h-[340px] flex-col overflow-hidden rounded-lg p-6 text-white transition duration-300 hover:-translate-y-1 hover:shadow-2xl motion-reduce:transform-none motion-reduce:transition-none sm:p-8 ${domainTones[asText(item.tone)] || domainTones.plum}`} key={asText(item.id)} to={href} aria-label={`${asText(item.linkLabel)}: ${asText(item.title)}`}>
+          {asObjects(data.items).map((item) => (
+            <article className={`relative flex min-h-[340px] flex-col overflow-hidden rounded-lg p-6 text-white sm:p-8 ${domainTones[asText(item.tone)] || domainTones.plum}`} key={asText(item.id)}>
               <span className="absolute right-5 top-1 font-serif text-7xl text-white/10" aria-hidden="true">{asText(item.initials)}</span>
               <span className="text-[8px] font-bold uppercase tracking-[.2em] text-white/65">Professional domain {asText(item.number)}</span>
               <h3 className="relative mt-10 font-serif text-4xl leading-none text-white">{asText(item.title)}</h3>
               <p className="relative mt-4 max-w-md text-sm leading-6 text-white/70">{asText(item.body)}</p>
               <ul className="relative mt-5 space-y-2 border-t border-white/15 pt-4">{(item.offerings as unknown[]).map((offering) => <li className="text-xs text-white/75" key={asText(offering)}>{asText(offering)}</li>)}</ul>
-              <span className="relative mt-auto inline-flex min-h-11 items-center gap-2 pt-5 font-semibold text-white"><span>{asText(item.linkLabel)}</span><ArrowUpRight className="h-5 w-5 shrink-0 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 motion-reduce:transition-none" aria-hidden="true" /></span>
-            </Link>
-            );
-          })}
+              <ArrowLink className="relative mt-auto pt-5" direction="up-right" tone="inverse" to={asText(item.href)}>{asText(item.linkLabel)}</ArrowLink>
+            </article>
+          ))}
         </div>
       </div>
     </section>
@@ -221,12 +160,12 @@ function Learning({ data }: { data: Record<string, unknown> }) {
   );
 }
 
-function Purpose({ data, description }: { data: Record<string, unknown>; description: string }) {
+function Purpose({ data }: { data: Record<string, unknown> }) {
   const cards = [asObject(data.vision), asObject(data.mission)];
   return (
     <section className={`${sectionSpace} bg-white`}>
       <div className={shell}>
-        <SectionHeading eyebrow={asText(data.eyebrow)} heading={asText(data.heading)} description={description} />
+        <SectionHeading eyebrow={asText(data.eyebrow)} heading={asText(data.heading)} />
         <div className="mt-10 grid gap-4 md:grid-cols-2">
           {cards.map((item, index) => (
             <article className="relative overflow-hidden rounded-lg border border-[#e4dde5] bg-white p-7 sm:p-9" key={asText(item.label)}>
@@ -237,24 +176,6 @@ function Purpose({ data, description }: { data: Record<string, unknown>; descrip
             </article>
           ))}
         </div>
-      </div>
-    </section>
-  );
-}
-
-function Values({ data }: { data: Record<string, unknown> }) {
-  return (
-    <section className="bg-white pb-16 sm:pb-20 lg:pb-28">
-      <div className={shell}>
-        <ol className="grid gap-8 md:grid-cols-3 md:gap-5">
-          {asObjects(data.items).map((item) => (
-            <li className="border-t-2 border-[#6f2ce9] pt-5" key={asText(item.id)}>
-              <span className="text-[9px] font-bold tracking-[.18em] text-[#b77c06]">{asText(item.number)}</span>
-              <h3 className="mt-5 font-serif text-2xl text-[#211126]">{asText(item.title)}</h3>
-              <p className="mt-3 text-sm leading-6 text-[#6f6870]">{asText(item.body)}</p>
-            </li>
-          ))}
-        </ol>
       </div>
     </section>
   );
@@ -306,21 +227,19 @@ function Identity({ data }: { data: Record<string, unknown> }) {
 }
 
 function Impact({ data }: { data: Record<string, unknown> }) {
-  const order = ["colleges", "disciplines", "levels", "ukprn"];
-  const stats = asObjects(data.stats).sort((left, right) => order.indexOf(asText(left.id)) - order.indexOf(asText(right.id)));
   return (
     <section className={`${sectionSpace} bg-white`}>
       <div className={shell}>
         <SectionHeading eyebrow={asText(data.eyebrow)} heading={asText(data.heading)} description={asText(data.description)} />
         <dl className="mt-10 grid gap-px overflow-hidden rounded-lg bg-white/10 shadow-[0_18px_45px_rgba(37,11,48,.12)] sm:grid-cols-2 lg:grid-cols-4">
-          {stats.map((stat) => <div className="bg-[#250b30] p-6 text-center sm:p-7" key={asText(stat.id)}><dd className="font-serif text-4xl text-[#dcbb51]">{asText(stat.value)}</dd><dt className="mt-2 text-[8px] font-bold uppercase tracking-[.14em] text-white/60">{asText(stat.label)}</dt></div>)}
+          {asObjects(data.stats).map((stat) => <div className="bg-[#250b30] p-6 text-center sm:p-7" key={asText(stat.id)}><dd className="font-serif text-4xl text-[#dcbb51]">{asText(stat.value)}</dd><dt className="mt-2 text-[8px] font-bold uppercase tracking-[.14em] text-white/60">{asText(stat.label)}</dt></div>)}
         </dl>
       </div>
     </section>
   );
 }
 
-const expertFallbackImages = ["/assets/images/figma-home/workplace-teaching.png", "/assets/images/figma-home/project-speaker.png", "/assets/images/figma-home/marketing-event.png"];
+const expertFallbackImages = ["/assets/images/figma-home/project-speaker.png", "/assets/images/figma-home/marketing-event.png", "/assets/images/figma-home/workplace-teaching.png"];
 function Experts({ data, people }: { data: Record<string, unknown>; people: Person[] }) {
   const cta = asObject(data.cta);
   return (
@@ -380,16 +299,16 @@ function Contact({ data, contact }: { data: Record<string, unknown>; contact?: {
   return <section className={`${sectionSpace} ${paper}`}><div className={`${shell} grid gap-10 lg:grid-cols-[.9fr_1.1fr]`}><SectionHeading eyebrow={asText(data.eyebrow)} heading={asText(data.heading)} description={asText(data.description)} /><div className="space-y-3">{details.map((item) => <div className="flex gap-4 rounded-lg bg-white p-5" key={item.label}><span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-[#eee5ff] text-[#6f2a7d] [&>svg]:h-5" aria-hidden="true">{item.icon}</span><div><span className="text-[9px] font-bold uppercase tracking-[.18em] text-slate-500">{item.label}</span>{item.href ? <a className="mt-1 block break-words font-semibold text-[#211126] hover:text-[#6f2a7d]" href={item.href}>{item.value}</a> : <p className="mt-1 text-sm leading-6 text-[#211126]">{item.value}</p>}</div></div>)}<NavigationButton className="mt-3" fullWidth to={asText(cta.href)}>{asText(cta.label)}</NavigationButton></div></div></section>;
 }
 
-function Section({ section, people, purposeDescription, contact }: { section: AboutSection; people: Person[]; purposeDescription: string; contact?: { email?: string; phone?: string; address?: string } }) {
+function Section({ section, people, contact }: { section: AboutSection; people: Person[]; contact?: { email?: string; phone?: string; address?: string } }) {
   switch (section.type) {
     case "aboutHero": return <Hero data={section.data} />;
     case "aboutOverview": return <Overview data={section.data} />;
     case "aboutPrinciples": return <CardGrid section={section} icon={<Lightbulb className="h-5 w-5" />} />;
     case "aboutDomains": return <Domains data={section.data} />;
     case "aboutLearning": return <Learning data={section.data} />;
-    case "aboutSupport": return <Support data={section.data} />;
-    case "aboutPurpose": return <Purpose data={section.data} description={purposeDescription} />;
-    case "aboutValues": return <Values data={section.data} />;
+    case "aboutSupport": return <CardGrid section={section} icon={<HeartHandshake className="h-5 w-5" />} />;
+    case "aboutPurpose": return <Purpose data={section.data} />;
+    case "aboutValues": return <CardGrid section={section} icon={<Compass className="h-5 w-5" />} />;
     case "aboutTimeline": return <Timeline data={section.data} />;
     case "aboutIdentity": return <Identity data={section.data} />;
     case "aboutImpact": return <Impact data={section.data} />;
@@ -406,10 +325,8 @@ export default function AboutPage() {
   const page = usePage("who-we-are");
   const people = usePeople("?role=expert");
   const site = useSite();
-  const content = page.data || fallbackAboutPage;
-  const apiSections = parseAboutSections(content.sections);
-  const sections = apiSections.length ? apiSections : parseAboutSections(fallbackAboutPage.sections);
-  const experts = people.data?.items.length ? people.data.items : fallbackExperts;
-  const purposeDescription = asText(sections.find((section) => section.type === "aboutValues")?.data.heading);
-  return <div className="about-kbc-page kbc-figma-home overflow-hidden bg-white"><RouteMeta seo={content.seo} fallbackTitle={content.title} fallbackDescription={content.summary} />{sections.length ? sections.map((section) => <Section key={section.id} section={section} people={experts} purposeDescription={purposeDescription} contact={site.data?.contact} />) : <EmptyState title="Page content is being prepared" body="Approved information about Kent Business College will appear here." />}</div>;
+  if (page.isLoading) return <div className="min-h-[70vh] bg-[#f4f0e9] pt-12"><LoadingState label="Loading the Kent Business College story" /></div>;
+  if (page.isError || !page.data) return <div className={`${shell} py-20 text-center`} role="alert"><h1 className="font-serif text-4xl text-[#211126]">We could not load this page.</h1><p className="mt-4 text-slate-600">Please check your connection and try again.</p><NavigationButton className="mt-6" to="/about" onClick={(event) => { event.preventDefault(); void page.refetch(); }}>Try again</NavigationButton></div>;
+  const sections = parseAboutSections(page.data.sections);
+  return <div className="about-kbc-page kbc-figma-home overflow-hidden bg-white"><RouteMeta seo={page.data.seo} fallbackTitle={page.data.title} fallbackDescription={page.data.summary} />{sections.length ? sections.map((section) => <Section key={section.id} section={section} people={people.data?.items || []} contact={site.data?.contact} />) : <EmptyState title="Page content is being prepared" body="Approved information about Kent Business College will appear here." />}</div>;
 }

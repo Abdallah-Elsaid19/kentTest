@@ -28,6 +28,7 @@ export type Event = {
   summary?: string;
   description?: string;
   image?: MediaAsset | null;
+  imageFeaturedUrl?: string;
   speakers?: { person: Person; role?: string }[];
   agenda?: { id: number; title: string; description?: string; startsAt: string; endsAt: string; speaker?: Person | null }[];
   seo?: SEO;

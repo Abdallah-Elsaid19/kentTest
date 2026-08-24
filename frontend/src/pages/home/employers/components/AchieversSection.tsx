@@ -10,7 +10,7 @@ export function AchieversSection() {
       <div className="kbc-container">
         <div className="kbc-achievers__banner">
           <div className="kbc-achievers__banner-title">
-            <img src="/assets/logos/kbc-crest.png" alt="" aria-hidden="true" />
+            <img src="/assets/logos/kbc-crest.png" alt="" aria-hidden="true" loading="lazy" decoding="async" />
             <h2 id="achievers-title">Top Marketing Achievers</h2>
           </div>
           <CarouselControls scroller={scroller} label="achievers" />

@@ -1,45 +1,124 @@
-import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone, Youtube } from "lucide-react";
-import { Link, useLocation } from "react-router-dom";
+import { ArrowRight, Crown, GraduationCap, Handshake, Mail, Users, type LucideIcon } from "lucide-react";
+import { Link } from "react-router-dom";
 
-const quickLinks = [
-  ["Safeguarding Handbook", "/safeguarding-handbook"],
-  ["Courses", "/courses"],
-  ["Events", "/events"],
-  ["Who We Are", "/about"],
-];
+type FooterLink = { label: string; to: string };
 
-const collegeLinks = [
-  ["College of Project Management", "/college-of-project-management"],
-  ["College of Marketing", "/college-of-marketing"],
-  ["College of Leadership", "/college-of-leadership"],
-];
+function IconBadge({ icon: Icon }: { icon: LucideIcon }) {
+  return (
+    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/10 text-kbc-gold-400">
+      <Icon size={18} aria-hidden="true" />
+    </span>
+  );
+}
+
+function FooterColumn({ icon, title, links }: { icon: LucideIcon; title: string; links: FooterLink[] }) {
+  return (
+    <nav aria-label={title}>
+      <div className="flex items-center gap-3">
+        <IconBadge icon={icon} />
+        <p className="font-heading text-sm font-semibold text-white">{title}</p>
+      </div>
+      <ul className="mt-4 flex flex-col gap-3">
+        {links.map((link) => (
+          <li key={link.label}>
+            <Link to={link.to} className="group flex items-center justify-between gap-2 border-b border-white/5 pb-3 text-sm text-white/60 transition-colors hover:text-white">
+              <span>{link.label}</span>
+              <ArrowRight size={14} aria-hidden="true" className="shrink-0 text-white/30 transition-transform group-hover:translate-x-0.5 group-hover:text-kbc-gold-400" />
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  );
+}
+
+function Stat({ value, label }: { value: string; label: string }) {
+  return (
+    <div>
+      <p className="font-heading text-2xl font-bold text-white">{value}</p>
+      <p className="mt-1 text-xs text-white/55">{label}</p>
+    </div>
+  );
+}
 
 export function Footer() {
-  const location = useLocation();
-
-  if (location.pathname === "/" || location.pathname === "/learners") {
-    return (
-      <footer className="figma-footer">
-        <div className="figma-shell figma-footer__grid">
-          <div className="figma-footer__about"><img src="/assets/logos/kbc-logo-light.webp" alt="Kent Business College" /><p className="!text-sm">Kent Business College provides specialist professional development in project management, project controls, marketing and leadership.</p></div>
-          <nav aria-label="Programme links"><h2 className="!text-xs">Programmes</h2><Link className="!text-sm" to="/college-of-project-management">Project Management</Link><Link className="!text-sm" to="/project-controls-professional-level-6">Project Controls</Link><Link className="!text-sm" to="/college-of-marketing">Marketing</Link><Link className="!text-sm" to="/college-of-leadership">Leadership</Link></nav>
-          <nav aria-label="Audience links"><h2 className="!text-xs">For you</h2><Link className="!text-sm" to="/employer-agreement">Employers</Link><Link className="!text-sm" to="/apprentices">Professionals</Link><Link className="!text-sm" to="/events">Events</Link><Link className="!text-sm" to="/employer-agreement">Apply now</Link></nav>
-          <nav aria-label="KBC links"><h2 className="!text-xs">KBC</h2><Link className="!text-sm" to="/about">Who we are</Link><Link className="!text-sm" to="/our-experts">Our experts</Link><Link className="!text-sm" to="/our-partners">Our partners</Link><Link className="!text-sm" to="/contact">Contact</Link></nav>
-          <nav aria-label="Quality links"><h2 className="!text-xs">Quality</h2><Link className="!text-sm" to="/safeguarding-handbook">Safeguarding</Link><Link className="!text-sm" to="/faq">FAQ</Link><a className="!text-sm" href="/privacy">Privacy</a><a className="!text-sm" href="/accessibility">Accessibility</a></nav>
-        </div>
-        <div className="figma-shell figma-footer__bottom !text-xs"><span>Kent Business College Ltd · Company No. 10367575 · UKPRN 10093689</span><span>© 2026 Kent Business College. All rights reserved.</span></div>
-      </footer>
-    );
-  }
-
   return (
-    <footer className="kbc-footer">
-      <div className="kbc-container kbc-footer__contact-strip"><a href="tel:+441622958955"><Phone aria-hidden="true" />+44 (0)1622 958955</a><a href="mailto:office@kentbusinesscollege.org"><Mail aria-hidden="true" />office@kentbusinesscollege.org</a></div>
-      <div className="kbc-container kbc-footer__grid">
-        <div className="kbc-footer__about"><img className="!bg-transparent !p-0" src="/assets/logos/kbc-logo-light.webp" alt="Kent Business College" /><p>Kent Business College is a Limited Liability Company incorporated in the UK in 2016 with Registration No. 10367575. It is VAT registered under No. 441 4420 31 and holds a UK Provider Reference Number (UKPRN) of 10093689. Kent Business College is a Premier Accredited Trainer Provider by the Project Management Institute (PMI) with Provider No.</p><div className="kbc-footer__socials"><Link to="/social/linkedin" aria-label="LinkedIn"><Linkedin /></Link><Link to="/social/facebook" aria-label="Facebook"><Facebook /></Link><Link to="/social/instagram" aria-label="Instagram"><Instagram /></Link><Link to="/social/youtube" aria-label="YouTube"><Youtube /></Link></div></div>
-        <nav aria-label="Footer quick links"><h2>Quick Links</h2>{quickLinks.map(([label, href]) => <Link to={href} key={label}>{label}</Link>)}</nav>
-        <nav aria-label="College links"><h2>Colleges</h2>{collegeLinks.map(([label, href]) => <Link to={href} key={label}>{label}</Link>)}</nav>
-        <div className="kbc-footer__contact"><h2>Contact Us</h2><a href="tel:+441622958955"><Phone aria-hidden="true" />+441622958955</a><a href="mailto:office@kentbusinesscollege.org"><Mail aria-hidden="true" />office@kentbusinesscollege.org</a><span>Mon-Fri: 8:30AM - 5:00PM</span><p><MapPin aria-hidden="true" />29-37 Maidstone Innovation Centre, Gidds Pond Way, Weavering, Maidstone ME14 5FY</p></div>
+    <footer className="relative bg-kbc-purple-950 pb-6 text-white/70">
+      <div className="h-2" style={{ backgroundColor: "#c9cbd8" }} />
+      <div className="h-2" style={{ backgroundColor: "#6f6a80" }} />
+      <div className="relative mx-auto max-w-7xl px-4 pt-16 sm:px-6 lg:px-8">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-5 lg:gap-8">
+          <div>
+            <img src="https://jokdxsdbxorzciulkdyl.supabase.co/storage/v1/object/public/images/16480272afc94729b2911a62d1bbf85d.webp" alt="Kent Business College" className="h-24 w-auto" loading="lazy" decoding="async" />
+            <p className="mt-4 max-w-[220px] text-sm leading-relaxed text-white/55">Professional education that builds capability, confidence and results for individuals and organisations.</p>
+          </div>
+
+          <FooterColumn
+            icon={Users}
+            title="Who we are"
+            links={[
+              { label: "Our purpose", to: "/about" },
+              { label: "Our approach", to: "/about" },
+              { label: "Leadership team", to: "/about" },
+              { label: "Careers at KBC", to: "/about" },
+              { label: "News and insights", to: "/blog" },
+            ]}
+          />
+
+          <FooterColumn
+            icon={GraduationCap}
+            title="Our experts"
+            links={[
+              { label: "Academic experts", to: "/our-experts" },
+              { label: "Industry practitioners", to: "/our-experts" },
+              { label: "Guest speakers", to: "/our-experts" },
+              { label: "Advisory panel", to: "/governance-board" },
+              { label: "Thought leadership", to: "/blog" },
+            ]}
+          />
+
+          <FooterColumn
+            icon={Handshake}
+            title="Our partners"
+            links={[
+              { label: "University partners", to: "/our-partners" },
+              { label: "Industry partnerships", to: "/our-partners" },
+              { label: "Employers", to: "/employer-agreement" },
+              { label: "Professional bodies", to: "/our-partners" },
+              { label: "Community partners", to: "/our-partners" },
+            ]}
+          />
+
+          <FooterColumn
+            icon={Mail}
+            title="Contact Us"
+            links={[
+              { label: "Contact us", to: "/contact" },
+              { label: "Support", to: "/support" },
+            ]}
+          />
+        </div>
+
+        <div className="mt-12 flex flex-col gap-6 rounded-2xl border border-white/10 bg-white/5 p-6 sm:p-8 lg:flex-row lg:items-center lg:justify-between">
+          <div className="flex items-start gap-4">
+            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-kbc-gold-500/15 text-kbc-gold-400"><Crown size={22} aria-hidden="true" /></span>
+            <div>
+              <p className="font-heading text-base font-semibold text-white">Built for impact</p>
+              <p className="mt-1 max-w-xs text-xs leading-relaxed text-white/55">We combine academic excellence with real-world experience to deliver education that drives meaningful outcomes.</p>
+            </div>
+          </div>
+          <div className="flex flex-wrap items-center gap-8">
+            <Stat value="15+" label="Years of excellence" />
+            <Stat value="10,000+" label="Professionals trained" />
+            <Stat value="500+" label="Employers partnered" />
+          </div>
+          <Link to="/about" className="inline-flex shrink-0 items-center gap-1 text-sm font-semibold text-kbc-gold-400 hover:text-kbc-gold-300">View our impact <ArrowRight size={16} aria-hidden="true" /></Link>
+        </div>
+
+        <div className="mt-10 flex flex-col gap-2 border-t border-white/10 pt-5 text-[11px] text-white/45 sm:flex-row sm:items-center sm:justify-between">
+          <span>Kent Business College Ltd · Company No. 10367575 · UKPRN 10093689</span>
+          <span>© 2026 Kent Business College. All rights reserved.</span>
+        </div>
       </div>
     </footer>
   );

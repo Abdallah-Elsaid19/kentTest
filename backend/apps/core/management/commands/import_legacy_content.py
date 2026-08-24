@@ -169,9 +169,11 @@ class Command(BaseCommand):
         start_at, end_at = parse_datetime(record.get("startAt", "")), parse_datetime(record.get("endAt", ""))
         if not start_at or not end_at:
             raise ValueError("Malformed event date; ISO 8601 startAt and endAt are required.")
-        obj, _ = Event.objects.get_or_create(legacy_source_id=str(record["id"]), defaults={"slug": record["slug"], "title": record["title"], "start_at": start_at, "end_at": end_at})
+        obj, _ = Event.objects.get_or_create(slug=record["slug"], defaults={"title": record["title"], "starts_at": start_at, "ends_at": end_at})
         self.guard_manual_changes(obj)
-        for field, value in {"slug": record["slug"], "title": record["title"], "start_at": start_at, "end_at": end_at, "location": record.get("location", ""), "address": record.get("address", ""), "is_online": bool(record.get("isOnline")), "booking_url": record.get("bookingUrl", ""), "summary": record.get("summary", ""), "description": clean_legacy_html(record.get("description", "")), "is_cancelled": bool(record.get("isCancelled")), "status": record.get("status", "draft"), "published_at": parse_datetime(record.get("publishedAt", ""))}.items():
+        legacy_status = record.get("status", "draft")
+        event_status = "canceled" if record.get("isCancelled") else ("live" if legacy_status == "published" else legacy_status)
+        for field, value in {"slug": record["slug"], "title": record["title"], "starts_at": start_at, "ends_at": end_at, "venue_name": record.get("location", ""), "location": record.get("address", ""), "is_online_event": bool(record.get("isOnline")), "eventbrite_url": record.get("bookingUrl", ""), "details_content": {"summary": record.get("summary", ""), "source": "legacy"}, "description": clean_legacy_html(record.get("description", "")), "status": event_status, "is_published": legacy_status == "published"}.items():
             setattr(obj, field, value)
         return obj
 

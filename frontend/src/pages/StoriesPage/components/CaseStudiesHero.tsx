@@ -34,7 +34,7 @@ export function CaseStudiesHero() {
           <div className="pointer-events-none absolute -inset-16 bg-[radial-gradient(ellipse_at_center,rgba(180,135,211,.28)_0%,rgba(103,48,130,.17)_42%,transparent_72%)] blur-2xl" aria-hidden="true" />
           {heroPeople.map((person) => (
             <figure className={`relative z-10 overflow-hidden rounded-2xl border border-white/15 bg-kbc-purple-900 shadow-[0_26px_60px_rgba(0,0,0,.35)] ${person.className}`} key={person.name}>
-              <img className="aspect-[4/3] h-full w-full object-cover object-top" src={person.image} alt={person.name} fetchPriority={person.name === "Lauren-Eden Sullivan" ? "high" : "auto"} />
+              <img className="aspect-[4/3] h-full w-full object-cover object-top" src={person.image} alt={person.name} loading="lazy" decoding="async" />
               <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-kbc-purple-950/90 to-transparent px-4 pb-3 pt-10 text-sm font-semibold text-white">{person.name}</figcaption>
             </figure>
           ))}

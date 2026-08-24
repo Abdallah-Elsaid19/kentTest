@@ -2,6 +2,7 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import basicSsl from "@vitejs/plugin-basic-ssl";
 import { resolve } from "node:path";
+import { tmpdir } from "node:os";
 import AutoImport from "unplugin-auto-import/vite";
 const base = process.env.BASE_PATH || "/";
 // https://vite.dev/config/

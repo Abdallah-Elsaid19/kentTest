@@ -6,6 +6,7 @@ import { FigmaSectionHeading } from "@/components/ui/FigmaSectionHeading";
 import { useEvents } from "@/features/content/queries";
 import type { Event } from "@/types/event";
 import { eventCategory, eventExcerpt, eventLocationLabel, formatEventCardDate, formatEventCardTime, formatEventDate, formatEventTime } from "./eventFormatting";
+import { EventsLoadingSkeleton } from "./EventsLoadingSkeleton";
 
 const FALLBACK_IMAGE = "/assets/images/figma-home/workplace-teaching.png";
 
@@ -30,7 +31,7 @@ export function UpcomingEventsSection() {
           </div>
         </div>
 
-        {query.isLoading && <p className="!text-sm" style={{ color: "var(--figma-muted)" }}>Loading events…</p>}
+        {query.isLoading && <EventsLoadingSkeleton />}
 
         {query.isError && (
           <div className="events-strip">
@@ -55,7 +56,7 @@ export function UpcomingEventsSection() {
 
         {!query.isLoading && !query.isError && featured && (
           <FeaturedEventCard
-            imageSrc={featured.image?.url || FALLBACK_IMAGE}
+            imageSrc={featured.imageFeaturedUrl || featured.image?.url || FALLBACK_IMAGE}
             imageAlt={featured.image?.altText || ""}
             category={eventCategory(featured)}
             date={formatEventDate(featured.startAt, featured.timezone)}

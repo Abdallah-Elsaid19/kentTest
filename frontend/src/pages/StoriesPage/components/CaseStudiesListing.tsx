@@ -75,7 +75,7 @@ export function CaseStudiesListing({ stories, isRefreshing }: { stories: Display
           <>
             <article className="mt-8 grid overflow-hidden rounded-2xl border border-kbc-purple-950/10 bg-white shadow-[0_18px_45px_rgba(35,16,44,.13)] lg:grid-cols-[.95fr_1.05fr]">
               <div className="min-h-80 overflow-hidden bg-kbc-purple-100 lg:min-h-[520px]">
-                <img className="h-full w-full object-cover object-top" src={featured.image} alt={featured.imageAlt} />
+                <img className="h-full w-full object-cover object-top" src={featured.image} alt={featured.imageAlt} loading="lazy" decoding="async" />
               </div>
               <div className="flex flex-col justify-center p-7 sm:p-10 lg:p-12">
                 <StoryTags story={featured} />
