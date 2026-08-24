@@ -23,19 +23,7 @@
 .learner-home h3 { font-family: Poppins, Arial, sans-serif; }
 .learner-shell { width: min(1240px, calc(100% - 40px)); margin-inline: auto; }
 .learner-home section:not(.learner-hero):not(.learner-trust) { padding: 118px 0; }
-.learner-eyebrow { position: relative; display: inline-flex; width: fit-content; align-items: center; padding-bottom: 16px; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
-.learner-eyebrow::after {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  width: min(190px, calc(100% + 24px));
-  height: 11px;
-  border-top: 1.5px solid currentColor;
-  border-radius: 50% 50% 0 0;
-  content: "";
-  pointer-events: none;
-  transform: translateX(-50%);
-}
+.learner-eyebrow { display: inline-flex; align-items: center; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
 .learner-home .learner-eyebrow { color: var(--learner-purple); }
 
 .learner-btn { display: inline-flex; min-height: 48px; align-items: center; justify-content: center; gap: 10px; padding: 14px 20px; border: 1px solid transparent; border-radius: 6px; font-size: 14px; font-weight: 700; cursor: pointer; transition: transform .28s cubic-bezier(.2,.8,.2,1), background-color .28s ease, border-color .28s ease, color .28s ease, box-shadow .28s ease; }

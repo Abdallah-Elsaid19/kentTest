@@ -1,22 +1,22 @@
 export function LoadingState({ label = "Loading content" }: { label?: string }) {
   return (
-    <div className="mx-auto max-w-7xl px-4 py-16" role="status" aria-live="polite">
-      <div className="h-8 w-2/5 animate-pulse rounded bg-slate-200" />
-      <div className="mt-5 h-4 w-4/5 animate-pulse rounded bg-slate-100" />
+    <div className="mx-auto max-w-[1240px] px-5 py-20" role="status" aria-live="polite">
+      <div className="h-9 w-2/5 animate-pulse rounded-lg bg-kbc-purple-100" />
+      <div className="mt-5 h-4 w-4/5 animate-pulse rounded bg-kbc-purple-50" />
       <span className="sr-only">{label}</span>
     </div>
   );
 }
 
 export function ErrorState({ message = "We could not load this content. Please try again." }: { message?: string }) {
-  return <div className="mx-auto my-12 max-w-3xl rounded-2xl border border-red-200 bg-red-50 p-6 text-red-900" role="alert">{message}</div>;
+  return <div className="mx-auto my-16 max-w-3xl rounded-2xl border border-red-200 bg-red-50 p-7 text-red-900 shadow-sm" role="alert">{message}</div>;
 }
 
 export function EmptyState({ title, body }: { title: string; body: string }) {
   return (
-    <div className="mx-auto my-12 max-w-3xl rounded-2xl border border-dashed border-slate-300 bg-white p-10 text-center">
-      <h2 className="font-heading text-2xl font-semibold text-slate-900">{title}</h2>
-      <p className="mt-2 text-slate-600">{body}</p>
+    <div className="mx-auto my-16 max-w-3xl rounded-2xl border border-dashed border-kbc-purple-200 bg-kbc-purple-50/50 p-10 text-center">
+      <h2 className="font-heading text-3xl font-semibold text-kbc-purple-950">{title}</h2>
+      <p className="mt-3 text-kbc-purple-700">{body}</p>
     </div>
   );
 }

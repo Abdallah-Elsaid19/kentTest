@@ -1,0 +1,464 @@
+/* Shared visual language. This file is intentionally loaded last. */
+:root {
+  --color-primary: #6f267d;
+  --color-primary-dark: #552064;
+  --color-purple-deep: #3e174a;
+  --color-accent: #8f6b22;
+  --color-gold: #d6b04e;
+  --color-ink: #211126;
+  --color-text: #403742;
+  --color-muted: #6f6870;
+  --color-surface: #fff;
+  --color-soft: #f7f3f8;
+  --color-paper: #f3f0e8;
+  --font-body: "Poppins", Arial, sans-serif;
+  --font-display: Georgia, "Times New Roman", serif;
+  --font-section-title: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --color-section-title: #17131d;
+  --container-max: 1240px;
+  --radius-control: 10px;
+  --radius-card: 18px;
+  --shadow-card: 0 16px 42px rgba(33, 17, 38, .09);
+  --shadow-card-hover: 0 22px 54px rgba(33, 17, 38, .14);
+  --ease-standard: cubic-bezier(.2, .8, .2, 1);
+}
+
+html {
+  scrollbar-gutter: stable;
+  text-size-adjust: 100%;
+}
+
+body {
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.7;
+  font-synthesis: none;
+}
+
+::selection {
+  background: #dfcfe3;
+  color: var(--color-ink);
+}
+
+:where(h1, h2, h3) {
+  text-wrap: balance;
+}
+
+/* Project Controls L6 is the canonical hero-title treatment across all pages. */
+.kbc-site .kbc-hero-title {
+  color: #fff !important;
+  font-family: var(--font-section-title) !important;
+  font-size: clamp(58px, 6vw, 84px) !important;
+  font-weight: 600 !important;
+  line-height: 1 !important;
+  letter-spacing: -.04em !important;
+  text-wrap: balance;
+}
+
+:where(p, li) {
+  text-wrap: pretty;
+}
+
+/* Utility-sized labels must remain readable across dense programme layouts. */
+.kbc-site .text-\[8px\],
+.kbc-site .text-\[9px\],
+.kbc-site .text-\[10px\] {
+  font-size: 11px;
+}
+
+:where(section[id]) {
+  scroll-margin-top: 112px;
+}
+
+/* Sector pages use the established KBC surfaces, even when source references
+   use sector-specific tints. Content and layout remain reference-led. */
+:is(.construction-sector-page, .energy-sector-page) .bg-\[\#edf6f5\] {
+  background-color: var(--color-soft) !important;
+}
+
+:is(.construction-sector-page, .energy-sector-page) .bg-\[\#f4f1eb\] {
+  background-color: var(--color-paper) !important;
+}
+
+:where(button, a, input, select, textarea) {
+  -webkit-tap-highlight-color: transparent;
+}
+
+:where(input, select, textarea) {
+  min-height: 46px;
+  border-color: #d7ccd9;
+  border-radius: var(--radius-control);
+  background-color: #fff;
+  color: var(--color-ink);
+  transition: border-color .2s ease, box-shadow .2s ease, background-color .2s ease;
+}
+
+:where(textarea) {
+  min-height: 132px;
+  resize: vertical;
+}
+
+:where(input, select, textarea):hover {
+  border-color: #bda9c2;
+}
+
+:where(input, select, textarea):focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 4px rgba(111, 38, 125, .12);
+  outline: 0;
+}
+
+:where(input, select, textarea)[aria-invalid="true"] {
+  border-color: #b42318;
+}
+
+.kbc-page-hero {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 86% 18%, rgba(214, 176, 78, .18), transparent 28%),
+    linear-gradient(125deg, #211126 0%, #3e174a 58%, #552064 100%);
+}
+
+.kbc-page-hero::after {
+  position: absolute;
+  right: -150px;
+  bottom: -240px;
+  width: 520px;
+  height: 520px;
+  border: 1px solid rgba(255, 255, 255, .1);
+  border-radius: 50%;
+  content: "";
+  pointer-events: none;
+}
+
+.kbc-page-hero > div {
+  position: relative;
+  z-index: 1;
+}
+
+.kbc-page-hero__eyebrow {
+  display: flex;
+  align-items: center;
+}
+
+.kbc-content-shell,
+.kbc-content-grid {
+  width: min(calc(100% - 40px), var(--container-max));
+  margin-inline: auto;
+  padding-block: clamp(64px, 7vw, 88px);
+}
+
+.kbc-content-grid {
+  display: grid;
+  gap: 24px;
+}
+
+.kbc-surface-card {
+  display: block;
+  min-width: 0;
+  padding: 28px;
+  border: 1px solid #e4dce6;
+  border-radius: var(--radius-card);
+  background: #fff;
+  box-shadow: 0 8px 26px rgba(33, 17, 38, .055);
+  transition: transform .3s var(--ease-standard), border-color .2s ease, box-shadow .3s ease;
+}
+
+.kbc-surface-card:focus-visible {
+  border-color: var(--color-primary);
+  outline: 3px solid rgba(214, 176, 78, .75);
+  outline-offset: 3px;
+}
+
+@media (hover: hover) {
+  .kbc-surface-card:hover {
+    border-color: #cfbfd3;
+    box-shadow: var(--shadow-card-hover);
+    transform: translateY(-4px);
+  }
+}
+
+.kbc-button,
+.figma-btn {
+  border-radius: var(--radius-control);
+  font-size: 13px;
+  letter-spacing: 0;
+}
+
+.kbc-button:focus-visible,
+.figma-btn:focus-visible {
+  outline: 3px solid var(--color-gold);
+  outline-offset: 3px;
+}
+
+.pc-shell,
+.mk-shell,
+.mp-shell,
+.ls-shell,
+.figma-shell,
+.learner-shell {
+  width: min(calc(100% - 40px), var(--container-max));
+}
+
+/* Home section headings are the canonical title treatment across the site.
+   Card titles, form messages and hero copy retain their own hierarchy. */
+:where(
+  .kbc-site main section:not(:first-child) h2:not(
+    article h2,
+    aside h2,
+    form h2,
+    details h2
+  )
+) {
+  color: var(--color-section-title);
+  font-family: var(--font-section-title) !important;
+  font-size: 36px !important;
+  font-style: normal;
+  font-weight: 600 !important;
+  line-height: 1.02 !important;
+  letter-spacing: -.045em !important;
+  width: min(100%, 30ch);
+  max-width: 920px !important;
+  text-wrap: balance;
+}
+
+:where(
+  .kbc-site main section.text-white h2:not(article h2, aside h2, form h2, details h2),
+  .kbc-site main section:is(.pc-section--dark, .learner-how, .learner-final) h2:not(article h2, aside h2, form h2, details h2)
+) {
+  color: #fff;
+}
+
+@media (min-width: 640px) {
+  :where(
+    .kbc-site main section:not(:first-child) h2:not(
+      article h2,
+      aside h2,
+      form h2,
+      details h2
+    )
+  ) {
+    font-size: 48px !important;
+  }
+}
+
+@media (min-width: 1280px) {
+  :where(
+    .kbc-site main section:not(:first-child) h2:not(
+      article h2,
+      aside h2,
+      form h2,
+      details h2
+    )
+  ) {
+    font-size: 58px !important;
+  }
+}
+
+/* Section introductions read as one clear editorial block. */
+:is(.pc-heading-row, .mk-heading, .mp-heading, .ls-heading, .apm-heading, .pathway-heading) {
+  grid-template-columns: minmax(0, 920px) !important;
+  align-items: start !important;
+  gap: 0 !important;
+}
+
+:is(.pc-heading-row, .mk-heading, .mp-heading, .ls-heading, .apm-heading, .pathway-heading) > div {
+  width: min(100%, 920px);
+}
+
+:is(.pc-heading-row, .mk-heading, .mp-heading, .ls-heading, .apm-heading, .pathway-heading) h2,
+.figma-portfolio__heading-row h2,
+.learner-section-heading h2 {
+  width: min(100%, 30ch);
+  max-width: 920px !important;
+  text-wrap: balance;
+}
+
+:is(.text-center, .figma-section-heading.is-centered) > h2 {
+  margin-inline: auto;
+}
+
+.figma-portfolio__heading-row,
+.learner-section-heading {
+  display: block;
+}
+
+.figma-portfolio__heading-row .figma-section-heading,
+.learner-section-heading > div {
+  width: min(100%, 920px);
+  max-width: 920px;
+}
+
+.figma-header.is-solid,
+.figma-header.is-scrolled {
+  box-shadow: 0 8px 28px rgba(33, 17, 38, .08);
+}
+
+.figma-header__nav a,
+.figma-header__nav-item > button,
+.figma-header__actions > a:first-child {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.figma-header__nav a.is-active,
+.figma-header__nav-item > button.is-active {
+  position: relative;
+}
+
+.figma-header.is-solid .figma-header__nav > a.is-active::after,
+.figma-header.is-scrolled .figma-header__nav > a.is-active::after {
+  position: absolute;
+  right: 0;
+  bottom: -10px;
+  left: 0;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--color-gold);
+  content: "";
+}
+
+.figma-mega-menu__panel,
+.figma-compact-menu__panel {
+  border-radius: var(--radius-card);
+  box-shadow: 0 26px 70px rgba(33, 17, 38, .18);
+}
+
+.figma-mega-menu__group > p,
+.figma-header__nav .figma-mega-menu__link,
+.figma-mega-menu__link small,
+.figma-mega-menu__programme-link small {
+  font-size: 12px;
+}
+
+.figma-eyebrow,
+.figma-mega-menu__intro > span,
+.figma-mega-menu__programmes-heading span,
+.figma-mega-menu__programme-card > div:first-child span,
+.figma-mega-menu__programme-card b,
+.figma-programme-card__meta small,
+.figma-programme-card__media > span,
+.figma-college-card li {
+  font-size: 11px;
+}
+
+.kbc-site :is(.kbc-programme-card, .kbc-benefit-card, .kbc-help-card, .kbc-event-card, .kbc-testimonial-card, .figma-programme-card, .figma-college-card) {
+  border-radius: var(--radius-card);
+  transition: transform .3s var(--ease-standard), box-shadow .3s ease, border-color .2s ease;
+}
+
+@media (hover: hover) {
+  .kbc-site :is(.kbc-programme-card, .kbc-benefit-card, .kbc-help-card, .figma-programme-card):hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-card-hover);
+  }
+}
+
+.kbc-footer,
+.figma-footer {
+  font-family: var(--font-body);
+}
+
+.kbc-footer :is(a, p, span),
+.figma-footer :is(a, p, span) {
+  line-height: 1.65;
+}
+
+.kbc-footer nav a,
+.kbc-footer__contact :is(a, p, span) {
+  font-size: 12px;
+}
+
+.figma-footer nav a,
+.figma-footer :is(p, span) {
+  font-size: 12px;
+}
+
+.prose {
+  max-width: 72ch;
+  color: var(--color-text);
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.prose :is(h2, h3, h4) {
+  color: var(--color-ink);
+  letter-spacing: -.025em;
+}
+
+@media (max-width: 820px) {
+  .pc-shell,
+  .mk-shell,
+  .mp-shell,
+  .ls-shell,
+  .figma-shell,
+  .learner-shell {
+    width: min(calc(100% - 32px), var(--container-max));
+  }
+
+  .kbc-content-shell,
+  .kbc-content-grid {
+    width: min(calc(100% - 32px), var(--container-max));
+  }
+
+  .figma-header__brand img {
+    width: 136px;
+  }
+}
+
+@media (max-width: 560px) {
+  body { font-size: 15px; }
+
+  .kbc-site .kbc-hero-title {
+    font-size: clamp(46px, 14vw, 54px) !important;
+    line-height: .98 !important;
+  }
+
+  .kbc-site :is(.pc-page, .mk-page, .mp-page, .ls-page, .apm-page) h1 {
+    font-size: clamp(46px, 14vw, 54px) !important;
+    line-height: .98 !important;
+  }
+
+  .kbc-site :is(.pc-page, .mk-page, .mp-page, .ls-page, .apm-page) h2 {
+    overflow-wrap: anywhere;
+  }
+
+  .pc-shell,
+  .mk-shell,
+  .mp-shell,
+  .ls-shell,
+  .figma-shell,
+  .learner-shell {
+    width: min(calc(100% - 28px), var(--container-max));
+  }
+
+  .kbc-content-shell,
+  .kbc-content-grid {
+    width: min(calc(100% - 28px), var(--container-max));
+    padding-block: 56px;
+  }
+
+  .kbc-surface-card { padding: 22px; }
+
+  .kbc-page-hero {
+    padding-block: 64px;
+  }
+
+  .figma-header__notice {
+    font-size: 10px !important;
+    line-height: 1.35;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}

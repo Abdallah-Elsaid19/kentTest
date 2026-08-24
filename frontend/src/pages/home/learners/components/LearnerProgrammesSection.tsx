@@ -9,7 +9,7 @@ const programmes = [
     description:
       "Build practical project delivery capability, stakeholder confidence and modern project knowledge while applying learning in your role.",
     image: "associate-project-manager.webp",
-    href: "https://kentbusinesscollege.com/associate-project-manager-level-4/",
+    href: "/associate-project-manager-level-4",
   },
   {
     discipline: "Project Controls",
@@ -18,7 +18,7 @@ const programmes = [
     description:
       "Develop advanced capability in planning, cost, risk, governance and performance for complex project environments.",
     image: "project-controls.webp",
-    href: "https://kentbusinesscollege.com/project-control-professional-level-6/",
+    href: "/project-controls-professional-level-6",
   },
   {
     discipline: "Marketing",
@@ -27,7 +27,7 @@ const programmes = [
     description:
       "Strengthen professional and digital marketing capability through applied learning connected to real workplace activity.",
     image: "marketing-executive.webp",
-    href: "https://kentbusinesscollege.com/fully-funded-marketing-executive-level-4-apprenticeship/",
+    href: "/marketing-executive-level-4",
   },
   {
     discipline: "Marketing",
@@ -36,7 +36,7 @@ const programmes = [
     description:
       "Advance strategic insight, commercial thinking and leadership capability for experienced marketing professionals.",
     image: "marketing-manager.webp",
-    href: "https://kentbusinesscollege.com/marketing-manager-level-6-apprenticeship/",
+    href: "/marketing-manager-level-6",
   },
   {
     discipline: "Leadership",
@@ -45,7 +45,7 @@ const programmes = [
     description:
       "Develop senior leadership, strategic decision-making and organisational transformation capability.",
     image: "leadership.webp",
-    href: "https://kentbusinesscollege.com/mba-diploma-level-7/",
+    href: "/mba-diploma-level-7",
   },
 ];
 
@@ -61,7 +61,6 @@ export function LearnerProgrammesSection() {
           id="learner-programmes-title"
           eyebrow="Professional programmes"
           title="Designed around your role not a generic classroom."
-          description="Compare programme level, duration and professional progression before choosing your next step."
         />
         <div className="learner-programmes__grid !grid-cols-1 md:!grid-cols-2 xl:!grid-cols-12">
           {programmes.map((programme, index) => (
@@ -100,7 +99,7 @@ export function LearnerProgrammesSection() {
         <div className="learner-section-action">
           <ArrowLink
             className="learner-btn learner-btn--purple"
-            to="https://kentbusinesscollege.com/courses/"
+            to="/courses"
           >
             View all programmes
           </ArrowLink>

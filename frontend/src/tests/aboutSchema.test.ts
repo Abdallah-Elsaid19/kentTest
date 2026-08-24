@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 
+import { fallbackAboutPage } from "@/pages/AboutPage/fallback";
 import { parseAboutSections } from "@/pages/AboutPage/schema";
 
 describe("About page section contract", () => {
@@ -32,5 +33,13 @@ describe("About page section contract", () => {
   it("drops malformed CMS data instead of rendering it", () => {
     const result = parseAboutSections([{ id: 1, type: "aboutHero", sortOrder: 10, data: { heading: "Missing fields" } }]);
     expect(result).toEqual([]);
+  });
+
+  it("keeps the approved About page available when the API is offline", () => {
+    const result = parseAboutSections(fallbackAboutPage.sections);
+
+    expect(result).toHaveLength(14);
+    expect(result[0].type).toBe("aboutHero");
+    expect(result.at(-1)?.type).toBe("aboutFinalCta");
   });
 });

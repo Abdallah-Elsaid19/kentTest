@@ -7,6 +7,7 @@ export interface MobileMenuItem {
   label: string;
   path?: string;
   external?: boolean;
+  pending?: boolean;
   children?: MobileMenuItem[];
 }
 
@@ -31,6 +32,7 @@ function isGroupActive(currentPath: string, item: MobileMenuItem) {
 }
 
 function MobileLink({ item, className, onClose }: { item: MobileMenuItem; className: string; onClose: () => void }) {
+  if (item.pending) return <span className={`${className} cursor-not-allowed opacity-55`} aria-disabled="true">{item.label}<small className="ml-auto text-[9px] uppercase tracking-wide">Link pending</small></span>;
   if (!item.path) return null;
   return item.external
     ? <a href={item.path} className={className} target="_blank" rel="noreferrer" onClick={onClose}>{item.label}</a>

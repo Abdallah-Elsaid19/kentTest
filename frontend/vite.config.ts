@@ -2,15 +2,11 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import basicSsl from "@vitejs/plugin-basic-ssl";
 import { resolve } from "node:path";
-import { tmpdir } from "node:os";
 import AutoImport from "unplugin-auto-import/vite";
 const base = process.env.BASE_PATH || "/";
 // https://vite.dev/config/
 export default defineConfig({
-  // Each Windows dev process gets an isolated disposable cache. This avoids
-  // EPERM failures when antivirus/indexing tools retain handles to an older
-  // dependency optimiser file after a server restart.
-  cacheDir: resolve(tmpdir(), "kent-site-vite", String(process.pid)),
+  cacheDir: resolve(__dirname, "node_modules/.vite"),
   define: {
     __BASE_PATH__: JSON.stringify(base),
   },

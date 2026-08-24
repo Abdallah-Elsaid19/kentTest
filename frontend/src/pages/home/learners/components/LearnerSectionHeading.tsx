@@ -1,12 +1,10 @@
 export function LearnerSectionHeading({
   eyebrow,
   title,
-  description,
   id,
 }: {
   eyebrow: string;
   title: string;
-  description?: string;
   id?: string;
 }) {
   return (
@@ -15,7 +13,6 @@ export function LearnerSectionHeading({
         <span className="learner-eyebrow">{eyebrow}</span>
         <h2 className="!text-4xl sm:!text-5xl xl:!text-[68px]" id={id}>{title}</h2>
       </div>
-      {description && <p className="!w-full xl:!max-w-[440px]">{description}</p>}
     </div>
   );
 }
