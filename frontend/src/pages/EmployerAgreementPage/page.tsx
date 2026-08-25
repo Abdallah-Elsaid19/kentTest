@@ -76,7 +76,7 @@ export default function EmployerAgreementPage() {
         fallbackDescription="Complete the Kent Business College employer agreement form."
       />
       <main>
-        <section className="kbc-employer-hero" aria-labelledby="employer-agreement-title">
+        <section className="kbc-employer-hero pt-[78px]" aria-labelledby="employer-agreement-title">
           <h1 id="employer-agreement-title" className="sr-only">Employer Agreement Form</h1>
           <img src="/assets/images/employer-agreement-hero.webp" alt="Employer Agreement Form" loading="lazy" decoding="async" />
         </section>

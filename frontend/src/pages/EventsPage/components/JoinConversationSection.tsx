@@ -18,7 +18,7 @@ export function JoinConversationSection() {
           </div>
           <div>
             <NavigationButton className="figma-btn figma-btn--gold" to="#upcoming-events">View upcoming events</NavigationButton>
-            <ArrowLink to="/book-session" tone="inverse">Book a consultation</ArrowLink>
+            <ArrowLink className="!min-h-12 !gap-3 !text-sm [&_svg]:!h-4 [&_svg]:!w-4" to="/book-session" tone="inverse">Book a consultation</ArrowLink>
           </div>
         </div>
         <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { NavigationButton } from "@/components/navigation";
 import { RouteMeta } from "@/components/seo/RouteMeta";
 import { PageHero } from "@/components/ui/PageHero";
+import { FaqPage } from "./FaqPage";
 
 export type InformationPageKind = "faq" | "partners" | "governance" | "safeguarding" | "apprentices" | "jobs" | "employerDashboard";
 
@@ -110,6 +111,8 @@ const pages: Record<InformationPageKind, PageContent> = {
 };
 
 export default function InformationPage({ kind }: { kind: InformationPageKind }) {
+  if (kind === "faq") return <FaqPage />;
+
   const page = pages[kind];
   return (
     <div className="bg-[#f7f4ef]">

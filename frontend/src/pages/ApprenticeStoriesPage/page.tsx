@@ -10,7 +10,7 @@ export default function ApprenticeStoriesPage() {
     <div className="kbc-figma-home overflow-hidden bg-white">
       <RouteMeta fallbackTitle="Apprentices' Stories | Kent Business College" fallbackDescription="Meet Kent Business College apprentices and explore how professional learning is applied in the workplace." />
 
-      <section className="relative overflow-hidden bg-[linear-gradient(122deg,#1c0d28_0%,#2e123d_55%,#23102f_100%)] py-16 text-white sm:py-20 xl:py-[118px]" aria-labelledby="apprentice-stories-title">
+      <section className="relative overflow-hidden bg-[#4B176D] pb-20 pt-[150px] text-white sm:pt-[164px]" aria-labelledby="apprentice-stories-title">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_78%_28%,rgba(119,55,154,.38),transparent_30%),radial-gradient(circle_at_14%_88%,rgba(214,176,78,.10),transparent_30%)]" aria-hidden="true" />
         <div className="figma-shell relative">
           <span className="figma-eyebrow !text-kbc-gold-500">Workplace learning in practice</span>

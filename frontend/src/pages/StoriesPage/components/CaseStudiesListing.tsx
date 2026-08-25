@@ -1,34 +1,65 @@
 import { useMemo, useState } from "react";
-import { ArrowLink } from "@/components/navigation";
+import { Award, Eye, EyeOff, Linkedin } from "lucide-react";
+import { NavigationButton } from "@/components/navigation";
 import { FigmaSectionHeading } from "@/components/ui/FigmaSectionHeading";
 import type { DisplayStory } from "../data";
 
-function StoryTags({ story }: { story: DisplayStory }) {
-  return (
-    <div className="flex flex-wrap gap-2">
-      <span className="rounded-full bg-kbc-purple-50 px-3 py-1 text-[11px] font-semibold text-kbc-purple-700">{story.category}</span>
-      {story.programme && <span className="rounded-full bg-kbc-gold-50 px-3 py-1 text-[11px] font-semibold text-kbc-gold-800">{story.programme}</span>}
-    </div>
-  );
-}
-
-function StoryLink({ story }: { story: DisplayStory }) {
-  return <ArrowLink className="mt-auto pt-5" external={story.external} newTab={story.external} to={story.href} direction="up-right">{story.ctaLabel}</ArrowLink>;
-}
-
 function StoryCard({ story }: { story: DisplayStory }) {
+  const [showDescription, setShowDescription] = useState(false);
+
   return (
-    <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-kbc-purple-950/10 bg-white shadow-[0_12px_32px_rgba(58,42,31,.12)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_16px_34px_rgba(36,16,45,.11)] motion-reduce:transform-none motion-reduce:transition-none">
-      <div className="overflow-hidden bg-kbc-purple-100">
-        <img className="aspect-[16/10] w-full object-cover object-top transition duration-500 group-hover:scale-105 motion-reduce:transform-none motion-reduce:transition-none" src={story.image} alt={story.imageAlt} loading="lazy" />
+    <article className="group flex min-h-full flex-col gap-4 rounded-lg bg-white bg-[url('https://kentbusinesscollege.com/wp-content/uploads/2026/04/Group-212.png')] bg-cover bg-center p-4 shadow-[0_0_10px_rgba(0,0,0,.15)] transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-[0_0_12px_rgba(75,23,109,.48)] motion-reduce:transform-none motion-reduce:transition-none">
+      <div className="relative flex aspect-[2/1] items-start justify-start overflow-hidden">
+        <img
+          className="aspect-square w-[51%] rounded-full border-[5px] border-white object-cover object-top shadow-sm transition duration-500 group-hover:scale-[1.025] motion-reduce:transform-none motion-reduce:transition-none"
+          src={story.image}
+          alt={story.imageAlt}
+          loading="lazy"
+          decoding="async"
+        />
+        <div className="absolute right-3 top-5 flex w-[38%] items-center justify-center sm:right-5 sm:top-7">
+          <img className="max-h-24 w-full object-contain" src="/assets/logos/kbc-logo.png" alt="Kent Business College" loading="lazy" decoding="async" />
+        </div>
       </div>
-      <div className="flex flex-1 flex-col p-6 sm:p-7">
-        <StoryTags story={story} />
-        <h3 className="mt-5 text-3xl leading-[1.05] text-kbc-purple-950">{story.title}</h3>
-        {story.name && <p className="mt-4 font-semibold text-kbc-purple-950">{story.name}</p>}
-        {story.role && <p className="mt-1 text-sm text-kbc-dark-500">{story.role}</p>}
-        <p className="mt-4 line-clamp-4 text-sm leading-6 text-kbc-dark-600">{story.summary}</p>
-        <StoryLink story={story} />
+
+      <div className="flex flex-col gap-1">
+        <h3 className="!font-heading text-lg !font-bold leading-tight text-kbc-purple-950">{story.name || story.title}</h3>
+        <p className="text-sm leading-6 text-kbc-dark-600">{story.role || story.category}</p>
+      </div>
+
+      <div className="flex items-center gap-4">
+        <Award className="h-6 w-6 shrink-0 text-[#4B176D]" aria-hidden="true" />
+        <p className="text-sm font-semibold leading-5 text-kbc-purple-950">{story.programme || story.title}</p>
+      </div>
+
+      {showDescription && (
+        <p className="rounded-lg border border-[#4B176D]/10 bg-white/90 p-4 text-sm leading-7 text-kbc-dark-600 shadow-sm">
+          {story.summary}
+        </p>
+      )}
+
+      <div className="mt-auto flex flex-wrap items-center justify-between gap-2 pt-1">
+        <button
+          className="inline-grid h-10 w-10 place-items-center rounded bg-[#4B176D] text-white transition-colors hover:bg-[#371050] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#4B176D]"
+          type="button"
+          aria-expanded={showDescription}
+          aria-label={showDescription ? `Hide ${story.name || "learner"} profile` : `View ${story.name || "learner"} profile`}
+          onClick={() => setShowDescription((current) => !current)}
+        >
+          {showDescription ? <EyeOff className="h-4 w-4" aria-hidden="true" /> : <Eye className="h-4 w-4" aria-hidden="true" />}
+        </button>
+        {story.linkedIn && (
+          <NavigationButton
+            className="!min-h-10 !rounded !border-[#4B176D] !bg-kbc-purple-50 !px-5 !text-xs !font-medium !text-[#4B176D] hover:!bg-[#4B176D] hover:!text-white"
+            to={story.linkedIn}
+            external
+            newTab
+            variant="secondary"
+          >
+            <Linkedin className="mr-2 h-4 w-4" aria-hidden="true" />
+            Linkedin
+          </NavigationButton>
+        )}
       </div>
     </article>
   );
@@ -46,8 +77,6 @@ export function CaseStudiesListing({ stories, isRefreshing }: { stories: Display
       return matchesCategory && (!query || searchable.includes(query));
     });
   }, [category, search, stories]);
-  const featured = filteredStories.find((story) => story.isFeatured) || filteredStories[0];
-  const remaining = featured ? filteredStories.filter((story) => story.id !== featured.id) : [];
 
   return (
     <section className="bg-white !py-16 sm:!py-20 xl:!py-[118px]" id="case-studies" aria-labelledby="case-studies-title" aria-busy={isRefreshing}>
@@ -71,23 +100,8 @@ export function CaseStudiesListing({ stories, isRefreshing }: { stories: Display
 
         <p className="mt-4 text-sm text-kbc-dark-500" aria-live="polite">Showing {filteredStories.length} {filteredStories.length === 1 ? "story" : "stories"}</p>
 
-        {featured ? (
-          <>
-            <article className="mt-8 grid overflow-hidden rounded-2xl border border-kbc-purple-950/10 bg-white shadow-[0_18px_45px_rgba(35,16,44,.13)] lg:grid-cols-[.95fr_1.05fr]">
-              <div className="min-h-80 overflow-hidden bg-kbc-purple-100 lg:min-h-[520px]">
-                <img className="h-full w-full object-cover object-top" src={featured.image} alt={featured.imageAlt} loading="lazy" decoding="async" />
-              </div>
-              <div className="flex flex-col justify-center p-7 sm:p-10 lg:p-12">
-                <StoryTags story={featured} />
-                <h2 className="mt-6 text-4xl leading-[1.02] text-kbc-purple-950 sm:text-5xl">{featured.title}</h2>
-                {featured.name && <p className="mt-6 font-semibold text-kbc-purple-950">{featured.name}</p>}
-                {featured.role && <p className="mt-1 text-sm text-kbc-dark-500">{featured.role}</p>}
-                <p className="mt-6 line-clamp-6 text-base leading-7 text-kbc-dark-600">{featured.summary}</p>
-                <StoryLink story={featured} />
-              </div>
-            </article>
-            {remaining.length > 0 && <div className="mt-6 grid gap-6 md:grid-cols-2">{remaining.map((story) => <StoryCard story={story} key={story.id} />)}</div>}
-          </>
+        {filteredStories.length ? (
+          <div className="mt-8 grid gap-6 md:grid-cols-2">{filteredStories.map((story) => <StoryCard story={story} key={story.id} />)}</div>
         ) : (
           <div className="mt-8 rounded-2xl border border-kbc-purple-950/10 bg-kbc-purple-50 p-8 text-center" role="status"><h2 className="text-3xl text-kbc-purple-950">No matching stories</h2><p className="mt-3 text-kbc-dark-500">Try a different search term or category.</p></div>
         )}

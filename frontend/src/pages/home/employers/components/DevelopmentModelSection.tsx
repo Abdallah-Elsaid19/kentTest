@@ -93,7 +93,7 @@ export function DevelopmentModelSection() {
 
         <div className="figma-model__actions">
           <div className="figma-model__action-reveal figma-model__action-reveal--left" data-model-reveal style={{ "--reveal-order": 7 } as React.CSSProperties}>
-            <NavigationButton to="#programmes">Explore programmes <ArrowRight aria-hidden="true" /></NavigationButton>
+            <NavigationButton className="!bg-[var(--color-primary)] hover:!bg-[var(--color-primary-dark)]" to="#programmes">Explore programmes <ArrowRight aria-hidden="true" /></NavigationButton>
           </div>
           <div className="figma-model__action-reveal figma-model__action-reveal--right" data-model-reveal style={{ "--reveal-order": 7 } as React.CSSProperties}>
             <NavigationButton to="/book-session" variant="secondary">Discuss your needs</NavigationButton>
