@@ -14,7 +14,7 @@ export default function StoriesPage() {
   const stories = apiStories.length ? apiStories : fallbackStories;
 
   return (
-    <div className="kbc-figma-home overflow-hidden bg-white">
+    <div className="kbc-figma-home overflow-hidden bg-white [&_.figma-btn--gold]:!text-[#4B176D] [&_.figma-btn--gold:hover]:!text-[#4B176D]">
       <RouteMeta fallbackTitle="Case Studies | Kent Business College" fallbackDescription="Explore privacy-approved learner stories and see how Kent Business College learning connects professional theory with workplace practice." />
       <CaseStudiesHero />
       <CaseStudiesListing stories={stories} isRefreshing={query.isLoading} />

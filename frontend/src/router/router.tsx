@@ -20,6 +20,7 @@ const EventsPage = lazy(() => import("@/pages/EventsPage/page"));
 const EmployerAgreementPage = lazy(() => import("@/pages/EmployerAgreementPage/page"));
 const EnergyUtilitiesPage = lazy(() => import("@/pages/EnergyUtilitiesPage/page"));
 const EngineeringManufacturingPage = lazy(() => import("@/pages/EngineeringManufacturingPage/page"));
+const ExpertDetailPage = lazy(() => import("@/pages/ExpertDetailPage/page"));
 const EmptyPage = lazy(() => import("@/pages/EmptyPage/page"));
 const FormPage = lazy(() => import("@/pages/FormPage/page"));
 const HomePage = lazy(() => import("@/pages/home/page"));
@@ -76,6 +77,7 @@ export const router = createBrowserRouter([
     { path: "events/:eventSlug", element: <EventDetailPage /> },
     { path: "people", element: <PeoplePage /> },
     { path: "our-experts", element: <PeoplePage /> },
+    { path: "our-experts/:expertSlug", element: <ExpertDetailPage /> },
     { path: "star-learners", element: <StoriesPage /> },
     { path: "stories", element: <StoriesPage /> },
     { path: "stories/:storySlug", element: <StoryDetailPage /> },

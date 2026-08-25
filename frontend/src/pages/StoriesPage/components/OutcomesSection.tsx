@@ -2,7 +2,7 @@ import { outcomes } from "../data";
 
 export function OutcomesSection() {
   return (
-    <section className="bg-kbc-purple-950 !py-16 text-white sm:!py-20 xl:!py-[118px]" aria-labelledby="outcomes-title">
+    <section className="!py-16 text-white sm:!py-20 xl:!py-[118px]" style={{ background: "var(--color-primary)" }} aria-labelledby="outcomes-title">
       <div className="figma-shell">
         <div className="grid items-end gap-6 lg:grid-cols-[minmax(0,1.2fr)_minmax(280px,.8fr)] lg:gap-16">
           <div><span className="figma-eyebrow !text-kbc-gold-500">What the accounts reveal</span><h2 className="mt-4 !text-4xl !leading-[1.02] !text-white sm:!text-5xl xl:!text-[58px]" id="outcomes-title">Professional development is strongest when learning remains connected to the role.</h2></div>

@@ -2459,8 +2459,8 @@
 }
 
 .figma-model--services.is-visible .figma-model__service-card:hover {
-  border-color: #371347;
-  background: #371347;
+  border-color: var(--color-primary);
+  background: var(--color-primary);
   color: #fff;
   transform: translateY(-9px);
   box-shadow: 0 22px 46px rgba(55,19,71,.2);
@@ -2483,7 +2483,7 @@
   grid-template-rows: minmax(0, 1fr) auto;
   overflow: hidden;
   border-radius: 12px;
-  background: #371347;
+  background: var(--color-primary);
   box-shadow: 0 18px 42px rgba(55,19,71,.16);
   transition: opacity .8s cubic-bezier(.2,.8,.2,1), transform .8s cubic-bezier(.2,.8,.2,1), filter .8s ease, box-shadow .35s ease;
 }
@@ -2502,7 +2502,7 @@
   display: grid;
   gap: 8px;
   padding: 23px 26px;
-  background: #371347;
+  background: var(--color-primary);
   color: #fff;
   text-align: center;
 }
@@ -2521,7 +2521,7 @@
 .figma-model--services .figma-model__stats {
   margin-top: 38px;
   border-radius: 12px;
-  background: #371347;
+  background: var(--color-primary);
   box-shadow: 0 18px 40px rgba(55,19,71,.16);
 }
 

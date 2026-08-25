@@ -1,7 +1,8 @@
 /* Shared visual language. This file is intentionally loaded last. */
 :root {
-  --color-primary: #6f267d;
-  --color-primary-dark: #552064;
+  --color-main-primary: #4B176D;
+  --color-primary: #4B176D;
+  --color-primary-dark: #371050;
   --color-purple-deep: #3e174a;
   --color-accent: #8f6b22;
   --color-gold: #d6b04e;

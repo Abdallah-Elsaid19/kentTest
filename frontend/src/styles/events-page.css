@@ -1,14 +1,13 @@
 /* Kent Business College Events page — extends the figma-home design tokens (.kbc-figma-home). */
 
 .events-page {
-  --events-purple: #4B176D;
+  --events-purple: var(--color-primary);
   --figma-purple: var(--events-purple);
   --figma-purple-light: var(--events-purple);
-  --color-primary: var(--events-purple);
 }
 
 .events-page .figma-btn--gold:not(:hover),
-.events-page .events-gold-button:not(:hover) { color: #4B176D !important; }
+.events-page .events-gold-button:not(:hover) { color: var(--color-primary) !important; }
 .events-page .figma-btn--gold:hover,
 .events-page .events-gold-button:hover {
   border-color: #F5C94F !important;
