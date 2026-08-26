@@ -1,6 +1,8 @@
 import { RouteMeta } from "@/components/seo/RouteMeta";
 import { DevelopmentModelSection } from "./employers/components/DevelopmentModelSection";
 import { FigmaProgrammesSection } from "./employers/components/FigmaProgrammesSection";
+import { FigmaTestimonialsSection } from "./employers/components/FigmaTestimonialsSection";
+import { FigmaUpcomingEventsSection } from "./employers/components/FigmaUpcomingEventsSection";
 import { FundingGuidanceSection } from "./employers/components/FundingGuidanceSection";
 import { HeroSection } from "./employers/components/HeroSection";
 import { PortfolioSection } from "./employers/components/PortfolioSection";
@@ -22,6 +24,8 @@ export default function HomePage() {
       <PortfolioSection />
       <WorkplaceDevelopmentSection />
       <FigmaProgrammesSection />
+      <FigmaUpcomingEventsSection />
+      <FigmaTestimonialsSection />
       <WorkplaceStorySection />
       <ResourcesSection />
       <FundingGuidanceSection />

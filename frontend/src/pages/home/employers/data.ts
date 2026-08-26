@@ -36,6 +36,7 @@ export const organisationLogos = [
   { name: "Partner organisation 22", image: "https://jokdxsdbxorzciulkdyl.supabase.co/storage/v1/object/public/images/a5bf37dd21ec49ce9c5401526bc0cd67.webp" },
   { name: "Partner organisation 23", image: "https://jokdxsdbxorzciulkdyl.supabase.co/storage/v1/object/public/images/b0153e509a2e4c1eba48d2a60c9740d2.webp" },
   { name: "Partner organisation 24", image: "https://jokdxsdbxorzciulkdyl.supabase.co/storage/v1/object/public/images/e8bf62c676b549d2b682f97d10e503ab.webp" },
+  { name: "Partner organisation 25", image: "https://jokdxsdbxorzciulkdyl.supabase.co/storage/v1/object/public/images/34ead1b2cc0c4d54863e94e1443ab705.webp" },
 ];
 
 export const colleges = [

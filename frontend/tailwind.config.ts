@@ -8,6 +8,10 @@ export default {
   theme: {
     extend: {
       colors: {
+        primary: {
+          DEFAULT: "#4B176D",
+          dark: "#371050",
+        },
         kbc: {
           purple: {
             50: "#f7f3f8",

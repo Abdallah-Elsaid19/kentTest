@@ -10,6 +10,8 @@ import { PageHero } from "@/components/ui/PageHero";
 import { useProgrammes } from "@/features/content/queries";
 import { apiPost } from "@/services/api/apiClient";
 import { endpoints } from "@/services/api/endpoints";
+import { ContactPage } from "./ContactPage";
+import { SupportPage } from "./SupportPage";
 
 const schema = z.object({
   name: z.string().min(2, "Enter your name."),
@@ -39,6 +41,12 @@ const content: Record<Kind, { title: string; summary: string; endpoint: string }
 };
 
 export default function FormPage({ kind }: { kind: Kind }) {
+  if (kind === "contact") return <ContactPage />;
+  if (kind === "support") return <SupportPage />;
+  return <InternalFormPage kind={kind} />;
+}
+
+function InternalFormPage({ kind }: { kind: Kind }) {
   const page = content[kind];
   const programmes = useProgrammes("?perPage=100");
   const mutation = useMutation({ mutationFn: (values: FormValues) => apiPost<{ submissionId: string }, FormValues>(page.endpoint, values) });

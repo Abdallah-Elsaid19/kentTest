@@ -7,7 +7,9 @@ import AutoImport from "unplugin-auto-import/vite";
 const base = process.env.BASE_PATH || "/";
 // https://vite.dev/config/
 export default defineConfig({
-  cacheDir: resolve(__dirname, "node_modules/.vite"),
+  // Keep the project cache separate from Vite's conventional `.vite` folder.
+  // On Windows that shared path can remain locked after a dev process exits.
+  cacheDir: resolve(__dirname, "node_modules/.vite-kbc"),
   define: {
     __BASE_PATH__: JSON.stringify(base),
   },

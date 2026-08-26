@@ -41,7 +41,10 @@ class SecurityHeadersMiddleware:
 
     def __call__(self, request):
         response = self.get_response(request)
-        response.setdefault("Permissions-Policy", "camera=(), microphone=(), geolocation=()")
+        response.setdefault(
+            "Permissions-Policy",
+            'camera=(self "https://forms.zohopublic.com"), microphone=(), geolocation=()',
+        )
         response.setdefault(
             "Content-Security-Policy",
             "default-src 'self'; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; "

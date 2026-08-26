@@ -36,7 +36,6 @@ export const primaryNavigation: NavItem[] = [
       { label: "FAQ", href: "/faq" },
       { label: "Our Experts", href: "/our-experts" },
       { label: "Blog", href: "/blog" },
-      { label: "Star Learners", href: "/star-learners" },
       { label: "Our Partners", href: "/our-partners" },
       { label: "Governance Board", href: "/governance-board" },
       { label: "Safeguarding Handbook", href: "/safeguarding-handbook" },
