@@ -9,8 +9,8 @@ export default {
     extend: {
       colors: {
         primary: {
-          DEFAULT: "#4B176D",
-          dark: "#371050",
+          DEFAULT: "#401B8C",
+          dark: "#2F1468",
         },
         kbc: {
           purple: {

@@ -150,7 +150,7 @@ export function GovernancePage() {
             </div>
           </div>
 
-          <article className="rounded-3xl border border-primary/10 bg-white p-6 shadow-[0_24px_70px_rgba(75,23,109,0.09)] sm:p-8">
+          <article className="rounded-3xl border border-primary/10 bg-white p-6 shadow-[0_24px_70px_rgba(64,27,140,0.09)] sm:p-8">
             <p className="text-xs font-bold uppercase tracking-[0.18em] text-primary">Key details</p>
             <div className="mt-5 divide-y divide-primary/10">
               {keyDetails.map(({ title, body, icon: Icon }) => (
@@ -184,7 +184,7 @@ export function GovernancePage() {
           <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {expertiseAreas.map(({ title, body, icon: Icon }, index) => (
               <article
-                className="group flex min-h-64 flex-col rounded-2xl border border-primary/10 bg-kbc-purple-50 p-7 transition duration-300 hover:-translate-y-1 hover:border-primary/25 hover:shadow-[0_22px_55px_rgba(75,23,109,0.10)]"
+                className="group flex min-h-64 flex-col rounded-2xl border border-primary/10 bg-kbc-purple-50 p-7 transition duration-300 hover:-translate-y-1 hover:border-primary/25 hover:shadow-[0_22px_55px_rgba(64,27,140,0.10)]"
                 key={title}
               >
                 <div className="flex items-start justify-between gap-4">
@@ -217,7 +217,7 @@ export function GovernancePage() {
             </p>
           </div>
 
-          <div className="mt-12 overflow-hidden rounded-3xl border border-primary/10 bg-white p-2 shadow-[0_28px_80px_rgba(75,23,109,0.10)] sm:p-4">
+          <div className="mt-12 overflow-hidden rounded-3xl border border-primary/10 bg-white p-2 shadow-[0_28px_80px_rgba(64,27,140,0.10)] sm:p-4">
             <iframe
               aria-label="Governance Board EOI"
               className="h-[760px] w-full rounded-2xl border-0 bg-white sm:h-[900px]"

@@ -1,5 +1,5 @@
 import type { Story } from "@/types/content";
-import { programmes } from "@/pages/home/employers/data";
+import { programmes } from "@/pages/home/components/data";
 
 export type DisplayStory = {
   id: string;

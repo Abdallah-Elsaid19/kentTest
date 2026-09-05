@@ -18,14 +18,16 @@ const ContentPage = lazy(() => import("@/pages/ContentPage/page"));
 const EventDetailPage = lazy(() => import("@/pages/EventDetailPage/page"));
 const EventsPage = lazy(() => import("@/pages/EventsPage/page"));
 const EmployerAgreementPage = lazy(() => import("@/pages/EmployerAgreementPage/page"));
+const EmployersHomePage = lazy(() => import("@/pages/employers/page"));
 const EnergyUtilitiesPage = lazy(() => import("@/pages/EnergyUtilitiesPage/page"));
 const EngineeringManufacturingPage = lazy(() => import("@/pages/EngineeringManufacturingPage/page"));
 const ExpertDetailPage = lazy(() => import("@/pages/ExpertDetailPage/page"));
 const EmptyPage = lazy(() => import("@/pages/EmptyPage/page"));
 const FormPage = lazy(() => import("@/pages/FormPage/page"));
+const FundingEligibilityPage = lazy(() => import("@/pages/FundingEligibilityPage/page"));
 const HomePage = lazy(() => import("@/pages/home/page"));
 const InformationPage = lazy(() => import("@/pages/InformationPage/page"));
-const LearnersHomePage = lazy(() => import("@/pages/home/learners/page"));
+const LearnersHomePage = lazy(() => import("@/pages/learners/page"));
 const LeadershipCollegePage = lazy(() => import("@/pages/LeadershipCollegePage/page"));
 const MarketingCollegePage = lazy(() => import("@/pages/MarketingCollegePage/page"));
 const MarketingManagerLevel6Page = lazy(() => import("@/pages/MarketingManagerLevel6Page/page"));
@@ -46,6 +48,7 @@ export const router = createBrowserRouter([
   { path: "/", element: <MainLayout />, children: [
     { index: true, element: <HomePage /> },
     { path: "learners", element: <LearnersHomePage /> },
+    { path: "employers", element: <EmployersHomePage /> },
     { path: "employer-agreement", element: <EmployerAgreementPage /> },
     { path: "employer-dashboard", element: <InformationPage kind="employerDashboard" /> },
     { path: "college-of-leadership", element: <LeadershipCollegePage /> },
@@ -87,7 +90,8 @@ export const router = createBrowserRouter([
     { path: "blog/:articleSlug", element: <ArticlePage /> },
     { path: "contact", element: <FormPage kind="contact" /> },
     { path: "support", element: <FormPage kind="support" /> },
-    { path: "eligibility", element: <FormPage kind="eligibility" /> },
+    { path: "eligibility", element: <Navigate to="/funding-eligibility" replace /> },
+    { path: "funding-eligibility", element: <FundingEligibilityPage /> },
     { path: "apply", element: <Navigate to="/employer-agreement" replace /> },
     { path: "search", element: <SearchPage /> },
     { path: "sectors", element: <SectorsPage /> },

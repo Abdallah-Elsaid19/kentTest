@@ -8,7 +8,7 @@ function StoryCard({ story }: { story: DisplayStory }) {
   const [showDescription, setShowDescription] = useState(false);
 
   return (
-    <article className="group flex min-h-full flex-col gap-4 rounded-lg bg-white bg-[url('https://kentbusinesscollege.com/wp-content/uploads/2026/04/Group-212.png')] bg-cover bg-center p-4 shadow-[0_0_10px_rgba(0,0,0,.15)] transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-[0_0_12px_rgba(75,23,109,.48)] motion-reduce:transform-none motion-reduce:transition-none">
+    <article className="group flex min-h-full flex-col gap-4 rounded-lg bg-white bg-[url('https://kentbusinesscollege.com/wp-content/uploads/2026/04/Group-212.png')] bg-cover bg-center p-4 shadow-[0_0_10px_rgba(0,0,0,.15)] transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-[0_0_12px_rgba(64,27,140,.48)] motion-reduce:transform-none motion-reduce:transition-none">
       <div className="relative flex aspect-[2/1] items-start justify-start overflow-hidden">
         <img
           className="aspect-square w-[51%] rounded-full border-[5px] border-white object-cover object-top shadow-sm transition duration-500 group-hover:scale-[1.025] motion-reduce:transform-none motion-reduce:transition-none"
@@ -28,19 +28,19 @@ function StoryCard({ story }: { story: DisplayStory }) {
       </div>
 
       <div className="flex items-center gap-4">
-        <Award className="h-6 w-6 shrink-0 text-[#4B176D]" aria-hidden="true" />
+        <Award className="h-6 w-6 shrink-0 text-[#401B8C]" aria-hidden="true" />
         <p className="text-sm font-semibold leading-5 text-kbc-purple-950">{story.programme || story.title}</p>
       </div>
 
       {showDescription && (
-        <p className="rounded-lg border border-[#4B176D]/10 bg-white/90 p-4 text-sm leading-7 text-kbc-dark-600 shadow-sm">
+        <p className="rounded-lg border border-[#401B8C]/10 bg-white/90 p-4 text-sm leading-7 text-kbc-dark-600 shadow-sm">
           {story.summary}
         </p>
       )}
 
       <div className="mt-auto flex flex-wrap items-center justify-between gap-2 pt-1">
         <button
-          className="inline-grid h-10 w-10 place-items-center rounded bg-[#4B176D] text-white transition-colors hover:bg-[#371050] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#4B176D]"
+          className="inline-grid h-10 w-10 place-items-center rounded bg-[#401B8C] text-white transition-colors hover:bg-[#2F1468] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#401B8C]"
           type="button"
           aria-expanded={showDescription}
           aria-label={showDescription ? `Hide ${story.name || "learner"} profile` : `View ${story.name || "learner"} profile`}
@@ -50,7 +50,7 @@ function StoryCard({ story }: { story: DisplayStory }) {
         </button>
         {story.linkedIn && (
           <NavigationButton
-            className="!min-h-10 !rounded !border-[#4B176D] !bg-kbc-purple-50 !px-5 !text-xs !font-medium !text-[#4B176D] hover:!bg-[#4B176D] hover:!text-white"
+            className="!min-h-10 !rounded !border-[#401B8C] !bg-kbc-purple-50 !px-5 !text-xs !font-medium !text-[#401B8C] hover:!bg-[#401B8C] hover:!text-white"
             to={story.linkedIn}
             external
             newTab
@@ -82,7 +82,7 @@ export function CaseStudiesListing({ stories, isRefreshing }: { stories: Display
     <section className="bg-white !py-16 sm:!py-20 xl:!py-[118px]" id="case-studies" aria-labelledby="case-studies-title" aria-busy={isRefreshing}>
       <div className="figma-shell">
         <div className="grid items-end gap-6 lg:grid-cols-[minmax(0,1.2fr)_minmax(280px,.8fr)] lg:gap-16">
-          <FigmaSectionHeading id="case-studies-title" eyebrow="The learner perspective" title={<>Find the experience most relevant to your role and ambition.</>} />
+          <FigmaSectionHeading id="case-studies-title" eyebrow="The learner perspective" title={<>Find the experience most relevant to your role and ambition.</>} align="left" />
           <p className="max-w-xl text-base leading-7 text-kbc-dark-500">Search the current learner experiences by topic or name and explore how professional learning connects with workplace responsibility.</p>
         </div>
 

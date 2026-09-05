@@ -1,5 +1,5 @@
 import { RouteMeta } from "@/components/seo/RouteMeta";
-import { trustedOrganisationLogos } from "@/pages/home/shared/trustedLogos";
+import { trustedOrganisationLogos } from "@/components/common/trustedLogos";
 
 const pageTitle = "Organisations connected to KBC";
 const pageSummary =

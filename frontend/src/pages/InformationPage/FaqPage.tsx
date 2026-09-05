@@ -149,16 +149,16 @@ export function FaqPage() {
     <div className="kbc-figma-home overflow-hidden bg-white">
       <RouteMeta fallbackTitle="Frequently Asked Questions | Kent Business College" fallbackDescription="Find answers about KBC apprenticeships, programme delivery, funding, assessment and employer support." />
 
-      <header className="relative bg-[#4B176D] px-5 pt-[150px] text-center sm:pt-[164px]">
+      <header className="relative bg-[#401B8C] px-5 pt-[150px] text-center sm:pt-[164px]">
         <span className="inline-flex rounded bg-white/10 px-4 py-2 text-xs font-bold uppercase tracking-[.16em] text-kbc-gold-500 ring-1 ring-inset ring-white/10">FAQ</span>
         <h1 className="mx-auto mt-5 max-w-3xl !text-[clamp(2.7rem,8vw,5rem)] !leading-[1.1] !text-white">Frequently Asked <span className="text-kbc-gold-500">Questions</span></h1>
         <p className="mx-auto mt-6 max-w-2xl text-base leading-7 text-white/75">Find clear answers about programmes, eligibility, delivery, funding, assessment and employer support.</p>
         <span className="pointer-events-none absolute right-[7%] top-[48%] hidden -rotate-12 text-[150px] font-bold leading-none text-white/[.07] lg:block" aria-hidden="true">?</span>
 
         <label className="relative mx-auto mt-10 block max-w-4xl translate-y-1/2 text-left">
-          <Search className="pointer-events-none absolute left-6 top-1/2 h-5 w-5 -translate-y-1/2 text-[#4B176D]" aria-hidden="true" />
+          <Search className="pointer-events-none absolute left-6 top-1/2 h-5 w-5 -translate-y-1/2 text-[#401B8C]" aria-hidden="true" />
           <span className="sr-only">Search frequently asked questions</span>
-          <input className="min-h-16 w-full rounded-lg border border-kbc-purple-950/5 bg-white py-4 pl-16 pr-5 text-sm text-kbc-purple-950 shadow-[0_18px_50px_rgba(75,23,109,.12)] outline-none transition focus:border-[#4B176D]/35 focus:ring-4 focus:ring-[#4B176D]/10 sm:min-h-20 sm:text-base" type="search" value={search} onChange={(event) => setSearch(event.target.value)} placeholder="Ask us something you would like to know..." />
+          <input className="min-h-16 w-full rounded-lg border border-kbc-purple-950/5 bg-white py-4 pl-16 pr-5 text-sm text-kbc-purple-950 shadow-[0_18px_50px_rgba(64,27,140,.12)] outline-none transition focus:border-[#401B8C]/35 focus:ring-4 focus:ring-[#401B8C]/10 sm:min-h-20 sm:text-base" type="search" value={search} onChange={(event) => setSearch(event.target.value)} placeholder="Ask us something you would like to know..." />
         </label>
       </header>
 
@@ -168,7 +168,7 @@ export function FaqPage() {
           <aside className="rounded-xl bg-[#f6f3f8] p-2 lg:sticky lg:top-28" aria-label="FAQ categories">
             {categories.map((category) => (
               <button
-                className={`flex min-h-12 w-full items-center rounded-lg px-4 text-left text-sm font-semibold transition ${activeCategory === category ? "bg-white text-[#4B176D] shadow-sm" : "text-kbc-dark-600 hover:bg-white/70 hover:text-[#4B176D]"}`}
+                className={`flex min-h-12 w-full items-center rounded-lg px-4 text-left text-sm font-semibold transition ${activeCategory === category ? "bg-white text-[#401B8C] shadow-sm" : "text-kbc-dark-600 hover:bg-white/70 hover:text-[#401B8C]"}`}
                 type="button"
                 key={category}
                 aria-pressed={activeCategory === category}
@@ -182,7 +182,7 @@ export function FaqPage() {
           <section aria-label="Frequently asked questions">
             <div className="mb-4 flex items-center justify-between gap-4">
               <p className="text-sm text-kbc-dark-500">{visibleItems.length} {visibleItems.length === 1 ? "answer" : "answers"}</p>
-              {activeCategory !== "All questions" && <span className="rounded-full bg-kbc-purple-50 px-3 py-1 text-xs font-semibold text-[#4B176D]">{activeCategory}</span>}
+              {activeCategory !== "All questions" && <span className="rounded-full bg-kbc-purple-50 px-3 py-1 text-xs font-semibold text-[#401B8C]">{activeCategory}</span>}
             </div>
 
             {visibleItems.length ? (
@@ -192,8 +192,8 @@ export function FaqPage() {
                   return (
                     <article key={item.id}>
                       <button className="flex w-full items-center justify-between gap-5 py-5 text-left sm:py-6" type="button" aria-expanded={isOpen} aria-controls={`${item.id}-answer`} onClick={() => setOpenId(isOpen ? "" : item.id)}>
-                        <span className={`text-base font-semibold leading-6 transition-colors sm:text-lg ${isOpen ? "text-[#4B176D]" : "text-kbc-purple-950"}`}>{item.question}</span>
-                        <span className={`grid h-8 w-8 shrink-0 place-items-center rounded-full transition ${isOpen ? "bg-[#4B176D] text-white" : "bg-kbc-purple-50 text-[#4B176D]"}`}>
+                        <span className={`text-base font-semibold leading-6 transition-colors sm:text-lg ${isOpen ? "text-[#401B8C]" : "text-kbc-purple-950"}`}>{item.question}</span>
+                        <span className={`grid h-8 w-8 shrink-0 place-items-center rounded-full transition ${isOpen ? "bg-[#401B8C] text-white" : "bg-kbc-purple-50 text-[#401B8C]"}`}>
                           {isOpen ? <Minus className="h-4 w-4" aria-hidden="true" /> : <Plus className="h-4 w-4" aria-hidden="true" />}
                         </span>
                       </button>
@@ -205,14 +205,14 @@ export function FaqPage() {
                 })}
               </div>
             ) : (
-              <div className="rounded-xl border border-dashed border-[#4B176D]/25 bg-kbc-purple-50 p-10 text-center"><h2 className="text-2xl text-kbc-purple-950">No matching questions</h2><p className="mt-2 text-sm text-kbc-dark-500">Try another phrase or choose a different category.</p></div>
+              <div className="rounded-xl border border-dashed border-[#401B8C]/25 bg-kbc-purple-50 p-10 text-center"><h2 className="text-2xl text-kbc-purple-950">No matching questions</h2><p className="mt-2 text-sm text-kbc-dark-500">Try another phrase or choose a different category.</p></div>
             )}
           </section>
         </div>
       </main>
 
       <section className="px-5 pb-20 sm:pb-24 lg:pb-28">
-        <div className="relative mx-auto flex max-w-6xl flex-col items-start justify-between gap-8 overflow-hidden rounded-2xl bg-[linear-gradient(120deg,#4B176D,#6f2a93)] p-8 text-white shadow-[0_22px_55px_rgba(75,23,109,.24)] sm:p-12 lg:flex-row lg:items-center lg:p-16">
+        <div className="relative mx-auto flex max-w-6xl flex-col items-start justify-between gap-8 overflow-hidden rounded-2xl bg-[linear-gradient(120deg,#401B8C,#6f2a93)] p-8 text-white shadow-[0_22px_55px_rgba(64,27,140,.24)] sm:p-12 lg:flex-row lg:items-center lg:p-16">
           <div className="pointer-events-none absolute -bottom-28 right-16 h-72 w-72 rounded-full border-2 border-white/30" aria-hidden="true" />
           <div className="pointer-events-none absolute -right-8 top-8 h-48 w-48 rounded-full border border-kbc-gold-500/45" aria-hidden="true" />
           <div className="relative max-w-xl"><span className="text-xs font-bold uppercase tracking-[.17em] text-kbc-gold-500">Still need help?</span><h2 className="mt-4 !text-4xl !leading-tight !text-white sm:!text-5xl">Ask the KBC team directly.</h2><p className="mt-4 text-sm leading-7 text-white/70 sm:text-base">Tell us about your role, organisation or programme question and we’ll help you find the right next step.</p></div>

@@ -1,15 +1,18 @@
 import { RouteMeta } from "@/components/seo/RouteMeta";
-import { DevelopmentModelSection } from "./employers/components/DevelopmentModelSection";
-import { FigmaProgrammesSection } from "./employers/components/FigmaProgrammesSection";
-import { FigmaTestimonialsSection } from "./employers/components/FigmaTestimonialsSection";
-import { FigmaUpcomingEventsSection } from "./employers/components/FigmaUpcomingEventsSection";
-import { FundingGuidanceSection } from "./employers/components/FundingGuidanceSection";
-import { HeroSection } from "./employers/components/HeroSection";
-import { PortfolioSection } from "./employers/components/PortfolioSection";
-import { ResourcesSection } from "./employers/components/ResourcesSection";
-import { TrustedOrganisations } from "./employers/components/TrustedOrganisations";
-import { WorkplaceDevelopmentSection } from "./employers/components/WorkplaceDevelopmentSection";
-import { WorkplaceStorySection } from "./employers/components/WorkplaceStorySection";
+import { AppliedLearningSection } from "./components/AppliedLearningSection";
+import { KbcExperienceSection } from "./components/KbcExperienceSection";
+import { SupportThroughoutSection } from "./components/SupportThroughoutSection";
+import { DevelopmentModelSection } from "./components/DevelopmentModelSection";
+import { FigmaProgrammesSection } from "./components/FigmaProgrammesSection";
+import { FigmaTestimonialsSection } from "./components/FigmaTestimonialsSection";
+import { FigmaUpcomingEventsSection } from "./components/FigmaUpcomingEventsSection";
+import { CareerOutcomesSection } from "./components/CareerOutcomesSection";
+import { ProgressionPathwaySection } from "./components/ProgressionPathwaySection";
+import { RecognitionStandardsSection } from "./components/RecognitionStandardsSection";
+import { FundingGuidanceSection } from "./components/FundingGuidanceSection";
+import { HeroSection } from "./components/HeroSection";
+import { PortfolioSection } from "./components/PortfolioSection";
+import { TrustedOrganisations } from "./components/TrustedOrganisations";
 
 export default function HomePage() {
   return (
@@ -22,12 +25,15 @@ export default function HomePage() {
       <TrustedOrganisations />
       <DevelopmentModelSection />
       <PortfolioSection />
-      <WorkplaceDevelopmentSection />
       <FigmaProgrammesSection />
+      <AppliedLearningSection />
+      <KbcExperienceSection />
+      <SupportThroughoutSection />
       <FigmaUpcomingEventsSection />
+      <CareerOutcomesSection />
+      <ProgressionPathwaySection />
+      <RecognitionStandardsSection />
       <FigmaTestimonialsSection />
-      <WorkplaceStorySection />
-      <ResourcesSection />
       <FundingGuidanceSection />
     </div>
   );

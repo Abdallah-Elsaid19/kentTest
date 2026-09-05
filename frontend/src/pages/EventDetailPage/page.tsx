@@ -221,7 +221,7 @@ export default function EventDetailPage() {
               )}
               {eventMedia.length ? (
                 <button
-                  className="mt-4 flex w-full items-center gap-2 rounded-lg border border-[#4B176D] bg-[#f6f0f8] px-4 py-3 text-sm text-[#4B176D] transition-[background-color,border-color,color,transform,box-shadow] duration-200 hover:-translate-y-0.5 hover:border-[#F5C94F] hover:bg-[#F5C94F] hover:text-[#351442] hover:shadow-[0_12px_24px_rgba(38,13,50,.28)] focus:outline-none focus:ring-2 focus:ring-[#4B176D] motion-reduce:hover:translate-y-0"
+                  className="mt-4 flex w-full items-center gap-2 rounded-lg border border-[#401B8C] bg-[#f6f0f8] px-4 py-3 text-sm text-[#401B8C] transition-[background-color,border-color,color,transform,box-shadow] duration-200 hover:-translate-y-0.5 hover:border-[#F5C94F] hover:bg-[#F5C94F] hover:text-[#351442] hover:shadow-[0_12px_24px_rgba(38,13,50,.28)] focus:outline-none focus:ring-2 focus:ring-[#401B8C] motion-reduce:hover:translate-y-0"
                   type="button"
                   aria-haspopup="dialog"
                   onClick={() => setIsMediaOpen(true)}

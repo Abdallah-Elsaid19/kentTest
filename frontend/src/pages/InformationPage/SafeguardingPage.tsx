@@ -196,7 +196,7 @@ export function SafeguardingPage() {
             ].map(([Icon, title, body]) => {
               const CardIcon = Icon as typeof ShieldCheck;
               return (
-                <article className="group rounded-2xl border border-primary/10 bg-white p-7 shadow-[0_18px_50px_rgba(75,23,109,0.07)] transition duration-300 ease-out hover:-translate-y-2 hover:border-primary/30 hover:shadow-[0_26px_60px_rgba(75,23,109,0.14)]" key={title as string}>
+                <article className="group rounded-2xl border border-primary/10 bg-white p-7 shadow-[0_18px_50px_rgba(64,27,140,0.07)] transition duration-300 ease-out hover:-translate-y-2 hover:border-primary/30 hover:shadow-[0_26px_60px_rgba(64,27,140,0.14)]" key={title as string}>
                   <span className="grid h-11 w-11 place-items-center rounded-xl bg-primary text-kbc-gold-400"><CardIcon className="h-5 w-5" aria-hidden="true" /></span>
                   <h3 className="mt-6 font-heading text-xl font-semibold">{title as string}</h3>
                   <span className="mt-5 block h-0.5 w-14 bg-primary transition-[width] duration-500 ease-out group-hover:w-full" aria-hidden="true" />
@@ -255,7 +255,7 @@ export function SafeguardingPage() {
             {!showingContacts ? (() => {
               const { id, number, eyebrow, title, icon: Icon, paragraphs } = selectedSection;
               return (
-              <article className="min-h-[680px] animate-fade-in rounded-3xl border border-primary/10 bg-white p-6 shadow-[0_20px_55px_rgba(75,23,109,0.06)] sm:p-9" id={id} key={id}>
+              <article className="min-h-[680px] animate-fade-in rounded-3xl border border-primary/10 bg-white p-6 shadow-[0_20px_55px_rgba(64,27,140,0.06)] sm:p-9" id={id} key={id}>
                 <div className="flex items-start justify-between gap-5">
                   <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-primary text-kbc-gold-400">
                     <Icon className="h-5 w-5" aria-hidden="true" />
@@ -270,7 +270,7 @@ export function SafeguardingPage() {
               </article>
               );
             })() : (
-              <article className="min-h-[680px] animate-fade-in rounded-3xl bg-primary p-6 text-white shadow-[0_20px_55px_rgba(75,23,109,0.16)] sm:p-9" key="safeguarding-contacts">
+              <article className="min-h-[680px] animate-fade-in rounded-3xl bg-primary p-6 text-white shadow-[0_20px_55px_rgba(64,27,140,0.16)] sm:p-9" key="safeguarding-contacts">
                 <div className="flex items-start justify-between gap-5">
                   <span className="grid h-12 w-12 place-items-center rounded-xl bg-kbc-gold-400 text-primary"><ShieldCheck className="h-5 w-5" aria-hidden="true" /></span>
                   <span className="text-xs font-bold tracking-[0.16em] text-white/45">10</span>

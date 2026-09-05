@@ -25,7 +25,7 @@ export function EventFormatCard({
       <div className="grid min-h-[320px] flex-1 grid-rows-[76px_1fr_auto] p-6">
         <h3 className="font-heading text-[26px] font-semibold leading-[1.12] text-kbc-purple-950">{title}</h3>
         <p className="pt-4 text-base leading-relaxed text-slate-600">{description}</p>
-        <ArrowLink className="!min-h-12 !w-full !justify-center !border-t !border-[#e7e1e8] !pt-4 !text-sm !text-[#4B176D] hover:!text-[#371050]" to={actionTo}>{actionLabel}</ArrowLink>
+        <ArrowLink className="!min-h-12 !w-full !justify-center !border-t !border-[#e7e1e8] !pt-4 !text-sm !text-[#401B8C] hover:!text-[#2F1468]" to={actionTo}>{actionLabel}</ArrowLink>
       </div>
     </article>
   );

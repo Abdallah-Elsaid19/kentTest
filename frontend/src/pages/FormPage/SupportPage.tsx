@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import { ArrowDown, BookOpenCheck, Headphones, ShieldCheck } from "lucide-react";
+import { BookOpenCheck, Headphones, ShieldCheck } from "lucide-react";
 
-import { NavigationButton } from "@/components/navigation";
 import { RouteMeta } from "@/components/seo/RouteMeta";
 
 const zohoSupportFormUrl =
@@ -30,8 +29,8 @@ const supportAreas = [
 function SupportEyebrow({ children, inverse = false }: { children: string; inverse?: boolean }) {
   return (
     <div className="w-fit">
-      <p className={`text-xs font-bold uppercase leading-5 tracking-[0.2em] ${inverse ? "text-kbc-gold-400" : "text-primary"}`}>{children}</p>
-      <span className={`mx-auto mt-3 block h-2 w-[calc(100%_+_24px)] -translate-x-3 rounded-[50%] border-t-[1.5px] ${inverse ? "border-kbc-gold-400" : "border-primary"}`} aria-hidden="true" />
+      <p className={`text-xs font-bold uppercase leading-5 tracking-[0.2em] ${inverse ? "text-[var(--color-gold)]" : "!text-[#401B8C]"}`}>{children}</p>
+      <span className={`mx-auto mt-3 block h-2 w-[calc(100%_+_24px)] -translate-x-3 rounded-[50%] border-t-[1.5px] ${inverse ? "border-[var(--color-gold)]" : "!border-[#401B8C]"}`} aria-hidden="true" />
     </div>
   );
 }
@@ -57,57 +56,51 @@ export function SupportPage() {
   }, []);
 
   return (
-    <div className="overflow-hidden bg-white font-body text-kbc-purple-950">
+    <div className="overflow-hidden bg-white !font-['Poppins',sans-serif] text-[#401B8C] [&_*]:!font-['Poppins',sans-serif]">
       <RouteMeta
         fallbackTitle="KBC Support | Kent Business College"
         fallbackDescription="Contact Kent Business College for learner, programme, platform, safeguarding and wellbeing support."
       />
 
-      <section className="relative min-h-[100svh] overflow-hidden bg-primary pb-20 pt-[150px] text-white sm:pt-[164px]" aria-labelledby="support-heading">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_12%,rgba(168,120,178,0.38),transparent_28%),radial-gradient(circle_at_12%_90%,rgba(214,176,78,0.12),transparent_30%)]" aria-hidden="true" />
-        <div className="relative mx-auto grid min-h-[calc(100svh_-_230px)] w-[calc(100%_-_3rem)] max-w-[1350px] items-center gap-12 lg:grid-cols-[0.82fr_1.18fr] lg:gap-16 max-sm:w-[calc(100%_-_2rem)]">
-          <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
-            <SupportEyebrow inverse>Help when you need it</SupportEyebrow>
-            <h1 id="support-heading" className="mt-6 max-w-[680px] font-heading text-5xl font-medium leading-none tracking-tight text-white sm:text-6xl lg:text-7xl xl:text-[82px]">
-              KBC <span className="text-kbc-gold-400">Support.</span>
+      <section className="kbc-page-hero-offset--solid relative overflow-hidden bg-white pb-12 sm:pb-16" aria-labelledby="support-heading">
+        <div className="relative mx-auto grid w-[calc(100%_-_40px)] max-w-[1240px] items-center gap-12 lg:grid-cols-[1.02fr_0.98fr] lg:gap-[58px] max-sm:w-[calc(100%_-_32px)]">
+          <div className="flex flex-col items-center text-center lg:max-w-[470px] lg:items-start lg:text-left">
+            <SupportEyebrow>Help when you need it</SupportEyebrow>
+            <h1 id="support-heading" className="mt-6 max-w-[680px] !font-['Poppins',sans-serif] text-5xl font-medium leading-none tracking-tight !text-[#401B8C] sm:text-6xl lg:text-7xl xl:text-[82px]">
+              KBC <span className="text-[var(--color-gold)]">Support.</span>
             </h1>
-            <p className="mt-8 max-w-xl text-base leading-8 text-white/75 sm:text-lg">
+            <p className="mt-8 max-w-xl text-base leading-8 text-[#401B8C] sm:text-lg">
               Tell us what you need help with and our team will direct your enquiry to the right person. Do not include passwords or highly sensitive information.
             </p>
-            <NavigationButton className="mt-8 w-full sm:w-auto" variant="accent" to="#support-form">
-              Contact support <ArrowDown className="h-4 w-4" aria-hidden="true" />
-            </NavigationButton>
           </div>
 
-          <div className="relative overflow-hidden rounded-[28px] border border-white/15 bg-white/8 p-3 shadow-[0_30px_90px_rgba(20,5,30,0.34)] sm:p-5">
-            <div className="overflow-hidden rounded-[20px] bg-[#7474ad]">
-              <img
-                className="block aspect-[1080/594] w-full object-cover"
-                src="/assets/illustrations/data-analytics-techniques.svg"
-                alt="Animated illustration representing digital learner support and data tools"
-                decoding="async"
-                fetchPriority="high"
-              />
-            </div>
+          <div className="relative">
+            <img
+              className="block aspect-[1080/594] w-full object-contain"
+              src="/assets/illustrations/support-data-analytics.svg"
+              alt="Animated illustration representing digital support and data tools"
+              decoding="async"
+              fetchPriority="high"
+            />
           </div>
         </div>
       </section>
 
-      <section className="bg-kbc-purple-50 px-5 py-20 sm:px-8 sm:py-24 lg:px-12" aria-labelledby="support-areas-heading">
+      <section className="bg-[var(--color-soft)] px-5 pb-20 pt-4 sm:px-8 sm:pb-24 sm:pt-6 lg:px-12" aria-labelledby="support-areas-heading">
         <div className="mx-auto max-w-[1200px]">
           <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
             <SupportEyebrow>How we can help</SupportEyebrow>
-            <h2 id="support-areas-heading" className="mt-6 font-heading text-4xl font-semibold leading-tight sm:text-5xl">Start with the support you need.</h2>
-            <p className="mt-5 text-base leading-7 text-kbc-purple-700">Use the form below for learner, programme, platform, safeguarding or wellbeing support.</p>
+            <h2 id="support-areas-heading" className="mt-6 !font-['Poppins',sans-serif] text-4xl font-semibold leading-tight !text-[#401B8C] sm:text-5xl">Start with the support you need.</h2>
+            <p className="mt-5 text-base leading-7 text-[#401B8C]">Use the form below for learner, programme, platform, safeguarding or wellbeing support.</p>
           </div>
 
           <div className="mt-12 grid gap-5 md:grid-cols-3">
             {supportAreas.map(({ title, body, icon: Icon }) => (
-              <article className="group rounded-2xl border border-primary/10 bg-white p-7 shadow-[0_18px_50px_rgba(75,23,109,0.07)] transition duration-300 hover:-translate-y-2 hover:border-primary/30 hover:shadow-[0_26px_60px_rgba(75,23,109,0.13)]" key={title}>
-                <span className="grid h-12 w-12 place-items-center rounded-xl bg-primary text-kbc-gold-400"><Icon className="h-5 w-5" aria-hidden="true" /></span>
-                <h3 className="mt-7 font-heading text-2xl font-semibold">{title}</h3>
-                <span className="mt-5 block h-0.5 w-14 bg-primary transition-[width] duration-500 group-hover:w-full" aria-hidden="true" />
-                <p className="mt-5 text-sm leading-7 text-kbc-purple-700">{body}</p>
+              <article className="group rounded-2xl border border-[#401B8C]/10 bg-white p-7 shadow-[0_18px_50px_rgba(64,27,140,0.07)] transition duration-300 hover:-translate-y-2 hover:border-[#401B8C]/30 hover:shadow-[0_26px_60px_rgba(64,27,140,0.13)]" key={title}>
+                <span className="grid h-12 w-12 place-items-center rounded-xl !bg-[#401B8C] text-[var(--color-gold)]"><Icon className="h-5 w-5" aria-hidden="true" /></span>
+                <h3 className="mt-7 !font-['Poppins',sans-serif] text-2xl font-semibold !text-[#401B8C]">{title}</h3>
+                <span className="mt-5 block h-2 w-14 rounded-[50%] border-t-[1.5px] !border-[#401B8C] transition-[width] duration-500 group-hover:w-full" aria-hidden="true" />
+                <p className="mt-5 text-sm leading-7 text-[#401B8C]">{body}</p>
               </article>
             ))}
           </div>
@@ -115,7 +108,7 @@ export function SupportPage() {
       </section>
 
       <section id="support-form" className="scroll-mt-28 bg-white px-3 py-20 sm:px-8 sm:py-24 lg:px-12" aria-label="KBC support form">
-        <div className="mx-auto max-w-[1200px] overflow-hidden rounded-[22px] border border-primary/10 bg-white shadow-[0_24px_70px_rgba(75,23,109,0.10)]">
+        <div className="mx-auto max-w-[1200px] overflow-hidden rounded-[22px] border border-[#401B8C]/10 bg-white shadow-[0_24px_70px_rgba(64,27,140,0.10)]">
           <iframe
             ref={supportFormRef}
             aria-label="KBC Support"

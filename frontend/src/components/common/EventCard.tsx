@@ -53,8 +53,8 @@ export function EventCard({
           </div>
         </div>
         <div className="flex w-full flex-wrap items-center justify-between gap-3 self-end border-t border-[#e7e1e8] pt-4">
-          <ArrowLink className="!min-h-10 !p-0 !text-sm !text-[#4B176D] hover:!text-[#371050]" to={detailsTo}>View details</ArrowLink>
-          {bookingUrl && <a className="events-gold-button inline-flex min-h-10 items-center justify-center rounded-lg border border-[#F5C94F] bg-[#F5C94F] px-4 py-2.5 text-center text-xs font-bold text-[#4B176D] transition-colors hover:text-white" href={bookingUrl} target="_blank" rel="noreferrer">Secure your seat</a>}
+          <ArrowLink className="!min-h-10 !p-0 !text-sm !text-[#401B8C] hover:!text-[#2F1468]" to={detailsTo}>View details</ArrowLink>
+          {bookingUrl && <a className="events-gold-button inline-flex min-h-10 items-center justify-center rounded-lg border border-[#F5C94F] bg-[#F5C94F] px-4 py-2.5 text-center text-xs font-bold text-[#401B8C] transition-colors hover:text-white" href={bookingUrl} target="_blank" rel="noreferrer">Secure your seat</a>}
         </div>
       </div>
     </article>

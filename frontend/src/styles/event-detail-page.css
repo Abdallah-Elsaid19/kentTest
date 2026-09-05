@@ -1,5 +1,5 @@
 .event-detail-page {
-  --event-purple: #4b176d;
+  --event-purple: #401B8C;
   --event-purple-dark: #1b0d22;
   --event-gold: #f5c94f;
   --event-paper: #f8f4ee;
@@ -418,7 +418,7 @@
 
 .event-media-dialog__header > button:focus { outline: none; }
 .event-media-dialog__header > button:focus-visible {
-  outline: 3px solid rgba(75, 23, 109, .24);
+  outline: 3px solid rgba(64, 27, 140, .24);
   outline-offset: 3px;
 }
 

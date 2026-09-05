@@ -3,7 +3,7 @@ import { NavigationButton } from "@/components/navigation";
 
 export function EventsHero() {
   return (
-    <section className="figma-hero !min-h-[100svh] !pb-20 !pt-[150px] sm:!pt-[164px]" aria-labelledby="events-hero-heading">
+    <section className="figma-hero kbc-page-hero-offset !min-h-[100svh] !pb-20" aria-labelledby="events-hero-heading">
       <div className="figma-shell figma-hero__grid">
         <div className="figma-hero__copy flex flex-col items-center text-center sm:block sm:text-left">
           <p className="figma-hero__eyebrow !mx-auto !text-xs !font-bold !leading-5 !tracking-widest sm:!ml-0 sm:!mr-0">Events</p>
