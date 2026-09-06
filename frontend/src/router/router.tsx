@@ -1,5 +1,5 @@
 import { lazy } from "react";
-import { createBrowserRouter, Navigate } from "react-router-dom";
+import { createBrowserRouter, Navigate, redirect } from "react-router-dom";
 
 import { MainLayout } from "@/components/layout/MainLayout";
 
@@ -45,6 +45,7 @@ const StoriesPage = lazy(() => import("@/pages/StoriesPage/page"));
 const StoryDetailPage = lazy(() => import("@/pages/StoryDetailPage/page"));
 
 export const router = createBrowserRouter([
+  { path: "/about", element: <AboutPage /> },
   { path: "/", element: <MainLayout />, children: [
     { index: true, element: <HomePage /> },
     { path: "learners", element: <LearnersHomePage /> },
@@ -82,8 +83,10 @@ export const router = createBrowserRouter([
     { path: "our-experts", element: <PeoplePage /> },
     { path: "our-experts/:expertSlug", element: <ExpertDetailPage /> },
     { path: "star-learners", element: <StoriesPage /> },
-    { path: "stories", element: <StoriesPage /> },
-    { path: "stories/:storySlug", element: <StoryDetailPage /> },
+    { path: "case-studies", element: <StoriesPage /> },
+    { path: "case-studies/:storySlug", element: <StoryDetailPage /> },
+    { path: "stories", loader: () => redirect("/case-studies") },
+    { path: "stories/:storySlug", loader: ({ params }) => redirect(`/case-studies/${params.storySlug || ""}`) },
     { path: "apprentices/stories", element: <ApprenticeStoriesPage /> },
     { path: "apprentices/stories/:storySlug", element: <ApprenticeStoryDetailPage /> },
     { path: "blog", element: <BlogPage /> },
@@ -107,7 +110,6 @@ export const router = createBrowserRouter([
     { path: "cookies", element: <ContentPage slug="cookie-policy" /> },
     { path: "book-session", element: <BookConsultationPage /> },
     { path: "book-consultation", element: <BookConsultationPage /> },
-    { path: "about", element: <AboutPage /> },
     { path: "faq", element: <InformationPage kind="faq" /> },
     { path: "our-partners", element: <InformationPage kind="partners" /> },
     { path: "governance-board", element: <InformationPage kind="governance" /> },

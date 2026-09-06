@@ -67,7 +67,7 @@ export function FigmaUpcomingEventsSection() {
         <div className="mb-10 lg:mb-14">
           <FigmaSectionHeading
             id="home-upcoming-events-title"
-            eyebrow="What's on"
+            eyebrow="Upcoming Events"
             title={<>Upcoming events,<br />all in one place.</>}
             description="Explore the next workshops, information sessions and professional events from Kent Business College."
             align="center"

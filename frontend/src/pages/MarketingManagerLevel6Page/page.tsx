@@ -4,7 +4,6 @@ import {
   BarChart3,
   BrainCircuit,
   Check,
-  ChevronDown,
   CircleCheck,
   LineChart,
   ShieldCheck,
@@ -13,6 +12,7 @@ import {
   Users,
 } from "lucide-react";
 
+import { FaqSection } from "@/components/common/FaqSection";
 import { NavigationButton } from "@/components/navigation";
 import { RouteMeta } from "@/components/seo/RouteMeta";
 
@@ -134,7 +134,6 @@ function SectionIntro({ eyebrow, title, body, light = false }: { eyebrow: string
 export default function MarketingManagerLevel6Page() {
   const [activeCurriculum, setActiveCurriculum] = useState(0);
   const [checkedEligibility, setCheckedEligibility] = useState<number[]>([]);
-  const [openFaq, setOpenFaq] = useState<number | null>(0);
   const currentCurriculum = curriculum[activeCurriculum];
   const matchLabel = useMemo(() => `${checkedEligibility.length} of ${eligibility.length} matched`, [checkedEligibility]);
 
@@ -299,12 +298,14 @@ export default function MarketingManagerLevel6Page() {
         </div>
       </section>
 
-      <section className="mm6-section" id="faq">
-        <div className="mm6-shell mm6-faq">
-          <div><SectionIntro eyebrow="Programme questions" title="Clarity before commitment." body="The final offer should clearly distinguish the apprenticeship, CIM qualification route, funding eligibility and professional progression." /><NavigationButton to="#eligibility" variant="primary">Check eligibility</NavigationButton></div>
-          <div>{faqs.map(([question, answer], index) => <article className={openFaq === index ? "is-open" : ""} key={question}><button aria-expanded={openFaq === index} onClick={() => setOpenFaq(openFaq === index ? null : index)} type="button"><span>{question}</span><ChevronDown /></button>{openFaq === index && <p>{answer}</p>}</article>)}</div>
-        </div>
-      </section>
+      <FaqSection
+        id="faq"
+        eyebrow="Programme questions"
+        title="Clarity before commitment."
+        description="The final offer should clearly distinguish the apprenticeship, CIM qualification route, funding eligibility and professional progression."
+        items={faqs}
+        action={<NavigationButton to="#eligibility" variant="primary">Check eligibility</NavigationButton>}
+      />
 
       <section className="mm6-final">
         <div className="mm6-shell"><p className="mm6-eyebrow mm6-eyebrow--gold">Move from execution to strategic influence</p><h2>Build the marketing leader your organisation needs next.</h2><p>Discuss the role, strategic development needs, CIM route and likely funding position with Kent Business College.</p><div className="mm6-actions"><NavigationButton to="/eligibility" variant="marketing">Check eligibility <ArrowRight /></NavigationButton><NavigationButton to="/book-session" variant="marketingInverse">Book an information session</NavigationButton></div></div>

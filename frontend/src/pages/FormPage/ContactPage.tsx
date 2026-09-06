@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import {
-  ChevronDown,
   Clock3,
   GraduationCap,
   Laptop,
@@ -12,6 +11,7 @@ import {
   Wrench,
 } from "lucide-react";
 
+import { FaqSection } from "@/components/common/FaqSection";
 import { RouteMeta } from "@/components/seo/RouteMeta";
 
 const zohoContactFormUrl =
@@ -121,7 +121,6 @@ function ContactEyebrow({ children, inverse = false }: { children: string; inver
 
 export function ContactPage() {
   const [contactFormHeight, setContactFormHeight] = useState(600);
-  const [activeFaq, setActiveFaq] = useState(0);
 
   useEffect(() => {
     const resizeContactForm = (event: MessageEvent) => {
@@ -262,36 +261,7 @@ export function ContactPage() {
         </div>
       </section>
 
-      <section className="bg-white px-5 py-20 sm:px-8 sm:py-24 lg:px-12" aria-labelledby="contact-faq-heading">
-        <div className="mx-auto max-w-[1000px]">
-          <div className="mx-auto flex max-w-2xl flex-col items-center text-center">
-            <ContactEyebrow>Quick answers</ContactEyebrow>
-            <h2 id="contact-faq-heading" className="mt-6 !font-['Poppins',sans-serif] text-4xl font-semibold leading-tight !text-[#401B8C] sm:text-5xl">Frequently Asked Questions</h2>
-          </div>
-
-          <div className="mt-12 divide-y divide-primary/10 border-y border-primary/10">
-            {contactFaqs.map(({ question, answer }, index) => {
-              const isOpen = activeFaq === index;
-              return (
-                <div key={question}>
-                  <button
-                    className="flex w-full items-center justify-between gap-6 py-6 text-left !font-['Poppins',sans-serif] text-lg font-semibold text-[#401B8C] transition hover:text-primary-dark"
-                    type="button"
-                    aria-expanded={isOpen}
-                    onClick={() => setActiveFaq(isOpen ? -1 : index)}
-                  >
-                    <span>{question}</span>
-                    <ChevronDown className={`h-5 w-5 shrink-0 !text-[#401B8C] transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`} aria-hidden="true" />
-                  </button>
-                  <div className={`grid transition-[grid-template-rows,opacity] duration-300 ${isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
-                    <div className="overflow-hidden"><p className="max-w-3xl pb-6 text-sm leading-7 text-[#401B8C] sm:text-base">{answer}</p></div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+      <FaqSection id="contact-faq" eyebrow="Quick answers" title="Frequently Asked Questions" items={contactFaqs} />
 
       <section className="bg-[var(--color-soft)] px-5 py-20 sm:px-8 sm:py-24 lg:px-12" aria-labelledby="additional-contact-heading">
         <div className="mx-auto max-w-[1200px]">

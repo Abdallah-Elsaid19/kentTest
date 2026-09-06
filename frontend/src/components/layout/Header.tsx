@@ -31,7 +31,7 @@ const menuCopy: Record<string, { eyebrow: string; title: string; description: st
   Colleges: {
     eyebrow: "Colleges",
     title: "Explore Our Colleges",
-    description: "Discover specialist colleges in Project Management, Project Controls, Marketing and Leadership.",
+    description: "Discover specialist colleges in Project Management & Controls and Marketing.",
     image: "/assets/images/header-menus/colleges.jpg",
     imageAlt: "Kent Business College campus",
   },
@@ -244,7 +244,7 @@ export function Header() {
     </div>
   );
 
-  const startsSolid = ["/contact", "/support", "/employer-agreement"].includes(location.pathname);
+  const startsSolid = ["/about", "/contact", "/support", "/employer-agreement"].includes(location.pathname);
   const showSolidHeader = isScrolled || startsSolid;
   const useLightLogo = !showSolidHeader;
   const splitIndex = Math.ceil(primaryNavigation.length / 2);

@@ -20,7 +20,7 @@ export function WorkplaceStorySection() {
             <li><Check aria-hidden="true" />Structured professional reflection</li>
             <li><Check aria-hidden="true" />Learning connected to workplace practice</li>
           </ul>
-          <NavigationButton className="figma-btn figma-btn--gold" to="/stories">Explore learner stories <ArrowRight aria-hidden="true" /></NavigationButton>
+          <NavigationButton className="figma-btn figma-btn--gold" to="/case-studies">Explore learner stories <ArrowRight aria-hidden="true" /></NavigationButton>
         </article>
       </div>
     </section>

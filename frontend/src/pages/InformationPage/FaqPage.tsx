@@ -1,5 +1,6 @@
-import { Minus, Plus, Search } from "lucide-react";
+import { Search } from "lucide-react";
 import { useMemo, useState } from "react";
+import { FaqAccordion } from "@/components/common/FaqSection";
 import { NavigationButton } from "@/components/navigation";
 import { RouteMeta } from "@/components/seo/RouteMeta";
 
@@ -134,7 +135,6 @@ const faqItems: FaqItem[] = [
 export function FaqPage() {
   const [activeCategory, setActiveCategory] = useState<(typeof categories)[number]>("All questions");
   const [search, setSearch] = useState("");
-  const [openId, setOpenId] = useState<string>(faqItems[0].id);
 
   const visibleItems = useMemo(() => {
     const query = search.trim().toLowerCase();
@@ -172,7 +172,7 @@ export function FaqPage() {
                 type="button"
                 key={category}
                 aria-pressed={activeCategory === category}
-                onClick={() => { setActiveCategory(category); setOpenId(""); }}
+                onClick={() => setActiveCategory(category)}
               >
                 {category}
               </button>
@@ -186,24 +186,7 @@ export function FaqPage() {
             </div>
 
             {visibleItems.length ? (
-              <div className="divide-y divide-kbc-purple-950/10 border-y border-kbc-purple-950/10">
-                {visibleItems.map((item) => {
-                  const isOpen = openId === item.id;
-                  return (
-                    <article key={item.id}>
-                      <button className="flex w-full items-center justify-between gap-5 py-5 text-left sm:py-6" type="button" aria-expanded={isOpen} aria-controls={`${item.id}-answer`} onClick={() => setOpenId(isOpen ? "" : item.id)}>
-                        <span className={`text-base font-semibold leading-6 transition-colors sm:text-lg ${isOpen ? "text-[#401B8C]" : "text-kbc-purple-950"}`}>{item.question}</span>
-                        <span className={`grid h-8 w-8 shrink-0 place-items-center rounded-full transition ${isOpen ? "bg-[#401B8C] text-white" : "bg-kbc-purple-50 text-[#401B8C]"}`}>
-                          {isOpen ? <Minus className="h-4 w-4" aria-hidden="true" /> : <Plus className="h-4 w-4" aria-hidden="true" />}
-                        </span>
-                      </button>
-                      <div className={`grid transition-[grid-template-rows,opacity] duration-300 ease-out ${isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`} id={`${item.id}-answer`}>
-                        <div className="overflow-hidden"><p className="max-w-3xl pb-6 pr-10 text-sm leading-7 text-kbc-dark-600 sm:text-base sm:leading-8">{item.answer}</p></div>
-                      </div>
-                    </article>
-                  );
-                })}
-              </div>
+              <FaqAccordion items={visibleItems} idPrefix="faq-page" />
             ) : (
               <div className="rounded-xl border border-dashed border-[#401B8C]/25 bg-kbc-purple-50 p-10 text-center"><h2 className="text-2xl text-kbc-purple-950">No matching questions</h2><p className="mt-2 text-sm text-kbc-dark-500">Try another phrase or choose a different category.</p></div>
             )}

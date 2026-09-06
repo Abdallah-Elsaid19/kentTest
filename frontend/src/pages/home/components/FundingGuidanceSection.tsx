@@ -3,25 +3,26 @@ import { ArrowRight, ArrowUpRight } from "lucide-react";
 
 export function FundingGuidanceSection() {
   return (
-    <section className="figma-funding !py-16 sm:!py-20 xl:!py-[118px]" id="funding" aria-labelledby="funding-title">
-      <div className="figma-shell">
-        <div className="figma-funding__card relative isolate !min-h-0 !grid-cols-1 !gap-8 !overflow-hidden !p-6 sm:!p-10 lg:!grid-cols-[1fr_auto] lg:!items-end xl:!p-14">
+    <section className="bg-white py-16 sm:py-20 lg:py-28" id="funding" aria-labelledby="funding-title">
+      <div className="mx-auto w-full max-w-[1240px] px-5 sm:px-8 lg:px-10">
+        <div className="relative isolate grid overflow-hidden rounded-[1.75rem] bg-[#25103F] p-7 text-white shadow-[0_24px_70px_rgba(36,13,68,0.2)] sm:p-10 lg:grid-cols-[1fr_340px] lg:items-end lg:gap-16 lg:p-14">
+          <div className="pointer-events-none absolute inset-0 -z-20 bg-[radial-gradient(circle_at_90%_25%,rgba(96,43,190,0.6),transparent_35%)]" aria-hidden="true" />
           <img
-            className="pointer-events-none absolute -bottom-36 -left-28 z-0 hidden w-[clamp(430px,48vw,680px)] select-none opacity-[0.065] sm:block"
+            className="pointer-events-none absolute -bottom-40 -right-24 -z-10 hidden w-[560px] select-none opacity-[0.07] md:block"
             src="/assets/patterns/kbc-horse-growth.png"
             alt=""
             aria-hidden="true"
           />
-          <div className="relative z-10">
-            <span className="!text-xs !font-bold !leading-5 !tracking-widest !uppercase">Your next step</span>
-            <h2 className="!text-4xl !font-semibold !leading-none !tracking-tight sm:!text-5xl xl:!text-6xl" id="funding-title">Ready to build what comes{"\u00A0"}next?</h2>
-            <p className="!text-sm !leading-relaxed sm:!text-base">Find the professional programme, funding route or development option that fits you or your organisation.</p>
+          <div>
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#F5C94F]">Your next step</p>
+            <h2 className="mt-5 max-w-[760px] text-4xl font-semibold leading-[1.02] tracking-[-0.04em] text-white sm:text-5xl lg:text-6xl" id="funding-title">Ready to build what comes{"\u00A0"}next?</h2>
+            <p className="mt-6 max-w-[720px] text-sm leading-7 text-white/65 sm:text-base">Find the professional programme, funding route or development option that fits you or your organisation.</p>
             <small className="mt-8 block text-xs leading-relaxed text-white/50 sm:text-sm">For professionals and employers · Funding subject to eligibility and availability</small>
           </div>
-          <div className="relative z-10 !min-w-0 sm:!min-w-[320px]">
-            <NavigationButton className="figma-btn figma-btn--gold !w-full !justify-between" to="#programmes" variant="accent">Find your programme <ArrowRight aria-hidden="true" /></NavigationButton>
-            <NavigationButton className="figma-btn figma-btn--ghost !w-full !justify-between" to="/book-session" variant="inverse">Book an information session <ArrowUpRight aria-hidden="true" /></NavigationButton>
-            <ArrowLink className="!w-full !justify-between !px-5 !text-sm !font-semibold !leading-5" to="/eligibility" direction="up-right" tone="inverse">Check eligibility &amp; funding</ArrowLink>
+          <div className="mt-9 grid gap-3 lg:mt-0">
+            <NavigationButton className="w-full justify-between px-6" to="#programmes" variant="accent">Find your programme <ArrowRight className="size-4" aria-hidden="true" /></NavigationButton>
+            <NavigationButton className="w-full justify-between px-6" to="/book-session" variant="inverse">Book an information session <ArrowUpRight className="size-4" aria-hidden="true" /></NavigationButton>
+            <ArrowLink className="w-full justify-between px-6 py-3 text-sm font-semibold" to="/eligibility" direction="up-right" tone="inverse">Check eligibility &amp; funding</ArrowLink>
           </div>
         </div>
       </div>

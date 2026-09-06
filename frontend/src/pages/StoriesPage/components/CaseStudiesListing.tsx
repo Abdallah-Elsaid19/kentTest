@@ -4,7 +4,7 @@ import { NavigationButton } from "@/components/navigation";
 import { FigmaSectionHeading } from "@/components/ui/FigmaSectionHeading";
 import type { DisplayStory } from "../data";
 
-function StoryCard({ story }: { story: DisplayStory }) {
+export function StoryCard({ story }: { story: DisplayStory }) {
   const [showDescription, setShowDescription] = useState(false);
 
   return (

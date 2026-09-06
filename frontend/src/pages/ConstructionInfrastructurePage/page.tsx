@@ -1,7 +1,8 @@
-import { ArrowRight, Check, ChevronDown, Gauge, Network, Sparkles } from "lucide-react";
+import { ArrowRight, Check, Gauge, Network, Sparkles } from "lucide-react";
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 
+import { FaqSection } from "@/components/common/FaqSection";
 import { NavigationButton } from "@/components/navigation";
 import { RouteMeta } from "@/components/seo/RouteMeta";
 
@@ -63,7 +64,6 @@ const faqs = [
 export default function ConstructionInfrastructurePage() {
   const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
   const [answers, setAnswers] = useState<Record<number, string>>({});
-  const [openFaq, setOpenFaq] = useState<string | null>(null);
 
   const eligibilityResult = useMemo(() => {
     const values = Object.values(answers);
@@ -127,7 +127,7 @@ export default function ConstructionInfrastructurePage() {
 
       <section className={`${section} bg-[#edf6f5]`}><div className={`${shell} grid grid-cols-[.8fr_1.2fr] items-center gap-16 max-[800px]:grid-cols-1`}><div><p className={eyebrow}>Earlier in your project-management career?</p><h2 className={heading}>Explore the Associate Project Management Pathway.</h2><p className="mt-6 text-sm leading-7 text-kbc-purple-700">A focused three-credit route combining PMP development (2 credits) with the AI in Project Controls Certificate (1 credit). Commercial instalments may be available for up to 24 months; funded and bursary terms are assessed separately.</p><NavigationButton className="mt-7" to="/associate-project-manager-level-4">Explore the entry pathway</NavigationButton></div><div className="grid grid-cols-2 gap-4 rounded-[24px] bg-white p-6 shadow-lg"><div className="col-span-2 rounded-xl bg-kbc-purple-950 p-6 text-white"><b className="font-['Source_Serif_4',Georgia,serif] text-5xl text-kbc-gold-500">3 credits</b></div>{["PMP · 2 credits", "AI in Project Controls · 1 credit", "Up to 24 months instalments"].map(x=><div className="rounded-xl bg-kbc-purple-50 p-5 text-sm font-semibold" key={x}>{x}</div>)}</div></div></section>
 
-      <section className={section}><div className={`${shell} grid grid-cols-[.65fr_1.35fr] gap-16 max-[800px]:grid-cols-1`}><div><p className={eyebrow}>Practical answers</p><h2 className={heading}>Questions before you enquire.</h2><p className="mt-6 text-sm leading-7 text-kbc-purple-700">The final pathway, module mix, access route, fees and professional outcomes are confirmed through a written KBC assessment.</p></div><div className="grid gap-3">{faqs.map(([q,a])=><article className="rounded-xl border border-kbc-purple-100" key={q}><button aria-expanded={openFaq===q} className="flex w-full items-center justify-between gap-5 p-5 text-left text-sm font-semibold" onClick={()=>setOpenFaq(openFaq===q?null:q)} type="button">{q}<ChevronDown className={`shrink-0 transition ${openFaq===q?"rotate-180":""}`} size={18}/></button>{openFaq===q&&<p className="border-t border-kbc-purple-100 px-5 py-5 text-xs leading-6 text-kbc-purple-700">{a}</p>}</article>)}</div></div></section>
+      <FaqSection id="construction-faq" eyebrow="Practical answers" title="Questions before you enquire." description="The final pathway, module mix, access route, fees and professional outcomes are confirmed through a written KBC assessment." items={faqs} />
 
       <section className="bg-kbc-purple-950 py-24 text-center text-white"><div className={`${shell} flex flex-col items-center`}><p className="text-[11px] font-bold uppercase tracking-[.16em] text-kbc-gold-500">Next step</p><h2 className="mt-5 max-w-[850px] font-['Source_Serif_4',Georgia,serif] text-[clamp(44px,5vw,68px)] font-semibold leading-[1.01] tracking-[-.045em] text-white">Choose your pathway. Check your access route.</h2><p className="mt-6 max-w-[760px] text-sm leading-7 text-white/65">Complete a short assessment to identify the most suitable professional pathway and determine whether the Department for Education Funded Route or IPC Bursary Route may fit your circumstances.</p><div className="mt-8 flex flex-wrap justify-center gap-3"><NavigationButton to="#eligibility" variant="projectControls">Check my eligibility <ArrowRight size={17}/></NavigationButton><NavigationButton to="/book-session" variant="projectControlsInverse">Book an information session</NavigationButton></div></div></section>
     </div>

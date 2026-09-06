@@ -9,7 +9,7 @@ export function CaseStudiesSection() {
       <div className="kbc-container">
         <div className="kbc-heading-row">
           <SectionHeading eyebrow="Learners" title="Case Study" description="At Kent Business College, we are committed to empowering our learners to achieve their full potential." align="left" />
-          <a className="kbc-arrow-link" href="/stories">View all Case Study <ArrowRight size={18} aria-hidden="true" /></a>
+          <a className="kbc-arrow-link" href="/case-studies">View all Case Study <ArrowRight size={18} aria-hidden="true" /></a>
         </div>
         <div className="kbc-case-grid">
           {caseStudies.map((study) => (

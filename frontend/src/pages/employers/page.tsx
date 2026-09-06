@@ -1,5 +1,7 @@
 import { RouteMeta } from "@/components/seo/RouteMeta";
 import { KbcExperienceSection } from "../home/components/KbcExperienceSection";
+import { RecognitionStandardsSection } from "../home/components/RecognitionStandardsSection";
+import { TrustedOrganisations } from "../home/components/TrustedOrganisations";
 import { LearnerAudienceSection } from "./components/LearnerAudienceSection";
 import { LearnerFaqSection } from "./components/LearnerFaqSection";
 import { LearnerFinalCta } from "./components/LearnerFinalCta";
@@ -7,11 +9,9 @@ import { LearnerFundingSection } from "./components/LearnerFundingSection";
 import { LearnerHeroSection } from "./components/LearnerHeroSection";
 import { LearnerHowSection } from "./components/LearnerHowSection";
 import { LearnerProgrammesSection } from "./components/LearnerProgrammesSection";
-import { LearnerRecognitionSection } from "./components/LearnerRecognitionSection";
 import { LearnerReviewsSection } from "./components/LearnerReviewsSection";
 import { LearnerStorySection } from "./components/LearnerStorySection";
 import { LearnerSupportSection } from "./components/LearnerSupportSection";
-import { LearnerTrustedSection } from "./components/LearnerTrustedSection";
 
 export default function EmployersHomePage() {
   return (
@@ -31,8 +31,10 @@ export default function EmployersHomePage() {
       </div>
       <LearnerStorySection />
       <LearnerReviewsSection />
-      <LearnerRecognitionSection />
-      <LearnerTrustedSection />
+      <div className="kbc-figma-home">
+        <RecognitionStandardsSection />
+        <TrustedOrganisations />
+      </div>
       <LearnerFaqSection />
       <LearnerFinalCta />
     </div>

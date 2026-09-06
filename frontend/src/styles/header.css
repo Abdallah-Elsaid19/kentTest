@@ -52,8 +52,7 @@
 
 .kbc-readdy-header.is-solid .kbc-readdy-header__main {
   border-color: #e7e0ea;
-  background: rgba(255, 255, 255, .97);
-  backdrop-filter: blur(14px);
+  background: #fff;
 }
 
 .kbc-readdy-header__inner {
@@ -166,16 +165,16 @@
 .kbc-readdy-header__nav-link::after {
   position: absolute;
   bottom: 1px;
-  left: -14%;
-  width: 128%;
-  height: 10px;
+  left: 50%;
+  width: min(190px, calc(100% + 24px));
+  height: 11px;
   border-top: 1.5px solid currentColor;
   border-radius: 50% 50% 0 0;
   content: "";
   opacity: 0;
   pointer-events: none;
-  transform: scaleX(0);
-  transform-origin: left center;
+  transform: translateX(-50%) scaleX(0);
+  transform-origin: center;
   transition: opacity .2s ease, transform .45s cubic-bezier(.22, 1, .36, 1);
 }
 
@@ -184,7 +183,7 @@
 .kbc-readdy-header__nav-link.is-active::after,
 .kbc-readdy-header__nav-link[aria-expanded="true"]::after {
   opacity: 1;
-  transform: scaleX(1);
+  transform: translateX(-50%) scaleX(1);
 }
 
 .kbc-readdy-header__actions {

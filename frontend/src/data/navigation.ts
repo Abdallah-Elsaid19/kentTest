@@ -9,10 +9,8 @@ export const primaryNavigation: NavItem[] = [
   {
     label: "Colleges",
     children: [
-      { label: "Project Management", href: "/college-of-project-management" },
-      { label: "Project Controls", href: "/project-controls-professional-level-6" },
+      { label: "Project Management & Controls", href: "/project-controls-professional-level-6" },
       { label: "Marketing", href: "/college-of-marketing" },
-      { label: "Leadership", href: "/college-of-leadership" },
     ],
   },
   {
@@ -36,7 +34,7 @@ export const primaryNavigation: NavItem[] = [
   {
     label: "Resources",
     children: [
-      { label: "Case Studies", href: "/stories" },
+      { label: "Case Studies", href: "/case-studies" },
       { label: "Events & Webinars", href: "/events" },
       { label: "Textbooks & Materials", href: "/support" },
       { label: "News & Blog", href: "/blog" },

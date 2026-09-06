@@ -8,7 +8,7 @@ export function MainLayout() {
     <div className="kbc-site">
       <SkipLink />
       <Header />
-      <main id="main-content">
+      <main id="main-content" className="relative z-[2] bg-[var(--color-surface)]">
         <Outlet />
       </main>
       <Footer />
