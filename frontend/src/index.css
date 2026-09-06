@@ -10,8 +10,8 @@
 @layer base {
 :root {
   color-scheme: light;
-  --color-primary: #4B176D;
-  --color-primary-dark: #371050;
+  --color-primary: #401B8C;
+  --color-primary-dark: #2F1468;
   --color-purple-deep: #4f2d7f;
   --color-accent: #b07822;
   --color-gold: #f5c94f;
@@ -79,7 +79,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
 .kbc-button { display: inline-flex; min-height: 50px; align-items: center; justify-content: center; gap: 10px; padding: 12px 22px; border: 1px solid transparent; border-radius: 7px; font-size: 13px; font-weight: 600; line-height: 1.2; transition: transform .25s ease, background .25s ease, color .25s ease, box-shadow .25s ease; }
 .kbc-button:hover { transform: translateY(-3px); }
-.kbc-button--primary { background: var(--color-primary); color: white; box-shadow: 0 10px 28px rgba(75, 23, 109, .24); }
+.kbc-button--primary { background: var(--color-primary); color: white; box-shadow: 0 10px 28px rgba(64, 27, 140, .24); }
 .kbc-button--primary:hover { background: var(--color-primary-dark); color: white; }
 .kbc-button--light { background: white; color: var(--color-ink); }
 .kbc-button--light:hover { background: var(--color-gold); }
@@ -111,6 +111,22 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .kbc-mega-menu--wide .kbc-mega-menu__links { grid-template-columns: repeat(2, 1fr); column-gap: 16px; }
 .kbc-mega-menu__links a { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; padding: 9px 10px; border-radius: 7px; color: #4f4857; font-size: 11px; line-height: 1.5; }
 .kbc-mega-menu__links a:hover { background: var(--color-soft); color: var(--color-primary); }
+.kbc-colleges-menu { position: fixed; top: 108px; left: 50vw; display: grid; width: min(1120px, calc(100vw - 48px)); grid-template-columns: 250px minmax(0, 1fr); overflow: hidden; padding: 0; transform: translateX(-50%); border-color: rgba(64,27,140,.16); border-radius: 20px; box-shadow: 0 28px 75px rgba(30,9,43,.2); }
+.figma-header.is-scrolled .kbc-colleges-menu { top: 73px; }
+.kbc-colleges-menu__intro { display: flex; min-height: 320px; flex-direction: column; align-items: flex-start; padding: 36px 30px; background: #32123e; color: white; }
+.kbc-colleges-menu__intro > span { color: #e4bd52; font-size: 10px; font-weight: 800; letter-spacing: .2em; text-transform: uppercase; }
+.kbc-colleges-menu__intro h2 { margin-top: 18px; color: white; font-family: "Source Serif 4", Georgia, serif; font-size: 34px; font-weight: 600; line-height: 1; }
+.kbc-colleges-menu__intro p { max-width: 175px; margin-top: 20px; color: rgba(255,255,255,.75); font-size: 12px; font-weight: 500; line-height: 1.7; }
+.kbc-colleges-menu__intro a { display: inline-flex; align-items: center; gap: 9px; margin-top: auto; color: white !important; font-size: 12px !important; font-weight: 700; opacity: 1 !important; }
+.kbc-colleges-menu__intro a:hover { color: #e4bd52 !important; }
+.kbc-colleges-menu__groups { display: grid; min-width: 0; grid-template-columns: .9fr .9fr 1.35fr; background: white; }
+.kbc-colleges-menu__group { min-width: 0; padding: 34px 25px; border-left: 1px solid #ebe6ee; }
+.kbc-colleges-menu__group h3 { color: #2d1a32; font-family: "Source Serif 4", Georgia, serif; font-size: 19px; font-weight: 650; line-height: 1.25; }
+.kbc-colleges-menu__group > p { min-height: 54px; margin-top: 10px; color: #746d79; font-size: 11px; line-height: 1.65; }
+.kbc-colleges-menu__links { display: grid; gap: 3px; margin-top: 13px; }
+.kbc-colleges-menu__group.is-leadership .kbc-colleges-menu__links { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 18px; }
+.figma-header.is-reference-nav .kbc-colleges-menu__links a { display: block; min-width: 0; padding: 7px 8px; border-radius: 7px; color: #514958; font-family: "DM Sans", Poppins, Arial, sans-serif; font-size: 11px; font-weight: 650; line-height: 1.45; opacity: 1; }
+.figma-header.is-reference-nav .kbc-colleges-menu__links a:hover { background: #f7f3f8; color: var(--color-primary); }
 .kbc-header__actions { display: flex; flex: 0 0 auto; align-items: center; gap: 10px; }
 .kbc-header__apply { min-height: 43px; padding-inline: 17px; }
 .kbc-menu-toggle { display: none; width: 44px; height: 44px; place-items: center; border: 1px solid #e6e0ee; border-radius: 8px; background: white; color: var(--color-ink); }
@@ -917,11 +933,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .kbc-footer__bottom > div { flex-direction: column; align-items: flex-start; justify-content: center; padding-block: 15px; }
 }
 
-/* Scroll entrance motion inspired by the reference's fadeInUp treatment. */
-.kbc-scroll-reveal { opacity: 0; translate: 0 40px; transition: opacity .85s ease var(--kbc-reveal-delay, 0ms), translate .85s cubic-bezier(.22, 1, .36, 1) var(--kbc-reveal-delay, 0ms); will-change: opacity, translate; }
-.kbc-scroll-reveal.is-revealed { opacity: 1; translate: 0 0; }
-
-/* Keep card hover motion separate from the scroll reveal so both stay smooth. */
+/* Card hover motion. */
 .kbc-college-card, .kbc-programme-card, .kbc-benefit-card, .kbc-achiever-card, .kbc-case-card, .kbc-help-card, .kbc-event-card, .kbc-testimonial-card { transition: transform .48s cubic-bezier(.22, 1, .36, 1), box-shadow .48s ease, border-color .35s ease; }
 .kbc-achiever-card > img, .kbc-case-card__image img { transition: transform .58s cubic-bezier(.22, 1, .36, 1); }
 
@@ -934,5 +946,4 @@ button, a { -webkit-tap-highlight-color: transparent; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
   .kbc-logo-marquee__track { animation: none; }
-  .kbc-scroll-reveal { opacity: 1; translate: none; }
 }

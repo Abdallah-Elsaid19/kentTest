@@ -1,5 +1,5 @@
 .event-countdown {
-  --countdown-primary: var(--color-primary, #371347);
+  --countdown-primary: var(--color-primary, #2F1468);
   --countdown-accent: var(--event-gold, #f5c94f);
   width: fit-content;
   max-width: 100%;

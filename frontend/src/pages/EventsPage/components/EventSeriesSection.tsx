@@ -11,7 +11,7 @@ export function EventSeriesSection() {
   return (
     <section className="events-series" aria-labelledby="event-series-title">
       <div className="figma-shell">
-        <FigmaSectionHeading id="event-series-title" eyebrow="Flagship event programme" title="Kent Professional Event Series" description="Practical events designed to connect professional learning with real workplace challenges across project management, project controls, marketing and leadership." />
+        <FigmaSectionHeading id="event-series-title" eyebrow="Flagship event programme" title="Kent Professional Event Series" description="Practical events designed to connect professional learning with real workplace challenges across project management, project controls, marketing and leadership." align="left" />
         <div className="events-series__grid">
           {blocks.map((block) => (
             <div className="events-series__block" key={block.label}>

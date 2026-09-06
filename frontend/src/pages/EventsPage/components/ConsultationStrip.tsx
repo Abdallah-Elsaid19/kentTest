@@ -10,7 +10,7 @@ export function ConsultationStrip() {
               <h3 id="events-consultation-title">Not sure which event is right for you?</h3>
               <p>Speak with the Kent Business College team about programmes, eligibility, employer funding and upcoming information sessions.</p>
             </div>
-            <NavigationButton className="figma-btn figma-btn--gold" to="/book-session">Book a consultation</NavigationButton>
+            <NavigationButton className="figma-btn figma-btn--gold" to="/book-session">Book Information Session</NavigationButton>
           </div>
         </div>
       </div>

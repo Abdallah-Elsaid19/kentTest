@@ -1,6 +1,5 @@
 import { ArrowRight, Check, ChevronDown } from "lucide-react";
-import { useState } from "react";
-
+import { FaqSection } from "@/components/common/FaqSection";
 import { NavigationButton } from "@/components/navigation";
 import { IndustrySectorsSection } from "@/components/sections/IndustrySectorsSection";
 import { RouteMeta } from "@/components/seo/RouteMeta";
@@ -54,7 +53,6 @@ const faqs = [
 ];
 
 export default function SectorsPage() {
-  const [openFaq, setOpenFaq] = useState<string | null>(null);
   return <div className="bg-white font-['DM_Sans',sans-serif] text-kbc-purple-950 [&_h1]:font-['Source_Serif_4',Georgia,serif] [&_h2]:font-['Source_Serif_4',Georgia,serif] [&_h3]:font-['Source_Serif_4',Georgia,serif]">
     <RouteMeta fallbackTitle="Public-Sector Project Apprenticeships | Kent Business College" fallbackDescription="Funded Level 4 and Level 6 apprenticeships for public-sector project support, project management, controls and PMO teams." />
 
@@ -86,7 +84,7 @@ export default function SectorsPage() {
 
     <section className={`${section} bg-kbc-gold-50`} id="career-guide"><div className={`${shell} grid grid-cols-[0.65fr_1.35fr] items-center gap-14 max-[800px]:grid-cols-1`}><div className="overflow-hidden rounded-2xl bg-kbc-purple-950 p-5"><img className="h-[390px] w-full rounded-xl object-cover" src="/assets/images/sectors/public-sector-employer-journey.jpg" alt="Public-Sector Project Controls Career and Interview Guide" /></div><div><p className={eyebrow}>Free 2026 career resource</p><h2 className={heading}>Public-Sector Project Controls Career and Interview Guide.</h2><p className="mt-5 text-kbc-purple-700">Explore role progression, responsibilities, salary benchmarks, public-project governance context and senior interview themes.</p><div className="mt-7 grid grid-cols-2 gap-3 max-[520px]:grid-cols-1">{["Project-controls role progression", "Planning, cost, risk and reporting", "Public-sector governance frameworks", "Senior interview preparation"].map((item) => <div className="flex items-center gap-3 rounded-xl bg-white p-4 text-sm shadow-sm" key={item}><Check className="h-4 w-4 text-kbc-purple-600" />{item}</div>)}</div><NavigationButton className="mt-7" to="/book-session">Discuss an apprenticeship pathway</NavigationButton></div></div></section>
 
-    <section className={`${section} bg-kbc-purple-50`}><div className={`${shell} max-w-[900px]`}><div className="text-center"><p className={`${eyebrow} justify-center before:hidden`}>Employer questions</p><h2 className={heading}>Questions before you enquire.</h2></div><div className="mt-10 grid gap-3">{faqs.map(([question, answer]) => <article className="overflow-hidden rounded-xl border border-kbc-purple-100 bg-white" key={question}><button aria-expanded={openFaq === question} className="flex w-full items-center justify-between gap-5 p-5 text-left text-sm font-bold" onClick={() => setOpenFaq(openFaq === question ? null : question)} type="button">{question}<ChevronDown className={`h-5 w-5 shrink-0 text-kbc-purple-600 transition-transform ${openFaq === question ? "rotate-180" : ""}`} /></button>{openFaq === question && <p className="border-t border-kbc-purple-100 px-5 py-5 text-sm text-kbc-purple-700">{answer}</p>}</article>)}</div></div></section>
+    <FaqSection id="sector-faq" eyebrow="Employer questions" title="Questions before you enquire." items={faqs} />
 
     <section className="bg-gradient-to-br from-kbc-purple-950 via-kbc-purple-900 to-kbc-purple-800 py-24 text-center text-white"><div className={`${shell} flex flex-col items-center`}><p className="text-[10px] font-bold uppercase tracking-[.17em] text-kbc-gold-500">Develop accountable project capability</p><h2 className={`${heading} mt-5 max-w-[900px] text-white`}>Build project teams that can plan, control and explain delivery with confidence.</h2><p className="mt-5 max-w-[720px] text-white/65">Speak with Kent Business College about employee roles, suitable apprenticeship routes, funding eligibility and the next available cohort.</p><div className="mt-8 flex flex-wrap justify-center gap-3"><NavigationButton to="/book-session" variant="projectControls">Book an employer capability review</NavigationButton><NavigationButton to="/eligibility" variant="projectControlsInverse">Check employer eligibility</NavigationButton></div></div></section>
   </div>;

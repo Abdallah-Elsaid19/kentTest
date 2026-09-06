@@ -1,6 +1,7 @@
 import { ArrowRight, Check } from "lucide-react";
 import { useLocation } from "react-router-dom";
 
+import { FaqSection } from "@/components/common/FaqSection";
 import { NavigationButton } from "@/components/navigation";
 import { RouteMeta } from "@/components/seo/RouteMeta";
 
@@ -1009,25 +1010,7 @@ export default function MarketingProgrammePage() {
         </section>
       )}
 
-      <section className={`mp-section ${section}`} id="faq">
-        <div className={`mp-shell mp-faq ${shell} grid grid-cols-[.8fr_1.2fr] gap-20 max-[1080px]:grid-cols-1`}>
-          <div>
-            <p className={`mp-eyebrow ${eyebrow}`}>Programme questions</p>
-            <h2>Clarity before commitment.</h2>
-          </div>
-          <div>
-            {data.faqs.map(([question, answer]) => (
-              <details className="border-b py-5" key={question}>
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-bold">
-                  {question}
-                  <span>+</span>
-                </summary>
-                <p>{answer}</p>
-              </details>
-            ))}
-          </div>
-        </div>
-      </section>
+      <FaqSection id="faq" eyebrow="Programme questions" title="Clarity before commitment." items={data.faqs} />
 
       <section className="mp-cta bg-gradient-to-r from-kbc-purple-800 to-kbc-purple-700 py-20 text-white">
         <div className={`mp-shell ${shell} grid grid-cols-[1.1fr_.9fr] items-end gap-12 max-[1080px]:grid-cols-1`}>

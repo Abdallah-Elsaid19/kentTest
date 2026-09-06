@@ -1,0 +1,2465 @@
+:global(html.lenis),
+:global(html.lenis body) {
+  height: auto;
+}
+
+:global(.lenis:not(.lenis-autoToggle).lenis-stopped) {
+  overflow: clip;
+}
+
+:global(.lenis [data-lenis-prevent]),
+:global(.lenis [data-lenis-prevent-wheel]),
+:global(.lenis [data-lenis-prevent-touch]),
+:global(.lenis [data-lenis-prevent-vertical]),
+:global(.lenis [data-lenis-prevent-horizontal]) {
+  overscroll-behavior: contain;
+}
+
+:global(.lenis.lenis-smooth iframe) {
+  pointer-events: none;
+}
+
+:global(.lenis.lenis-autoToggle) {
+  transition-property: overflow;
+  transition-duration: 1ms;
+  transition-behavior: allow-discrete;
+}
+
+
+/* ==========================================================================
+   Kent Business College — "Who We Are" (3D storytelling concept)
+   Design tokens pulled from KBC brand system.
+   ========================================================================== */
+
+/* Self-hosted fonts (no external CDN dependency) */
+@font-face {
+  font-family: "Playfair Display";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("./assets/fonts/playfair-display-latin-500-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Playfair Display";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("./assets/fonts/playfair-display-latin-600-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Playfair Display";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("./assets/fonts/playfair-display-latin-700-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Playfair Display";
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("./assets/fonts/playfair-display-latin-800-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("./assets/fonts/inter-latin-400-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("./assets/fonts/inter-latin-500-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("./assets/fonts/inter-latin-600-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("./assets/fonts/inter-latin-700-normal.woff2") format("woff2");
+}
+
+:global([data-our-story-page]) {
+  /* Round 11: noticeably lightened per feedback that the brand purple read
+     too close to black — same hue family, meaningfully brighter/lighter
+     (was #6B2FB8). Checked against white text/background usages (the
+     .impact gradient, leader-card photo gradient, .vm__card / .partner-tile
+     text) — contrast still holds up at this lightness. */
+  --purple: #8B5CF6;
+  --purple-rgb: 139, 92, 246;
+  /* Round 16: more vivid/saturated per feedback that the old value
+     (#2A1652) read as a muted, almost-navy dark purple — moved to #2F0B84,
+     same hue family as --purple above (~258°) just darker. Round 17: pushed
+     noticeably LIGHTER again (#2F0B84 -> #6D28D9) per direct follow-up
+     feedback that the whole page should read lighter/more open, purple
+     shades especially — still fully saturated/vivid, just a brighter step
+     of the same hue rather than a heavy near-black-purple. Contrast against
+     white text (.then-now, footer links, etc.) still comfortably clears
+     WCAG AAA (~7.1:1). */
+  --deep-purple: #6D28D9;
+  --deep-purple-rgb: 109, 40, 217;
+  --gold: #C9A24B;
+  --gold-rgb: 201, 162, 75;
+  --lilac: #EDE6FA;
+  --lilac-rgb: 237, 230, 250;
+  --ink: #14091f;
+  --ink-rgb: 20, 9, 31;
+  --white: #ffffff;
+  --off-white: #f7f4fb;
+  --hero-bg: #fcfcfa; /* Round 10: landonorris.com's own background color,
+    sampled directly off their site (rgb(252,252,250)) — used ONLY for the
+    hero (.hero / .hero__inner), per feedback asking for an exact match to
+    their reference. Deliberately a separate token from --off-white (which
+    several other sections still use) rather than repointing --off-white
+    itself, since only the hero was asked to match Lando's site exactly. */
+  --hero-bg-rgb: 252, 252, 250;
+  --hero-gold-light: #e7d3a3; /* Round 9: the pale "light golden yellow" the
+    hero fades to as it collapses — see .hero__inner and initHeroCollapse()
+    in animations/initMain.ts, which crossfades toward this from --hero-bg as the
+    shrink progresses. */
+  --hero-gold-light-rgb: 231, 211, 163;
+
+  --font-display: "Playfair Display", "Georgia", serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  --container: 1200px;
+  --section-pad: clamp(64px, 10vw, 140px);
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+:global([data-our-story-page] *) { margin: 0; padding: 0; box-sizing: border-box; }
+
+:global([data-our-story-page]) { scroll-behavior: smooth; }
+
+:global([data-our-story-page]) {
+  font-family: var(--font-body);
+  background: var(--off-white);
+  color: var(--ink);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+:global([data-our-story-page] img) { max-width: 100%; display: block; }
+
+:global([data-our-story-page] a) { color: inherit; text-decoration: none; }
+
+:global([data-our-story-page] .container) {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+:global([data-our-story-page] .eyebrow) {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--gold);
+}
+:global([data-our-story-page] .eyebrow::before) {
+  content: "";
+  width: 28px;
+  height: 1px;
+  background: var(--gold);
+  display: inline-block;
+}
+
+:global([data-our-story-page] h1), :global([data-our-story-page] h2), :global([data-our-story-page] h3), :global([data-our-story-page] h4) {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+}
+
+:global([data-our-story-page] h2) {
+  font-size: clamp(2.1rem, 4vw, 3.2rem);
+  margin: 14px 0 20px;
+}
+
+:global([data-our-story-page] .section-head) { max-width: 720px; margin-bottom: 56px; }
+:global([data-our-story-page] .section-head p) { color: #5a4d68; font-size: 1.05rem; max-width: 620px; }
+:global([data-our-story-page] .section-head.center) { margin-inline: auto; text-align: center; }
+
+:global([data-our-story-page] section) { position: relative; padding: var(--section-pad) 0; }
+
+/* ---------------------------------- Nav ---------------------------------- */
+
+:global([data-our-story-page] .nav) {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 20px 0;
+  /* Round 9: a soft permanent scrim, not fully transparent — the hero
+     behind it is now cream/off-white (see .hero__inner) rather than dark
+     ink, and the crest/nav links are white, so resting-state nav needs
+     SOME dark backdrop at all times to stay legible, not just after
+     scrolling past .scrolled's threshold. Deliberately lighter than
+     .scrolled below (14% vs. 82% ink) — just enough contrast, not a visible
+     "bar" sitting on top of the hero. */
+  background: rgba(20, 9, 31, 0.14);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transition: background var(--ease) .4s, padding var(--ease) .4s, box-shadow .4s, backdrop-filter var(--ease) .4s;
+}
+:global([data-our-story-page] .nav.scrolled) {
+  background: rgba(20, 9, 31, 0.82);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  padding: 12px 0;
+  box-shadow: 0 10px 30px rgba(0,0,0,.25);
+}
+:global([data-our-story-page] .nav .container) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+:global([data-our-story-page] .nav__brand) { display: flex; align-items: center; gap: 10px; }
+:global([data-our-story-page] .nav__brand img) { height: 40px; width: auto; }
+:global([data-our-story-page] .nav__brand span) {
+  font-family: var(--font-display);
+  color: var(--white);
+  font-size: 1.05rem;
+  letter-spacing: .01em;
+}
+:global([data-our-story-page] .nav__links) {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+:global([data-our-story-page] .nav__links a) {
+  color: rgba(255,255,255,.82);
+  font-size: .92rem;
+  font-weight: 500;
+  position: relative;
+  padding: 4px 0;
+}
+:global([data-our-story-page] .nav__links a:hover) { color: var(--white); }
+:global([data-our-story-page] .nav__links a::after) {
+  content: "";
+  position: absolute; left: 0; bottom: -2px;
+  width: 0; height: 1px; background: var(--gold);
+  transition: width .3s var(--ease);
+}
+:global([data-our-story-page] .nav__links a:hover::after) { width: 100%; }
+
+:global([data-our-story-page] .btn) {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 999px;
+  font-size: .88rem;
+  font-weight: 600;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform .3s var(--ease), box-shadow .3s var(--ease), background .3s;
+}
+:global([data-our-story-page] .btn:hover) { transform: translateY(-2px); }
+:global([data-our-story-page] .btn--gold) { background: var(--gold); color: var(--white); }
+:global([data-our-story-page] .btn--gold:hover) { box-shadow: 0 10px 24px rgba(var(--gold-rgb), .35); }
+:global([data-our-story-page] .btn--ghost) { border-color: rgba(255,255,255,.35); color: var(--white); }
+:global([data-our-story-page] .btn--ghost:hover) { border-color: var(--gold); }
+:global([data-our-story-page] .nav__cta) { display: none; }
+/* Round 18: raised from 880px — the full brand text + all 6 links + this
+   CTA button need ~1030px of unbroken row width just to avoid touching
+   (verified: brand text and "Our Story" sit with a literal 0px gap between
+   880-1000px), so the old 880px cutoff left a wide crowded/illegible zone
+   before the hamburger ever kicked in. 1100px leaves a comfortable ~43px+
+   gap at every width where this shows. */
+@media (min-width: 1100px) { :global([data-our-story-page] .nav__cta) { display: inline-flex; } }
+
+:global([data-our-story-page] .nav__toggle) {
+  display: none;
+  background: none; border: none; color: var(--white);
+  font-size: 1.6rem; cursor: pointer;
+}
+@media (max-width: 1099px) {
+  :global([data-our-story-page] .nav__links) { display: none; }
+  :global([data-our-story-page] .nav__toggle) { display: block; }
+}
+
+/* --------------------------------- Hero ---------------------------------- */
+
+:global([data-our-story-page] .hero) {
+  position: relative;
+  height: 100vh; /* explicit (not min-height): this whole block is what
+    animations/initMain.ts's initHeroCollapse() scales down into a bordered box on
+    scroll — a scale transform needs a fixed box to scale, not one whose
+    height depends on its own (absolutely-positioned) content. */
+  display: block;
+  /* This background is never actually seen — .hero-collapse (opaque, also
+     inset:0) sits directly on top of it at the same z-level as far as paint
+     order goes, and .hero__inner (opaque cream, see below) covers the rest.
+     Kept as --hero-bg anyway, matching .hero__inner, purely so there's no
+     stray dark flash if either of those ever fails to paint (JS not yet
+     run, a slow asset, etc.) — cheap insurance, not a visible design
+     choice. */
+  background: var(--hero-bg);
+  overflow: hidden;
+  transform-origin: 50% 50%;
+}
+
+:global([data-our-story-page] .hero__canvas) {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  /* Round 10: this now draws a flat 2D flowing line pattern (see
+     initAmbientScene() in initHero3d.ts), not the old WebGL shapes — opacity is
+     controlled per-line in JS (each line has its own low alpha already), so
+     this stays at 1 rather than additionally dimming the whole canvas. */
+  opacity: 1;
+}
+
+:global([data-our-story-page] .hero__glow) {
+  position: absolute;
+  width: 60vw; height: 60vw;
+  max-width: 900px; max-height: 900px;
+  right: -10%; top: 10%;
+  background: radial-gradient(circle, rgba(var(--gold-rgb), .28), transparent 65%);
+  filter: blur(10px);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* The scaled/boxed element during the Round 8 hero-collapse hand-off (see
+   animations/initMain.ts -> initHeroCollapse()) — deliberately the INNER wrapper, not
+   #top itself, for the same reason initSectionTransitions() scales
+   .container rather than its <section>: #top is the ScrollTrigger pin
+   target, and pinning something that also has its own scale transform
+   applied invites layout jitter (the pin math and the transform math
+   fighting over the same element's box). #top stays a plain, never-
+   transformed 100vh pin target; this is what actually shrinks into a box,
+   revealing .hero-collapse behind it as it does.
+
+   Round 9: given its own opaque background — cream/off-white, matching
+   landonorris.com's own portrait frame — per feedback that the shrinking
+   box needs to visibly read as "a square" against the dark .hero-collapse
+   revealed around it, rather than blending into it the way Round 8 did (the
+   two used to share the same --ink so the hand-off was seamless; now the
+   contrast IS the point). initHeroCollapse() crossfades this toward
+   --hero-gold-light as the shrink progresses — see that function's comment
+   in animations/initMain.ts. Round 10: the resting color is now --hero-bg, landonorris.
+   com's own exact background color, rather than the general --off-white. */
+:global([data-our-story-page] .hero__inner) {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background: var(--hero-bg);
+  overflow: hidden;
+  transform-origin: 50% 50%;
+  will-change: transform;
+}
+
+/* Sits BEHIND .hero__inner (z-index 0 vs. 1), full-bleed, at rest entirely
+   covered by .hero__inner at scale(1) — as .hero__inner shrinks, this is
+   what becomes visible around it: the "Kent Business College" marquee,
+   fading up to full strength over the same scroll progress. There's no
+   separate static text section after the hero anymore (the old #intro-line
+   was removed — this marquee now carries that beat), so once the collapse
+   finishes and normal scrolling resumes, the page hands off straight into
+   #story-cinematic. */
+:global([data-our-story-page] .hero-collapse) {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  background: var(--lilac);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(18px, 4vh, 56px);
+}
+:global([data-our-story-page] .hero-collapse__marquee) {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(14px, 3vh, 40px);
+  opacity: 0; /* faint-to-full ramp driven every scrub tick by
+    initHeroCollapse() in animations/initMain.ts — no CSS transition here on purpose:
+    a transition would visibly lag behind fast scroll instead of tracking
+    it 1:1. */
+}
+:global([data-our-story-page] .hero-collapse__row) {
+  display: flex;
+  white-space: nowrap;
+  width: max-content;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.1rem, 7.4vw, 6rem);
+  letter-spacing: .01em;
+  text-transform: uppercase;
+}
+/* Each row's content is duplicated into two identical <span>s (see
+   React component markup) specifically so translateX(-50%) — exactly one span's width —
+   lands the second, identical copy exactly where the first started,
+   producing a seamless, endless loop with no visible seam/jump. The two
+   rows animate in opposite directions per the brief ("marquee بيتحرك بعكس
+   الاتجاهين"), and use the two brand colors (purple/gold) rather than a
+   plain white/gold pair, so the reveal reads as Kent's own identity rather
+   than a generic light/dark contrast trick. The left row uses --lilac
+   (already an existing brand token, used elsewhere as the .values section
+   background) rather than the raw --purple (#8B5CF6) — full-strength
+   --purple reads muddy at text sizes against the near-black --ink
+   background; --lilac keeps the same purple family while staying legible,
+   the same way --gold (not a darker bronze) is used for the other row. */
+/* Round 9: slowed from 32s to 62s per feedback that it needs to be
+   comfortably readable, not just decoratively moving. */
+/* Round 17: strong glow per direct feedback — layered blurred text-shadows
+   (increasing radius/decreasing opacity, the standard "neon" bloom recipe)
+   in each row's own color, reading as a genuine glow against the near-black
+   --ink backdrop rather than a flat, unlit marquee. */
+:global([data-our-story-page] .hero-collapse__row--left) {
+  animation: heroMarqueeLeft 62s linear infinite;
+  /* Round 28: gradient text (shades of purple) instead of a flat --lilac
+     fill — background-clip:text is the standard way to run a gradient
+     through glyph shapes rather than a solid colour; background-size/
+     repeat matched to the row's own looping width so the gradient doesn't
+     visibly restart at the seam between the two duplicated <span>s. */
+  background: linear-gradient(90deg, var(--lilac) 0%, var(--purple) 45%, var(--deep-purple) 100%);
+  background-size: 50% 100%;
+  background-repeat: repeat-x;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+:global([data-our-story-page] .hero-collapse__row--right) {
+  animation: heroMarqueeRight 62s linear infinite;
+  color: var(--gold);
+}
+@keyframes heroMarqueeLeft { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@keyframes heroMarqueeRight { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+@media (prefers-reduced-motion: reduce) {
+  :global([data-our-story-page] .hero-collapse__row--left), :global([data-our-story-page] .hero-collapse__row--right) { animation: none; }
+}
+
+/* Round 11: new wrapper between .hero__inner and .hero__stage — see the
+   React component markup comment on #heroContentScale and initHeroCollapse() in
+   animations/initMain.ts. Plain absolute-fill + its own transform-origin/will-change,
+   exactly like .hero__inner itself, since this is what actually receives
+   the counter-scale each scrub tick. */
+:global([data-our-story-page] .hero__contentScale) {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  /* Deliberately NOT centered (50% 50%) — see initHeroCollapse() in
+     animations/initMain.ts. During phase 2 this wrapper is scaled UP relative to the
+     now-faster-shrinking frame around #heroInner, so whichever point sits
+     at this origin stays visually anchored while everything else moves
+     away from it. Anchoring near the TOP (rather than center) is what
+     makes the closing frame progressively crop away the chin/beak/
+     shoulders first while the crown + eyes — already near the top of the
+     framing — stay in view right up to the final crop, matching the
+     brief's explicit end state ("only the eye and the top of the head").
+     A center origin would zoom in symmetrically instead, keeping roughly
+     equal margins of hair-tuft AND collar right up to the end. */
+  transform-origin: 50% 16%;
+  will-change: transform;
+}
+
+:global([data-our-story-page] .hero__stage) {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  overflow: hidden; /* keeps the canvases cropped to the stage bounds */
+}
+
+/* Round 11: painted as a sibling AFTER .hero__contentScale (see React component markup)
+   so it covers the entire stage — bird and helmet included, not just the
+   margins around them — during the hero's zoom-out exit. Opacity is ramped
+   by initHeroCollapse() in animations/initMain.ts on the same scrub progress as the
+   frame's own scale/background-color, per feedback that the existing gold
+   tint needed to cover the whole visible scene, not just the backdrop. */
+:global([data-our-story-page] .hero__goldOverlay) {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  background: var(--hero-gold-light);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* The raw fluid-sim WebGL surface (see animations/initFluidMask.ts) — never meant to be
+   seen directly, only read back every frame into an offscreen mirror
+   canvas that gets re-encoded as #heroHelmetGL/#heroSpillShade's own
+   mask-image. opacity:0 keeps it fully invisible without display:none,
+   which in some engines pauses a canvas's own rendering. */
+:global([data-our-story-page] .hero__fluidSim) {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Round 48 removed .hero__helmetWire (z-index 3) from here — the
+   dark-charcoal wireframe ghost of the 3D helmet, which the cursor spill
+   used to reveal the fully-lit helmet out of. The helmet is gone (replaced
+   by the hex shield on .hero__shieldGL below, which assembles itself on
+   load and is toggled by a double-click), and with it the need for a
+   permanently-visible ghost layer: the spill now cuts a hole IN the shield
+   rather than revealing something through it, and a ghost would have sat
+   inside that hole. Its <canvas> is gone from Hero.jsx too. z-index 3 is
+   deliberately left unused rather than renumbering 4 and 5 below. */
+
+/* The IBIS bird itself. Always fully opaque, no mask: unlike the helmet,
+   this is the actual hero portrait and has to read clearly at all times
+   (see initHero3d.ts's header comment for why the bird/helmet split this way).
+   Explicit width/height are required: a <canvas> is a "replaced element"
+   and defaults to its intrinsic 300x150 size otherwise, ignoring inset:0.
+   Round 15 put this BELOW the (since-removed) .hero__helmetWire at
+   z-index 2, was 3 — see the note where that rule used to be. Nothing
+   occupies z-index 3 any more, but the bird still needs to sit under the
+   spill shade (4) and the shield (5). */
+:global([data-our-story-page] .hero__bird) {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  touch-action: pan-y;
+}
+
+/* Round 51 — the horse portrait (assets/images/ibis/horse-color.png +
+   horse-depth.png), rendered by animations/initHero3d.ts onto its own canvas and
+   registered pixel-for-pixel on top of the bird above.
+
+   This is the old helmet treatment, brought back for a different subject:
+   the fluid cursor blob is what REVEALS her. animations/initFluidMask.ts hands this
+   layer the sim's mask at NORMAL polarity — white where the cursor has
+   stirred dye — so she is painted only inside the blob and the bird shows
+   everywhere else. Round 50/51 first tried a plain hover swap and then a
+   full-frame one; both are gone, and the blob is the whole interaction now.
+
+   z-index 3 — the slot the removed .hero__helmetWire used to hold, and for
+   the same reason: above the bird (2), below the spill shade (4) and the
+   shield (5). Being under the shield is what keeps the reveal inside the
+   shield's own hole rather than painting over it.
+
+   IMPORTANT — this layer fails CLOSED, which is the opposite of
+   .hero__spillShade / .hero__shieldGL right below. Those two default to no
+   mask-image at all so that a visitor with no WebGL, reduced motion or a
+   phone (see animations/initFluidMask.ts, which returns early in all three cases) still
+   gets the shield in full. Here the same default would paint the horse over
+   the bird permanently, i.e. it would REPLACE the hero portrait for exactly
+   the visitors who cannot drive the effect. So the default mask is solid
+   black — luminance 0, nothing painted — and animations/initFluidMask.ts overwrites it
+   only once it is actually running a sim. */
+:global([data-our-story-page] .hero__horse) {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  pointer-events: none;
+  mask-image: linear-gradient(#000, #000);
+  -webkit-mask-image: linear-gradient(#000, #000);
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  mask-size: 100% 100%;
+  -webkit-mask-size: 100% 100%;
+  mask-mode: luminance;
+  -webkit-mask-source-type: luminance;
+}
+
+/* Darkens whatever's behind it (the bird + ambient backdrop) within the
+   exact same fluid spill boundary as .hero__shieldGL right below — see
+   animations/initFluidMask.ts, which sets both layers' mask-image to the SAME data:
+   URL every frame so they're always pixel-identical. This is what makes
+   the reveal read as a lit "puddle" the cursor is dipping into rather than
+   just a flat cutout window — inside the boundary things are very subtly
+   darker (just enough to mark the reveal's edge when it's sitting over
+   plain background, not a dramatic tint — Round 15 pulled the alpha way
+   down from 0.5 per feedback that it should barely register) AND the
+   crisp subject (painted on top, z-index 5) shows through with its own
+   full lighting.
+
+   Round 48: this layer's opacity is now driven by initHero3d.ts's
+   setShieldMode() — it only shows while the shield has been packed away
+   and the blob is REVEALING the shield inside itself. While the shield is
+   present, the blob is a hole cut out of it to expose the bird's face, and
+   a dark smudge over exactly the thing the hole exists to expose fought
+   the effect. The transition below is what keeps that switch from popping.
+   No mask-image here by default — animations/initFluidMask.ts is what turns this into
+   an actual reveal; without it (no WebGL, reduced-motion, mobile — see
+   that file) this stays fully visible, which is the point: fail open, not
+   fail hidden.
+
+   mask-repeat/mask-size are static here (not per-frame — animations/initFluidMask.ts
+   only ever touches mask-image) because a plain raster mask-image
+   defaults to tiling at its own intrinsic size otherwise: the mirror
+   canvas is deliberately much smaller than the stage (see MASK_MAX_EDGE in
+   animations/initFluidMask.ts), so without these the reveal tiled into a small
+   repeating grid of copies of itself instead of one blob stretched across
+   the whole stage. mask-mode: luminance is needed because the mirror
+   canvas is fully opaque everywhere (see animations/initFluidMask.ts) — only its
+   black/white RGB carries the sim's density, and a plain raster image
+   masks by alpha by default. */
+:global([data-our-story-page] .hero__spillShade),
+:global([data-our-story-page] .hero__shieldGL) {
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  mask-size: 100% 100%;
+  -webkit-mask-size: 100% 100%;
+  mask-mode: luminance;
+  -webkit-mask-source-type: luminance;
+}
+
+:global([data-our-story-page] .hero__spillShade) {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 4;
+  pointer-events: none;
+  background: rgba(8, 4, 14, 0.08);
+  opacity: 0; /* initHero3d.ts's setShieldMode() raises this in the peek state only */
+  transition: opacity .3s ease;
+}
+
+/* Top layer — the hex energy shield (assets/models/hex_shield_web.glb),
+   with its own authored emissive materials, standing in FRONT of the bird.
+   Replaced the old fully-lit helmet pass here in Round 48.
+   The mask is the landonorris.com-style cursor blob: animations/initFluidMask.ts runs a
+   real GPU fluid simulation and re-encodes it as a mask-image data: URL
+   every frame, so the boundary reads as a soft "liquid" edge the cursor is
+   dragging dye through. What changed is which side of that boundary the
+   shield lives on — animations/initFluidMask.ts flips the mask's polarity on a flag
+   initHero3d.ts sets (see publishMask() there, and setShieldMode() in
+   initHero3d.ts):
+     shield present  — the blob is a HOLE in the shield; the bird's face
+       shows through wherever the cursor has stirred it.
+     shield packed away (double-clicked)  — the blob is the ONLY place the
+       shield is painted at all, so the effect stays within its own area.
+   No mask-image by default (see .hero__spillShade above for why) — on
+   mobile/reduced-motion/no-WebGL, animations/initFluidMask.ts never starts and the
+   shield is simply always fully visible, which is the correct fallback for
+   a subject that is meant to be there.
+   The inline opacity initHero3d.ts writes here is the peek state's fade-in; it
+   deliberately gets no CSS transition, because that fade is driven frame by
+   frame in the render loop. */
+:global([data-our-story-page] .hero__shieldGL) {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  pointer-events: none;
+}
+
+:global([data-our-story-page] .hero__pedestal) {
+  position: absolute;
+  bottom: 2%;
+  left: 50%;
+  translate: -50% 0;
+  width: 46%;
+  height: 26px;
+  background: radial-gradient(ellipse at center, rgba(var(--gold-rgb), .5), transparent 70%);
+  filter: blur(6px);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Shown immediately, hidden once the GLTF finishes loading (see
+   initHero3d.ts -> hideHeroLoading()) — see the HTML comment on #heroLoading
+   for why this exists: the compressed model can take a few real seconds to
+   download + decode, and an empty canvas for that whole stretch reads as
+   "broken/missing" rather than "loading." */
+:global([data-our-story-page] .hero__loading) {
+  position: absolute;
+  inset: 0;
+  z-index: 6; /* above .hero__shieldGL (5), now that Round 9 inserted
+    .hero__spillShade at 4 and bumped the top canvas from 4 to 5 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 0.5s var(--ease);
+}
+:global([data-our-story-page] .hero__loading.is-hidden) { opacity: 0; }
+:global([data-our-story-page] .hero__loading-ring) {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid rgba(var(--gold-rgb), .25);
+  border-top-color: var(--gold);
+  animation: heroLoadingSpin 0.9s linear infinite;
+}
+/* Round 9: the hero's own background is now cream/off-white (see .hero__inner
+   — the "square" the user asked to read clearly once it shrinks), not the
+   dark ink it used to be, so this label needs a dark ink color instead of
+   the old translucent white to stay legible. */
+:global([data-our-story-page] .hero__loading-label) {
+  font-family: var(--font-body);
+  font-size: .78rem;
+  letter-spacing: .06em;
+  color: rgba(var(--ink-rgb), .55);
+}
+@keyframes heroLoadingSpin {
+  to { transform: rotate(360deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  :global([data-our-story-page] .hero__loading-ring) { animation: none; }
+}
+
+/* Only ever shown on a genuine load failure (see the HTML comment on
+   #heroLoadNotice) — a small, unobtrusive note near the bottom of the
+   stage rather than an alarming error banner, since the rest of the page
+   works fine either way. */
+:global([data-our-story-page] .hero__load-notice) {
+  position: absolute;
+  left: 50%;
+  bottom: 6%;
+  translate: -50% 0;
+  z-index: 6; /* above .hero__shieldGL (5) — see .hero__loading's comment */
+  max-width: 78%;
+  text-align: center;
+  font-family: var(--font-body);
+  font-size: .76rem;
+  letter-spacing: .02em;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, .55);
+  background: rgba(10, 5, 18, .5);
+  border: 1px solid rgba(255, 255, 255, .1);
+  border-radius: 10px;
+  padding: 10px 16px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s var(--ease);
+}
+:global([data-our-story-page] .hero__load-notice.is-visible) { opacity: 1; }
+
+:global([data-our-story-page] .hero__scroll) {
+  position: absolute;
+  bottom: 34px;
+  left: 50%;
+  translate: -50% 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  /* Round 9: dark ink, not translucent white — the hero's own background is
+     now cream/off-white (see .hero__inner), so white text here would nearly
+     vanish. */
+  color: rgba(var(--ink-rgb), .6);
+  font-size: .74rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+:global([data-our-story-page] .hero__scroll .line) {
+  width: 1px; height: 34px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+  animation: scrollpulse 1.8s ease-in-out infinite;
+}
+@keyframes scrollpulse {
+  0%, 100% { opacity: .3; }
+  50% { opacity: 1; }
+}
+
+/* The old #intro-line section ("Founded by academics...") has been removed
+   — that beat is now carried by the hero-collapse marquee itself (see the
+   .hero-collapse comment above), which uses its own plain --gold/--white
+   row colors rather than this glow treatment.
+
+   The old "Our Story / A decade in the making" timeline section (.story,
+   .story__track, .story__item, .story__dot, .story__year, etc.) has been
+   removed entirely, per instruction — its one remaining card ("2016 — The
+   Beginning") is now the first caption inside the cinematic video section
+   instead (styled by .story-cinematic__year etc. further down). */
+
+/* ------------------------------- Then & Now --------------------------------
+   Round 37: rebuilt again per direct feedback — no more crossfading "acts"
+   (see initThenNowScrub() in animations/initMain.ts and the big HTML comment above this
+   section). One persistent scene, both sides accumulate and stay: the ibis
+   (+ its logo) enters from the left, a gold "timeline" connector (a node at
+   each end) draws itself once the ibis side is fully settled, and the horse
+   (+ Kent crest) only starts entering — from the RIGHT — once that
+   connector finishes. Desktop only — see the max-width:759px block at the
+   bottom for the plain stacked mobile fallback (".is-static", toggled by
+   that same JS's isDesktop() check). */
+
+:global([data-our-story-page] .then-now) {
+  position: relative;
+  z-index: 10;
+  --gold: var(--color-gold);
+  --deep-purple: var(--color-primary);
+  background: var(--color-primary);
+  color: var(--white);
+  font-family: "Poppins", Arial, sans-serif;
+  padding: 0;
+}
+
+:global([data-our-story-page] .then-now__pin) { position: relative; height: 100vh; overflow: hidden; }
+:global([data-our-story-page] .then-now__frame) { position: relative; height: 100%; display: flex; flex-direction: column; }
+
+:global([data-our-story-page] .then-now__head) {
+  width: min(1100px, calc(100vw - 48px));
+  max-width: 1100px;
+  padding-top: clamp(28px, 5vh, 56px);
+}
+:global([data-our-story-page] .then-now__head .eyebrow) {
+  position: relative;
+  color: var(--color-gold);
+  font-family: "Poppins", Arial, sans-serif;
+  font-weight: 700;
+  padding-bottom: 14px;
+}
+:global([data-our-story-page] .then-now__head .eyebrow::before) { display: none; }
+:global([data-our-story-page] .then-now__head .eyebrow::after) {
+  position: absolute;
+  right: 4%;
+  bottom: 0;
+  left: 4%;
+  height: 9px;
+  border-top: 2px solid var(--color-gold);
+  border-radius: 50%;
+  content: "";
+}
+:global([data-our-story-page] .then-now__head h2) {
+  color: #fff;
+  font-family: "Poppins", Arial, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  white-space: nowrap;
+}
+:global([data-our-story-page] .then-now__head p) {
+  color: rgba(255,255,255,.78);
+  font-family: "Poppins", Arial, sans-serif;
+  margin-inline: auto;
+}
+
+@media (max-width: 959px) {
+  :global([data-our-story-page] .then-now__head h2) { white-space: normal; }
+}
+
+/* Round 39: grid instead of flex — per direct feedback the two figures
+   need to sit at EQUAL distance from the true horizontal center. The old
+   flex row (each side flush against the scene's own outer edge, connector
+   filling whatever was left between them) left the middle gap off-center
+   whenever the two cutouts differ in width, which the ibis (very narrow)
+   and horse (much wider) definitely do. Two equal 1fr columns guarantee
+   equal distance from center regardless of that width difference; each
+   side is then pushed toward the shared boundary between the columns (the
+   true center) via justify-self, so both figures land the same distance
+   from it automatically — no manual gap tuning needed.
+   --tn-figure-h is shared with .then-now__figure and .then-now__connector
+   below specifically so the connector's calculated vertical position can
+   never silently drift out of sync with the actual figure height. */
+:global([data-our-story-page] .then-now__scene) {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  min-height: 0;
+  /* Round 40: figures made bigger again per direct feedback (they need to
+     read as prominent, "filling the place") — safe to do now that they're
+     anchored to the outer edges (see justify-self below) rather than
+     competing for room near the center. */
+  --tn-figure-h: min(44vh, 420px);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  /* Round 40: exactly 10px per direct feedback — was a responsive
+     clamp(16px,4vw,64px), but the brief this time is a specific, fixed
+     pixel gap from the true screen edge, not a proportional one. */
+  padding: 0 10px;
+  column-gap: 0;
+}
+
+:global([data-our-story-page] .then-now__side) { position: relative; z-index: 2; display: flex; }
+/* Round 40: flipped from end/start to start/end — per direct feedback the
+   ibis (+ its logo) belongs flush against the LEFT screen edge and the
+   horse (+ its logo) flush against the RIGHT edge, not both pulled toward
+   the center. Each .then-now__side is still the width of its own figure
+   (auto), so justify-self:start/end inside its own equal 1fr column is
+   what actually pins it to that column's outer edge — i.e. the true
+   screen edge, 10px in via the padding above. */
+:global([data-our-story-page] .then-now__side--then) { justify-self: start; }
+:global([data-our-story-page] .then-now__side--now) { justify-self: end; }
+
+/* Bigger and positioned toward the TOP of its figure (per direct feedback)
+   rather than centered on it — see initThenNowScrub()'s logoP for how far
+   it's allowed to fade (capped at .5, was .75). */
+:global([data-our-story-page] .then-now__logo) {
+  position: absolute;
+  z-index: 1;
+  top: -6vh;
+  /* Round 40: bigger again per direct feedback ("فيل المكان" — fill the
+     place) — safe now the figures are pinned to opposite screen edges
+     with the whole width between them, instead of both pulled toward the
+     center where a logo this wide would reach into the other one. */
+  width: min(42vw, 560px);
+  /* Overrides the global `img { max-width: 100% }` rule further up this
+     file — without this, that 100% resolves against .then-now__side's own
+     width, which is only as wide as the figure inside it (the ibis cutout
+     is very narrow), silently shrinking this "big" logo down to ~125px
+     instead of the ~520px above. */
+  max-width: none;
+  opacity: 0;
+  pointer-events: none;
+  filter: drop-shadow(0 20px 50px rgba(0,0,0,.4));
+}
+/* Round 40: extends INWARD (toward center) from its own figure, not
+   outward past it — the figure now sits right at the true screen edge, so
+   an outward-extending logo would just get clipped by .then-now__pin's
+   overflow:hidden instead of being visible. left:0/right:0 flush the
+   logo's own edge to the figure's screen-edge side, letting its extra
+   width (it's wider than either figure) grow inward across the empty
+   middle instead. */
+:global([data-our-story-page] .then-now__side--then .then-now__logo) { left: 0; }
+:global([data-our-story-page] .then-now__side--now .then-now__logo) { right: 0; }
+
+:global([data-our-story-page] .then-now__figure) {
+  position: relative;
+  z-index: 2;
+  height: var(--tn-figure-h);
+  width: auto;
+  filter: drop-shadow(0 26px 36px rgba(0,0,0,.5));
+}
+/* Base/rest (pre-JS) state only — JS drives the real, per-scroll transform;
+   these just match progress=0 so nothing flashes fully in place before it
+   takes over. Ibis clears left, horse clears right (opposite signs). */
+:global([data-our-story-page] .then-now__side--then .then-now__figure) { transform: translateX(calc(-1 * (58vw + 10%))); }
+:global([data-our-story-page] .then-now__side--now .then-now__figure) { transform: translateX(calc(58vw + 10%)); }
+
+/* The gold "timeline" connector — a node at each end with a line drawn
+   between them, matching the reference screenshot (not just a plain
+   underline). Round 39: pulled out of the grid flow entirely (position:
+   absolute, against .then-now__scene) so it can be centered on the scene's
+   TRUE geometric center — left:50% + translateX(-50%) is symmetric by
+   construction, guaranteeing equal line-length left and right of its own
+   pivot regardless of anything else on the page. Vertically it sits at
+   the figures' own feet level: both figure cutouts are cropped tight to
+   their content (see ibis-then-now.png / horse-then-now.png), so a
+   figure's own bottom edge IS its feet — and since figures are centered
+   in the scene (align-items:center on .then-now__scene), that shared
+   bottom edge is always exactly half a figure-height below the scene's
+   vertical center, which is what the top: calc() below computes. */
+:global([data-our-story-page] .then-now__connector) {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  top: calc(50% + var(--tn-figure-h) / 2);
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  width: min(46vw, 620px);
+}
+:global([data-our-story-page] .then-now__node) {
+  flex: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 10px rgba(var(--gold-rgb), .85), 0 0 22px rgba(var(--gold-rgb), .5);
+  opacity: 0;
+}
+:global([data-our-story-page] .then-now__connector-line) {
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(90deg, var(--gold), rgba(var(--gold-rgb), .6));
+  box-shadow: 0 0 14px rgba(var(--gold-rgb), .55);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+/* Round 39: back to a normal-flow row of its own, between the heading and
+   .then-now__scene — see the HTML comment above it for why. Centered as a
+   group via justify-content rather than absolutely positioned, since it no
+   longer needs to be pinned to a point inside the scene. Overridden back
+   to a plain flow row under each figure on small screens — see the
+   max-width:759px block. */
+:global([data-our-story-page] .then-now__captions) {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: clamp(8px, 2vh, 20px) clamp(16px, 4vw, 64px) 0;
+}
+:global([data-our-story-page] .then-now__copy) {
+  max-width: 380px;
+  opacity: 0;
+  /* Same frosted-card treatment as before — the big background logos are
+     deliberately bright/large and can reach into this general area, so a
+     solid-ish backdrop keeps the actual copy legible regardless. */
+  background: rgba(47, 20, 104, .9);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 18px;
+  /* Round 40: trimmed from 22px/26px — the figures below got noticeably
+     bigger (see .then-now__scene's --tn-figure-h), leaving less spare
+     vertical room in this pinned section overall, so this card needed to
+     give a little of it back. */
+  padding: 16px 22px;
+}
+:global([data-our-story-page] .then-now__copy--then) { transform: translateX(-24px); }
+:global([data-our-story-page] .then-now__copy--now) { transform: translateX(24px); }
+:global([data-our-story-page] .then-now__copy .badge) {
+  display: inline-block;
+  font-size: .74rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+:global([data-our-story-page] .then-now__copy h3) {
+  color: #fff;
+  font-family: "Poppins", Arial, sans-serif;
+  font-size: clamp(1.3rem, 2.2vw, 1.7rem);
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+/* Inter Bold (the boldest weight already self-hosted for this build) reads
+   far cleaner for a numeral-led date range than the display serif — see
+   the same reasoning on .stat__num below. */
+:global([data-our-story-page] .then-now__copy .range) { font-family: var(--font-body); font-weight: 700; color: rgba(255,255,255,.55); font-size: .88rem; margin-bottom: 8px; }
+:global([data-our-story-page] .then-now__copy p) { color: rgba(255,255,255,.78); font-size: .92rem; }
+
+@media (max-width: 959px) {
+  :global([data-our-story-page] .then-now__pin) { height: auto; overflow: visible; }
+  :global([data-our-story-page] .then-now__frame) { height: auto; padding-bottom: 40px; }
+  /* Unwraps .then-now__scene/.then-now__captions from the layout (their
+     children become direct flex items of .then-now__frame) so `order`
+     below can interleave each side with its own caption card, instead of
+     showing both figures and only then both captions. */
+  :global([data-our-story-page] .then-now__scene), :global([data-our-story-page] .then-now__captions) { display: contents; }
+  :global([data-our-story-page] .then-now__head) { order: 1; }
+  :global([data-our-story-page] .then-now__side--then) { order: 2; }
+  :global([data-our-story-page] .then-now__copy--then) { order: 3; }
+  :global([data-our-story-page] .then-now__connector) { order: 4; }
+  :global([data-our-story-page] .then-now__side--now) { order: 5; }
+  :global([data-our-story-page] .then-now__copy--now) { order: 6; }
+
+  :global([data-our-story-page] .then-now__side) {
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 32px 20px 0;
+  }
+  :global([data-our-story-page] .then-now__figure) { transform: none !important; height: 220px; }
+  :global([data-our-story-page] .then-now__logo) {
+    position: relative;
+    top: auto; left: auto !important; right: auto !important;
+    transform: none;
+    opacity: .5;
+    width: 60vw;
+    max-width: 260px;
+    margin: -64px auto -44px;
+  }
+  :global([data-our-story-page] .then-now__connector) { width: 50%; margin: 8px auto 32px; }
+  :global([data-our-story-page] .then-now__node) { opacity: 1; }
+  :global([data-our-story-page] .then-now__connector-line) { transform: scaleX(1); }
+  :global([data-our-story-page] .then-now__copy) {
+    opacity: 1;
+    transform: none;
+    max-width: calc(100% - 40px);
+    margin: 0 auto;
+  }
+}
+
+/* ---------------------------- Vision & Mission ----------------------------- */
+
+:global([data-our-story-page] .vm) {
+  background: var(--white);
+  font-family: "Poppins", Arial, sans-serif;
+}
+:global([data-our-story-page] .vm__head) {
+  max-width: 920px;
+  margin-inline: auto;
+  margin-bottom: clamp(40px, 5vw, 64px);
+  text-align: center;
+}
+:global([data-our-story-page] .vm__head .eyebrow) {
+  position: relative;
+  color: var(--color-primary);
+  font-family: "Poppins", Arial, sans-serif;
+  font-weight: 700;
+  padding-bottom: 14px;
+}
+:global([data-our-story-page] .vm__head .eyebrow::before) { display: none; }
+:global([data-our-story-page] .vm__head .eyebrow::after) {
+  position: absolute;
+  right: 4%;
+  bottom: 0;
+  left: 4%;
+  height: 9px;
+  border-top: 2px solid var(--color-primary);
+  border-radius: 50%;
+  content: "";
+}
+:global([data-our-story-page] .vm__head h2) {
+  color: var(--ink);
+  font-family: "Poppins", Arial, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.035em;
+}
+:global([data-our-story-page] .vm__grid) {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+@media (min-width: 760px) { :global([data-our-story-page] .vm__grid) { grid-template-columns: 1fr 1fr; } }
+:global([data-our-story-page] .vm__card) {
+  background: var(--white);
+  border: 1px solid #e4ddec;
+  border-radius: 24px;
+  padding: clamp(28px, 3vw, 40px);
+  box-shadow: 0 8px 24px rgba(39, 14, 73, .04);
+  transition: transform 300ms ease, border-color 300ms ease, box-shadow 300ms ease;
+}
+:global([data-our-story-page] .vm__card:hover) {
+  transform: translateY(-4px);
+  border-color: rgba(64, 27, 140, .25);
+  box-shadow: 0 18px 45px rgba(39, 14, 73, .1);
+}
+:global([data-our-story-page] .vm__card h3) {
+  color: var(--ink);
+  font-family: "Poppins", Arial, sans-serif;
+  font-size: clamp(1.2rem, 2vw, 1.45rem);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  margin-bottom: 16px;
+}
+:global([data-our-story-page] .vm__card p) {
+  color: #766d7c;
+  font-family: "Poppins", Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.8;
+}
+@media (prefers-reduced-motion: reduce) {
+  :global([data-our-story-page] .vm__card) { transition: none; }
+  :global([data-our-story-page] .vm__card:hover) { transform: none; }
+}
+
+/* ---------------------------------- Values --------------------------------- */
+
+:global([data-our-story-page] .values) {
+  background: #f7f4fb;
+  font-family: "Poppins", Arial, sans-serif;
+}
+:global([data-our-story-page] .values__head) {
+  max-width: 920px;
+  margin-inline: auto;
+  margin-bottom: clamp(40px, 5vw, 64px);
+  text-align: center;
+}
+:global([data-our-story-page] .values__head .eyebrow) {
+  position: relative;
+  color: var(--color-primary);
+  font-family: "Poppins", Arial, sans-serif;
+  font-weight: 700;
+  padding-bottom: 14px;
+}
+:global([data-our-story-page] .values__head .eyebrow::before) { display: none; }
+:global([data-our-story-page] .values__head .eyebrow::after) {
+  position: absolute;
+  right: 4%;
+  bottom: 0;
+  left: 4%;
+  height: 9px;
+  border-top: 2px solid var(--color-primary);
+  border-radius: 50%;
+  content: "";
+}
+:global([data-our-story-page] .values__head h2) {
+  color: var(--ink);
+  font-family: "Poppins", Arial, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.035em;
+}
+:global([data-our-story-page] .values__grid) {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+@media (min-width: 760px) { :global([data-our-story-page] .values__grid) { grid-template-columns: repeat(3, 1fr); } }
+:global([data-our-story-page] .value-card) {
+  background: var(--white);
+  border: 1px solid #e4ddec;
+  border-radius: 24px;
+  padding: clamp(28px, 3vw, 40px);
+  box-shadow: 0 8px 24px rgba(39, 14, 73, .04);
+  transition: transform 300ms ease, border-color 300ms ease, box-shadow 300ms ease;
+}
+:global([data-our-story-page] .value-card:hover) {
+  transform: translateY(-4px);
+  border-color: rgba(64, 27, 140, .25);
+  box-shadow: 0 18px 45px rgba(39, 14, 73, .1);
+}
+:global([data-our-story-page] .value-card__icon) {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: #f0eafb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 28px;
+  color: var(--color-primary);
+  transition: background-color 300ms ease, color 300ms ease;
+}
+:global([data-our-story-page] .value-card:hover .value-card__icon) {
+  background: var(--color-primary);
+  color: var(--white);
+}
+:global([data-our-story-page] .value-card h3) {
+  color: var(--ink);
+  font-family: "Poppins", Arial, sans-serif;
+  font-size: clamp(1.15rem, 1.8vw, 1.35rem);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  margin-bottom: 14px;
+}
+:global([data-our-story-page] .value-card p) {
+  color: #766d7c;
+  font-family: "Poppins", Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.8;
+}
+@media (prefers-reduced-motion: reduce) {
+  :global([data-our-story-page] .value-card),
+  :global([data-our-story-page] .value-card__icon) { transition: none; }
+  :global([data-our-story-page] .value-card:hover) { transform: none; }
+}
+
+/* The shared Professional Faculty section replaces the former Leadership cards. */
+:global([data-our-story-page] .faculty-section) {
+  font-family: "Poppins", Arial, sans-serif;
+  padding: 64px 20px 128px;
+}
+:global([data-our-story-page] .faculty-section h2),
+:global([data-our-story-page] .faculty-section h3) {
+  font-family: "Poppins", Arial, sans-serif;
+}
+:global([data-our-story-page] .faculty-section h2) {
+  margin: 12px 0 0;
+}
+:global([data-our-story-page] .faculty-section__inner) {
+  width: min(100%, 1200px);
+  max-width: 1200px;
+  margin-inline: auto;
+}
+:global([data-our-story-page] .faculty-section__head) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
+  padding-bottom: 0;
+  border-bottom: 0;
+  text-align: center;
+}
+:global([data-our-story-page] .faculty-section__head .kbc-eyebrow) {
+  position: relative;
+  display: block;
+  width: fit-content;
+  margin: 0 0 10px;
+  padding-bottom: 16px;
+  color: var(--color-primary);
+}
+:global([data-our-story-page] .faculty-section__head .kbc-eyebrow::after) {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: min(190px, calc(100% + 24px));
+  height: 11px;
+  border-top: 1.5px solid currentColor;
+  border-radius: 50% 50% 0 0;
+  content: "";
+  pointer-events: none;
+  transform: translateX(-50%);
+}
+:global([data-our-story-page] .faculty-card__body) {
+  padding: 26px 18px 18px;
+}
+:global([data-our-story-page] .faculty-card__role) {
+  margin-top: 4px;
+}
+:global([data-our-story-page] .faculty-card__bio) {
+  margin-top: 16px;
+}
+:global([data-our-story-page] .faculty-card__actions) {
+  margin-top: auto;
+  padding-top: 28px;
+}
+:global([data-our-story-page] .faculty-card__profile) {
+  padding-inline: 20px;
+}
+@media (max-width: 759px) {
+  :global([data-our-story-page] .faculty-section) {
+    padding: 56px 20px 80px;
+  }
+}
+
+/* -------------------------------- Leadership -------------------------------- */
+
+:global([data-our-story-page] .leadership) { background: var(--off-white); }
+:global([data-our-story-page] .leadership__grid) {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+/* Round 25: the founder's card moved to the middle slot (see React component markup)
+   so the extra width goes to the middle column now, keeping the same
+   "founder's card reads slightly larger" emphasis as before. */
+@media (min-width: 900px) { :global([data-our-story-page] .leadership__grid) { grid-template-columns: 1fr 1.1fr 1fr; } }
+
+/* Round 29: reusable "glass + light sweep" hover treatment — the same idea
+   as the footer's frosted panel (see .footer-reveal__glass /
+   __cursorShine / __edgeGlow further up), simplified for plain rounded-
+   rect cards that don't need an SVG blob mask (CSS border-radius alone
+   clips these). Drop a single <div class="glass-interactive" aria-hidden>
+   as the LAST child of any `position:relative; overflow:hidden` box, and
+   initGlassInteractive() in animations/initMain.ts keeps --gx/--gy glued to that box's
+   own live cursor position automatically for every element matching this
+   class — no other wiring needed per instance. Deliberately no
+   backdrop-filter blur here (unlike the footer) — several of the boxes
+   this lands on (leader-card__photo) carry an actual portrait photo, and
+   blurring a person's face to sell a "glass" look isn't a trade worth
+   making; the static sheen + cursor-follow shine alone already read as
+   glass. */
+:global([data-our-story-page] .glass-interactive) {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  border-radius: inherit;
+}
+:global([data-our-story-page] .glass-interactive::before) {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(255,255,255,.16) 0%, rgba(255,255,255,.02) 45%, rgba(139,92,246,.10) 100%);
+}
+:global([data-our-story-page] .glass-interactive::after) {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(180px circle at var(--gx, -9999px) var(--gy, -9999px), rgba(255,255,255,.55) 0%, rgba(255,255,255,.18) 40%, transparent 75%);
+  mix-blend-mode: screen;
+}
+
+/* Round 30: stronger glass on the Impact tiles specifically (per direct
+   feedback), plus a wider reach — initGlassInteractive() in animations/initMain.ts now
+   tracks the cursor across the whole #impact section for these, not just
+   each tile's own box, so this radius needs to be big enough to actually
+   read as "the light sweep catches the edge before the cursor arrives",
+   not just a slightly-larger hover glow. */
+:global([data-our-story-page] #impact .glass-interactive::before) {
+  background: linear-gradient(135deg, rgba(255,255,255,.30) 0%, rgba(255,255,255,.06) 45%, rgba(139,92,246,.22) 100%);
+}
+/* Round 32: softer, lighter, and spread over a wider radius — per direct
+   feedback, the previous 3-stop gradient (0/40/78%) had too hard an edge
+   right around its 78% cutoff, and read a bit strong at its peak. More
+   intermediate stops here is what actually buys the smoothness (a longer
+   gradual taper instead of one sharp fade-to-transparent), not just a
+   bigger radius on its own. */
+:global([data-our-story-page] #impact .glass-interactive::after) {
+  background: radial-gradient(380px circle at var(--gx, -9999px) var(--gy, -9999px), rgba(255,255,255,.5) 0%, rgba(255,255,255,.3) 25%, rgba(255,255,255,.14) 50%, rgba(255,255,255,.05) 75%, transparent 100%);
+}
+
+:global([data-our-story-page] .leader-card) {
+  position: relative;
+  background: var(--white);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(var(--deep-purple-rgb), .08);
+  transition: transform .4s var(--ease), box-shadow .4s var(--ease), opacity .4s var(--ease);
+  will-change: transform;
+}
+/* Spotlight-on-hover: the hovered card pushes toward the viewer while its
+   siblings shrink back, giving it the room a camera focus-pull would. */
+:global([data-our-story-page] .leadership__grid:has(.leader-card:hover) .leader-card) {
+  transform: scale(.93);
+  opacity: .6;
+}
+:global([data-our-story-page] .leadership__grid:has(.leader-card:hover) .leader-card:hover) {
+  transform: scale(1.06);
+  opacity: 1;
+  box-shadow: 0 32px 64px rgba(var(--deep-purple-rgb), .28);
+  z-index: 2;
+}
+:global([data-our-story-page] .leader-card__photo) {
+  aspect-ratio: 4/5;
+  background: linear-gradient(160deg, var(--purple), var(--deep-purple));
+  display: flex; align-items: flex-end; justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+:global([data-our-story-page] .leader-card__photo img) { width: 100%; height: 100%; object-fit: cover; }
+:global([data-our-story-page] .leader-card__photo.placeholder) {
+  align-items: center;
+}
+:global([data-our-story-page] .leader-card__initials) {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  color: rgba(255,255,255,.85);
+  border: 2px solid rgba(var(--gold-rgb), .6);
+  border-radius: 50%;
+  width: 96px; height: 96px;
+  display: flex; align-items: center; justify-content: center;
+}
+:global([data-our-story-page] .leader-card__tag) {
+  position: absolute; top: 16px; left: 16px;
+  background: rgba(var(--gold-rgb), .92);
+  color: var(--white);
+  font-size: .68rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 999px;
+}
+:global([data-our-story-page] .leader-card__body) { padding: 26px 24px 30px; }
+:global([data-our-story-page] .leader-card__body h3) { font-size: 1.25rem; margin-bottom: 4px; }
+:global([data-our-story-page] .leader-card__body .role) { color: var(--purple); font-weight: 600; font-size: .9rem; margin-bottom: 12px; }
+:global([data-our-story-page] .leader-card__body p.bio) { color: #564a63; font-size: .9rem; }
+
+/* ---------------------------------- Impact --------------------------------- */
+
+:global([data-our-story-page] .impact) {
+  background: radial-gradient(120% 140% at 85% 20%, var(--purple) 0%, var(--deep-purple) 55%, #0d0619 100%);
+  color: var(--white);
+}
+:global([data-our-story-page] .section-head--impact .eyebrow),
+:global([data-our-story-page] .section-head--partners .eyebrow) {
+  position: relative;
+  justify-content: center;
+  padding-bottom: 14px;
+  font-family: "Poppins", Arial, sans-serif;
+  font-weight: 700;
+}
+:global([data-our-story-page] .section-head--impact .eyebrow::before),
+:global([data-our-story-page] .section-head--partners .eyebrow::before) {
+  display: none;
+}
+:global([data-our-story-page] .section-head--impact .eyebrow::after),
+:global([data-our-story-page] .section-head--partners .eyebrow::after) {
+  position: absolute;
+  right: 4%;
+  bottom: 0;
+  left: 4%;
+  height: 9px;
+  border-top: 2px solid currentColor;
+  border-radius: 50%;
+  content: "";
+}
+:global([data-our-story-page] .section-head--impact h2) {
+  color: #fff;
+  font-family: "Poppins", Arial, sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.035em;
+}
+:global([data-our-story-page] .impact .section-head p) { color: rgba(255,255,255,.72); }
+:global([data-our-story-page] .impact__grid) {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-top: 20px;
+}
+@media (min-width: 760px) { :global([data-our-story-page] .impact__grid) { grid-template-columns: repeat(4, 1fr); } }
+:global([data-our-story-page] .stat) {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  padding: 32px 16px;
+  border-radius: 18px;
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.1);
+}
+/* Switched from the display serif (Playfair) to Inter Bold — a serif's thin,
+   ornamental numeral strokes read as elegant but not "bold/clear," which is
+   the opposite of what a big stat callout needs. Inter Bold is the boldest
+   weight already self-hosted here (see the @font-face block at the top of
+   this file); it has clean, geometric, highly legible digits. If a
+   dedicated numeral-display typeface (e.g. Space Grotesk) is ever wanted
+   instead, self-host its woff2 the same way and swap the family here. */
+:global([data-our-story-page] .stat__num) {
+  position: relative;
+  z-index: 7;
+  font-family: var(--font-body);
+  font-size: clamp(2.2rem, 4vw, 3rem);
+  color: var(--gold);
+  font-weight: 700;
+}
+:global([data-our-story-page] .stat__label) {
+  position: relative;
+  z-index: 7;
+  margin-top: 8px;
+  font-size: .82rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.7);
+}
+
+/* Edge "light sweep" — same idea as .footer-reveal__edgeGlow, adapted for a
+   plain rounded rect: no SVG outline needed, the box's own border is the
+   stroke to reveal. Reads the same --gx/--gy the tile's .glass-interactive
+   already tracks (see initGlassInteractive() in animations/initMain.ts), so as the
+   cursor nears/crosses an edge, just that stretch of the rim lights up. */
+:global([data-our-story-page] .edge-sweep) {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  pointer-events: none;
+  border-radius: inherit;
+  border: 1.5px solid rgba(255,255,255,.9);
+  filter: drop-shadow(0 0 4px rgba(255,255,255,.85)) drop-shadow(0 0 14px rgba(139,92,246,.6));
+  -webkit-mask-image: radial-gradient(170px circle at var(--gx, -9999px) var(--gy, -9999px), #fff 0%, transparent 78%);
+          mask-image: radial-gradient(170px circle at var(--gx, -9999px) var(--gy, -9999px), #fff 0%, transparent 78%);
+}
+
+/* --------------------------------- Partners -------------------------------- */
+
+:global([data-our-story-page] .partners) { background: var(--off-white); }
+:global([data-our-story-page] .section-head--partners .eyebrow) { color: var(--deep-purple); }
+:global([data-our-story-page] .partners__grid) {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+  margin-top: 10px;
+}
+@media (min-width: 640px) { :global([data-our-story-page] .partners__grid) { grid-template-columns: repeat(4, 1fr); } }
+@media (min-width: 960px) { :global([data-our-story-page] .partners__grid) { grid-template-columns: repeat(6, 1fr); } }
+/* Shared with the dedicated Partners page. The wrapper keeps logos with
+   different source proportions balanced without stretching them. */
+:global([data-our-story-page] .partner-tile) {
+  width: 100%;
+  min-height: 112px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: var(--white);
+  border-radius: 14px;
+  border: 1px solid rgba(var(--purple-rgb), .12);
+  transition: transform .3s var(--ease), box-shadow .3s var(--ease);
+}
+:global([data-our-story-page] .partner-tile__image) {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 70px;
+  object-fit: contain;
+}
+:global([data-our-story-page] .partner-tile:hover) {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(var(--purple-rgb), .18);
+}
+:global([data-our-story-page] .partners__note) {
+  margin-top: 18px;
+  font-size: .82rem;
+  color: #8a7d97;
+}
+:global([data-our-story-page] .partners__cta) { margin-top: 36px; text-align: center; }
+
+/* ============================ Footer — fixed reveal ==========================
+   Round 19 — landonorris.com-style "reveal" footer: a rounded dark stage
+   panel, fixed to the bottom of the viewport, that the rest of the page
+   scrolls up and away from rather than scrolling down TO. See the big
+   comment above <footer> in React component markup for exactly how the reveal is
+   staged (#pageContent's z-index covering it vs. #footerSpacer reserving
+   the scroll room) — this block is purely the visual layer.
+   ========================================================================== */
+
+/* #pageContent needs a real stacking position + a z-index above the fixed
+   footer's own (1) so it visually covers the footer for as long as its own
+   content is on screen — `position:relative` alone doesn't touch fixed-
+   descendant containing blocks (only transform/perspective/filter/
+   will-change of those do), so this is safe alongside the ScrollTrigger
+   pins living inside it (see the big "Page content" comment further down
+   this file). No explicit background needed: every section inside already
+   paints its own opaque background edge-to-edge with no gaps. */
+:global([data-our-story-page] .page-content) { position: relative; z-index: 2; }
+
+/* Reserves the extra scroll distance the reveal plays out over. Height is
+   kept in sync with the footer's real rendered height by initFooterReveal()
+   in animations/initMain.ts (a ResizeObserver, so it stays correct across breakpoints
+   and once the video's own box settles) — deliberately left with no
+   background of its own: while scrolling through it, whatever isn't
+   covered by #pageContent should show the fixed footer sitting underneath,
+   which is the entire point. */
+:global([data-our-story-page] .footer-spacer) { height: 0; }
+
+:global([data-our-story-page] .footer-reveal) {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: clamp(20px, 3vh, 40px) clamp(16px, 3vw, 32px) 0;
+  background: radial-gradient(120% 90% at 50% 100%, rgba(var(--gold-rgb), .22) 0%, rgba(var(--deep-purple-rgb), .35) 42%, var(--ink) 72%);
+  overflow: hidden;
+  /* Round 47: a translateY shift was tried here to recover the
+     .footer-reveal__media portrait's headroom (lost to the headline's
+     margin-top growing 80px total across the last few rounds of "move it
+     down" feedback — since this element is bottom:0-anchored, that 80px
+     growth pushed its top edge, and the portrait riding on it, up and, on
+     shorter browser windows, off the top of the screen). Reverted: shifting
+     the whole box moves .footer-reveal__bottom's bottom edge down by the
+     same amount — it was already sitting exactly flush with the viewport's
+     bottom edge with zero slack, so ANY shift here immediately pushes it
+     off-screen too, just trading one clipped element for another. Fixed at
+     the source instead (see the trimmed spacing below) by giving back
+     roughly that same 80px from the panel's OWN trailing spacing, which
+     shrinks this element's total height back down without undoing the
+     headline's own move-down. */
+}
+:global([data-our-story-page] .footer-reveal__blobs) {
+  position: absolute;
+  inset: -6% -8%;
+  width: 116%;
+  height: 112%;
+  object-fit: cover;
+  opacity: .16;
+  filter: hue-rotate(-35deg) saturate(1.4) brightness(1.3);
+  pointer-events: none;
+}
+:global([data-our-story-page] .footer-reveal__panel) {
+  position: relative;
+  width: min(1640px, 100%);
+  margin-top: clamp(24px, 5vh, 56px);
+  /* --footer-panel-h/--footer-content-top: kept in sync with this panel's
+     real rendered size by initFooterContentMask() in animations/initMain.ts (same
+     ResizeObserver pattern as initFooterReveal()/initFooterGlassGlow()
+     just below) — see the comment on .footer-reveal__content for why. */
+  /* Round 45: stretches the shield taller without touching the SVGs —
+     .footer-reveal__mask/__edgeGlow/__content all already scale to
+     whatever box THIS element ends up being (background-size/mask-size:
+     100% 100%, non-uniform on purpose), so growing this one number is all
+     three layers riding on top of each other automatically, no separate
+     "keep them synced" step needed.
+     Round 47: trimmed back down from 120-220px — this trailing gap turned
+     out to be the cheapest place to give back the ~80px the headline's
+     margin-top gained over several rounds of "move it down" feedback,
+     which was eating into .footer-reveal__media's headroom above this
+     panel (see the comment on .footer-reveal above). Still noticeably
+     bigger than pre-Round-45, just not as extreme. */
+  padding-bottom: clamp(60px, 7vw, 140px);
+}
+/* Round 44: wraps the nav row and sponsor logos — deliberately not the
+   headline, which sits over the shield's narrow apex on purpose (see the
+   comment in Footer.jsx) — and masks them to the exact same shield shape
+   as .footer-reveal__mask, so anything that would still spill past the
+   shield's real silhouette (the sponsor logos in particular) gets clipped
+   outright instead of merely being sized/padded to *usually* clear the
+   edges.
+   The tricky part: this box only covers the part of the panel BELOW the
+   headline, but the mask has to represent the shield's edges across the
+   panel's FULL height, or the slice of shield shown here would be scaled
+   wrong (too tall for how much silhouette this box actually spans). So
+   the mask is sized to the panel's actual height (--footer-panel-h, not
+   100%) and shifted up by this box's own offset from the panel's top
+   (--footer-content-top) — which together make it line up as if this
+   element were a window cut into a full-panel-sized copy of the shield,
+   rather than the shield being squashed to fit just this box. */
+:global([data-our-story-page] .footer-reveal__content) {
+  position: relative;
+  z-index: 3;
+  -webkit-mask-image: url("./assets/images/footer-mask.svg");
+          mask-image: url("./assets/images/footer-mask.svg");
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+  -webkit-mask-size: 100% var(--footer-panel-h, 2000px);
+          mask-size: 100% var(--footer-panel-h, 2000px);
+  -webkit-mask-position: 0 calc(-1 * var(--footer-content-top, 0px));
+          mask-position: 0 calc(-1 * var(--footer-content-top, 0px));
+}
+/* Round 42: a plain <div> painted via background-image rather than an
+   <img src="footer-mask.svg">. An <img> here would size itself from the
+   SVG's own intrinsic aspect ratio (1663x945) — an absolutely positioned
+   *replaced* element's automatic height is resolved that way regardless of
+   inset:0/height:100%, so it renders at a fixed height derived only from
+   this panel's WIDTH and never grows to actually match the panel's real
+   (content-driven) height. A <div> doesn't have that intrinsic-ratio
+   fallback, so background-size:100% 100% genuinely stretches the shield to
+   this panel's real box — exactly like .footer-reveal__glass below, which
+   uses the same shape as a CSS mask-image rather than an <img> for the
+   same reason. */
+:global([data-our-story-page] .footer-reveal__mask) {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background-image: url("./assets/images/footer-mask.svg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  filter: drop-shadow(0 30px 60px rgba(0,0,0,.45));
+}
+
+/* Round 22: frosted-glass treatment. This sits at the same z-index as
+   .footer-reveal__mask above but later in DOM order (so it paints on top
+   of that flat gradient fill, while still staying under the video/
+   headline/sponsors, all z-index 2+) — a translucent sheen +
+   backdrop-filter blur, clipped to the exact same blob outline via
+   mask-image rather than a plain rectangle, so it reads as one frosted
+   glass panel rather than a blurred rectangle sitting inside it. */
+:global([data-our-story-page] .footer-reveal__glass) {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  -webkit-mask-image: url("./assets/images/footer-mask.svg");
+          mask-image: url("./assets/images/footer-mask.svg");
+  -webkit-mask-size: 100% 100%;
+          mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+  background: linear-gradient(135deg, rgba(255,255,255,.16) 0%, rgba(255,255,255,.03) 45%, rgba(var(--purple-rgb), .16) 100%);
+  backdrop-filter: blur(16px) saturate(150%);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  pointer-events: none;
+}
+
+/* "Walking on glass" — a soft white highlight that follows the cursor
+   anywhere over the panel (not just near an edge), masked to the exact
+   same blob outline as .footer-reveal__glass so it only ever appears
+   inside the footer's own shape. Sits above the frosted-glass tint but
+   below the rim glow, both still z-index 1 (DOM order settles the stack). */
+:global([data-our-story-page] .footer-reveal__cursorShine) {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  -webkit-mask-image: url("./assets/images/footer-mask.svg");
+          mask-image: url("./assets/images/footer-mask.svg");
+  -webkit-mask-size: 100% 100%;
+          mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+  background: radial-gradient(340px circle at var(--glow-x, -9999px) var(--glow-y, -9999px), rgba(255,255,255,.24) 0%, rgba(255,255,255,.13) 30%, rgba(255,255,255,.05) 60%, transparent 100%);
+  mix-blend-mode: screen;
+}
+
+/* The rim "light sweep" — see initFooterGlassGlow() in animations/initMain.ts, which
+   keeps --glow-x/--glow-y (in px, relative to .footer-reveal__panel) glued
+   to the live cursor position. Round 42: this used to be an
+   <img src="footer-mask-outline.svg"> (its own rendered stroke as the
+   visible pixels) with the spotlight as a mask-image on top — but an <img>
+   here is subject to the same intrinsic-aspect-ratio sizing bug described
+   on .footer-reveal__mask above, so the traced outline would stop partway
+   down a tall panel instead of following the shield all the way to its
+   actual (content-driven) bottom edge. Rebuilt as a plain <div> instead:
+   the spotlight is now this element's own *background* (so its color/
+   position logic is unchanged), and footer-mask-outline.svg is a CSS
+   mask-image — shape-clipping to just the outline's stroke pixels — sized
+   with mask-size:100% 100% the same way .footer-reveal__glass below
+   stretches footer-mask.svg, so it now genuinely tracks the shield's real
+   edges at any panel height. Because these are two independent effects
+   (the outline shape restricts WHERE pixels can show at all; the spotlight
+   restricts which of those pixels are lit) living on the same element's
+   background vs. mask, they compose automatically without needing to
+   combine two masks. The spotlight radius is deliberately generous (well
+   beyond a typical panel's half-width) so the rim still catches light even
+   with the cursor sitting well inside the panel, near the headline/text,
+   not only right up against an edge. Defaults to a position far
+   off-canvas so it's invisible until the mouse actually gets close. */
+:global([data-our-story-page] .footer-reveal__edgeGlow) {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  filter: drop-shadow(0 0 6px rgba(255,255,255,.9)) drop-shadow(0 0 18px rgba(237,230,250,.65));
+  background: radial-gradient(460px circle at var(--glow-x, -9999px) var(--glow-y, -9999px), #fff 0%, transparent 80%);
+  -webkit-mask-image: url("./assets/images/footer-mask-outline.svg");
+          mask-image: url("./assets/images/footer-mask-outline.svg");
+  -webkit-mask-size: 100% 100%;
+          mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+}
+
+/* -------------------------------- Media (video) ----------------------------
+   Stands in for the reference's helmet portrait — same "breaks out of the
+   panel's top edge" placement. Faded into the panel's own dark tone at its
+   lower edge via mask-image rather than a hard rectangular crop, so it
+   reads as emerging from the panel instead of sitting in a box on top of
+   it. */
+:global([data-our-story-page] .footer-reveal__media) {
+  position: absolute;
+  z-index: 2;
+  /* Trimmed (Round 43) so it pokes up less far above the panel — on a
+     shorter browser-window height, .footer-reveal is bottom-anchored
+     (position:fixed;bottom:0) with no top constraint, so once its total
+     content height exceeds the viewport height, whatever is highest — this
+     portrait — is the first thing to get clipped by the top of the
+     screen. */
+  top: clamp(-64px, -6vw, -40px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: clamp(180px, 17vw, 260px);
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to bottom, #000 62%, transparent 96%);
+          mask-image: linear-gradient(to bottom, #000 62%, transparent 96%);
+}
+:global([data-our-story-page] .footer-reveal__video) {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+:global([data-our-story-page] .footer-reveal__headline) {
+  position: relative;
+  z-index: 3;
+  /* Kept clear of the shield's narrow top point mostly by being short,
+     centered text rather than by margin alone. Trimmed further (Round 43)
+     to leave the .footer-reveal__media portrait — which breaks out above
+     the panel — enough headroom to stay fully on-screen on shorter
+     viewports instead of getting clipped by the top of the browser
+     window. */
+  margin-top: calc(clamp(40px, 7vw, 80px) + 80px);
+  font-family: var(--font-display);
+  color: var(--white);
+  text-align: center;
+  font-size: clamp(1.5rem, 3vw, 2.7rem);
+  line-height: 1.12;
+  font-weight: 600;
+}
+
+/* Round 34: rebuilt from a 2-column (Pages nav + Follow-On socials) layout
+   plus a centered "Become a Partner" CTA into a 5-column grid mirroring
+   kentbusinesscollege.com's own global footer nav (brand block, then
+   Colleges/Programmes/About/Support) — the CTA is gone (per direct
+   feedback it didn't belong mid-footer) and its column real estate went to
+   the extra link columns instead. */
+:global([data-our-story-page] .footer-reveal__row) {
+  position: relative;
+  z-index: 3;
+  /* Capped under the shield's own width at this height (see the band
+     comment on .footer-reveal__panel) so the nav columns stay clear of the
+     silhouette's edges instead of hugging them — 94% rather than a tighter
+     figure because the grid below has its own minmax floors (200px+4x130px
+     plus gaps): capping this too aggressively shrinks the box below what
+     the grid actually needs, which overflowed the box's right edge rather
+     than the columns themselves shrinking (fixed properly at <=1200px by
+     shrinking those floors instead). Centered, then nudged right a touch
+     via transform (rather than unequal margins, which fight the
+     auto-margin balancing CSS does when a margin is over-constrained) per
+     direct feedback — kept small specifically so it can never push the
+     grid's own min-content width past this box's edge. */
+  width: 100%;
+  max-width: min(1320px, 94%);
+  margin-inline: auto;
+  transform: translateX(clamp(12px, 1.6vw, 32px));
+  display: grid;
+  grid-template-columns: minmax(200px, 1.3fr) repeat(4, minmax(130px, 1fr));
+  gap: clamp(28px, 4vw, 52px);
+  margin-top: clamp(12px, 2vh, 24px);
+  margin-bottom: clamp(12px, 2vh, 24px);
+  padding: 0 clamp(12px, 2vw, 32px);
+}
+:global([data-our-story-page] .footer-reveal__col) {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: .92rem;
+}
+:global([data-our-story-page] .footer-reveal__col--links) { align-items: flex-start; text-align: left; }
+:global([data-our-story-page] .footer-reveal__col-label) {
+  font-size: .74rem;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: rgba(255,255,255,.5);
+  margin-bottom: 4px;
+}
+:global([data-our-story-page] .footer-reveal__col a) { color: rgba(255,255,255,.85); font-weight: 500; }
+:global([data-our-story-page] .footer-reveal__col a:hover) { color: var(--gold); }
+
+:global([data-our-story-page] .footer-reveal__col--brand) { align-items: flex-start; gap: 16px; }
+:global([data-our-story-page] .footer-reveal__brand) {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--white);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1rem;
+}
+:global([data-our-story-page] .footer-reveal__brand img) { height: 32px; width: auto; }
+:global([data-our-story-page] .footer-reveal__brand-tagline) {
+  font-size: .84rem;
+  line-height: 1.55;
+  color: rgba(255,255,255,.68);
+  max-width: 28ch;
+}
+:global([data-our-story-page] .footer-reveal__social-row) { display: flex; gap: 10px; }
+:global([data-our-story-page] .footer-reveal__social-icon) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.16);
+  color: rgba(255,255,255,.85);
+  transition: transform .3s var(--ease), background .3s var(--ease), color .3s var(--ease), border-color .3s var(--ease);
+}
+:global([data-our-story-page] .footer-reveal__social-icon:hover) {
+  background: rgba(var(--gold-rgb), .18);
+  border-color: rgba(var(--gold-rgb), .55);
+  color: var(--gold);
+  transform: translateY(-2px);
+}
+
+/* ------------------------------ Sponsor marquee -----------------------------
+   Real partner logos (pulled from kentbusinesscollege.com/our-partners/),
+   scrolling right-to-left on an endless loop. Two identical tracks placed
+   back-to-back inside a flex row + one continuous translateX keyframe is
+   the standard seamless-marquee trick: track 2 is already sitting exactly
+   where track 1 started by the time track 1 has scrolled fully out of
+   view, so the reset is invisible. `aria-hidden` on the wrapper in the
+   markup since this duplicates the real Partners section above — purely
+   decorative here, not a second source of truth. */
+:global([data-our-story-page] .footer-reveal__sponsors) {
+  position: relative;
+  z-index: 3;
+  /* Capped narrower than .footer-reveal__row above — this band sits lower
+     on the shield, where its silhouette has already started narrowing back
+     in toward the bottom point (see the band comment on
+     .footer-reveal__panel), so it needs more clearance than the nav row. */
+  width: 100%;
+  max-width: min(1200px, 78%);
+  margin-inline: auto;
+  margin-top: auto;
+  padding: clamp(8px, 1.4vh, 14px) 0 clamp(12px, 1.8vh, 20px);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
+          mask-image: linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
+  overflow: hidden;
+  display: flex;
+  /* Round 21: pause-on-hover + drag-to-scroll (see initSponsorMarquee() in
+     animations/initMain.ts) — pan-y (not "none") so a finger drag here still lets the
+     page itself scroll vertically; only the horizontal component is
+     hijacked, by that same JS via pointer events. */
+  cursor: grab;
+  touch-action: pan-y;
+  -webkit-user-select: none;
+  user-select: none;
+}
+:global([data-our-story-page] .footer-reveal__sponsors-track) {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: clamp(28px, 3.2vw, 52px);
+  padding-right: clamp(28px, 3.2vw, 52px);
+  animation: footerSponsorsScroll 44s linear infinite;
+}
+/* Shared linked partner marks keep their original colours and fit inside
+   an equal-size box without distorting their different proportions. */
+:global([data-our-story-page] .footer-reveal__sponsors-track img) {
+  width: clamp(84px, 7.6vw, 130px);
+  height: clamp(34px, 4vw, 50px);
+  object-fit: contain;
+  filter: grayscale(1) invert(1) contrast(2);
+  mix-blend-mode: screen;
+  opacity: .62;
+  -webkit-user-drag: none;
+  pointer-events: none;
+}
+@keyframes footerSponsorsScroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  :global([data-our-story-page] .footer-reveal__sponsors-track) { animation: none; }
+}
+
+:global([data-our-story-page] .footer-reveal__bottom) {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: 1400px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 18px clamp(16px, 3vw, 32px) clamp(18px, 3vh, 28px);
+  color: rgba(255,255,255,.55);
+  font-size: .82rem;
+}
+:global([data-our-story-page] .footer-reveal__bottom-links) { display: flex; gap: 24px; }
+:global([data-our-story-page] .footer-reveal__bottom-links a) { color: rgba(255,255,255,.55); }
+:global([data-our-story-page] .footer-reveal__bottom-links a:hover) { color: var(--gold); }
+
+/* Between the desktop 5-column row and the <=900px single-column stack,
+   the grid's desktop minmax floors (200px + 4x130px, plus gaps) add up to
+   ~830-930px of min-content width — wider than this row's own box gets at
+   these sizes once capped to stay inside the shield's silhouette, which
+   was overflowing the box's right edge (worse once nudged right by
+   .footer-reveal__row's transform) rather than the columns actually
+   shrinking. Smaller floors and gap here give the grid room to genuinely
+   shrink instead. */
+@media (max-width: 1200px) {
+  :global([data-our-story-page] .footer-reveal__row) {
+    grid-template-columns: minmax(160px, 1.2fr) repeat(4, minmax(96px, 1fr));
+    gap: clamp(16px, 2.4vw, 32px);
+  }
+}
+
+@media (max-width: 900px) {
+  :global([data-our-story-page] .footer-reveal__row) { grid-template-columns: 1fr; justify-items: center; text-align: center; gap: 32px; max-width: min(420px, 92%); margin-inline: auto; transform: none; }
+  :global([data-our-story-page] .footer-reveal__col--brand), :global([data-our-story-page] .footer-reveal__col--links) { align-items: center; text-align: center; }
+  :global([data-our-story-page] .footer-reveal__sponsors) { max-width: 92%; margin-inline: auto; }
+}
+
+/* --------------------------------- Reveal ---------------------------------- */
+
+:global([data-our-story-page] .reveal) { opacity: 0; transform: translateY(24px); }
+
+/* mobile nav drawer */
+:global([data-our-story-page] .nav__drawer) {
+  position: fixed; inset: 0;
+  background: var(--deep-purple);
+  z-index: 99;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 28px;
+  transform: translateY(-100%);
+  transition: transform .4s var(--ease);
+}
+:global([data-our-story-page] .nav__drawer.open) { transform: translateY(0); }
+:global([data-our-story-page] .nav__drawer a) { color: var(--white); font-size: 1.4rem; font-family: var(--font-display); }
+:global([data-our-story-page] .nav__drawer .close) {
+  position: absolute; top: 24px; right: 24px;
+  color: var(--white); font-size: 1.8rem; background: none; border: none; cursor: pointer;
+}
+
+/* ================================ Glow =====================================
+   A restrained text-glow applied only to genuinely key/highlighted words —
+   not blanket-applied across all copy. Used on: the hero's "momentum.", and
+   a handful of explicitly-marked .glow spans in the cinematic captions. (The
+   old #intro-line section that used to carry two highlighted phrases here
+   has been removed — see the .hero-collapse comment above.)
+
+   Round 3 redesign — reads as actual emitted light, not a flat shadow
+   outline, via two techniques layered together:
+   1. The glyphs' own fill is a bright white-to-gold gradient
+      (`background-clip: text`), so the letters themselves look like
+      they're brightest at the top and cooling to gold — like a light
+      source, not flat-colored text with a shadow stuck behind it.
+      `color: var(--gold)` stays as a plain fallback for the (now rare)
+      browsers without `background-clip: text` support, since without it
+      `-webkit-text-fill-color: transparent` would otherwise render blank.
+   2. Four shadow layers instead of two, deliberately different in
+      character rather than just bigger copies of each other: a tight,
+      near-white "hot core" (0 0 2px) right at the glyph edge, then two
+      warm-gold layers stepping outward, then a wide, faint outer bloom.
+      Real light sources are brightest at the core and fall off toward the
+      edges of the halo — a single uniform-color shadow at one or two radii
+      can't reproduce that falloff, which is why it used to read as "a
+      shadow" rather than "glowing."
+   ========================================================================== */
+:global([data-our-story-page] .glow) {
+  background: linear-gradient(180deg, #fffbe8 0%, var(--gold) 60%, var(--gold) 100%);
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: var(--gold);
+  text-shadow:
+    0 0 2px rgba(255, 252, 235, 0.9),
+    0 0 9px rgba(var(--gold-rgb), 0.75),
+    0 0 20px rgba(var(--gold-rgb), 0.5),
+    0 0 42px rgba(var(--gold-rgb), 0.28);
+}
+@media (prefers-reduced-motion: no-preference) {
+  :global([data-our-story-page] .glow) {
+    animation: glowPulse 3.4s ease-in-out infinite;
+  }
+}
+@keyframes glowPulse {
+  0%, 100% {
+    text-shadow:
+      0 0 2px rgba(255, 252, 235, 0.85),
+      0 0 8px rgba(var(--gold-rgb), 0.68),
+      0 0 18px rgba(var(--gold-rgb), 0.42),
+      0 0 38px rgba(var(--gold-rgb), 0.22);
+  }
+  50% {
+    text-shadow:
+      0 0 3px rgba(255, 252, 235, 1),
+      0 0 13px rgba(var(--gold-rgb), 0.95),
+      0 0 28px rgba(var(--gold-rgb), 0.65),
+      0 0 56px rgba(var(--gold-rgb), 0.38);
+  }
+}
+
+/* ============================ Comfort vignette =============================
+   Always-on, fixed, viewport-relative top/bottom blur bands (see
+   React component markup, right after the custom cursor markup). Replaces the old
+   per-section blur crossfade in initSectionTransitions, which blurred
+   whatever section happened to be exiting/entering — including, often, the
+   middle of the screen. These bands are masked so the blur fades out toward
+   the middle and only ever touches the very top/bottom edges; the center of
+   the viewport is always fully sharp, independent of scroll position.
+
+   Deliberately very subtle per feedback — this should read as "barely
+   there," not as a visible band. Kept small (short band, low blur radius)
+   and the mask fades it out fast, so in practice only the couple of pixels
+   right at the very edge ever look soft.
+   ========================================================================== */
+:global([data-our-story-page] .scroll-vignette) {
+  position: fixed;
+  left: 0; right: 0;
+  z-index: 45;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+/* Round 3: the footer must be completely clear of any blur — but
+   `backdrop-filter` blurs whatever is visually behind an element in the
+   composited page, regardless of DOM ancestry, so simply moving the footer
+   outside #pageContent (see its own comment in React component markup) doesn't stop
+   `.scroll-vignette--bottom` from still blurring it once it's the content
+   sitting at the very bottom of the viewport. Hidden instead via JS the
+   moment the footer is in view — see initFooterVignetteGuard() in
+   animations/initMain.ts. */
+:global([data-our-story-page] .scroll-vignette--bottom.is-hidden) { opacity: 0; }
+:global([data-our-story-page] .scroll-vignette--top) {
+  top: 0;
+  height: 1.8vh;
+  min-height: 8px;
+  max-height: 20px;
+  backdrop-filter: blur(0.6px);
+  -webkit-backdrop-filter: blur(0.6px);
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, transparent 55%);
+          mask-image: linear-gradient(to bottom, black 0%, transparent 55%);
+}
+:global([data-our-story-page] .scroll-vignette--bottom) {
+  bottom: 0;
+  height: 1.8vh;
+  min-height: 8px;
+  max-height: 20px;
+  backdrop-filter: blur(0.6px);
+  -webkit-backdrop-filter: blur(0.6px);
+  -webkit-mask-image: linear-gradient(to top, black 0%, transparent 55%);
+          mask-image: linear-gradient(to top, black 0%, transparent 55%);
+}
+@media (max-width: 759px) {
+  /* Keep mobile scrolling cheap/crisp — this is a viewing-comfort touch for
+     larger screens, not a load-bearing part of the design. */
+  :global([data-our-story-page] .scroll-vignette) { display: none; }
+}
+
+/* ============================== Page content ===============================
+   Everything from the hero through Partners lives inside #pageContent (see
+   React component markup) — the footer, nav, custom cursor and comfort vignette are all
+   deliberate siblings of it, not descendants, so nothing applied to
+   #pageContent can ever reach them: a CSS filter/opacity on an ancestor
+   cannot be escaped by a descendant, so anything that must stay unaffected
+   has to live outside it instead.
+   ========================================================================== */
+/* Deliberately NEVER apply `will-change: filter` (or `transform`/
+   `perspective`) to #pageContent. `will-change` listing a
+   containing-block-inducing property makes the browser treat the element
+   as if it always had that property applied, for the purposes of sizing/
+   positioning `position: fixed` descendants — *even while the actual value
+   is `none`*. Since GSAP's ScrollTrigger pins (e.g. the cinematic video
+   section) rely on their pinned element becoming `position: fixed` relative
+   to the *viewport*, and those pinned elements live inside #pageContent,
+   that one line was enough to silently break every pin on the page (they'd
+   end up fixed relative to #pageContent's own box instead, which scrolls
+   with the page — so a "pinned" section would visibly scroll away like
+   nothing was pinned at all). This was a real bug hit during development —
+   left here as a permanent warning. */
+
+/* ========================= Cinematic story section =========================
+   #story-cinematic — deliberately a DIFFERENT theme from the rest of the
+   page ("inside the portal"): near-black, letterboxed, cinematic. Pins for
+   a LONG scroll distance (see animations/initMain.ts initCinematicScrub `end:
+   "+=900%"`) and scrubs a single video 1:1 with scroll; the full company
+   timeline (founding, growth, educational expansion, transformation,
+   today) plays back as crossfading caption cards on top of it. The video
+   itself grows in from small/rounded to full-screen over the first slice
+   of the pin (see .story-cinematic__videoFrame below); the exit fades
+   #cinematicFrame's opacity out while #cinematicExitBlend fades in behind
+   it (see .cinematic-blend above), revealing .then-now underneath as the
+   pin releases.
+   ========================================================================== */
+
+:global([data-our-story-page] .story-cinematic) {
+  /* Round 27: #top (the hero) is now pinned/fixed well past its own shrink
+     finishing (see initHeroCollapse() in animations/initMain.ts), so for part of that
+     pin this section needs to rise up and visually cover it via plain
+     document flow — a `position:fixed` element with z-index:auto still
+     paints ABOVE normal static in-flow content regardless of DOM order,
+     so without an explicit stacking position/z-index here the fixed hero
+     would keep painting on top of this section even once it's scrolled
+     into the same screen space. Any z-index works as long as it's a real
+     (non-auto) one; kept low since this only ever needs to beat the hero
+     inside their shared ancestor (#pageContent, z-index 2) — the fixed
+     nav (100) and scroll-vignette (45) live outside that ancestor entirely
+     and are unaffected either way. */
+  position: relative;
+  z-index: 10;
+  background: radial-gradient(120% 120% at 50% 0%, #241041 0%, #0a0512 60%, #060309 100%);
+  padding: 0;
+}
+
+:global([data-our-story-page] .story-cinematic__pin) {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+:global([data-our-story-page] .story-cinematic__frame) {
+  position: absolute;
+  inset: 0;
+}
+
+/* Grown/scaled by animations/initMain.ts during the first slice of the pin's scroll (see
+   GROW_END in initCinematicScrub) — starts small + rounded, ends filling
+   the frame exactly. Kept as its own layer (separate from .frame) so the
+   captions below aren't affected by the growth transform. */
+:global([data-our-story-page] .story-cinematic__videoFrame) {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: 0px;
+  transform-origin: 50% 50%;
+  will-change: transform, border-radius;
+}
+
+:global([data-our-story-page] .story-cinematic__video) {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.92) contrast(1.05);
+}
+
+:global([data-our-story-page] .story-cinematic__vignette) {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to bottom, rgba(6,3,9,.75) 0%, transparent 20%, transparent 65%, rgba(6,3,9,.88) 100%),
+    radial-gradient(120% 90% at 50% 50%, transparent 45%, rgba(6,3,9,.55) 100%);
+  pointer-events: none;
+}
+
+/* Sound opt-in — ships muted (autoplay-safe); this lets the visitor turn on
+   audio to lean into the story. */
+:global([data-our-story-page] .story-cinematic__mute) {
+  position: absolute;
+  right: 28px;
+  bottom: 28px;
+  z-index: 5;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.28);
+  background: rgba(20,9,31,.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: border-color .25s var(--ease), background .25s var(--ease), transform .25s var(--ease);
+}
+:global([data-our-story-page] .story-cinematic__mute:hover) {
+  border-color: var(--gold);
+  transform: translateY(-2px);
+}
+:global([data-our-story-page] .story-cinematic__mute .icon-unmuted) { display: none; }
+:global([data-our-story-page] .story-cinematic__mute.is-unmuted .icon-muted) { display: none; }
+:global([data-our-story-page] .story-cinematic__mute.is-unmuted .icon-unmuted) { display: block; }
+@media (max-width: 959px) {
+  :global([data-our-story-page] .story-cinematic__mute) { right: 16px; bottom: 16px; width: 44px; height: 44px; }
+}
+
+:global([data-our-story-page] .story-cinematic__captions) {
+  position: absolute;
+  left: 0; right: 0;
+  bottom: 20%;
+  display: flex;
+  justify-content: center;
+  padding: 0 24px;
+  pointer-events: none;
+}
+
+:global([data-our-story-page] .story-cinematic__caption) {
+  position: absolute;
+  left: 50%;
+  translate: -50% 0;
+  width: min(620px, calc(100% - 48px));
+  text-align: center;
+  color: var(--white);
+  opacity: 0;
+  transition: opacity 0.1s linear;
+}
+:global([data-our-story-page] .story-cinematic__caption.is-static) {
+  position: static;
+  translate: none;
+  opacity: 1;
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto 48px;
+  transition: none;
+}
+:global([data-our-story-page] .story-cinematic__year) {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: .74rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+:global([data-our-story-page] .story-cinematic__caption h3) {
+  font-size: clamp(1.45rem, 3.05vw, 2.15rem);
+  color: var(--white);
+  margin-bottom: 10px;
+}
+:global([data-our-story-page] .story-cinematic__caption p) {
+  color: rgba(255,255,255,.82);
+  font-size: .92rem;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+@media (max-width: 959px) {
+  :global([data-our-story-page] .story-cinematic__pin) { height: auto; min-height: 0; overflow: visible; padding: 48px 0; }
+  :global([data-our-story-page] .story-cinematic__frame) { position: relative; inset: auto; }
+  :global([data-our-story-page] .story-cinematic__videoFrame) { position: relative; inset: auto; transform: none !important; border-radius: 0 !important; }
+  :global([data-our-story-page] .story-cinematic__video) { position: relative; width: 100%; height: 60vh; object-fit: cover; }
+  :global([data-our-story-page] .story-cinematic__vignette) { display: none; }
+  :global([data-our-story-page] .story-cinematic__captions) { position: static; display: block; padding: 32px 24px 0; }
+  /* .story-cinematic__mute is a sibling of .videoFrame, not a child of it —
+     on mobile .frame is a normal-flow box taller than just the video (video
+     + all the stacked static captions below it), so anchoring the button to
+     .frame's own bottom edge would place it far below the video, near the
+     end of the captions. Pin it to the video's own (fixed, 60vh) height
+     instead so it stays overlaid on the video specifically. */
+  :global([data-our-story-page] .story-cinematic__mute) { top: calc(60vh - 60px); right: 16px; bottom: auto; }
+}
+
+/* ============================ Section transitions =========================
+   The landonorris.com-style "shrink out / grow in" crossfade applied between
+   every major section (see animations/initMain.ts -> initSectionTransitions). Each
+   section gets its own scroll-linked (not pinned) scale+opacity scrub as it
+   enters from the bottom and exits at the top — no layout/pin cost, works
+   cleanly with Lenis smooth scroll, and keeps every #anchor nav link
+   pointing at a normal, unpinned position. Deliberately no blur here
+   anymore — that used to blur whichever section was exiting/entering
+   (including, often, the middle of the screen); viewing-comfort blur now
+   lives only in the fixed .scroll-vignette bands pinned to the very top/
+   bottom of the viewport (see above), so the center is always sharp.
+   ========================================================================== */
+:global([data-our-story-page] .scene-transition) {
+  will-change: transform, opacity;
+  transform-origin: 50% 50%;
+}
+
+/* ============================== Custom cursor ==============================
+   Replaces the OS cursor on desktop/mouse only (see animations/initMain.ts ->
+   initCustomCursor). A small solid dot tracks the pointer 1:1; a larger
+   ring trails it with a light damped lag for a premium, considered feel.
+   Both scale/recolor on hover over interactive elements. Left alone (real
+   OS cursor shown) on touch devices and under reduced-motion.
+   ========================================================================== */
+:global([data-our-story-page] .cursor-dot),
+:global([data-our-story-page] .cursor-ring) {
+  position: fixed;
+  top: 0; left: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  transition: opacity .2s ease;
+}
+:global([data-our-story-page] .cursor-dot) {
+  width: 8px; height: 8px;
+  background: var(--gold);
+  box-shadow: 0 0 8px rgba(var(--gold-rgb), .9), 0 0 18px rgba(var(--gold-rgb), .5);
+  transition: opacity .2s ease, background .25s ease, width .25s var(--ease), height .25s var(--ease);
+}
+:global([data-our-story-page] .cursor-ring) {
+  width: 36px; height: 36px;
+  z-index: 9998;
+  border: 1px solid rgba(var(--gold-rgb), .55);
+  background: radial-gradient(circle, rgba(var(--purple-rgb), .14), transparent 70%);
+  transition: opacity .2s ease, width .25s var(--ease), height .25s var(--ease), border-color .25s ease, background .25s ease;
+}
+:global([data-our-story-page] .cursor-dot.is-visible),
+:global([data-our-story-page] .cursor-ring.is-visible) {
+  opacity: 1;
+}
+:global([data-our-story-page] .cursor-ring.is-hover) {
+  width: 58px; height: 58px;
+  border-color: rgba(var(--gold-rgb), .9);
+  background: radial-gradient(circle, rgba(var(--gold-rgb), .2), transparent 70%);
+}
+:global([data-our-story-page] .cursor-dot.is-hover) {
+  width: 5px; height: 5px;
+  background: var(--white);
+}
+@media (hover: hover) and (pointer: fine) {
+  :global(body.has-custom-cursor [data-our-story-page]),
+  :global(body.has-custom-cursor [data-our-story-page] a),
+  :global(body.has-custom-cursor [data-our-story-page] button),
+  :global(body.has-custom-cursor [data-our-story-page] input),
+  :global(body.has-custom-cursor [data-our-story-page] textarea),
+  :global(body.has-custom-cursor [data-our-story-page] select),
+  :global(body.has-custom-cursor [data-our-story-page] .hero__stage) {
+    cursor: none;
+  }
+}
+@media (max-width: 900px), (hover: none), (pointer: coarse) {
+  :global([data-our-story-page] .cursor-dot), :global([data-our-story-page] .cursor-ring) { display: none !important; }
+}
+
+/* ================================ Lenis ===================================
+   Minimal overrides on top of js/vendor/lenis.css — Lenis smooths native
+   window scrolling (no wrapper element needed for this build).
+   ========================================================================== */
+:global(html.lenis) {
+  scroll-behavior: auto !important;
+}

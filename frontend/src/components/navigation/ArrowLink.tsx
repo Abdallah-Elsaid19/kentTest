@@ -28,7 +28,7 @@ export function ArrowLink({
 }: ArrowLinkProps) {
   const classes = joinNavigationClasses(
     "group inline-flex min-h-11 items-center gap-2 font-semibold transition-colors motion-reduce:transition-none",
-    tone === "brand" && "text-kbc-purple-700 hover:text-kbc-purple-800",
+    tone === "brand" && "text-[#401B8C] hover:text-[#2F1468]",
     tone === "inverse" && "text-white hover:text-white/80",
     tone === "ink" && "text-kbc-purple-950 hover:text-kbc-purple-700",
     className,

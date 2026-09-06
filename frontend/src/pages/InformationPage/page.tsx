@@ -5,6 +5,9 @@ import { NavigationButton } from "@/components/navigation";
 import { RouteMeta } from "@/components/seo/RouteMeta";
 import { PageHero } from "@/components/ui/PageHero";
 import { FaqPage } from "./FaqPage";
+import { GovernancePage } from "./GovernancePage";
+import { PartnersPage } from "./PartnersPage";
+import { SafeguardingPage } from "./SafeguardingPage";
 
 export type InformationPageKind = "faq" | "partners" | "governance" | "safeguarding" | "apprentices" | "jobs" | "employerDashboard";
 
@@ -112,6 +115,9 @@ const pages: Record<InformationPageKind, PageContent> = {
 
 export default function InformationPage({ kind }: { kind: InformationPageKind }) {
   if (kind === "faq") return <FaqPage />;
+  if (kind === "partners") return <PartnersPage />;
+  if (kind === "governance") return <GovernancePage />;
+  if (kind === "safeguarding") return <SafeguardingPage />;
 
   const page = pages[kind];
   return (

@@ -9,8 +9,7 @@ import {
   ShieldCheck,
   Users,
 } from "lucide-react";
-import { useState } from "react";
-
+import { FaqSection } from "@/components/common/FaqSection";
 import { NavigationButton } from "@/components/navigation";
 import { RouteMeta } from "@/components/seo/RouteMeta";
 
@@ -44,8 +43,6 @@ const faqs = [
 ];
 
 export default function AssociateProjectManagerPage() {
-  const [openFaq, setOpenFaq] = useState<string | null>(null);
-
   return (
     <main className="apm-page overflow-x-clip bg-white text-kbc-purple-950 [&_h1]:font-[Georgia,serif] [&_h2]:font-[Georgia,serif] [&_h3]:font-[Georgia,serif]">
       <RouteMeta fallbackTitle="Associate Project Manager Level 4 | Kent Business College" fallbackDescription="A 12-month applied pathway that builds confident project managers through professional learning, workplace evidence and PMP preparation." />
@@ -116,9 +113,14 @@ export default function AssociateProjectManagerPage() {
         <div className={shell}><div className={heading}><div><p className={eyebrow}>Learner journey</p><h2>From initial conversation to an agreed training plan.</h2></div></div><div className="mt-14 grid grid-cols-3 gap-4 max-[760px]:grid-cols-2 max-[520px]:grid-cols-1">{["Discuss role and aspirations", "Confirm employer support", "Review prior learning", "Complete eligibility checks", "Agree the training plan", "Start with clear expectations"].map((item, index) => <article className="rounded-2xl bg-white p-6" key={item}><span className="grid h-9 w-9 place-items-center rounded-full bg-kbc-purple-950 text-xs text-white">0{index + 1}</span><h3 className="mt-8 text-lg">{item}</h3></article>)}</div></div>
       </section>
 
-      <section className={section}>
-        <div className={`${shell} grid grid-cols-[.72fr_1.28fr] gap-20 max-[900px]:grid-cols-1`}><div><p className={eyebrow}>Important details</p><h2 className="text-[clamp(38px,4vw,54px)] leading-none">Practical answers before you apply.</h2><p className="mt-5 text-kbc-purple-700">Programme dates, funding and professional-body requirements are confirmed for the relevant intake.</p><NavigationButton className="mt-7" to="/contact" variant="primary">Talk to the team</NavigationButton></div><div className="overflow-hidden rounded-2xl border border-kbc-purple-100">{faqs.map(([question, answer]) => <details className="border-b border-kbc-purple-100 last:border-0" open={openFaq === question} key={question}><summary className="flex min-h-16 cursor-pointer list-none items-center justify-between gap-4 px-6 font-bold" onClick={(event) => { event.preventDefault(); setOpenFaq(openFaq === question ? null : question); }}>{question}<span className="text-xl text-kbc-purple-600">+</span></summary><p className="px-6 pb-6 text-sm leading-6 text-kbc-purple-700">{answer}</p></details>)}</div></div>
-      </section>
+      <FaqSection
+        id="apm-faq"
+        eyebrow="Important details"
+        title="Practical answers before you apply."
+        description="Programme dates, funding and professional-body requirements are confirmed for the relevant intake."
+        items={faqs}
+        action={<NavigationButton to="/contact" variant="primary">Talk to the team</NavigationButton>}
+      />
 
       <section className="bg-[#062b34] py-20 text-white" id="contact"><div className={`${shell} grid grid-cols-[1.2fr_.8fr] items-end gap-14 max-[850px]:grid-cols-1`}><div><p className={`${eyebrow} !text-kbc-gold-500`}>Build the next level</p><h2 className="text-[clamp(40px,5vw,64px)] leading-none text-white">Build the project capability your organisation needs next.</h2><p className="mt-5 max-w-[700px] text-white/70">Discuss the role, employer responsibilities, workplace evidence and funding route with the KBC team.</p></div><div className="flex flex-wrap gap-3"><NavigationButton to="/contact" variant="projectControls">Book a consultation <ArrowRight size={18} /></NavigationButton><NavigationButton to="/events" variant="projectControlsInverse">View information events</NavigationButton></div></div></section>
     </main>

@@ -1,0 +1,419 @@
+.scope {
+  --footer-gold: #f5c94f;
+  --footer-gold-rgb: 245, 201, 79;
+  --footer-purple-rgb: 64, 27, 140;
+  --footer-deep-purple-rgb: 47, 20, 104;
+  --footer-ink: #170b20;
+  --footer-white: #fff;
+  --footer-ease: cubic-bezier(.22, 1, .36, 1);
+  font-family: "Poppins", Arial, sans-serif;
+}
+
+.scope :global(.footer-reveal) {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  overflow: hidden;
+  flex-direction: column;
+  align-items: center;
+  padding: clamp(12px, 2vh, 24px) clamp(12px, 2.2vw, 26px) 0;
+  background: linear-gradient(
+    to bottom,
+    #fff 0%,
+    #fff 8%,
+    #f8f5fc 20%,
+    rgba(var(--footer-gold-rgb), .16) 34%,
+    rgba(var(--footer-deep-purple-rgb), .78) 66%,
+    var(--footer-ink) 88%
+  );
+  color: rgba(255, 255, 255, .85);
+}
+
+.scope :global(.footer-reveal__blobs) {
+  position: absolute;
+  inset: -6% -8%;
+  width: 116%;
+  height: 112%;
+  object-fit: cover;
+  opacity: .16;
+  filter: hue-rotate(-35deg) saturate(1.4) brightness(1.3);
+  pointer-events: none;
+}
+
+.scope :global(.footer-reveal__panel) {
+  position: relative;
+  width: min(1440px, 100%);
+  margin-top: clamp(16px, 3vh, 34px);
+  padding-bottom: clamp(36px, 4.6vw, 76px);
+}
+
+.scope :global(.footer-reveal__mask),
+.scope :global(.footer-reveal__glass),
+.scope :global(.footer-reveal__cursorShine),
+.scope :global(.footer-reveal__edgeGlow) {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.scope :global(.footer-reveal__mask) {
+  background-image: var(--footer-mask-image);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  filter: drop-shadow(0 24px 52px rgba(0, 0, 0, .42));
+}
+
+.scope :global(.footer-reveal__glass),
+.scope :global(.footer-reveal__cursorShine) {
+  -webkit-mask-image: var(--footer-mask-image);
+  mask-image: var(--footer-mask-image);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+}
+
+.scope :global(.footer-reveal__glass) {
+  background: linear-gradient(135deg, rgba(255, 255, 255, .16) 0%, rgba(255, 255, 255, .03) 45%, rgba(var(--footer-purple-rgb), .16) 100%);
+  backdrop-filter: blur(16px) saturate(150%);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+}
+
+.scope :global(.footer-reveal__cursorShine) {
+  background: radial-gradient(300px circle at var(--glow-x, -9999px) var(--glow-y, -9999px), rgba(255, 255, 255, .24) 0%, rgba(255, 255, 255, .13) 30%, rgba(255, 255, 255, .05) 60%, transparent 100%);
+  mix-blend-mode: screen;
+}
+
+.scope :global(.footer-reveal__edgeGlow) {
+  background: radial-gradient(420px circle at var(--glow-x, -9999px) var(--glow-y, -9999px), #fff 0%, transparent 80%);
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, .9)) drop-shadow(0 0 18px rgba(237, 230, 250, .65));
+  -webkit-mask-image: var(--footer-outline-image);
+  mask-image: var(--footer-outline-image);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+}
+
+.scope :global(.footer-reveal__media) {
+  position: absolute;
+  top: clamp(-48px, -4.5vw, -28px);
+  left: 50%;
+  z-index: 2;
+  width: clamp(124px, 12vw, 184px);
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  -webkit-mask-image: linear-gradient(to bottom, #000 62%, transparent 96%);
+  mask-image: linear-gradient(to bottom, #000 62%, transparent 96%);
+}
+
+.scope :global(.footer-reveal__video) {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.scope :global(.footer-reveal__content) {
+  position: relative;
+  z-index: 3;
+  padding-top: clamp(92px, 8vw, 120px);
+  -webkit-mask-image: var(--footer-mask-image);
+  mask-image: var(--footer-mask-image);
+  -webkit-mask-position: 0 calc(-1 * var(--footer-content-top, 0px));
+  mask-position: 0 calc(-1 * var(--footer-content-top, 0px));
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% var(--footer-panel-h, 1600px);
+  mask-size: 100% var(--footer-panel-h, 1600px);
+}
+
+.scope :global(.footer-reveal__row) {
+  position: relative;
+  z-index: 3;
+  display: grid;
+  width: 100%;
+  max-width: min(1160px, 92%);
+  grid-template-columns: minmax(180px, 1.3fr) repeat(4, minmax(112px, 1fr));
+  gap: clamp(18px, 2.6vw, 36px);
+  margin: clamp(8px, 1.2vh, 16px) auto clamp(8px, 1.2vh, 16px);
+  padding: 0 clamp(10px, 1.6vw, 22px);
+  transform: translateX(clamp(6px, .8vw, 14px));
+}
+
+.scope :global(.footer-reveal__col) {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  min-width: 0;
+  font-size: clamp(.7rem, .72vw, .82rem);
+  line-height: 1.45;
+}
+
+.scope :global(.footer-reveal__col--links) {
+  align-items: flex-start;
+  text-align: left;
+}
+
+.scope :global(.footer-reveal__col-label) {
+  margin-bottom: 2px;
+  color: rgba(255, 255, 255, .5);
+  font-size: .62rem;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.scope :global(.footer-reveal__col a) {
+  color: rgba(255, 255, 255, .85);
+  font-weight: 500;
+  text-decoration: none;
+  transition: color .25s ease, transform .25s ease;
+}
+
+.scope :global(.footer-reveal__col a:hover) {
+  color: var(--footer-gold);
+  transform: translateX(2px);
+}
+
+.scope :global(.footer-reveal__col--brand) {
+  align-items: flex-start;
+  gap: 11px;
+}
+
+.scope :global(.footer-reveal__brand) {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--footer-white);
+  font-family: "Poppins", Arial, sans-serif;
+  font-size: .86rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.scope :global(.footer-reveal__brand img) {
+  width: auto;
+  height: 27px;
+}
+
+.scope :global(.footer-reveal__brand-tagline) {
+  max-width: 27ch;
+  margin: 0;
+  color: rgba(255, 255, 255, .68);
+  font-size: .7rem;
+  line-height: 1.5;
+}
+
+.scope :global(.footer-reveal__social-row) {
+  display: flex;
+  gap: 7px;
+}
+
+.scope :global(.footer-reveal__social-icon) {
+  display: inline-flex;
+  width: 31px;
+  height: 31px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, .16);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .08);
+  color: rgba(255, 255, 255, .85);
+  transition: transform .3s var(--footer-ease), background .3s var(--footer-ease), color .3s var(--footer-ease), border-color .3s var(--footer-ease);
+}
+
+.scope :global(.footer-reveal__social-icon:hover) {
+  border-color: rgba(var(--footer-gold-rgb), .55);
+  background: rgba(var(--footer-gold-rgb), .18);
+  color: var(--footer-gold);
+  transform: translateY(-2px);
+}
+
+.scope :global(.footer-reveal__sponsors) {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  width: 100%;
+  max-width: min(1050px, 76%);
+  overflow: hidden;
+  margin: auto auto 0;
+  padding: clamp(6px, 1vh, 10px) 0 clamp(8px, 1.2vh, 14px);
+  cursor: grab;
+  touch-action: pan-y;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
+}
+
+.scope :global(.footer-reveal__sponsors.is-dragging) {
+  cursor: grabbing;
+}
+
+.scope :global(.footer-reveal__sponsors-track) {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: clamp(24px, 2.7vw, 42px);
+  padding-right: clamp(24px, 2.7vw, 42px);
+  animation: sponsorScroll 44s linear infinite;
+  will-change: transform;
+}
+
+.scope :global(.footer-reveal__sponsor-logo) {
+  display: block;
+  flex: 0 0 auto;
+  width: clamp(72px, 6.3vw, 106px);
+  height: clamp(28px, 3vw, 40px);
+  object-fit: contain;
+  opacity: .72;
+  -webkit-user-drag: none;
+  pointer-events: none;
+}
+
+.scope :global(.footer-reveal__bottom) {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  width: 100%;
+  max-width: 1240px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 12px clamp(14px, 2.4vw, 26px) clamp(12px, 2vh, 18px);
+  color: rgba(255, 255, 255, .55);
+  font-size: .68rem;
+}
+
+.scope :global(.footer-reveal__bottom-links) {
+  display: flex;
+  gap: 20px;
+}
+
+.scope :global(.footer-reveal__bottom-links a) {
+  color: rgba(255, 255, 255, .55);
+  text-decoration: none;
+}
+
+.scope :global(.footer-reveal__bottom-links a:hover) {
+  color: var(--footer-gold);
+}
+
+@keyframes sponsorScroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
+}
+
+@media (max-width: 1100px) {
+  .scope :global(.footer-reveal__row) {
+    grid-template-columns: minmax(150px, 1.2fr) repeat(4, minmax(88px, 1fr));
+    gap: clamp(12px, 2vw, 24px);
+  }
+}
+
+@media (max-width: 820px) {
+  .scope :global(.footer-reveal) {
+    padding-inline: 10px;
+  }
+
+  .scope :global(.footer-reveal__panel) {
+    width: min(720px, 100%);
+    padding-bottom: 34px;
+  }
+
+  .scope :global(.footer-reveal__row) {
+    max-width: min(570px, 88%);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    justify-items: center;
+    gap: 17px 30px;
+    text-align: center;
+    transform: none;
+  }
+
+  .scope :global(.footer-reveal__col--brand) {
+    grid-column: 1 / -1;
+  }
+
+  .scope :global(.footer-reveal__col--brand),
+  .scope :global(.footer-reveal__col--links) {
+    align-items: center;
+    text-align: center;
+  }
+
+  .scope :global(.footer-reveal__sponsors) {
+    max-width: 82%;
+  }
+}
+
+@media (max-width: 520px) {
+  .scope :global(.footer-reveal) {
+    padding-top: 8px;
+  }
+
+  .scope :global(.footer-reveal__panel) {
+    margin-top: 24px;
+    padding-bottom: 28px;
+  }
+
+  .scope :global(.footer-reveal__media) {
+    top: -28px;
+    width: 108px;
+  }
+
+  .scope :global(.footer-reveal__content) {
+    padding-top: 78px;
+  }
+
+  .scope :global(.footer-reveal__row) {
+    width: 74%;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px 18px;
+    padding-inline: 0;
+  }
+
+  .scope :global(.footer-reveal__col) {
+    gap: 4px;
+    font-size: .59rem;
+  }
+
+  .scope :global(.footer-reveal__brand-tagline),
+  .scope :global(.footer-reveal__social-row) {
+    display: none;
+  }
+
+  .scope :global(.footer-reveal__brand) {
+    font-size: .72rem;
+  }
+
+  .scope :global(.footer-reveal__brand img) {
+    height: 23px;
+  }
+
+  .scope :global(.footer-reveal__sponsors) {
+    max-width: 72%;
+  }
+
+  .scope :global(.footer-reveal__bottom) {
+    justify-content: center;
+    padding-bottom: 10px;
+    font-size: .58rem;
+    text-align: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scope :global(.footer-reveal__sponsors-track) {
+    animation: none;
+  }
+
+  .scope :global(.footer-reveal__col a),
+  .scope :global(.footer-reveal__social-icon) {
+    transition: none;
+  }
+}

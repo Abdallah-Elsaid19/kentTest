@@ -7,6 +7,7 @@ import {
   Users,
 } from "lucide-react";
 
+import { FaqSection } from "@/components/common/FaqSection";
 import { NavigationButton } from "@/components/navigation";
 import { RouteMeta } from "@/components/seo/RouteMeta";
 
@@ -543,29 +544,12 @@ export default function LeadershipCollegePage() {
         </div>
       </section>
 
-      <section className={`ls-section ${section}`}>
-        <div className={`ls-shell ls-faq ${shell} grid grid-cols-[.8fr_1.2fr] gap-20 max-[1080px]:grid-cols-1`}>
-          <div>
-            <p className={`ls-eyebrow ${eyebrow}`}>Frequently asked questions</p>
-            <h2>Answers before you commit.</h2>
-            <p>
-              Qualification, delivery and progression details should always be
-              confirmed for the specific intake.
-            </p>
-          </div>
-          <div>
-            {faqs.map(([q, a]) => (
-              <details className="border-b py-5" key={q}>
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-bold">
-                  {q}
-                  <span>+</span>
-                </summary>
-                <p>{a}</p>
-              </details>
-            ))}
-          </div>
-        </div>
-      </section>
+      <FaqSection
+        id="leadership-faq"
+        title="Answers before you commit."
+        description="Qualification, delivery and progression details should always be confirmed for the specific intake."
+        items={faqs}
+      />
       <section className="ls-cta bg-gradient-to-r from-kbc-purple-600 to-kbc-purple-700 py-20 text-white">
         <div className={`ls-shell ${shell} grid grid-cols-[1.2fr_.8fr] items-end gap-14 max-[1080px]:grid-cols-1`}>
           <div>

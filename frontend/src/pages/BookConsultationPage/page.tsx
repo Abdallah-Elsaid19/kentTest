@@ -19,13 +19,13 @@ export default function BookConsultationPage() {
   return (
     <div className="bg-[#f7f3f9]">
       <RouteMeta
-        fallbackTitle="Book a Consultation | Kent Business College"
-        fallbackDescription="Book a focused consultation with the Kent Business College team."
+        fallbackTitle="Information Session | Kent Business College"
+        fallbackDescription="Book an information session with the Kent Business College team."
       />
 
       <section
         aria-labelledby="booking-page-heading"
-        className="relative overflow-hidden bg-[linear-gradient(135deg,#2A0C3B_0%,#4B176D_52%,#321047_100%)] px-4 pb-10 pt-16 text-white sm:pb-12 sm:pt-20 lg:pt-24"
+        className="kbc-page-hero-offset relative overflow-hidden bg-[linear-gradient(135deg,#2A0C3B_0%,#401B8C_52%,#321047_100%)] px-4 pb-10 text-white sm:pb-12"
       >
         <div
           className="pointer-events-none absolute inset-0 opacity-20"
@@ -44,18 +44,18 @@ export default function BookConsultationPage() {
               id="booking-page-heading"
               className="font-heading text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl"
             >
-              Book a Consultation
+              Information Session
             </h1>
             <p className="mt-5 text-base leading-relaxed text-white/70 sm:text-lg">
-              Book a focused conversation with the Kent Business College team to discuss your goals and the most suitable next step.
+              Book an information session with the Kent Business College team to discuss your goals and the most suitable next step.
             </p>
           </div>
         </div>
       </section>
 
-      <section className="pb-10 sm:pb-14 lg:pb-16" aria-label="Kent Business College consultation booking">
+      <section className="pb-10 sm:pb-14 lg:pb-16" aria-label="Kent Business College information session booking">
         <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto overflow-hidden border border-[#e4dce8] bg-white shadow-xl shadow-[#4B176D]/5">
+          <div className="mx-auto overflow-hidden border border-[#e4dce8] bg-white shadow-xl shadow-[#401B8C]/5">
             {isLoading && !hasError && (
               <div
                 className="flex items-center justify-center gap-3 border-b border-[#e4dce8] bg-white px-5 py-4 text-sm font-medium text-slate-600"
@@ -63,7 +63,7 @@ export default function BookConsultationPage() {
                 aria-live="polite"
               >
                 <span
-                  className="h-5 w-5 animate-spin rounded-full border-2 border-[#e4dce8] border-t-[#4B176D]"
+                  className="h-5 w-5 animate-spin rounded-full border-2 border-[#e4dce8] border-t-[#401B8C]"
                   aria-hidden="true"
                 />
                 Loading Microsoft Bookings&hellip;
@@ -73,11 +73,11 @@ export default function BookConsultationPage() {
             {hasError ? (
               <div className="flex min-h-[500px] items-center justify-center px-6 py-16 text-center" role="alert">
                 <div className="max-w-lg">
-                  <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#ebe0f0] text-[#4B176D]">
+                  <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#ebe0f0] text-[#401B8C]">
                     <ExternalLink aria-hidden="true" size={25} />
                   </div>
                   <h2 className="mt-6 font-heading text-2xl font-semibold text-[#24162c]">
-                    Continue your consultation booking
+                    Continue your information session booking
                   </h2>
                   <p className="mt-3 leading-relaxed text-slate-600">
                     Microsoft Bookings could not be displayed here. Open the secure booking page in a new tab to choose a meeting time.
@@ -86,7 +86,7 @@ export default function BookConsultationPage() {
                     href={bookingUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-7 inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-[#4B176D] px-6 py-3 font-semibold text-white transition-colors hover:bg-[#371050] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#4B176D]"
+                    className="mt-7 inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-[#401B8C] px-6 py-3 font-semibold text-white transition-colors hover:bg-[#2F1468] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#401B8C]"
                   >
                     Continue to Microsoft Bookings
                     <ExternalLink aria-hidden="true" size={18} />
@@ -96,7 +96,7 @@ export default function BookConsultationPage() {
             ) : (
               <iframe
                 src={bookingUrl}
-                title="Book a Kent Business College consultation"
+                title="Book a Kent Business College information session"
                 className="block h-[2000px] w-full overflow-hidden border-0 sm:h-[1800px] lg:h-[1900px]"
                 loading="lazy"
                 scrolling="no"
@@ -116,7 +116,7 @@ export default function BookConsultationPage() {
                   href={bookingUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-3 inline-flex items-center gap-2 font-semibold text-[#4B176D] transition-colors hover:text-[#371050] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#4B176D]"
+                  className="mt-3 inline-flex items-center gap-2 font-semibold text-[#401B8C] transition-colors hover:text-[#2F1468] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#401B8C]"
                 >
                   Continue to Microsoft Bookings
                   <ExternalLink aria-hidden="true" size={17} />

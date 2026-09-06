@@ -31,7 +31,7 @@ export function LearningPathwaysSection() {
     <section className="figma-programmes !bg-kbc-purple-50 !py-16 sm:!py-20 xl:!py-[118px]" aria-labelledby="pathways-title">
       <div className="figma-shell">
         <div className="grid items-end gap-6 lg:grid-cols-[minmax(0,1.2fr)_minmax(280px,.8fr)] lg:gap-16">
-          <FigmaSectionHeading id="pathways-title" eyebrow="Explore the routes behind the stories" title={<>Choose the professional pathway aligned with the capability you want to build.</>} />
+          <FigmaSectionHeading id="pathways-title" eyebrow="Explore the routes behind the stories" title={<>Choose the professional pathway aligned with the capability you want to build.</>} align="left" />
           <p className="max-w-xl text-base leading-7 text-kbc-dark-500">Programme availability, funding and professional recognition are subject to eligibility and the requirements of the relevant apprenticeship or external body.</p>
         </div>
         <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">

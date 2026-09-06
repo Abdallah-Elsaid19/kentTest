@@ -24,7 +24,7 @@ export function UpcomingEventsSection() {
     <section id="upcoming-events" aria-labelledby="upcoming-events-title">
       <div className="figma-shell">
         <div className="events-heading-row">
-          <FigmaSectionHeading id="upcoming-events-title" eyebrow="What's on" title="Upcoming Events" description="Discover upcoming workshops, information sessions, professional development events and networking opportunities from Kent Business College." />
+          <FigmaSectionHeading id="upcoming-events-title" eyebrow="What's on" title="Upcoming Events" description="Discover upcoming workshops, information sessions, professional development events and networking opportunities from Kent Business College." align="left" />
           <div className="events-tabs" role="tablist" aria-label="Event status">
             <button type="button" role="tab" aria-selected={status === "upcoming"} onClick={() => changeStatus("upcoming")}>Upcoming Events</button>
             <button type="button" role="tab" aria-selected={status === "ended"} onClick={() => changeStatus("ended")}>Past Events</button>
@@ -37,7 +37,7 @@ export function UpcomingEventsSection() {
           <div className="events-strip">
             <div className="events-strip__inner">
               <div><h3>We couldn't load events right now</h3><p>Please try again shortly, or speak with our team about upcoming sessions.</p></div>
-              <NavigationButton className="figma-btn figma-btn--gold" to="/book-session">Book a consultation</NavigationButton>
+              <NavigationButton className="figma-btn figma-btn--gold" to="/book-session">Book Information Session</NavigationButton>
             </div>
           </div>
         )}
@@ -49,7 +49,7 @@ export function UpcomingEventsSection() {
                 <h3>{status === "upcoming" ? "No upcoming events are currently available" : "No past events to show yet"}</h3>
                 <p>{status === "upcoming" ? "Please check back soon or speak with our team about future sessions." : "Past sessions will appear here once they have taken place."}</p>
               </div>
-              {status === "upcoming" && <NavigationButton className="figma-btn figma-btn--gold" to="/book-session">Book a consultation</NavigationButton>}
+              {status === "upcoming" && <NavigationButton className="figma-btn figma-btn--gold" to="/book-session">Book Information Session</NavigationButton>}
             </div>
           </div>
         )}
