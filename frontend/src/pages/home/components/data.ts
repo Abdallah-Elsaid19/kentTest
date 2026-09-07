@@ -14,14 +14,14 @@ export type HomeProgramme = {
 export const colleges = [
   {
     key: "projects" as const,
-    title: "College of Project Controls & Project Management",
+    title: "College of Project Controls and Project Management",
     description:
       "Develop skilled project professionals, through official qualifications in Project Controls and Associate Project Management, supported by globally recognised certifications from PMI, APM and APMG.",
     programmes: [
       "Associate Project Manager Level 4 with PMP® & AI in Projects Certificate",
       "Project Controls Professional Level 6 with APM ChPP, CaSA ICostE & IPC Fellowship",
     ],
-    href: "https://kentbusinesscollege.com/college-of-project-management/",
+    href: "https://kentbusinesscollege.com/college-of-project-controls-and-project-management/",
     image: "/assets/images/programme-project-management.jpg",
   },
   {
@@ -74,7 +74,7 @@ export const programmes: HomeProgramme[] = [
     level: "Level 6",
     description:
       "Develop advanced project controls capability through a Level 6 programme with professional pathways to APM Chartered Project Professional (ChPP), CaSA Incorporated Cost Engineer (ICostE) and Institute of Project Controls Fellowship.",
-    href: "https://kentbusinesscollege.com/project-control-professional-level-6/",
+    href: "/project-controls-professional-level-6",
     college: "projects",
   },
   {

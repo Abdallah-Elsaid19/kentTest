@@ -1,3 +1,4 @@
+import { CollegeHeroSurface } from "@/components/college/CollegeHeroSurface";
 import { ArrowRight } from "lucide-react";
 import { NavigationButton } from "@/components/navigation";
 import { hero } from "../data";
@@ -5,9 +6,7 @@ import { hero } from "../data";
 export function HeroSection() {
   return (
     <>
-      <section className="kbc-page-hero-offset relative isolate flex min-h-[100svh] flex-col bg-primary-dark pb-[clamp(16px,3svh,48px)] text-white" aria-labelledby="pc-title">
-        <img src={hero.image} alt="" aria-hidden="true" width={1600} height={582} fetchPriority="high" className="absolute inset-0 -z-20 h-full w-full object-cover object-center" />
-        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-primary-dark/95 via-primary-dark/85 to-primary-dark/50" aria-hidden="true" />
+      <CollegeHeroSurface image={hero.image} titleId="pc-title">
         <div className="figma-shell figma-hero__grid !items-start sm:max-xl:!grid-cols-1">
           <div className="figma-hero__copy flex flex-col items-center text-center sm:max-xl:!mx-auto sm:max-xl:!flex sm:max-xl:!max-w-[760px] sm:max-xl:!flex-col sm:max-xl:!gap-9 sm:max-xl:!text-center sm:block xl:text-left">
             <p className="figma-hero__eyebrow !mx-auto !text-xs !font-bold !leading-5 !tracking-widest !text-[var(--color-gold)] [@media(max-height:1000px)_and_(max-width:639px)]:!mb-3 [@media(max-height:1000px)_and_(min-width:1280px)]:!mb-3 sm:max-xl:!mb-0 sm:max-xl:!text-[15px] xl:!ml-0 xl:!mr-0">{hero.eyebrow}</p>
@@ -24,7 +23,7 @@ export function HeroSection() {
             </ul>
           </div>
         </div>
-      </section>
+      </CollegeHeroSurface>
     </>
   );
 }

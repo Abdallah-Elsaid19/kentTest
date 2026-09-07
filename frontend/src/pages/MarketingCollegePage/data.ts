@@ -7,7 +7,6 @@ import {
   HeartHandshake,
   Megaphone,
   MessagesSquare,
-  MonitorPlay,
   Search,
   Smartphone,
   Tags,
@@ -118,10 +117,10 @@ export const benefitCopy = {
 };
 
 export const learningCopy = {
-  eyebrow: "Flexible learning",
-  title: "Live, applied and designed for working marketers",
+  eyebrow: "Learning experience",
+  title: "Flexible Learning & Personalised Support",
   description:
-    "Learning is structured around live teaching, practical workplace application and consistent support throughout the programme.",
+    "Our programs are designed to fit around your work commitments with comprehensive support to ensure your success.",
 };
 
 export const testimonialCopy = {
@@ -326,13 +325,31 @@ export const marketingWhyChooseUsStats = [
   { value: "7 in 10", label: "Progress to strategic marketing roles" },
 ];
 
-export const learningExperience: MarketingCard[] = [
-  { icon: MonitorPlay, title: "Live classes", desc: "Interactive online sessions led by professional marketing coaches." },
-  { icon: Workflow, title: "Recordings available", desc: "Review every session and use catch-up support when work demands change." },
-  { icon: Users, title: "Peer learning", desc: "Test ideas with marketers working across different organisations and sectors." },
-  { icon: UserRoundCheck, title: "One-to-one support", desc: "Structured coaching for progress, confidence, evidence and workplace application." },
-  { icon: MessagesSquare, title: "Interactive resources", desc: "Use guided activities, reading, quizzes and practical marketing tools." },
-  { icon: Award, title: "Regular feedback", desc: "Build stronger work through progress reviews and assessment preparation." },
+export const learningExperience = [
+  {
+    title: "Interactive Learning",
+    items: [
+      { title: "Live Classes", description: "Interactive, live online sessions held weekly." },
+      { title: "Recordings Available", description: "Access session recordings anytime to review and consolidate your learning." },
+      { title: "Peer Learning", description: "Collaborate with fellow marketers through discussion forums and group projects." },
+    ],
+  },
+  {
+    title: "Personalised Tutoring",
+    items: [
+      { title: "One-to-One Support", description: "Free tutoring available seven days a week until 9:00 PM, including weekends." },
+      { title: "Interactive Resources", description: "Engage with quizzes, homework assignments, and real-world case studies." },
+      { title: "Regular Feedback", description: "Receive detailed feedback on assignments and projects to accelerate your growth." },
+    ],
+  },
+  {
+    title: "Networking Workshops",
+    items: [
+      { title: "Face-to-Face Interaction", description: "Enhance your learning with optional workshops in Nottingham, London, Birmingham." },
+      { title: "Networking Benefits", description: "Gain insights, connect with industry peers, and expand your professional network." },
+      { title: "Industry Connections", description: "Meet representatives from leading marketing agencies and brands at special events." },
+    ],
+  },
 ];
 
 export const careerRoutes = [

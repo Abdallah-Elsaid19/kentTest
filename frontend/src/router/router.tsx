@@ -37,6 +37,7 @@ const PeoplePage = lazy(() => import("@/pages/PeoplePage/page"));
 const ProgrammeDetailPage = lazy(() => import("@/pages/ProgrammeDetailPage/page"));
 const ProgrammeListingPage = lazy(() => import("@/pages/ProgrammeListingPage/page"));
 const ProjectControlsPage = lazy(() => import("@/pages/ProjectControlsPage/page"));
+const ProjectControlsProfessionalLevel6Page = lazy(() => import("@/pages/ProjectControlsProfessionalLevel6Page/page"));
 const PathwayPage = lazy(() => import("@/pages/PathwayPage/page"));
 const SearchPage = lazy(() => import("@/pages/SearchPage/page"));
 const SectorsPage = lazy(() => import("@/pages/SectorsPage/page"));
@@ -60,9 +61,15 @@ export const router = createBrowserRouter([
     { path: "colleges/:collegeSlug", element: <CollegeDetailPage /> },
     { path: "programmes", element: <ProgrammeListingPage /> },
     { path: "programmes/:programmeSlug", element: <ProgrammeDetailPage /> },
-    { path: "project-controls-professional-level-6", element: <ProjectControlsPage /> },
-    { path: "project-controls-professional-level-6/:pathwaySlug", element: <PathwayPage /> },
-    { path: "college-of-project-management", element: <EmptyPage /> },
+    { path: "college-of-project-controls-and-project-management", element: <ProjectControlsPage /> },
+    { path: "college-of-project-controls-and-project-management/:pathwaySlug", element: <PathwayPage /> },
+    { path: "college-of-project-management-and-controls", loader: () => redirect("/college-of-project-controls-and-project-management") },
+    { path: "college-of-project-management-and-controls/:pathwaySlug", loader: ({ params }) => redirect(`/college-of-project-controls-and-project-management/${params.pathwaySlug || ""}`) },
+    { path: "project-controls-professional-level-6", element: <ProjectControlsProfessionalLevel6Page /> },
+    { path: "project-control-professional-level-6", loader: () => redirect("/project-controls-professional-level-6") },
+    { path: "project-controls-professional-level-6/:pathwaySlug", loader: ({ params }) => redirect(`/college-of-project-controls-and-project-management/${params.pathwaySlug || ""}`) },
+    { path: "college-of-project-management", loader: () => redirect("/college-of-project-controls-and-project-management") },
+    { path: "college-of-project-controls", loader: () => redirect("/college-of-project-controls-and-project-management") },
     { path: "associate-project-manager-level-4", element: <AssociateProjectManagerPage /> },
     { path: "mba-diploma-level-7", element: <EmptyPage /> },
     { path: "strategic-management", element: <EmptyPage /> },

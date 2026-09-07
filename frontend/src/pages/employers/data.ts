@@ -32,10 +32,10 @@ export const learnerProgrammes = [
     discipline: "Project Controls",
     title: "Project Controls Professional",
     level: "Level 6",
-    duration: "24 months + EPA",
+    duration: "27 months",
     description: "Strengthen planning, cost, risk, PMO and governance capability for complex delivery.",
     image: "/assets/images/learner-home/project-controls.webp",
-    href: "/project-controls-professional-level-6",
+    href: "/college-of-project-controls-and-project-management",
   },
   {
     discipline: "Marketing",

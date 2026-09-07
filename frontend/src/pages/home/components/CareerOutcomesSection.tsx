@@ -24,7 +24,7 @@ const careerPaths = [
     capability: "Project Controls",
     capabilityDescription: "Master schedule, cost, risk and forecasting for complex project environments.",
     programmes: [
-      { title: "Project Controls Professional", level: "Level 6", href: "/project-controls-professional-level-6" },
+      { title: "Project Controls Professional", level: "Level 6", href: "/college-of-project-controls-and-project-management" },
     ],
   },
   {

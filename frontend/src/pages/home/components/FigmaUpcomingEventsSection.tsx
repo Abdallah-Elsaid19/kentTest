@@ -1,4 +1,5 @@
 import { ArrowRight, CalendarDays, MapPin } from "lucide-react";
+import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
 
 import { ArrowLink } from "@/components/navigation";
@@ -43,22 +44,36 @@ function getEventPath(event: Event) {
   return event.id >= 0 ? `/events/${event.slug}` : "/events";
 }
 
-export function FigmaUpcomingEventsSection() {
-  const upcoming = useEvents("?status=upcoming&perPage=3");
+type FigmaUpcomingEventsSectionProps = {
+  id?: string;
+  search?: string;
+  eyebrow?: string;
+  title?: ReactNode;
+  description?: string;
+};
+
+export function FigmaUpcomingEventsSection({
+  id,
+  search,
+  eyebrow = "Upcoming Events",
+  title = <>Upcoming events,<br />all in one place.</>,
+  description = "Explore the next workshops, information sessions and professional events from Kent Business College.",
+}: FigmaUpcomingEventsSectionProps = {}) {
+  const upcoming = useEvents(`?status=upcoming&perPage=3${search ? `&search=${encodeURIComponent(search)}` : ""}`);
   const events: Event[] = upcoming.data?.items?.length
     ? upcoming.data.items.slice(0, 3)
-    : fallbackEvents;
+    : search ? [] : fallbackEvents;
   const featured = events[0];
   const compactEvents = events.slice(1, 3);
+  const headingId = id ? `${id}-title` : "home-upcoming-events-title";
 
-  if (!featured) return null;
-
-  const featuredDate = formatEventDate(featured.startAt);
+  const featuredDate = featured ? formatEventDate(featured.startAt) : undefined;
 
   return (
     <section
-      className="relative overflow-hidden bg-[#f8f4fa] py-16 sm:py-20 xl:py-[118px]"
-      aria-labelledby="home-upcoming-events-title"
+      id={id}
+      className="relative scroll-mt-20 overflow-hidden bg-[#f8f4fa] py-16 sm:scroll-mt-64 sm:py-20 xl:py-[118px]"
+      aria-labelledby={headingId}
     >
       <div className="pointer-events-none absolute -left-24 top-24 size-72 rounded-full border border-[#401B8C]/10" />
       <div className="pointer-events-none absolute -right-20 bottom-16 size-64 rounded-full border border-[#401B8C]/10" />
@@ -66,15 +81,15 @@ export function FigmaUpcomingEventsSection() {
       <div className="figma-shell relative">
         <div className="mb-10 lg:mb-14">
           <FigmaSectionHeading
-            id="home-upcoming-events-title"
-            eyebrow="Upcoming Events"
-            title={<>Upcoming events,<br />all in one place.</>}
-            description="Explore the next workshops, information sessions and professional events from Kent Business College."
+            id={headingId}
+            eyebrow={eyebrow}
+            title={title}
+            description={description}
             align="center"
           />
         </div>
 
-        <div className="grid gap-5 xl:grid-cols-[1.4fr_.6fr]">
+        {featured && featuredDate ? <div className={`grid gap-5 ${compactEvents.length ? "xl:grid-cols-[1.4fr_.6fr]" : "mx-auto max-w-5xl"}`}>
           <Link
             className="group relative grid min-h-[440px] overflow-hidden rounded-[22px] border border-[#401B8C]/15 bg-white shadow-[0_20px_55px_rgba(64,27,140,0.1)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_26px_70px_rgba(64,27,140,0.16)] sm:grid-cols-2"
             to={getEventPath(featured)}
@@ -114,7 +129,7 @@ export function FigmaUpcomingEventsSection() {
             </div>
           </Link>
 
-          <div className="grid gap-5 xl:grid-rows-2">
+          {compactEvents.length > 0 && <div className={`grid gap-5 ${compactEvents.length > 1 ? "xl:grid-rows-2" : ""}`}>
             {compactEvents.map((event) => {
               const date = formatEventDate(event.startAt);
 
@@ -152,8 +167,19 @@ export function FigmaUpcomingEventsSection() {
                 </Link>
               );
             })}
+          </div>}
+        </div> : (
+          <div className="rounded-2xl border border-primary/15 bg-white p-8 text-center sm:p-10" role="status">
+            <p className="text-sm leading-7 text-[var(--color-muted)]">
+              {upcoming.isLoading
+                ? "Loading programme events…"
+                : upcoming.isError
+                  ? "We couldn't load programme events right now. Please try again shortly."
+                  : "No upcoming events for this programme are currently scheduled. Check back soon or book an information session."}
+            </p>
+            {!upcoming.isLoading && <ArrowLink className="mt-5 !text-primary" to="/book-session">Book an information session</ArrowLink>}
           </div>
-        </div>
+        )}
 
         <div className="mt-6 flex justify-end sm:mt-8">
           <ArrowLink className="!text-sm !font-semibold !leading-5 !text-[#401B8C] hover:!text-[#2F1468]" to="/events" direction="up-right">

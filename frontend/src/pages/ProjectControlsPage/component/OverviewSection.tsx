@@ -1,3 +1,4 @@
+import { CollegeStats } from "@/components/college/CollegeStats";
 import { FigmaSectionHeading } from "@/components/ui/FigmaSectionHeading";
 import { overview, projectControlsStats } from "../data";
 import { muted, section, shell } from "./layout";
@@ -21,9 +22,7 @@ export function OverviewSection() {
             <img src={overview.image} alt="Project controls professionals analysing schedules and risk registers" width={800} height={1000} loading="lazy" decoding="async" className="aspect-[4/3] w-full object-cover object-top sm:aspect-[5/4] lg:aspect-[4/5]" />
           </div>
         </div>
-        <dl className="mt-12 grid grid-cols-2 gap-6 rounded-2xl bg-[var(--color-soft)] px-5 py-8 sm:px-8 lg:mt-16 lg:grid-cols-4">
-          {projectControlsStats.map((stat) => <div key={stat.label} className="flex flex-col-reverse gap-3 text-center"><dt className="text-xs leading-5 text-[var(--color-muted)] sm:text-sm">{stat.label}</dt><dd className="text-4xl font-semibold tracking-tight text-primary sm:text-5xl">{stat.value}</dd></div>)}
-        </dl>
+        <CollegeStats items={projectControlsStats} />
       </div>
     </section>
   );

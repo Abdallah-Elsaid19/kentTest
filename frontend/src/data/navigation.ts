@@ -9,7 +9,7 @@ export const primaryNavigation: NavItem[] = [
   {
     label: "Colleges",
     children: [
-      { label: "Project Management & Controls", href: "/project-controls-professional-level-6" },
+      { label: "Project Controls and Project Management", href: "/college-of-project-controls-and-project-management" },
       { label: "Marketing", href: "/college-of-marketing" },
     ],
   },

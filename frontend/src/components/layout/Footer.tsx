@@ -234,8 +234,7 @@ export function Footer() {
 
               <nav className="footer-reveal__col footer-reveal__col--links" aria-label="Colleges">
                 <span className="footer-reveal__col-label">Colleges</span>
-                <Link to="/college-of-project-management">College of Project Management</Link>
-                <Link to="/college-of-project-controls">College of Project Controls</Link>
+                <Link to="/college-of-project-controls-and-project-management">College of Project Controls and Project Management</Link>
                 <Link to="/college-of-marketing">College of Marketing</Link>
                 <Link to="/college-of-leadership">College of Leadership</Link>
               </nav>

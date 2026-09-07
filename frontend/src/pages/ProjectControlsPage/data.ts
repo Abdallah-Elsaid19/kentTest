@@ -1,11 +1,11 @@
-import { Award, BriefcaseBusiness, CalendarCheck, ChartNoAxesCombined, Coins, GitBranch, LayoutDashboard, MessagesSquare, Scale, ShieldCheck, TriangleAlert, UserRoundCheck, Users, Wallet, type LucideIcon } from "lucide-react";
+import { Award, BadgePercent, BriefcaseBusiness, CalendarCheck, ChartNoAxesCombined, Coins, GitBranch, Headphones, LayoutDashboard, MessagesSquare, Scale, ShieldCheck, TriangleAlert, UserRoundCheck, Users, Wallet, type LucideIcon } from "lucide-react";
 
 export const hero = {
   image: "/assets/images/project-controls-hero.webp",
-  eyebrow: "College of Project Management & Controls",
+  eyebrow: "College of Project Controls and Project Management",
   title: "Plan, lead and control with",
   accent: "greater certainty",
-  description: "The College of Project Management & Controls develops the professionals who plan, lead and deliver complex work — people who engage stakeholders, govern delivery and turn project data into confident, evidence-based decisions.",
+  description: "The College of Project Controls and Project Management develops the professionals who plan, lead and deliver complex work — people who engage stakeholders, govern delivery and turn project data into confident, evidence-based decisions.",
   primaryLabel: "Explore our programmes",
   secondaryLabel: "Speak to our team",
   highlights: ["Planning", "Stakeholders", "Risk", "Governance", "Scheduling", "Cost", "Forecasting"],
@@ -15,6 +15,7 @@ export const pageNavigation = [
   { label: "About the college", href: "#pc-overview" },
   { label: "Our programmes", href: "#pc-programmes" },
   { label: "Core capabilities", href: "#pc-capabilities" },
+  { label: "Course content", href: "#pc-course-content" },
   { label: "Why choose us", href: "#why-choose-us" },
   { label: "Career pathways", href: "#pc-outcomes" },
   { label: "Events", href: "#pc-events" },
@@ -26,9 +27,9 @@ export const pageNavigation = [
 
 export const overview = {
   eyebrow: "About the college",
-  title: "Project management and controls that turn ambition into delivered outcomes",
+  title: "Project controls and project management that turn ambition into delivered outcomes",
   paragraphs: [
-    "Every successful organisation depends on people who can plan, deliver and control. The College of Project Management & Controls equips professionals to lead work end to end — from stakeholder alignment and risk management to scheduling, cost and forecasting.",
+    "Every successful organisation depends on people who can plan, deliver and control. The College of Project Controls and Project Management equips professionals to lead work end to end — from stakeholder alignment and risk management to scheduling, cost and forecasting.",
     "Our programmes blend rigorous project management and controls practice with real workplace application, building capability you can use from day one — and the credentials to progress toward Chartered status and senior responsibility.",
   ],
   image: "/assets/images/project-controls/overview.jpg",
@@ -137,10 +138,10 @@ export const projectControlsProgrammes: ProjectControlsProgramme[] = [
     id: "project-controls-professional",
     discipline: "Project Controls",
     image: "https://jokdxsdbxorzciulkdyl.supabase.co/storage/v1/object/public/images/2986ecbd61fc4774b1b641ec903368e3.webp",
-    href: "/programmes?search=Project%20Controls%20Professional",
+    href: "/project-controls-professional-level-6",
     title: "Project Controls Professional",
     level: "Level 6",
-    duration: "Typically 24 months",
+    duration: "Typically 27 months",
     funding: "DfE funded (levy 100% / non-levy 95%)",
     summary:
       "Lead complex projects end to end — integrating scope, schedule, budget and risk to deliver confident outcomes and progress toward Chartered status.",
@@ -200,6 +201,111 @@ export const projectControlsCapabilities: ProjectControlsCapability[] = [
     icon: LayoutDashboard,
     title: "Data & Reporting",
     desc: "Turn project data into insight that drives better decision-making.",
+  },
+];
+
+export const courseContentCopy = {
+  eyebrow: "Course content",
+  title: "Courses at the College of Project Controls and Project Management",
+  description: "Combine recognised project management, project controls and AI courses into a practical pathway.",
+};
+
+export const projectControlsCourseGroups = [
+  {
+    abbreviation: "APM",
+    provider: "Association for Project Management courses",
+    courses: [
+      {
+        title: "Risk Management Subject Matter",
+        description: "Risk thinking, analysis, response planning and professional risk practice.",
+      },
+      {
+        title: "Project Management Qualification",
+        description: "Broad project management knowledge for people managing or supporting projects.",
+      },
+      {
+        title: "Project Fundamentals Qualification",
+        description: "Introductory project management knowledge for new or developing project professionals.",
+      },
+    ],
+  },
+  {
+    abbreviation: "APMG",
+    provider: "APMG International courses",
+    courses: [
+      {
+        title: "Management of Portfolios",
+        description: "Portfolio governance, prioritisation, benefits and strategic alignment.",
+      },
+      {
+        title: "Managing Successful Programmes",
+        description: "Programme governance, benefits, leadership and complex change delivery.",
+      },
+      {
+        title: "Project Planning and Control",
+        description: "Planning, baselining, progress monitoring, controls and recovery planning.",
+      },
+      {
+        title: "Earned Value Management",
+        description: "Cost and schedule performance measurement, variance and forecasting.",
+      },
+    ],
+  },
+  {
+    abbreviation: "PMI",
+    provider: "Project Management Institute courses",
+    courses: [
+      {
+        title: "Project Management Professional certificate",
+        description: "Advanced project management preparation.",
+      },
+      {
+        title: "Certified Associate in Project Management",
+        description: "Foundation route for learners developing structured project management knowledge.",
+      },
+      {
+        title: "Risk Management Professional certificate",
+        description: "Specialist risk management preparation for project environments.",
+      },
+      {
+        title: "Scheduling Professional certificate",
+        description: "Specialist scheduling, planning and time-management preparation.",
+      },
+      {
+        title: "Project Management Office course",
+        description: "Project Management Office structure, services, governance and reporting practice.",
+      },
+    ],
+  },
+  {
+    abbreviation: "IPC",
+    provider: "Institute of Project Controls courses",
+    courses: [
+      {
+        title: "Project Management Office fundamentals and organisational governance",
+        description: "Operating model, authority, assurance, stage-gates and governance design.",
+      },
+      {
+        title: "Project planning, scheduling and integrated controls",
+        description: "Integrated baselines, schedule logic, cost control, forecasting and change control.",
+      },
+      {
+        title: "Risk, issue and quality management in projects",
+        description: "Risk, issue, quality, assurance, continuous improvement and team behaviours.",
+      },
+      {
+        title: "Stakeholder management, communications and reporting",
+        description: "Stakeholder engagement, executive reporting, dashboards, influence and benefits.",
+      },
+      {
+        title: "Artificial Intelligence in Project Controls",
+        description: "Artificial intelligence tools for dashboards, insight, recommendation and reporting workflows.",
+      },
+      {
+        title: "Project data, simulation and dashboard practice",
+        description: "Project data analysis, simulation modelling, data management and AI-supported dashboard practice.",
+      },
+    ],
   },
 ];
 
@@ -304,6 +410,21 @@ export const projectControlsWhyChooseUs = [
     title: "Governance, rigour & certainty",
     desc: "A disciplined, data-led, outcome-focused approach to planning, risk and confident delivery.",
   },
+  {
+    icon: Headphones,
+    title: "Support that fits your working week",
+    desc: "Live interactive learning, session recordings, catch-up support and one-to-one guidance available seven days a week until 9:00 PM.",
+  },
+  {
+    icon: Users,
+    title: "Masterclasses & professional community",
+    desc: "Extend your learning through professional masterclasses, networking events and optional in-person workshops across the UK.",
+  },
+  {
+    icon: BadgePercent,
+    title: "More included through the KBC Fund",
+    desc: "Selected routes include added support for professional fees, travel, graduation and further development, subject to eligibility and availability.",
+  },
 ];
 
 export const projectControlsWhyChooseUsStats = [
@@ -366,7 +487,7 @@ export const projectControlsTestimonials = [
 
 export const projectControlsFaqs = [
   {
-    question: "Who is the College of Project Management & Controls for?",
+    question: "Who is the College of Project Controls and Project Management for?",
     answer:
       "It is for professionals across the project delivery spectrum — from project managers who plan, lead and deliver work, to controls specialists in scheduling, cost, risk and data. Whether you are early-career or stepping into senior and leadership responsibility, there is a programme built for you.",
   },

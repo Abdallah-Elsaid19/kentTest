@@ -31,7 +31,7 @@ const menuCopy: Record<string, { eyebrow: string; title: string; description: st
   Colleges: {
     eyebrow: "Colleges",
     title: "Explore Our Colleges",
-    description: "Discover specialist colleges in Project Management & Controls and Marketing.",
+    description: "Discover specialist colleges in Project Controls and Project Management, and Marketing.",
     image: "/assets/images/header-menus/colleges.jpg",
     imageAlt: "Kent Business College campus",
   },

@@ -13,14 +13,14 @@ const heading = "font-['Source_Serif_4',Georgia,serif] text-[clamp(40px,5vw,66px
 export default function PathwayPage() {
   const { pathwaySlug } = useParams();
   const pathway = pathwayData[pathwaySlug?.replace("-pathway", "") as PathwaySlug];
-  if (!pathway) return <Navigate to="/project-controls-professional-level-6" replace />;
+  if (!pathway) return <Navigate to="/college-of-project-controls-and-project-management" replace />;
 
   return <div className="bg-white font-['DM_Sans',sans-serif] text-[16px] leading-[1.65] text-kbc-purple-950 [&_h1]:font-['Source_Serif_4',Georgia,serif] [&_h2]:font-['Source_Serif_4',Georgia,serif] [&_h3]:font-['Source_Serif_4',Georgia,serif]">
     <RouteMeta fallbackTitle={`${pathway.title} | Project Controls Professional Level 6`} fallbackDescription={pathway.lead} />
     <section className="relative overflow-hidden bg-gradient-to-br from-kbc-purple-950 via-kbc-purple-900 to-kbc-purple-800 text-white">
       <div aria-hidden="true" className="absolute inset-0 opacity-25" style={{ backgroundImage: "linear-gradient(rgba(255,255,255,.12) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.12) 1px, transparent 1px)", backgroundSize: "240px 240px" }} />
       <div className={`${shell} relative border-x border-white/10`}>
-        <NavigationButton className="absolute left-6 top-6 z-10 !min-h-9 border-white/20 !px-3 !text-xs max-[700px]:static max-[700px]:m-4" to="/project-controls-professional-level-6#pathways" variant="projectControlsInverse"><ChevronLeft size={15} /> All pathways</NavigationButton>
+        <NavigationButton className="absolute left-6 top-6 z-10 !min-h-9 border-white/20 !px-3 !text-xs max-[700px]:static max-[700px]:m-4" to="/college-of-project-controls-and-project-management#pathways" variant="projectControlsInverse"><ChevronLeft size={15} /> All pathways</NavigationButton>
         <div className="px-8 pb-10 pt-14 text-center max-[700px]:px-5 max-[700px]:pt-6">
           <p className="mx-auto inline-flex items-center gap-3 rounded-full border border-kbc-gold-500/40 px-5 py-2 text-[10px] font-bold uppercase tracking-[.19em] text-kbc-gold-500 before:h-2 before:w-2 before:rounded-full before:bg-kbc-gold-500">{pathway.eyebrow}</p>
           <h1 className="kbc-hero-title mx-auto mt-7 max-w-[1000px]">{pathway.title}</h1>

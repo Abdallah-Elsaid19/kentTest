@@ -1,8 +1,9 @@
-# College of Project Management & Controls
+# College of Project Controls and Project Management
 
-The college page replaces the existing implementation at
-`/project-controls-professional-level-6`. The router, shared header and shared
-footer are unchanged. The entry file is
+The college page is available at
+`/college-of-project-controls-and-project-management`. The previous Project Controls
+programme URL and the two former single-discipline college URLs redirect to the
+combined college URL. The entry file is
 `frontend/src/pages/ProjectControlsPage/page.tsx`.
 
 ## Content reference
@@ -10,7 +11,7 @@ footer are unchanged. The entry file is
 Source: https://readdy.cc/preview/e12511ee-ada1-4d22-bf99-373e277dad2d/13488680/college-of-project-controls
 
 Reference inspected on 6 September 2026. Its page title is **College of Project
-Management & Controls**. Programme descriptions, durations, funding labels,
+Controls and Project Management**. Programme descriptions, durations, funding labels,
 statistics, testimonials and FAQs preserve that reference's wording.
 
 | Order | Component | Content included |

@@ -10,6 +10,7 @@ import { CollegePageNav } from "./component/CollegePageNav";
 import { OverviewSection } from "./component/OverviewSection";
 import { ProgrammesSection } from "./component/ProgrammesSection";
 import { CapabilitiesSection } from "./component/CapabilitiesSection";
+import { CourseContentSection } from "./component/CourseContentSection";
 import { BenefitsSection } from "./component/BenefitsSection";
 import { TestimonialsSection } from "./component/TestimonialsSection";
 import { CareerPathwaysSection } from "./component/CareerPathwaysSection";
@@ -31,14 +32,15 @@ export default function ProjectControlsPage() {
     <div className="bg-white font-body text-[var(--color-ink)]">
       <RouteMeta
         seo={{ schema: [faqSchema] }}
-        fallbackTitle="College of Project Management & Controls | Kent Business College"
-        fallbackDescription="Discover Kent Business College's College of Project Management & Controls — DfE-funded project management and project controls apprenticeships, from Associate Project Manager to Project Control Professional."
+        fallbackTitle="College of Project Controls and Project Management | Kent Business College"
+        fallbackDescription="Discover Kent Business College's College of Project Controls and Project Management — DfE-funded project management and project controls apprenticeships, from Associate Project Manager to Project Control Professional."
       />
       <HeroSection />
       <CollegePageNav />
       <OverviewSection />
       <ProgrammesSection />
       <CapabilitiesSection />
+      <CourseContentSection />
       <BenefitsSection />
       <CareerPathwaysSection />
       <TestimonialsSection />

@@ -748,16 +748,18 @@
 
 .figma-college-card__category > span:first-child { color: #d3b141; }
 
-.figma-college-card__category i {
-  width: 24px;
-  height: 1px;
-  flex: 0 0 auto;
-  background: #d3b141;
+.figma-college-card__category {
+  padding-bottom: 14px;
+  margin-bottom: 0;
+}
+
+.figma-college-card__category::after {
+  border-top-color: #d3b141;
 }
 
 .figma-college-card.is-coral > p:first-of-type { color: rgba(75,23,55,.7); }
 .figma-college-card.is-coral .figma-college-card__category > span:first-child { color: #d95372; }
-.figma-college-card.is-coral .figma-college-card__category i { background: #d95372; }
+.figma-college-card.is-coral .figma-college-card__category::after { border-top-color: #d95372; }
 
 .figma-college-card h3 {
   margin-top: 45px;
@@ -1901,6 +1903,31 @@
 }
 
 .figma-hero::after { display: none; }
+
+@keyframes experts-hero-person-enter {
+  from {
+    clip-path: inset(0 var(--expert-clip-from) 0 0);
+    opacity: 0;
+  }
+  to {
+    clip-path: inset(0 var(--expert-clip-to) 0 0);
+    opacity: 1;
+  }
+}
+
+.experts-hero-person {
+  animation: experts-hero-person-enter 1000ms cubic-bezier(.22, 1, .36, 1) both;
+  animation-delay: var(--expert-reveal-delay);
+  will-change: clip-path, opacity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .experts-hero-person {
+    animation: none;
+    clip-path: inset(0 var(--expert-clip-to) 0 0);
+    opacity: 1;
+  }
+}
 
 .figma-hero__grid { grid-template-columns: 1.05fr .95fr; gap: 82px; }
 .figma-hero__copy { max-width: 680px; }

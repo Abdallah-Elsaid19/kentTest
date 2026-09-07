@@ -12,7 +12,7 @@ export type Expert = {
   highlights: string[];
 };
 
-export const peopleHeroImage = "https://jokdxsdbxorzciulkdyl.supabase.co/storage/v1/object/public/images/8b2b7292e92a4453af678599ea9b7da1.webp";
+export const peopleHeroImage = "https://jokdxsdbxorzciulkdyl.supabase.co/storage/v1/object/public/images/65005fd26a624ca099113e10f2809e84.webp";
 
 export const experts: Expert[] = [
   {
@@ -65,6 +65,40 @@ export const experts: Expert[] = [
       "Amgad has designed and delivered executive learning for international public- and private-sector organisations and contributes actively to professional and academic project-management communities.",
     ],
     highlights: ["Reader at Kent Business School", "APM Herbert Walton Prize recipient", "Contributor to PMI benefits-realisation guidance", "International executive educator and consultant"],
+  },
+  {
+    id: "steven-wake",
+    name: "Steven Wake",
+    role: "Earned Value & Project Controls Specialist",
+    organisation: "APMG International and the project controls profession",
+    bio: "Lead author for Earned Value Management through APMG International, contributor to project controls standards and a key figure in the Association for Project Management Chartered Status journey.",
+    image: "https://jokdxsdbxorzciulkdyl.supabase.co/storage/v1/object/public/images/031b05260ce4497fa63970e9f76a3ab4.webp",
+    linkedIn: "https://www.linkedin.com/in/steve-wake-00636710/",
+    credentials: "Earned Value Management · Project Controls · Professional Standards",
+    expertise: ["Earned value management", "Project controls standards", "Professional recognition", "Capability development"],
+    profile: [
+      "Steven Wake is a project controls specialist whose work connects earned value management, professional standards and practical capability development.",
+      "As lead author for Earned Value Management through APMG International, he has helped translate project controls principles into structured professional practice.",
+      "He has also contributed to project controls standards and the Association for Project Management Chartered Status journey.",
+    ],
+    highlights: ["Lead author for APMG Earned Value Management", "Contributor to project controls standards", "Contributor to the APM Chartered Status journey", "Specialist in professional project controls capability"],
+  },
+  {
+    id: "andrew-millington",
+    name: "Andrew Millington",
+    role: "Strategic Projects & Programmes Specialist",
+    organisation: "Associate Professor and strategic P3M leader",
+    bio: "Strategic leader and Associate Professor with senior project, programme and portfolio leadership experience across manufacturing, defence, technology and services.",
+    image: "https://jokdxsdbxorzciulkdyl.supabase.co/storage/v1/object/public/images/a2be2ade866f464cae0f60aa3bae25c4.webp",
+    linkedIn: "https://www.linkedin.com/in/andrew-millington-7087711/",
+    credentials: "Associate Professor · Strategic Leadership · P3M",
+    expertise: ["Complex programmes", "Portfolio leadership", "Strategic delivery", "Organisational capability"],
+    profile: [
+      "Andrew Millington is a strategic leader and Associate Professor with senior experience across projects, programmes and portfolios.",
+      "His professional perspective is grounded in leadership across manufacturing, defence, technology and services, where delivery depends on clear governance and coordinated decision-making.",
+      "He supports professionals in connecting strategic intent with practical project, programme and portfolio delivery.",
+    ],
+    highlights: ["Senior project, programme and portfolio leadership", "Experience across manufacturing and defence", "Experience across technology and services", "Associate Professor and strategic capability specialist"],
   },
 ];
 

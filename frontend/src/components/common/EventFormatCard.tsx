@@ -22,7 +22,7 @@ export function EventFormatCard({
       <div className="h-[200px] shrink-0 overflow-hidden bg-slate-100">
         <img className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03] motion-reduce:transition-none" src={imageSrc} alt={imageAlt} loading="lazy" />
       </div>
-      <div className="grid min-h-[320px] flex-1 grid-rows-[76px_1fr_auto] p-6">
+      <div className="grid min-h-[320px] flex-1 grid-rows-[minmax(76px,auto)_1fr_auto] p-6">
         <h3 className="font-heading text-[26px] font-semibold leading-[1.12] text-kbc-purple-950">{title}</h3>
         <p className="pt-4 text-base leading-relaxed text-slate-600">{description}</p>
         <ArrowLink className="!min-h-12 !w-full !justify-center !border-t !border-[#e7e1e8] !pt-4 !text-sm !text-[#401B8C] hover:!text-[#2F1468]" to={actionTo}>{actionLabel}</ArrowLink>
