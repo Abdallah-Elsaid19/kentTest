@@ -58,6 +58,7 @@ export default [
         IdleRequestCallback: 'readonly',
         __BASE_PATH__: 'readonly',
         __IS_PREVIEW__: 'readonly',
+        __HOME_HERO_MEDIA_VERSION__: 'readonly',
       },
     },
     plugins: {

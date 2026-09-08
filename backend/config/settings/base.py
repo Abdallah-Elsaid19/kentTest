@@ -4,6 +4,7 @@ import os
 from pathlib import Path
 
 import dj_database_url
+from django.core.exceptions import ImproperlyConfigured
 from dotenv import load_dotenv
 
 
@@ -26,7 +27,7 @@ def env_list(name: str, default: str = "") -> list[str]:
 SECRET_KEY = env("DJANGO_SECRET_KEY", "unsafe-development-key")
 DEBUG = env_bool("DJANGO_DEBUG")
 ALLOWED_HOSTS = env_list("DJANGO_ALLOWED_HOSTS", "localhost,127.0.0.1")
-SITE_URL = env("SITE_URL", "http://localhost:5173")
+SITE_URL = env("SITE_URL", "https://localhost:5173")
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -40,6 +41,7 @@ INSTALLED_APPS = [
     "drf_spectacular",
     "rest_framework",
     "apps.core",
+    "apps.cms",
     "apps.users",
     "apps.media_library",
     "apps.site_config",
@@ -97,11 +99,16 @@ TEMPLATES = [
 ]
 
 database_url = env("DATABASE_URL")
-DATABASES = {
-    "default": dj_database_url.parse(database_url, conn_max_age=60, conn_health_checks=True)
-    if database_url
-    else {"ENGINE": "django.db.backends.sqlite3", "NAME": BASE_DIR / "db.sqlite3"}
-}
+DATABASES = {"default": dj_database_url.parse(database_url, conn_max_age=60, conn_health_checks=True) if database_url else {}}
+# Only the isolated test module may override this with an in-memory database.
+# Development, migration commands and production all use the existing Neon URL.
+if os.environ.get("DJANGO_SETTINGS_MODULE") != "config.settings.test":
+    database = DATABASES["default"]
+    if database.get("ENGINE") != "django.db.backends.postgresql" or not database.get("HOST", "").endswith(".neon.tech"):
+        raise ImproperlyConfigured("DATABASE_URL must point to the project's Neon PostgreSQL database.")
+    if database.get("OPTIONS", {}).get("sslmode") not in {"require", "verify-ca", "verify-full"}:
+        raise ImproperlyConfigured("Neon DATABASE_URL must enable TLS with sslmode=require or stronger.")
+    database.setdefault("OPTIONS", {}).setdefault("connect_timeout", 10)
 
 # Public content changes far less often than it is read. A short in-process
 # cache removes repeated Neon round-trips while keeping synced events fresh.
@@ -132,8 +139,8 @@ MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-CORS_ALLOWED_ORIGINS = env_list("CORS_ALLOWED_ORIGINS", "http://localhost:5173")
-CSRF_TRUSTED_ORIGINS = env_list("CSRF_TRUSTED_ORIGINS", "http://localhost:5173")
+CORS_ALLOWED_ORIGINS = env_list("CORS_ALLOWED_ORIGINS", "https://localhost:5173")
+CSRF_TRUSTED_ORIGINS = env_list("CSRF_TRUSTED_ORIGINS", "https://localhost:5173")
 CORS_ALLOW_CREDENTIALS = True
 
 REST_FRAMEWORK = {

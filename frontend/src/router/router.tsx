@@ -32,6 +32,7 @@ const FormPage = lazy(() => import("@/pages/FormPage/page"));
 const FundingEligibilityPage = lazy(() => import("@/pages/FundingEligibilityPage/page"));
 const GovernanceBoardPage = lazy(() => import("@/pages/GovernanceBoardPage/page"));
 const HomePage = lazy(() => import("@/pages/home/page"));
+const Dashboard = lazy(() => import("@/features/cms/Dashboard"));
 const InformationPage = lazy(() => import("@/pages/InformationPage/page"));
 const LearnersHomePage = lazy(() => import("@/pages/learners/page"));
 const LeadershipCollegePage = lazy(() => import("@/pages/LeadershipCollegePage/page"));
@@ -52,6 +53,7 @@ const StoriesPage = lazy(() => import("@/pages/StoriesPage/page"));
 const StoryDetailPage = lazy(() => import("@/pages/StoryDetailPage/page"));
 
 export const router = createBrowserRouter([
+  { path: "/dashboard/*", element: <Dashboard /> },
   { path: "/about", element: <AboutPage /> },
   { path: "/", element: <MainLayout />, children: [
     { index: true, element: <HomePage /> },

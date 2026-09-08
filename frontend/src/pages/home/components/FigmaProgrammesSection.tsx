@@ -1,48 +1,13 @@
+import { useHomeSection } from "../contentContext";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { ArrowLeft, ArrowRight, ArrowUpRight, Award } from "lucide-react";
 import { Link } from "react-router-dom";
 import { FigmaSectionHeading } from "@/components/ui/FigmaSectionHeading";
 
-const programmes = [
-  {
-    number: "01",
-    level: "Level 6",
-    category: "Project Controls",
-    title: "Project Controls Professional",
-    description: "Master schedule, cost, risk and forecasting to keep complex projects on track and under control.",
-    href: "/project-controls-professional-level-6",
-    tone: "controls",
-  },
-  {
-    number: "02",
-    level: "Level 4",
-    category: "Project Management",
-    title: "Associate Project Manager",
-    description: "Build the planning, stakeholder and delivery skills to lead projects with real confidence.",
-    href: "/associate-project-manager-level-4",
-    tone: "management",
-  },
-  {
-    number: "03",
-    level: "Level 4",
-    category: "Marketing",
-    title: "Marketing Executive",
-    description: "Turn customer insight into campaigns that deliver measurable commercial growth.",
-    href: "/marketing-executive-level-4",
-    tone: "marketing",
-  },
-  {
-    number: "04",
-    level: "Level 6",
-    category: "Marketing",
-    title: "Marketing Manager",
-    description: "Lead marketing strategy and performance to shape brand direction and business results.",
-    href: "/marketing-manager-level-6",
-    tone: "marketing",
-  },
-];
-
 export function FigmaProgrammesSection() {
+  const content = useHomeSection("programmes");
+  const { programmes } = content;
+
   const trackRef = useRef<HTMLDivElement>(null);
   const dragRef = useRef({ active: false, startX: 0, startScroll: 0, distance: 0 });
   const [canScrollBack, setCanScrollBack] = useState(false);
@@ -105,8 +70,8 @@ export function FigmaProgrammesSection() {
       <div className="figma-shell">
         <FigmaSectionHeading
           id="programmes-title"
-          eyebrow="Featured programmes"
-          title="Professional development for real responsibility"
+          eyebrow={content.copy.eyebrow}
+          title={content.copy.title}
           align="center"
         />
 
@@ -150,15 +115,15 @@ export function FigmaProgrammesSection() {
               <h3>{programme.title}</h3>
               <p className="featured-programme-card__description">{programme.description}</p>
               <span className="featured-programme-card__cta">
-                <span>Explore programme</span>
+                <span>{content.copy.text}</span>
                 <i><ArrowUpRight aria-hidden="true" /></i>
               </span>
             </Link>
           ))}
         </div>
 
-        <Link className="figma-featured-programmes__all" to="/programmes">
-          View all programmes <ArrowRight aria-hidden="true" />
+        <Link className="figma-featured-programmes__all" to={content.copy.to}>
+          {content.copy.linkLabel}<ArrowRight aria-hidden="true" />
         </Link>
       </div>
     </section>

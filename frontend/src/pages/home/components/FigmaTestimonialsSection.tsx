@@ -9,7 +9,9 @@ export type LearnerReview = { name: string; role: string; quote: string; image: 
 
 const AUTOPLAY_DELAY = 5_000;
 
-export function FigmaTestimonialsSection({ items = homeTestimonials, heading, id }: {
+export function FigmaTestimonialsSection({ items = homeTestimonials, heading, id, backgroundImage = "/assets/images/figma-home/marketing-event.png", eyebrow = "Learner testimonials" }: {
+  backgroundImage?: string;
+  eyebrow?: string;
   items?: readonly LearnerReview[];
   heading?: ProgrammeHeading;
   id?: string;
@@ -40,7 +42,7 @@ export function FigmaTestimonialsSection({ items = homeTestimonials, heading, id
     <section id={id} onMouseEnter={() => setInteracting(true)} onMouseLeave={() => setInteracting(false)} onFocusCapture={() => setInteracting(true)} onBlurCapture={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setInteracting(false); }} className="relative isolate scroll-mt-20 overflow-hidden py-16 sm:scroll-mt-64 sm:py-20 xl:py-[110px]" aria-label={heading ? undefined : "Learner reviews"} aria-labelledby={heading ? `${id}-title` : undefined}>
       <img
         className="absolute inset-0 -z-30 h-full w-full object-cover object-center"
-        src="/assets/images/figma-home/marketing-event.png"
+        src={backgroundImage}
         alt=""
         loading="lazy"
         decoding="async"
@@ -76,7 +78,7 @@ export function FigmaTestimonialsSection({ items = homeTestimonials, heading, id
 
           {(heading ? testimonials : testimonials.slice(activeIndex, activeIndex + 1)).map((activeTestimonial, index) => <article className={`relative ${!heading || index === activeIndex ? "flex" : "hidden"} ${heading ? "" : "h-full"} flex-col items-center`} key={activeTestimonial.name} aria-hidden={heading ? index !== activeIndex : undefined} aria-live={paused || interacting ? "polite" : "off"}>
             {!heading && <div className="flex flex-col items-center">
-              <p className="text-[11px] font-bold uppercase tracking-[0.2em] !text-primary/70">Learner testimonials</p>
+              <p className="text-[11px] font-bold uppercase tracking-[0.2em] !text-primary/70">{eyebrow}</p>
               <svg className="mt-1.5 h-2 w-40 text-primary/65" viewBox="0 0 160 8" fill="none" aria-hidden="true">
                 <path d="M2 6C42 1.2 116 1.2 158 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
               </svg>

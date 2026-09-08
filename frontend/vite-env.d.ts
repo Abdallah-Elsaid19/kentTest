@@ -1,6 +1,7 @@
 /// <reference types="vite/client" />
 
 declare const __BASE_PATH__: string;
+declare const __HOME_HERO_MEDIA_VERSION__: string;
 
 interface ImportMetaEnv {
   readonly VITE_API_BASE_URL: string;

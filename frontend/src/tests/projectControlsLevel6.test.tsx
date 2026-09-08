@@ -1,4 +1,5 @@
 import { renderToStaticMarkup } from "react-dom/server";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { MemoryRouter } from "react-router-dom";
 import { describe, expect, it, vi } from "vitest";
 import ProjectControlsProfessionalLevel6Page from "@/pages/ProjectControlsProfessionalLevel6Page/page";
@@ -11,7 +12,7 @@ vi.mock("@/components/seo/RouteMeta", () => ({ RouteMeta: () => null }));
 vi.mock("@/features/content/queries", () => ({ useEvents: () => ({ data: { items: [] }, isLoading: false, isError: false }) }));
 
 function renderPage() {
-  return renderToStaticMarkup(<MemoryRouter><ProjectControlsProfessionalLevel6Page /></MemoryRouter>);
+  return renderToStaticMarkup(<QueryClientProvider client={new QueryClient()}><MemoryRouter><ProjectControlsProfessionalLevel6Page /></MemoryRouter></QueryClientProvider>);
 }
 
 describe("Project Controls Professional Level 6", () => {

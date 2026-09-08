@@ -48,6 +48,12 @@
   },
   "private": true,
   "scripts": {
+    "cms:generate": "node scripts/generate-cms-contract.mjs",
+    "prebuild": "npm run cms:generate",
+    "predev": "npm run cms:generate",
+    "prelint": "npm run cms:generate",
+    "pretest": "npm run cms:generate",
+    "pretype-check": "npm run cms:generate",
     "build": "vite build",
     "dev": "vite",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",

@@ -1,12 +1,7 @@
-import { useEffect, useRef, useState } from "react";
-import { BookOpenCheck, Headphones, ShieldCheck } from "lucide-react";
+import { ArrowRight, BookOpenCheck, Headphones, ShieldCheck } from "lucide-react";
 
 import { RouteMeta } from "@/components/seo/RouteMeta";
-
-const zohoSupportFormUrl =
-  "https://forms.zohopublic.com/ibisconsultancy1/form/Contactforsupport/formperma/F99UYmcaGvbVSdX_VNuRro1w_twqT5msQWUeeu6Djbk?zf_rszfm=1&zf_enablecamera=true";
-
-const zohoSupportFormId = "F99UYmcaGvbVSdX_VNuRro1w_twqT5msQWUeeu6Djbk";
+import { NavigationButton } from "@/components/navigation";
 
 const supportAreas = [
   {
@@ -36,25 +31,6 @@ function SupportEyebrow({ children, inverse = false }: { children: string; inver
 }
 
 export function SupportPage() {
-  const supportFormRef = useRef<HTMLIFrameElement>(null);
-  const [supportFormHeight, setSupportFormHeight] = useState(975);
-
-  useEffect(() => {
-    const resizeSupportForm = (event: MessageEvent) => {
-      if (event.origin !== "https://forms.zohopublic.com" || typeof event.data !== "string") return;
-
-      const [formId, rawHeight] = event.data.split("|");
-      const nextHeight = Number.parseInt(rawHeight, 10);
-
-      if (formId === zohoSupportFormId && Number.isFinite(nextHeight)) {
-        setSupportFormHeight(Math.max(nextHeight + 20, 975));
-      }
-    };
-
-    window.addEventListener("message", resizeSupportForm);
-    return () => window.removeEventListener("message", resizeSupportForm);
-  }, []);
-
   return (
     <div className="overflow-hidden bg-white !font-['Poppins',sans-serif] text-[#401B8C] [&_*]:!font-['Poppins',sans-serif]">
       <RouteMeta
@@ -91,7 +67,7 @@ export function SupportPage() {
           <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
             <SupportEyebrow>How we can help</SupportEyebrow>
             <h2 id="support-areas-heading" className="mt-6 !font-['Poppins',sans-serif] text-4xl font-semibold leading-tight !text-[#401B8C] sm:text-5xl">Start with the support you need.</h2>
-            <p className="mt-5 text-base leading-7 text-[#401B8C]">Use the form below for learner, programme, platform, safeguarding or wellbeing support.</p>
+            <p className="mt-5 text-base leading-7 text-[#401B8C]">Book a session to discuss the support you need with our team.</p>
           </div>
 
           <div className="mt-12 grid gap-5 md:grid-cols-3">
@@ -107,20 +83,11 @@ export function SupportPage() {
         </div>
       </section>
 
-      <section id="support-form" className="scroll-mt-28 bg-white px-3 py-20 sm:px-8 sm:py-24 lg:px-12" aria-label="KBC support form">
-        <div className="mx-auto max-w-[1200px] overflow-hidden rounded-[22px] border border-[#401B8C]/10 bg-white shadow-[0_24px_70px_rgba(64,27,140,0.10)]">
-          <iframe
-            ref={supportFormRef}
-            aria-label="KBC Support"
-            className="block w-full border-0 bg-white"
-            style={{ height: `${supportFormHeight}px` }}
-            src={zohoSupportFormUrl}
-            title="Kent Business College support form"
-            loading="lazy"
-            allow="camera"
-            scrolling="no"
-            referrerPolicy="strict-origin-when-cross-origin"
-          />
+      <section id="support-form" className="scroll-mt-28 bg-white px-5 py-12 sm:px-8 sm:py-16 lg:px-12" aria-label="Book a support session">
+        <div className="mx-auto flex max-w-[1200px] justify-center">
+          <NavigationButton to="/book-session" className="w-full gap-3 px-8 py-4 sm:w-auto">
+            Book a session <ArrowRight className="h-5 w-5" aria-hidden="true" />
+          </NavigationButton>
         </div>
 
       </section>

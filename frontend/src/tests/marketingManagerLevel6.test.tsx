@@ -15,7 +15,7 @@ vi.mock("@/features/content/queries", () => ({ useEvents: () => ({ data: { items
 function plainText(html: string) {
   return html.replace(/<[^>]*>/g, " ").replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/&#x27;|&#39;/g, "'").replace(/&gt;/g, ">").replace(/&lt;/g, "<").replace(/\s+/g, " ").trim();
 }
-const renderPage = () => renderToStaticMarkup(<MemoryRouter><MarketingManagerLevel6Page /></MemoryRouter>);
+const renderPage = () => renderToStaticMarkup(<QueryClientProvider client={new QueryClient()}><MemoryRouter><MarketingManagerLevel6Page /></MemoryRouter></QueryClientProvider>);
 
 describe("Marketing Manager Level 6 source fidelity", () => {
   it("includes every official programme content block except testimonials replaced with the home section", () => {

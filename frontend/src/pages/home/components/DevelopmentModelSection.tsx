@@ -1,5 +1,6 @@
+import { useHomeSection } from "../contentContext";
 import { ArrowRight, Check, SlidersHorizontal } from "lucide-react";
-import { type ReactNode, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { FigmaSectionHeading } from "@/components/ui/FigmaSectionHeading";
 import "@/styles/pathways-section.css";
@@ -8,7 +9,9 @@ type Audience = "professionals" | "employers";
 
 type PathwayCard = {
   eyebrow: string;
-  title: ReactNode;
+  title: string;
+  emphasis?: string;
+  emphasisGold?: boolean;
   description: string;
   points?: readonly string[];
   note?: string;
@@ -28,83 +31,11 @@ type AudienceContent = {
   secondaryTo: string;
 };
 
-const audienceContent: Record<Audience, AudienceContent> = {
-  professionals: {
-    cards: [
-      {
-        eyebrow: "01", title: "Specialist Knowledge", description: "Develop role-relevant professional capability",
-        points: [
-          "Role-relevant apprenticeships",
-          "Specialist colleges and professional programmes",
-          "Learning matched to your responsibilities and goals",
-        ],
-      },
-      {
-        eyebrow: "02", title: "Expert Learning", description: "Learn with experienced professionals",
-        points: [
-          "Live interactive learning",
-          "Dedicated coaching and one-to-one tutoring",
-          "Session recordings and catch-up support",
-        ],
-      },
-      {
-        eyebrow: "03", title: "Workplace Evidence", description: "Apply development through real work",
-        points: [
-          "Workplace activities connected to your job",
-          "Progress reviews with your employer and coach",
-          "Evidence building and assessment preparation",
-        ],
-      },
-      {
-        eyebrow: "04", title: "Professional Progression", description: "Build evidence for greater responsibility",
-        points: [
-          "Recognised professional qualifications",
-          "Professional memberships and communities",
-          "Pathways towards greater responsibility and chartered progression",
-        ],
-        note: "Subject to programme eligibility and relevant professional-body requirements.",
-      },
-    ],
-    image: "/assets/images/professional-pathway-training.png",
-    imageAlt: "A professional learning project management with an expert trainer",
-    stats: [
-      { value: "Specialist", label: "role-relevant knowledge" },
-      { value: "Expert-led", label: "professional learning" },
-      { value: "Workplace", label: "applied evidence" },
-      { value: "Progression", label: "greater responsibility" },
-    ],
-    primaryLabel: "Explore Professional Programmes",
-    primaryTo: "/programmes",
-    secondaryLabel: "Find Your Pathway",
-    secondaryTo: "/learners",
-  },
-  employers: {
-    cards: [
-      { eyebrow: "01 - Government funded", title: "DfE Fully Funded", description: "Complete professional programmes for eligible employers and employees.", linkLabel: "View funded programmes", to: "/programmes" },
-      { eyebrow: "02 - IPC bursary", title: <><strong>50%</strong><span>IPC Bursary</span></>, description: "Commercial specialist modules with 50% bursary support on selected options.", detail: "Selected specialist modules", linkLabel: "Explore 50% supported modules", to: "/programmes" },
-      { eyebrow: "03 - Enhanced IPC bursary", title: <><strong className="is-gold">75%</strong><span>IPC Bursary</span></>, description: "Enhanced bursary support for selected specialist modules.", detail: "Selected specialist modules", linkLabel: "Explore 75% supported modules", to: "/programmes" },
-      { eyebrow: "04 - Flexible professional development", title: "Flexible Development", description: "Choose one module or combine several around your organisation's capability needs.", linkLabel: "Build your development mix", to: "/book-session" },
-    ],
-    image: "/assets/images/professional-development-employers.png",
-    imageAlt: "Experienced professionals developing an organisation strategy together",
-    stats: [
-      { value: "DfE", label: "fully funded route" },
-      { value: "50%", label: "IPC bursary support" },
-      { value: "75%", label: "enhanced IPC bursary" },
-      { value: "Flexible", label: "professional modules" },
-    ],
-    primaryLabel: "Explore Employer Programmes",
-    primaryTo: "/programmes",
-    secondaryLabel: "Check Eligibility & Funding",
-    secondaryTo: "/eligibility",
-  },
-};
-
 function PathwayCard({ card }: { card: PathwayCard }) {
   return (
     <article className="figma-pathways__route-card">
       <p className="figma-pathways__card-eyebrow">{card.eyebrow}</p>
-      <h3>{card.title}</h3>
+      <h3>{card.emphasis ? <><strong className={card.emphasisGold ? "is-gold" : undefined}>{card.emphasis}</strong><span>{card.title}</span></> : card.title}</h3>
       <p className="figma-pathways__card-copy">{card.description}</p>
       {card.points && (
         <ul className="mt-5 space-y-3 text-[13px] leading-6 text-[var(--color-muted)]">
@@ -128,6 +59,9 @@ function PathwayCard({ card }: { card: PathwayCard }) {
 }
 
 export function DevelopmentModelSection() {
+  const section = useHomeSection("development");
+  const audienceContent: Record<Audience, AudienceContent> = section.audienceContent;
+
   const [audience, setAudience] = useState<Audience>("employers");
   const content = audienceContent[audience];
 
@@ -137,9 +71,9 @@ export function DevelopmentModelSection() {
         <header className="mx-auto max-w-[970px] text-center">
           <FigmaSectionHeading
             id="pathways-title"
-            eyebrow="Choose your pathway"
-            title="Professional development built around real work"
-            description="Whether you are developing your own capability or building capability across your organisation, Kent Business College helps you find the right professional route."
+            eyebrow={section.copy.eyebrow}
+            title={section.copy.title}
+            description={section.copy.description}
           />
         </header>
 
@@ -152,9 +86,9 @@ export function DevelopmentModelSection() {
             aria-controls="pathway-audience-panel"
             onClick={() => setAudience("professionals")}
           >
-            <small>Working professionals</small>
-            <strong>For Professionals</strong>
-            <span>Professional development &amp; progression</span>
+            <small>{section.copy.note}</small>
+            <strong>{section.copy.text}</strong>
+            <span>{section.copy.text2}</span>
           </button>
           <button
             className={`figma-pathways__audience ${audience === "employers" ? "is-active" : ""}`}
@@ -164,9 +98,9 @@ export function DevelopmentModelSection() {
             aria-controls="pathway-audience-panel"
             onClick={() => setAudience("employers")}
           >
-            <small>Organisations</small>
-            <strong>For Employers</strong>
-            <span>Workforce capability &middot; Funding &amp; bursaries</span>
+            <small>{section.copy.note2}</small>
+            <strong>{section.copy.text3}</strong>
+            <span>{section.copy.text4}</span>
           </button>
         </div>
 
@@ -197,7 +131,7 @@ export function DevelopmentModelSection() {
           </div>
 
           {audience === "employers" && (
-            <p className="figma-pathways__footnote">DfE funding is subject to eligibility, employer participation and funding confirmation. IPC bursary support applies to selected commercial modules and is subject to module eligibility, approval and availability.</p>
+            <p className="figma-pathways__footnote">{section.copy.paragraph}</p>
           )}
         </div>
       </div>

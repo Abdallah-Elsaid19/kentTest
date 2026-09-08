@@ -30,8 +30,8 @@ function formatEventDate(value: string) {
   };
 }
 
-function getEventImage(event: Event, index: number) {
-  return event.imageFeaturedUrl || event.image?.url || fallbackImages[index % fallbackImages.length];
+function getEventImage(event: Event, index: number, images: readonly string[]) {
+  return event.imageFeaturedUrl || event.image?.url || images[index % images.length];
 }
 
 function getEventLocation(event: Event) {
@@ -45,6 +45,8 @@ function getEventPath(event: Event) {
 }
 
 type FigmaUpcomingEventsSectionProps = {
+  databaseOnly?: boolean;
+  images?: readonly string[];
   id?: string;
   search?: string;
   eyebrow?: string;
@@ -60,6 +62,8 @@ type FigmaUpcomingEventsSectionProps = {
 };
 
 export function FigmaUpcomingEventsSection({
+  databaseOnly = false,
+  images = fallbackImages,
   id,
   search,
   eyebrow = "Upcoming Events",
@@ -76,7 +80,7 @@ export function FigmaUpcomingEventsSection({
   const upcoming = useEvents(`?status=upcoming&perPage=3${search ? `&search=${encodeURIComponent(search)}` : ""}`);
   const events: Event[] = upcoming.data?.items?.length
     ? upcoming.data.items.slice(0, 3)
-    : fallbackItems?.length ? [...fallbackItems].slice(0, 3) : search ? [] : fallbackEvents;
+    : databaseOnly ? [] : fallbackItems?.length ? [...fallbackItems].slice(0, 3) : search ? [] : fallbackEvents;
   const featured = events[0];
   const compactEvents = events.slice(1, 3);
   const headingId = id ? `${id}-title` : "home-upcoming-events-title";
@@ -111,7 +115,7 @@ export function FigmaUpcomingEventsSection({
             <div className="relative min-h-[260px] overflow-hidden bg-[#401B8C] sm:min-h-full">
               <img
                 className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
-                src={getEventImage(featured, 0)}
+                src={getEventImage(featured, 0, images)}
                 alt={featured.image?.altText || ""}
                 loading="lazy"
                 decoding="async"

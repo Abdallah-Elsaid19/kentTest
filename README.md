@@ -19,17 +19,17 @@ WordPress is not a runtime dependency. Legacy WordPress exports may be read only
 
 ## Local setup
 
-1. Copy `backend/.env.example` to `backend/.env` and set a development secret.
+1. Copy `backend/.env.example` to `backend/.env`, set a development secret, and set `DATABASE_URL` to the existing Neon PostgreSQL connection string with `sslmode=require`.
 2. Copy `frontend/.env.example` to `frontend/.env`.
-3. Start PostgreSQL and the applications with `docker compose up --build`.
-4. Open `http://localhost:5173`; the API is at `http://localhost:8000/api/v1/` and schema at `http://localhost:8000/api/schema/`.
+3. Run `docker compose run --rm backend python manage.py migrate`, then start the applications with `docker compose up --build`. Both applications reuse Neon; Compose does not create a separate database.
+4. Open `https://localhost:5173`; the API is proxied at `/api/v1/` and the dashboard is at `/dashboard`.
 5. Create a staff user with `docker compose exec backend python manage.py createsuperuser`.
 
 Without Docker, create a Python virtual environment, install `backend/requirements.txt`, run migrations, then use the existing npm lockfile in `frontend/`.
 
 ## Production rules
 
-- Production settings reject missing `DATABASE_URL`, non-PostgreSQL database URLs, missing secret keys, wildcard hosts and insecure HTTP origins.
+- Runtime settings require a Neon PostgreSQL `DATABASE_URL` with TLS. Only isolated unit tests use an in-memory database. Production also rejects missing secret keys, wildcard hosts and insecure HTTP origins.
 - Set `DJANGO_SETTINGS_MODULE=config.settings.production`.
 - Run `python manage.py migrate --check` in CI and `python manage.py migrate` as a release task.
 - Run `python manage.py collectstatic --noinput` during the image build.
@@ -50,7 +50,9 @@ npm install
 npm run dev
 ```
 
-The page uses the API at `http://localhost:8000/api/v1` by default. If the API is not running, the homepage remains usable and shows the latest known event fallback data.
+Home reads its 14 visible sections and page metadata from Django's `/api/v1/content/home/` endpoint. Published values, working drafts and version history live in the existing Neon database. An API failure displays a retry state; Home never uses local content as a fallback. Events continue to use the existing Neon-backed Events API.
+
+Manage Home at `/dashboard` using an active superuser or a staff user with the `admin` role. See [the CMS runbook](docs/CMS.md) for publication, permissions, preview, configuration and validation details.
 
 ### Eventbrite event sync
 

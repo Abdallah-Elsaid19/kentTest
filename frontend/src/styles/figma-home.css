@@ -2252,6 +2252,7 @@
   background: #1c0d28;
 }
 
+.figma-hero__video-poster,
 .figma-hero__background-video,
 .figma-hero__video-overlay {
   position: absolute;
@@ -2260,10 +2261,18 @@
   height: 100%;
 }
 
+.figma-hero__video-poster,
 .figma-hero__background-video {
-  z-index: -3;
   object-fit: cover;
   object-position: center;
+}
+
+.figma-hero__video-poster { z-index: -4; }
+.figma-hero__background-video { z-index: -3; }
+.figma-hero__background-video--fade-in { opacity: 0; transition: opacity .2s ease; }
+.figma-hero__background-video--fade-in.is-playing { opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .figma-hero__background-video--fade-in { transition: none; }
 }
 
 .figma-hero__video-overlay {

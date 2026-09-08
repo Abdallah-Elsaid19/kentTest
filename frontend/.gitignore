@@ -1,1 +1,4 @@
 node_modules
+
+# Derived from backend/apps/cms/home_contract.json by npm lifecycle commands.
+src/features/cms/generated/homeContract.ts

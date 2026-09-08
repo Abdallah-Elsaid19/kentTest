@@ -11,7 +11,7 @@ export async function apiRequest<T>(path: string, init: Parameters<typeof fetch>
     const response = await fetch(`${API_BASE}${path}`, {
       ...init,
       signal: controller.signal,
-      credentials: "same-origin",
+      credentials: init.credentials ?? "same-origin",
       headers: { Accept: "application/json", "Content-Type": "application/json", ...init.headers },
     });
     const payload = await response.json().catch(() => null);

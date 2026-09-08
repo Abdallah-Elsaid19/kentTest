@@ -1,17 +1,14 @@
+import { useHomeSection } from "../contentContext";
 import { useEffect, useRef } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
 import { FigmaSectionHeading } from "@/components/ui/FigmaSectionHeading";
 
-const pathwaySteps = [
-  { number: "01", title: "Apprenticeship", description: "Role-relevant development", tone: "quiet" },
-  { number: "02", title: "Qualification", description: "Professional study route", tone: "primary" },
-  { number: "03", title: "Membership", description: "Professional community", tone: "primary" },
-  { number: "04", title: "Chartered pathway", description: "Subject to body requirements", tone: "outlined" },
-] as const;
-
 export function ProgressionPathwaySection() {
+  const content = useHomeSection("progression");
+  const { pathwaySteps } = content;
+
   const timelineRef = useRef<HTMLDivElement>(null);
   const stepRefs = useRef<Array<HTMLDivElement | null>>([]);
 
@@ -82,9 +79,9 @@ export function ProgressionPathwaySection() {
         <div>
           <FigmaSectionHeading
             id="progression-pathway-title"
-            eyebrow="Professional progression"
-            title="Build a pathway beyond completion"
-            description="Selected programmes connect apprenticeship and professional development with qualifications, professional communities and further progression opportunities."
+            eyebrow={content.copy.eyebrow}
+            title={content.copy.title}
+            description={content.copy.description}
             tone="inverse"
           />
         </div>
@@ -117,7 +114,7 @@ export function ProgressionPathwaySection() {
                         : "border-[#694a73]/50 bg-[#210b35] hover:border-white/25"
                 }`}
               >
-                <span className={`text-[10px] font-bold uppercase tracking-[0.18em] ${step.tone === "outlined" ? "!text-[#F5C94F]" : "!text-white/45"}`}>Step {step.number}</span>
+                <span className={`text-[10px] font-bold uppercase tracking-[0.18em] ${step.tone === "outlined" ? "!text-[#F5C94F]" : "!text-white/45"}`}>{content.copy.text}{step.number}</span>
                 <h3 className={`mt-4 font-['Poppins',sans-serif] text-xl font-semibold leading-tight ${step.tone === "outlined" ? "!text-[#F5C94F]" : "!text-white"}`}>
                   {step.title}
                 </h3>
@@ -127,7 +124,7 @@ export function ProgressionPathwaySection() {
                 {step.tone === "outlined" && (
                   <Link
                     className="group absolute -right-5 -top-5 grid size-12 place-items-center rounded-full border border-[#D6A916]/70 bg-[#281039] !text-[#F5C94F] transition-colors hover:bg-[#401B8C]"
-                    to="/programmes"
+                    to={content.copy.to}
                     aria-label="Explore professional progression programmes"
                   >
                     <ArrowUpRight className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" size={18} aria-hidden="true" />
@@ -139,13 +136,11 @@ export function ProgressionPathwaySection() {
         </div>
 
         <div className="progression-pathway__footer mx-auto mt-16 max-w-[620px] text-center lg:mt-20">
-          <p className="font-['Poppins',sans-serif] text-lg font-semibold !text-white">Progress</p>
+          <p className="font-['Poppins',sans-serif] text-lg font-semibold !text-white">{content.copy.paragraph}</p>
           <p className="mt-2 text-xs font-semibold !text-white/55">
-            Greater responsibility · Professional recognition · Further development
-          </p>
+            {content.copy.paragraph2}</p>
           <p className="mx-auto mt-5 max-w-[520px] text-[10px] leading-relaxed !text-white/35">
-            Professional membership, qualification and chartered progression remain subject to the requirements of the relevant professional body.
-          </p>
+            {content.copy.paragraph3}</p>
         </div>
       </div>
     </section>

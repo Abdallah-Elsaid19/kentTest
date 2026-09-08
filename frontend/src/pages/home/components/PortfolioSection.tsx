@@ -1,24 +1,21 @@
+import { useHomeSection } from "../contentContext";
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { FigmaSectionHeading } from "@/components/ui/FigmaSectionHeading";
 
-const colleges = [
-  { number: "01", category: "Project Management", title: "Deliver complex work with greater confidence.", tags: ["Planning", "Stakeholders", "Risk", "Governance"], cta: "Explore Project Management", href: "/college-of-project-controls-and-project-management", tone: "navy" },
-  { number: "02", category: "Project Controls", title: "Turn complexity into better decisions.", tags: ["Schedule", "Cost", "Risk", "Forecasting"], cta: "Explore Project Controls", href: "/college-of-project-controls-and-project-management", tone: "teal" },
-  { number: "03", category: "Marketing", title: "Turn customer insight into commercial growth.", tags: ["Strategy", "Digital", "Customer", "Performance"], cta: "Explore Marketing", href: "/college-of-marketing", tone: "coral" },
-  { number: "04", category: "Leadership", title: "Turn responsibility into strategic influence.", tags: ["Strategy", "People", "Change", "Decision-making"], cta: "Explore Leadership", href: "/college-of-leadership", tone: "plum" },
-];
-
 export function PortfolioSection() {
+  const content = useHomeSection("colleges");
+  const { colleges } = content;
+
   return (
     <section className="figma-portfolio !py-16 sm:!py-20 xl:!py-[118px]" id="colleges" aria-labelledby="portfolio-title">
       <div className="figma-shell figma-portfolio__stack">
         <div className="figma-portfolio__heading-row !block">
           <FigmaSectionHeading
             id="portfolio-title"
-            eyebrow="Our specialist colleges"
-            title="Choose the capability you want to build"
-            description="Four specialist colleges. One professional institution — built around the capability professionals and organisations need at work."
+            eyebrow={content.copy.eyebrow}
+            title={content.copy.title}
+            description={content.copy.description}
             align="center"
           />
         </div>
