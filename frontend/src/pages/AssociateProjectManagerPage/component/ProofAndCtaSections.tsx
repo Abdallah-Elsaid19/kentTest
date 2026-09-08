@@ -1,41 +1,11 @@
 import { CollegeCtaPanel } from "@/components/college/CollegeCtaPanel";
-import { ArrowRight, Info, Quote } from "lucide-react";
+import { ArrowRight, Info } from "lucide-react";
 
 import { NavigationButton } from "@/components/navigation";
 
-import { hero, recognition, testimonials } from "../data";
+import { hero, recognition } from "../data";
 import { SectionHeading } from "./SectionHeading";
 import { section, shell } from "./layout";
-
-export function TestimonialsSection() {
-  const [featured, ...secondary] = testimonials;
-
-  return (
-    <section id="proof" className={`${section} bg-white`} aria-labelledby="apm-proof-title">
-      <div className={shell}>
-        <SectionHeading id="apm-proof-title" eyebrow="Learner testimonials" title="What learners say about their progress" />
-        <figure className="relative mt-12 overflow-hidden rounded-2xl bg-primary-dark p-7 text-white sm:p-10 lg:p-12">
-          <Quote className="absolute right-7 top-7 size-20 text-[var(--color-gold)]/15" aria-hidden="true" />
-          <blockquote className="relative max-w-5xl text-lg font-medium leading-8 text-white sm:text-xl sm:leading-9">“{featured.quote}”</blockquote>
-          <figcaption className="relative mt-7 flex flex-wrap items-center gap-3 border-t border-white/15 pt-6">
-            <span className="grid size-11 place-items-center rounded-full bg-kbc-gold-500 text-sm font-bold text-[var(--color-ink)]">GS</span>
-            <div><p className="font-semibold text-white">{featured.name}</p><p className="mt-1 text-xs text-white/60">{featured.role} · {featured.company}</p></div>
-            <span className="rounded-full bg-white/10 px-3 py-1 text-[10px] font-bold uppercase text-kbc-gold-300">{featured.programme}</span>
-          </figcaption>
-        </figure>
-        <div className="mt-5 grid gap-5 md:grid-cols-2">
-          {secondary.map((testimonial) => (
-            <figure className="flex flex-col rounded-2xl border border-kbc-purple-100 bg-kbc-purple-50 p-7" key={testimonial.name}>
-              <Quote className="size-7 text-primary" aria-hidden="true" />
-              <blockquote className="mt-5 flex-1 text-sm leading-7 text-[var(--color-muted)]">“{testimonial.quote}”</blockquote>
-              <figcaption className="mt-6 border-t border-kbc-purple-100 pt-5"><p className="font-semibold text-[var(--color-ink)]">{testimonial.name}</p><p className="mt-1 text-xs text-[var(--color-muted)]">{testimonial.role} · {testimonial.company}</p></figcaption>
-            </figure>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
 
 export function RecognitionSection() {
   return (

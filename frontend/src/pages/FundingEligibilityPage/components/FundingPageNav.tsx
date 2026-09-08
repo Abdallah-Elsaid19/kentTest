@@ -26,9 +26,14 @@ export function FundingPageNav() {
       <div className={containerClass}>
         <div className="flex items-center gap-1 overflow-x-auto py-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           {fundingNavItems.map((item) => (
-            <a className={`relative whitespace-nowrap rounded-full px-4 py-2 text-[13px] font-semibold transition-colors ${activeId === item.id ? "bg-[#2f1468] text-white" : "text-[#766d7c] hover:bg-[#f7f4fa] hover:text-[#24152f]"}`} href={`#${item.id}`} key={item.id}>
+            <a
+              className={`relative inline-flex min-h-11 items-center justify-center whitespace-nowrap rounded-lg border px-4 py-2 text-[13px] font-semibold transition-[color,background-color,border-color,box-shadow,transform] duration-200 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-kbc-gold-500 focus-visible:ring-offset-2 motion-reduce:transform-none motion-reduce:transition-none ${activeId === item.id ? "border-primary bg-primary text-white shadow-[0_8px_20px_rgba(64,27,140,.18)] hover:bg-primary-dark" : "border-transparent text-kbc-purple-700 hover:border-kbc-purple-100 hover:bg-kbc-purple-50 hover:text-kbc-purple-950"}`}
+              href={`#${item.id}`}
+              key={item.id}
+              aria-current={activeId === item.id ? "location" : undefined}
+              onClick={() => setActiveId(item.id)}
+            >
               {item.label}
-              {activeId === item.id && <span className="absolute -bottom-[13px] left-1/2 h-[3px] w-6 -translate-x-1/2 rounded-full bg-[#f5c94f]" />}
             </a>
           ))}
         </div>

@@ -74,7 +74,6 @@ export const pageNavigation = [
   { label: "Learning", href: "#marketing-learning" },
   { label: "Career pathways", href: "#marketing-outcomes" },
   { label: "Events", href: "#marketing-events" },
-  { label: "Case studies", href: "#marketing-case-studies" },
   { label: "Recognition", href: "#marketing-recognition" },
   { label: "Trusted by", href: "#marketing-trusted" },
   { label: "FAQs", href: "#marketing-faq" },

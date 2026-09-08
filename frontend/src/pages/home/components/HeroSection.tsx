@@ -14,6 +14,7 @@ export function HeroSection() {
         poster="/assets/images/figma-home/hero-group.png"
         aria-hidden="true"
         tabIndex={-1}
+        onLoadedMetadata={(event) => { event.currentTarget.playbackRate = 0.8; }}
       >
         <source src="/assets/video/home-hero.webm" type="video/webm" />
         <source src="/assets/video/home-hero.mp4" type="video/mp4" />

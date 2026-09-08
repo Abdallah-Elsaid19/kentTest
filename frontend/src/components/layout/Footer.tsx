@@ -1,11 +1,53 @@
 import { useEffect, useRef, type CSSProperties } from "react";
 import { Link } from "react-router-dom";
+import { ChevronRight } from "lucide-react";
 
 import styles from "./Footer.module.css";
 
 const basePath = __BASE_PATH__.endsWith("/") ? __BASE_PATH__ : `${__BASE_PATH__}/`;
 const footerAsset = (path: string) => `${basePath}our-story/assets/${path.replace(/^\/+/, "")}`;
 const footerSponsorAsset = (file: string) => `${basePath}assets/logos/footer-partners/${file}`;
+
+const footerNavigation = [
+  {
+    title: "Our Colleges",
+    links: [
+      { label: "College of Project Controls and Project Management", href: "/college-of-project-controls-and-project-management" },
+      { label: "College of Marketing", href: "/college-of-marketing" },
+      { label: "College of Leadership", href: "/college-of-leadership" },
+    ],
+  },
+  {
+    title: "Apprenticeships",
+    links: [
+      { label: "Associate Project Manager – Level 4", href: "/associate-project-manager-level-4" },
+      { label: "Project Controls Professional – Level 6", href: "/project-controls-professional-level-6" },
+      { label: "Marketing Executive – Level 4", href: "/marketing-executive-level-4" },
+      { label: "Marketing Manager – Level 6", href: "/marketing-manager-level-6" },
+    ],
+  },
+  {
+    title: "About",
+    links: [
+      { label: "Our Story", href: "/about" },
+      { label: "Our Experts", href: "/our-experts" },
+      { label: "Our Partners", href: "/our-partners" },
+      { label: "Governance Board", href: "/governance-board" },
+    ],
+  },
+  {
+    title: "Support",
+    links: [
+      { label: "Learner Support", href: "/support" },
+      { label: "Employer Support", href: "/employers" },
+      { label: "Safeguarding & Prevent", href: "/safeguarding-handbook" },
+      { label: "Report a Safeguarding Concern", href: "mailto:safeguarding@kentbusinesscollege.com" },
+      { label: "Contact Us", href: "/contact" },
+      { label: "Book an Information Session", href: "/book-session" },
+      { label: "FAQ", href: "/faq" },
+    ],
+  },
+] as const;
 
 const footerSponsorLogos = [
   { name: "University of Lincoln", file: "university-lincoln.png" },
@@ -62,18 +104,6 @@ export function Footer() {
     resizeObserver?.observe(footer);
     resizeObserver?.observe(panel);
     if (!resizeObserver) window.addEventListener("resize", syncLayout);
-
-    const setGlow = (event: PointerEvent) => {
-      const rect = panel.getBoundingClientRect();
-      panel.style.setProperty("--glow-x", `${event.clientX - rect.left}px`);
-      panel.style.setProperty("--glow-y", `${event.clientY - rect.top}px`);
-    };
-    const clearGlow = () => {
-      panel.style.setProperty("--glow-x", "-9999px");
-      panel.style.setProperty("--glow-y", "-9999px");
-    };
-    footer.addEventListener("pointermove", setGlow);
-    footer.addEventListener("pointerleave", clearGlow);
 
     tracks.forEach((track) => {
       track.style.animation = "none";
@@ -175,8 +205,6 @@ export function Footer() {
       if (!resizeObserver) window.removeEventListener("resize", syncLayout);
       window.removeEventListener("resize", measureTrack);
       window.cancelAnimationFrame(animationFrame);
-      footer.removeEventListener("pointermove", setGlow);
-      footer.removeEventListener("pointerleave", clearGlow);
       sponsors.removeEventListener("mouseenter", handleEnter);
       sponsors.removeEventListener("mouseleave", handleLeave);
       sponsors.removeEventListener("pointerdown", handlePointerDown);
@@ -193,14 +221,30 @@ export function Footer() {
 
   return (
     <div className={styles.scope} style={assetVariables}>
-      <footer ref={footerRef} className="footer-reveal" id="siteFooter" data-footer-managed="true">
-        <img className="footer-reveal__blobs" src={footerAsset("images/footer-blobs.svg")} alt="" aria-hidden="true" />
-
-        <div ref={panelRef} className="footer-reveal__panel">
-          <div className="footer-reveal__mask" aria-hidden="true" />
-          <div className="footer-reveal__glass" aria-hidden="true" />
-          <div className="footer-reveal__cursorShine" aria-hidden="true" />
-          <div className="footer-reveal__edgeGlow" aria-hidden="true" />
+      <footer ref={footerRef} className="footer-reveal !bg-white !bg-none" id="siteFooter" data-footer-managed="true">
+        <img className="footer-reveal__blobs select-none !opacity-25 sm:!opacity-[0.35]" src={footerAsset("images/footer-blobs.svg")} alt="" aria-hidden="true" draggable={false} />
+        <div
+          ref={panelRef}
+          className="footer-reveal__panel isolate !pb-12 xl:!w-[min(1600px,100%)] xl:!pb-24"
+          onPointerMoveCapture={(event) => {
+            const panel = event.currentTarget;
+            if (!window.matchMedia("(min-width: 1280px) and (hover: hover) and (pointer: fine)").matches) {
+              panel.style.setProperty("--footer-pointer-opacity", "0");
+              return;
+            }
+            const rect = panel.getBoundingClientRect();
+            if (!rect.width || !rect.height) return;
+            panel.style.setProperty("--footer-pointer-x", `${(event.clientX - rect.left) * panel.offsetWidth / rect.width}px`);
+            panel.style.setProperty("--footer-pointer-y", `${(event.clientY - rect.top) * panel.offsetHeight / rect.height}px`);
+            panel.style.setProperty("--footer-pointer-opacity", "1");
+          }}
+          onPointerLeave={(event) => event.currentTarget.style.setProperty("--footer-pointer-opacity", "0")}
+          onPointerCancel={(event) => event.currentTarget.style.setProperty("--footer-pointer-opacity", "0")}
+        >
+          <div className="footer-reveal__mask rounded-[36px] !bg-primary !bg-none xl:rounded-none xl:[mask-image:var(--footer-mask-image)] xl:[mask-repeat:no-repeat] xl:[mask-size:100%_100%]" aria-hidden="true" />
+          <div className="pointer-events-none absolute inset-0 z-[2] hidden xl:block rounded-[36px] border-2 border-[#f5c94f]/75 xl:rounded-none xl:border-0 xl:bg-[#f5c94f]/75 xl:[mask-image:var(--footer-outline-image)] xl:[mask-repeat:no-repeat] xl:[mask-size:100%_100%]" aria-hidden="true" />
+          <div className="footer-reveal__cursorShine !hidden xl:!block !z-[2] rounded-[36px] !mix-blend-normal !opacity-[var(--footer-pointer-opacity,0)] ![mask-image:none] ![-webkit-mask-image:none] xl:rounded-none xl:![mask-image:var(--footer-mask-image)] xl:![-webkit-mask-image:var(--footer-mask-image)] !bg-[radial-gradient(360px_circle_at_var(--footer-pointer-x,50%)_var(--footer-pointer-y,50%),rgba(255,255,255,0.34)_0%,rgba(255,255,255,0.16)_35%,transparent_100%)]" aria-hidden="true" />
+          <div className="footer-reveal__edgeGlow !hidden xl:!block !z-[2] !opacity-[var(--footer-pointer-opacity,0)] !bg-[radial-gradient(460px_circle_at_var(--footer-pointer-x,50%)_var(--footer-pointer-y,50%),#f5c94f_0%,rgba(245,201,79,0.65)_35%,transparent_80%)] ![filter:drop-shadow(0_0_6px_rgba(245,201,79,0.8))]" aria-hidden="true" />
 
           <div className="footer-reveal__media">
             <video className="footer-reveal__video" autoPlay muted loop playsInline preload="auto" aria-hidden="true">
@@ -208,15 +252,15 @@ export function Footer() {
             </video>
           </div>
 
-          <div ref={contentRef} className="footer-reveal__content">
-            <div className="footer-reveal__row">
-              <div className="footer-reveal__col footer-reveal__col--brand">
-                <Link to="/" className="footer-reveal__brand" aria-label="Kent Business College home">
-                  <img src={footerAsset("images/kent-crest-white.png")} alt="" aria-hidden="true" />
-                  <span>Kent Business College</span>
+          <div ref={contentRef} className="footer-reveal__content !pt-24 sm:!pt-32 xl:!pt-40 ![mask-image:none] ![-webkit-mask-image:none]">
+            <div className="relative z-[3] mx-auto mb-8 grid w-[86%] grid-cols-1 gap-y-8 text-left sm:grid-cols-2 sm:gap-x-8 xl:w-[90%] xl:grid-cols-[1.3fr_1fr_1.15fr_1fr_1.15fr] xl:gap-x-0 xl:pt-4">
+              <div className="flex min-w-0 flex-col items-center gap-4 text-center sm:col-span-2 xl:col-span-1 xl:items-start xl:text-left xl:pr-5">
+                <Link to="/" className="flex items-center gap-3 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#f5c94f]" aria-label="Kent Business College home">
+                  <img className="h-12 w-auto shrink-0" src={footerAsset("images/kent-crest-white.png")} alt="" aria-hidden="true" />
+                  <span className="font-serif text-[23px] leading-tight">Kent Business College</span>
                 </Link>
-                <p className="footer-reveal__brand-tagline">Turning teams into chartered professionals through fully funded apprenticeships and qualifications.</p>
-                <div className="footer-reveal__social-row">
+                <p className="m-0 max-w-[32ch] text-sm leading-relaxed text-[#e7ddfa]">Supporting employers and professionals through high-quality apprenticeship training and professional qualifications.</p>
+                <div className="flex flex-wrap gap-2 [&>a]:!h-10 [&>a]:!w-10 [&>a]:!border-white/35 [&>a]:!bg-transparent [&>a:focus-visible]:outline [&>a:focus-visible]:outline-2 [&>a:focus-visible]:outline-offset-4 [&>a:focus-visible]:outline-[#f5c94f]">
                   <Link to="/social/linkedin" className="footer-reveal__social-icon" aria-label="LinkedIn">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="4" stroke="currentColor" strokeWidth="1.6" /><path d="M7.5 10.2v6.3M7.5 7.3v.1M11.1 16.5v-4.9c0-.9 0-2.4 2.4-2.4s2.5 1.5 2.5 2.9v4.4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg>
                   </Link>
@@ -230,40 +274,24 @@ export function Footer() {
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" strokeWidth="1.6" /><circle cx="12" cy="12" r="4" stroke="currentColor" strokeWidth="1.6" /><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" /></svg>
                   </Link>
                 </div>
+                <p className="m-0 font-['Yellowtail',cursive] text-lg font-normal leading-relaxed text-[#f5c94f]">People. Progress. A Stronger Future.</p>
               </div>
 
-              <nav className="footer-reveal__col footer-reveal__col--links" aria-label="Colleges">
-                <span className="footer-reveal__col-label">Colleges</span>
-                <Link to="/college-of-project-controls-and-project-management">College of Project Controls and Project Management</Link>
-                <Link to="/college-of-marketing">College of Marketing</Link>
-                <Link to="/college-of-leadership">College of Leadership</Link>
-              </nav>
-
-              <nav className="footer-reveal__col footer-reveal__col--links" aria-label="Programmes">
-                <span className="footer-reveal__col-label">Programmes</span>
-                <Link to="/associate-project-manager-level-4">Associate Project Manager L4</Link>
-                <Link to="/project-controls-professional-level-6">Project Controls Professional L6</Link>
-                <Link to="/marketing-executive-level-4">Marketing Executive L4</Link>
-                <Link to="/marketing-manager-level-6">Marketing Manager L6</Link>
-                <Link to="/mba-diploma-level-7">MBA / Diploma L7</Link>
-              </nav>
-
-              <nav className="footer-reveal__col footer-reveal__col--links" aria-label="About">
-                <span className="footer-reveal__col-label">About</span>
-                <Link to="/about">Who We Are</Link>
-                <Link to="/our-experts">Our Experts</Link>
-                <Link to="/our-partners">Our Partners</Link>
-                <Link to="/governance-board">Governance Board</Link>
-                <Link to="/safeguarding-handbook">Safeguarding Handbook</Link>
-              </nav>
-
-              <nav className="footer-reveal__col footer-reveal__col--links" aria-label="Support">
-                <span className="footer-reveal__col-label">Support</span>
-                <Link to="/faq">FAQ</Link>
-                <Link to="/support">KBC Support</Link>
-                <Link to="/contact">Contact Us</Link>
-                <Link to="/book-session">Book a Session</Link>
-              </nav>
+              {footerNavigation.map((column) => (
+                <nav key={column.title} className="min-w-0 border-t border-white/30 pt-5 text-center sm:text-left xl:border-l xl:border-t-0 xl:px-5 xl:pt-0" aria-label={column.title}>
+                  <h2 className="mb-5 text-[11px] font-semibold uppercase leading-relaxed tracking-[0.18em] text-[#bba2e8]">{column.title}</h2>
+                  <ul className="m-0 flex list-none flex-col gap-3 p-0">
+                    {column.links.map((link) => (
+                      <li key={link.href}>
+                        <Link className="group inline-flex max-w-full items-center justify-center gap-1 text-[13px] font-medium leading-relaxed text-[#e7ddfa] transition-colors hover:text-[#f5c94f] focus-visible:rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#f5c94f] sm:inline xl:text-sm" to={link.href}>
+                          <span className="min-w-0">{link.label}</span>{" "}
+                          <ChevronRight className="inline h-4 w-4 shrink-0 text-[#f5c94f] transition-transform group-hover:translate-x-0.5 motion-reduce:transition-none" strokeWidth={2.5} aria-hidden="true" />
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </nav>
+              ))}
             </div>
 
             <div ref={sponsorsRef} className="footer-reveal__sponsors" aria-label="Our partners">
@@ -273,9 +301,9 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="footer-reveal__bottom">
+        <div className="footer-reveal__bottom !justify-center text-center sm:!justify-between sm:text-left !text-primary [&_a]:!text-primary [&_a:hover]:underline [&_a]:underline-offset-4">
           <span>© 2026 Kent Business College. All rights reserved.</span>
-          <div className="footer-reveal__bottom-links">
+          <div className="footer-reveal__bottom-links w-full justify-center sm:w-auto">
             <Link to="/privacy">Privacy Policy</Link>
             <Link to="/terms">Terms</Link>
           </div>

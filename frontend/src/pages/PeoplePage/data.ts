@@ -12,7 +12,8 @@ export type Expert = {
   highlights: string[];
 };
 
-export const peopleHeroImage = "https://jokdxsdbxorzciulkdyl.supabase.co/storage/v1/object/public/images/65005fd26a624ca099113e10f2809e84.webp";
+export const peopleHeroImage = "/assets/images/experts/experts-hero-split-amgad.png";
+export const amgadHeroImage = "/assets/images/experts/dr-amgad-hero-original.png";
 
 export const experts: Expert[] = [
   {
@@ -99,6 +100,23 @@ export const experts: Expert[] = [
       "He supports professionals in connecting strategic intent with practical project, programme and portfolio delivery.",
     ],
     highlights: ["Senior project, programme and portfolio leadership", "Experience across manufacturing and defence", "Experience across technology and services", "Associate Professor and strategic capability specialist"],
+  },
+  {
+    id: "femi-falodun",
+    name: "Femi Falodun",
+    role: "Marketing & Communications Specialist",
+    organisation: "Marketing Tutor, Kent Business College",
+    bio: "A marketing and communications professional with more than 12 years of experience across strategy, public relations, content, digital marketing, teaching and professional mentoring.",
+    image: "/assets/images/experts/femi-falodun.jpg",
+    linkedIn: "https://www.linkedin.com/in/femifalodun/",
+    credentials: "CFCIM · CMktr · MBA · MRes",
+    expertise: ["Marketing strategy", "Content and communications", "Customer experience", "Professional mentoring"],
+    profile: [
+      "Femi Falodun is a marketing and communications professional with more than 12 years of industry experience. As a Marketing Tutor at Kent Business College, he helps learners connect marketing theory with practical decisions across strategy, content, customer experience and communications.",
+      "He is a Chartered Fellow of the Chartered Institute of Marketing and a Chartered Marketer. His academic background includes an MBA in Marketing, an MRes in Advanced Marketing Management and a Chartered Postgraduate Diploma in Marketing. He is also undertaking doctoral research at Kent Business School into corporate sustainability communication in emerging markets.",
+      "Femi combines industry practice with teaching, coaching and mentoring. His work spans public relations, content marketing, digital marketing and strategic communications, and he contributes to the profession as a CIM mentor, writer and speaker.",
+    ],
+    highlights: ["Marketing Tutor at Kent Business College", "Chartered Fellow and Chartered Marketer", "Doctoral researcher at Kent Business School", "CIM mentor, industry writer and speaker"],
   },
 ];
 

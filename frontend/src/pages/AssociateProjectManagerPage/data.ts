@@ -62,7 +62,7 @@ export const programmeMeta = {
 };
 
 export const hero = {
-  eyebrow: "Level 4 • Work-based apprenticeship",
+  eyebrow: "Level 4 • Project Management",
   title: "Associate Project Manager",
   titleLines: ["Associate Project", "Manager"] as const,
   accent: "Level 4",
@@ -135,9 +135,10 @@ export const pageNavigation = [
   { label: "Funding", href: "#funding" },
   { label: "Alternative funding", href: "#alternative-funding" },
   { label: "Eligibility", href: "#eligibility" },
-  { label: "Testimonials", href: "#proof" },
   { label: "Events", href: "#events" },
+  { label: "Recognition", href: "#recognition" },
   { label: "Employer partners", href: "#partners" },
+  { label: "Testimonials", href: "#proof" },
   { label: "FAQs", href: "#apm-faq" },
 ] as const;
 
@@ -275,7 +276,7 @@ export const coaches = [
   },
   {
     name: "Patryk",
-    image: "https://jokdxsdbxorzciulkdyl.supabase.co/storage/v1/object/public/images/7553095cab4148ef80c0c338b8c21b55.webp",
+    image: "https://jokdxsdbxorzciulkdyl.supabase.co/storage/v1/object/public/images/d185a483d9b3495dbe5c3d3bcf39aa23.webp",
     role: "Study & Portfolio Coach",
     specialism: "Strategic Project Management",
     bio: "Master of Science in Strategic Project Management, supporting learners with project management thinking, evidence development and applied study progress.",
@@ -284,7 +285,7 @@ export const coaches = [
   },
   {
     name: "Aryan",
-    image: "https://jokdxsdbxorzciulkdyl.supabase.co/storage/v1/object/public/images/d185a483d9b3495dbe5c3d3bcf39aa23.webp",
+    image: "https://jokdxsdbxorzciulkdyl.supabase.co/storage/v1/object/public/images/7553095cab4148ef80c0c338b8c21b55.webp",
     role: "Portfolio & Application Coach",
     specialism: "Evidence development & study planning",
     bio: "Master of Science in Strategic Project Management, supporting learners with portfolio evidence, study planning and workplace application of learning.",
@@ -448,8 +449,8 @@ export const learnerBenefits = [
 ] as const;
 
 export const alternativeFundingRoutes = [
-  { eyebrow: "Individual bursary route", support: "70% bursary support", price: "£2,400", payment: "£120 per month for 20 months", description: "For unemployed or self-employed applicants, or applicants who cannot secure employer support, subject to acceptance and availability." },
-  { eyebrow: "Employer-funded route", support: "50% bursary support", price: "£4,000", payment: "£200 per month for 20 months", description: "For employers choosing to fund the programme directly, subject to acceptance and availability." },
+  { eyebrow: "Individual bursary route", support: "70% bursary support", description: "For unemployed or self-employed applicants, or applicants who cannot secure employer support, subject to acceptance and availability." },
+  { eyebrow: "Employer-funded route", support: "50% bursary support", description: "For employers choosing to fund the programme directly, subject to acceptance and availability." },
 ] as const;
 
 export const faqs = [

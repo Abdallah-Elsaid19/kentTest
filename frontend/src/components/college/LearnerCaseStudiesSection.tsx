@@ -6,6 +6,7 @@ import { fallbackStories } from "@/pages/StoriesPage/data";
 interface LearnerCaseStudiesSectionProps {
   id: string;
   category?: string;
+  programme?: string;
   title?: string;
   description?: string;
 }
@@ -13,13 +14,15 @@ interface LearnerCaseStudiesSectionProps {
 export function LearnerCaseStudiesSection({
   id,
   category,
+  programme,
   title = "Professional learning, applied through real responsibility.",
   description = "Explore how KBC learners connect professional theory with their day-to-day workplace responsibilities.",
 }: LearnerCaseStudiesSectionProps) {
-  const stories = (category
-    ? fallbackStories.filter((story) => story.category === category)
-    : fallbackStories
+  const stories = fallbackStories.filter((story) =>
+    (!category || story.category === category) && (!programme || story.programme === programme)
   ).slice(0, 3);
+
+  if (stories.length === 0) return null;
 
   return (
     <section id={id} className="scroll-mt-20 bg-white py-16 sm:scroll-mt-32 sm:py-20 xl:py-[108px]" aria-labelledby={`${id}-title`}>

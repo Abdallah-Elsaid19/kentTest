@@ -1,5 +1,4 @@
 import {
-  ArrowRight,
   Award,
   BrainCircuit,
   BriefcaseBusiness,
@@ -151,9 +150,6 @@ export function CourseContentSection() {
                               </p>
                             </div>
 
-                            <span className="flex size-10 shrink-0 items-center justify-center rounded-full text-white transition-transform duration-300 group-hover:translate-x-1 motion-reduce:transition-none sm:size-11" style={{ backgroundColor: style.accent }} aria-hidden="true">
-                              <ArrowRight className="size-5" strokeWidth={2} />
-                            </span>
                           </div>
                         </li>
                       ))}

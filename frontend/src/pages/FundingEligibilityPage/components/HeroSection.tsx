@@ -1,18 +1,16 @@
 import { ArrowRight } from "lucide-react";
+import { CollegeHeroSurface } from "@/components/college/CollegeHeroSurface";
 
 import { fundingRoutes } from "../data";
 import { actionsClass, ArrowLink, containerClass, goldSectionEyebrowClass } from "./shared";
 
 export function HeroSection() {
   return (
-    <section className="kbc-page-hero-offset relative isolate grid min-h-[min(850px,calc(100svh-64px))] items-center overflow-hidden bg-[#401b8c] max-[780px]:min-h-0" id="funding-overview">
-      <img className="absolute inset-0 -z-[3] h-full w-full object-cover object-[center_42%] opacity-25 saturate-[.72]" src="/assets/images/professional-development-employers.png" alt="Professionals planning workplace development" />
-      <div className="absolute inset-0 -z-[2] h-full w-full bg-[radial-gradient(circle_at_78%_14%,rgba(119,55,154,.34),transparent_24%),radial-gradient(circle_at_16%_84%,rgba(214,176,78,.12),transparent_28%),linear-gradient(rgba(64,27,140,.7),rgba(64,27,140,.7))]" />
-      <img className="pointer-events-none absolute -bottom-[190px] -right-[90px] -z-[1] w-[min(680px,44vw)] select-none opacity-[.07]" src="/assets/patterns/kbc-horse-growth.png" alt="" />
+    <CollegeHeroSurface image="/assets/images/professional-development-employers.png" id="funding-overview" titleId="funding-title" variant="funding">
       <div className={`${containerClass} grid grid-cols-[minmax(0,1fr)_370px] items-end gap-[clamp(56px,8vw,110px)] pb-[clamp(70px,9vw,112px)] max-[1050px]:grid-cols-1 max-[1050px]:items-center max-[780px]:pb-[70px]`}>
         <div className="max-w-[790px] mb-7">
           <p className={`${goldSectionEyebrowClass} !mb-8`}>Funding &amp; eligibility</p>
-          <h1 className="mt-0 max-w-[820px] !text-5xl !font-medium !leading-[1.15] !tracking-tight !text-white sm:!text-6xl lg:!text-7xl xl:!text-7xl ">
+          <h1 id="funding-title" className="mt-0 max-w-[820px] !text-5xl !font-medium !leading-[1.15] !tracking-tight !text-white sm:!text-6xl lg:!text-7xl xl:!text-7xl ">
             Find the right funding route for your <span className="!text-[#F5C94F]">professional development</span>
           </h1>
           <p className="mt-[30px] max-w-[720px] text-[clamp(15px,1.45vw,18px)] leading-[1.75] text-white/70 max-[500px]:text-sm">Whether you are developing your own capability or investing in your workforce, Kent Business College offers different ways to access professional learning — from eligible government-funded programmes to additional KBC-funded benefits and specialist commercial Project Controls development.</p>
@@ -32,6 +30,6 @@ export function HeroSection() {
           <em className="block pt-[15px] text-[10px] not-italic leading-[1.6] text-white/40 max-[1050px]:col-span-full">Different routes support different parts of the development experience.</em>
         </aside>
       </div>
-    </section>
+    </CollegeHeroSurface>
   );
 }

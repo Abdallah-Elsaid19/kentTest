@@ -5,11 +5,10 @@ import { NavigationButton } from "@/components/navigation";
 import { RouteMeta } from "@/components/seo/RouteMeta";
 import { PageHero } from "@/components/ui/PageHero";
 import { FaqPage } from "./FaqPage";
-import { GovernancePage } from "./GovernancePage";
 import { PartnersPage } from "./PartnersPage";
 import { SafeguardingPage } from "./SafeguardingPage";
 
-export type InformationPageKind = "faq" | "partners" | "governance" | "safeguarding" | "apprentices" | "jobs" | "employerDashboard";
+export type InformationPageKind = "faq" | "partners" | "safeguarding" | "apprentices" | "jobs" | "employerDashboard";
 
 type Card = { title: string; body: string; href?: string; action?: string };
 type PageContent = {
@@ -45,18 +44,6 @@ const pages: Record<InformationPageKind, PageContent> = {
     cards: ["Watts", "VIRTUS", "Shell", "Wincanton", "BMT", "Mercedes-Benz", "University of Hull", "Indeed Flex"].map((title) => ({ title, body: "Part of the wider employer and professional network connected to Kent Business College." })),
     primary: { label: "Discuss an employer partnership", href: "/employer-agreement" },
     secondary: { label: "Contact the team", href: "/contact" },
-  },
-  governance: {
-    eyebrow: "College governance",
-    title: "Governance Board",
-    summary: "Oversight that supports quality, accountability and responsible decision-making across Kent Business College.",
-    intro: "The governance framework connects institutional direction with learner interests, employer needs and appropriate oversight of college activity.",
-    cards: [
-      { title: "Strategic oversight", body: "Review institutional direction, priorities and the college's approach to sustainable professional education." },
-      { title: "Quality and accountability", body: "Support clear responsibility for standards, performance, risk and continuous improvement." },
-      { title: "Learner and employer interests", body: "Keep learner experience, professional relevance and employer outcomes visible in decision-making." },
-    ],
-    primary: { label: "Contact Kent Business College", href: "/contact" },
   },
   safeguarding: {
     eyebrow: "Safety and wellbeing",
@@ -116,7 +103,6 @@ const pages: Record<InformationPageKind, PageContent> = {
 export default function InformationPage({ kind }: { kind: InformationPageKind }) {
   if (kind === "faq") return <FaqPage />;
   if (kind === "partners") return <PartnersPage />;
-  if (kind === "governance") return <GovernancePage />;
   if (kind === "safeguarding") return <SafeguardingPage />;
 
   const page = pages[kind];

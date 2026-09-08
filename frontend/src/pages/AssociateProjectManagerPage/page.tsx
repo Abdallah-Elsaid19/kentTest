@@ -1,7 +1,10 @@
 import { FaqSection } from "@/components/common/FaqSection";
+import { LearnerCaseStudiesSection } from "@/components/college/LearnerCaseStudiesSection";
 import { CollegePageNav } from "@/components/college/CollegePageNav";
 import { NavigationButton } from "@/components/navigation";
 import { RouteMeta } from "@/components/seo/RouteMeta";
+import { FigmaTestimonialsSection } from "@/pages/home/components/FigmaTestimonialsSection";
+import { RecognitionStandardsSection } from "@/pages/home/components/RecognitionStandardsSection";
 
 import { EligibilitySection, FundingSection } from "./component/FundingEmployerSections";
 import { HeroSection } from "./component/HeroSection";
@@ -20,7 +23,7 @@ import {
   ProgrammeEventsSection,
   ProgrammeOverviewSection,
 } from "./component/ProgrammeDetailSections";
-import { FinalCtaSection, TestimonialsSection } from "./component/ProofAndCtaSections";
+import { FinalCtaSection } from "./component/ProofAndCtaSections";
 import { courseSchema, faqSchema, faqs, pageNavigation, programmeMeta } from "./data";
 
 export default function AssociateProjectManagerPage() {
@@ -47,9 +50,17 @@ export default function AssociateProjectManagerPage() {
       <FundingSection />
       <AlternativeFundingSection />
       <EligibilitySection />
-      <TestimonialsSection />
+      <div className="kbc-figma-home">
+        <LearnerCaseStudiesSection id="case-studies" programme="Associate Project Manager Level 4" />
+      </div>
       <ProgrammeEventsSection />
+      <div id="recognition" className="kbc-figma-home scroll-mt-20 sm:scroll-mt-32">
+        <RecognitionStandardsSection />
+      </div>
       <EmployerPartnersSection />
+      <div id="proof" className="kbc-figma-home scroll-mt-20 sm:scroll-mt-64">
+        <FigmaTestimonialsSection />
+      </div>
       <FaqSection
         id="apm-faq"
         eyebrow="Programme questions"

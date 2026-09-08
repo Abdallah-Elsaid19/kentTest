@@ -13,9 +13,9 @@ export const heroData = {
   cohortAction: { label: "Save your place", to: "/book-session" },
   "titleId": "pcp-title",
   "hero": {
-    "eyebrow": "College of Project Controls and Project Management",
+    "eyebrow": "Project Controls",
     "title": "Project Controls Professional",
-    "accent": "Level 6",
+    "accent": "Level\u00a06",
     "lead": "A fully funded, work-based pathway for professionals who plan, control, forecast and govern complex projects with Operational, Strategic and Chartered Project Professional routes.",
     "fundingTitle": "Fully funded for eligible learners",
     "fundingDescription": "Government-funded apprenticeship route, subject to eligibility.",
@@ -267,6 +267,7 @@ export const pathwayData = {
     },
     {
       "name": "Chartered Pathway",
+      "action": { "label": "Explore Chartered Pathway", "to": "/chartered-pathway" },
       "title": "For Chartered Project Professional readiness",
       "description": "Best suited to learners who want the Association for Project Management recognised assessment route for Chartered Project Professional technical knowledge.",
       "tags": [
@@ -750,32 +751,10 @@ export const finalCTA = {
   "eyebrow": "Take the next step",
   "title": "Ready to choose the right Project Controls Professional Level 6 pathway?",
   "description": "Start with a one-to-one conversation. The team can help you understand your pathway, employer requirements, funding eligibility, professional recognition route and next intake.",
-  "items": [
-    {
-      "title": "1. Book a one-to-one information session",
-      "description": "The key call to action. Discuss your role, funding route, evidence access and pathway with one of the coaches.",
-      "action": {
-        "label": "Book an information session",
-        "to": "/book-session"
-      }
-    },
-    {
-      "title": "2. Attend an Eventbrite event",
-      "description": "Join an online or offline information event before applying or speaking to your employer.",
-      "action": {
-        "label": "See upcoming events",
-        "to": "https://www.eventbrite.co.uk/o/kent-business-college-31384338225"
-      }
-    },
-    {
-      "title": "3. Email Alice Saunders",
-      "description": "Send your question about eligibility, funding, cohorts or pathways to office@kentbusinesscollege.org.",
-      "action": {
-        "label": "Email Alice Saunders",
-        "to": "mailto:office@kentbusinesscollege.org?subject=Project%20Controls%20Professional%20Level%206%20enquiry"
-      }
-    }
-  ]
+  "action": {
+    "label": "Book an information session",
+    "to": "/book-session"
+  }
 } as const;
 
 export const faqs = [
@@ -836,8 +815,9 @@ export const pageNavigation = [
   { label: "Delivery", href: "#delivery" }, { label: "Workload", href: "#workload" },
   { label: "Coaches", href: "#coaches" },
   { label: "Benefits", href: "#benefits" }, { label: "Funding", href: "#funding" },
-  { label: "Events", href: "#upcoming-programme-events" }, { label: "Employer partners", href: "#employers" },
-  { label: "FAQs", href: "#faq" }, { label: "Next step", href: "#next-step" },
+  { label: "Events", href: "#upcoming-programme-events" }, { label: "Recognition", href: "#recognition" },
+  { label: "Employer partners", href: "#employers" },
+  { label: "Testimonials", href: "#testimonials" }, { label: "FAQs", href: "#faq" }, { label: "Next step", href: "#next-step" },
 ] as const;
 
 export const programmeMeta = {

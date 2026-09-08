@@ -1,7 +1,7 @@
-import { LearnerCaseStudiesSection } from "@/components/college/LearnerCaseStudiesSection";
 import { FaqSection } from "@/components/common/FaqSection";
 import { NavigationButton } from "@/components/navigation";
 import { RouteMeta } from "@/components/seo/RouteMeta";
+import { FigmaTestimonialsSection } from "@/pages/home/components/FigmaTestimonialsSection";
 import { FigmaUpcomingEventsSection } from "@/pages/home/components/FigmaUpcomingEventsSection";
 import { RecognitionStandardsSection } from "@/pages/home/components/RecognitionStandardsSection";
 import { TrustedOrganisations } from "@/pages/home/components/TrustedOrganisations";
@@ -14,7 +14,6 @@ import { HeroSection } from "./component/HeroSection";
 import { OverviewSection } from "./component/OverviewSection";
 import { ProgrammesSection } from "./component/ProgrammesSection";
 import { StudyModelSection } from "./component/StudyModelSection";
-import { TestimonialsSection } from "./component/TestimonialsSection";
 import { faqCopy, marketingFaqs } from "./data";
 
 const faqSchema = {
@@ -43,23 +42,19 @@ export default function MarketingCollegePage() {
       <BenefitsSection />
       <StudyModelSection />
       <CareerPathwaysSection />
-      <TestimonialsSection />
       <div className="kbc-figma-home">
         <div id="marketing-events" className="scroll-mt-20 sm:scroll-mt-32">
           <FigmaUpcomingEventsSection />
         </div>
-        <LearnerCaseStudiesSection
-          id="marketing-case-studies"
-          category="Marketing"
-          title="Professional marketing, applied through real responsibility"
-          description="See how KBC learners connect customer insight, marketing theory and live workplace priorities."
-        />
         <div id="marketing-recognition" className="scroll-mt-20 sm:scroll-mt-32">
           <RecognitionStandardsSection />
         </div>
         <div id="marketing-trusted" className="scroll-mt-20 sm:scroll-mt-32">
           <TrustedOrganisations />
         </div>
+      </div>
+      <div className="kbc-figma-home">
+        <FigmaTestimonialsSection />
       </div>
       <FaqSection
         id="marketing-faq"

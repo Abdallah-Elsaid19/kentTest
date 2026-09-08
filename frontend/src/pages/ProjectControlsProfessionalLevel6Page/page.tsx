@@ -7,7 +7,10 @@ import { ProgrammeCardGrid, ProgrammeBenefits, ProgrammePartners, ProgrammePeopl
 import { ProgrammeWorkload } from "@/components/programme/ProgrammeWorkload";
 import { ProgrammeAlternativeRoute, ProgrammeFunding, ProgrammeNextSteps, ProgrammeOutputs } from "@/components/programme/ProgrammeSupportSections";
 import { RouteMeta } from "@/components/seo/RouteMeta";
+import { FigmaTestimonialsSection } from "@/pages/home/components/FigmaTestimonialsSection";
 import { FigmaUpcomingEventsSection } from "@/pages/home/components/FigmaUpcomingEventsSection";
+import { LearnerCaseStudiesSection } from "@/components/college/LearnerCaseStudiesSection";
+import { RecognitionStandardsSection } from "@/pages/home/components/RecognitionStandardsSection";
 import { PathwaysSection } from "./component/PathwaysSection";
 import { audienceData, benefitsData, coachData, cohortData, courseSchema, deliveryData, eventsData, faqSchema, faqs, finalCTA, fundingData, heroData, outputsData, overviewData, pageNavigation, partnerData, programmeMeta, structureData, workloadData } from "./data";
 
@@ -29,7 +32,7 @@ export default function ProjectControlsProfessionalLevel6Page() {
     <ProgrammeSection {...cohortData}><ProgrammeCardGrid items={cohortData.items} columns={2} editorial /></ProgrammeSection>
     <ProgrammeOutputs data={outputsData} />
     <ProgrammeSection {...deliveryData} tone="soft" pattern="gold-leaf">
-      <ProgrammeCardGrid items={deliveryData.items.slice(0, 4)} columns={4} editorial />
+      <ProgrammeCardGrid items={deliveryData.items.slice(0, 4)} columns={4} editorial dividers />
       <ProgrammeCardGrid items={deliveryData.items.slice(4)} columns={2} />
     </ProgrammeSection>
     <ProgrammeWorkload data={workloadData} />
@@ -37,8 +40,13 @@ export default function ProjectControlsProfessionalLevel6Page() {
     <ProgrammePeople data={coachData} />
     <ProgrammeBenefits data={benefitsData} />
     <ProgrammeFunding data={fundingData} />
-    <div className="kbc-figma-home"><FigmaUpcomingEventsSection id="upcoming-programme-events" search={eventsData.search} eyebrow={eventsData.eyebrow} title={eventsData.upcomingTitle} description={eventsData.upcomingDescription} /></div>
+    <div className="kbc-figma-home">
+      <LearnerCaseStudiesSection id="case-studies" programme="Project Control Professional Level 6" />
+      <FigmaUpcomingEventsSection id="upcoming-programme-events" search={eventsData.search} eyebrow={eventsData.eyebrow} title={eventsData.upcomingTitle} description={eventsData.upcomingDescription} />
+    </div>
+    <div id="recognition" className="kbc-figma-home scroll-mt-20 sm:scroll-mt-32"><RecognitionStandardsSection /></div>
     <ProgrammePartners data={partnerData} />
+    <div id="testimonials" className="kbc-figma-home scroll-mt-20 sm:scroll-mt-64"><FigmaTestimonialsSection /></div>
     <FaqSection id="faq" eyebrow="Frequently asked questions" title="Practical answers before you apply" items={faqs} className="sm:!scroll-mt-64" action={<NavigationButton to="/book-session">Book an information session</NavigationButton>} />
     <ProgrammeNextSteps data={finalCTA} />
   </div>;

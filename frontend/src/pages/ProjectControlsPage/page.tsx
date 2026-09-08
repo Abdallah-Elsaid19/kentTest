@@ -1,7 +1,7 @@
-import { LearnerCaseStudiesSection } from "@/components/college/LearnerCaseStudiesSection";
 import { FaqSection } from "@/components/common/FaqSection";
 import { NavigationButton } from "@/components/navigation";
 import { RouteMeta } from "@/components/seo/RouteMeta";
+import { FigmaTestimonialsSection } from "../home/components/FigmaTestimonialsSection";
 import { FigmaUpcomingEventsSection } from "../home/components/FigmaUpcomingEventsSection";
 import { RecognitionStandardsSection } from "../home/components/RecognitionStandardsSection";
 import { TrustedOrganisations } from "../home/components/TrustedOrganisations";
@@ -12,7 +12,6 @@ import { ProgrammesSection } from "./component/ProgrammesSection";
 import { CapabilitiesSection } from "./component/CapabilitiesSection";
 import { CourseContentSection } from "./component/CourseContentSection";
 import { BenefitsSection } from "./component/BenefitsSection";
-import { TestimonialsSection } from "./component/TestimonialsSection";
 import { CareerPathwaysSection } from "./component/CareerPathwaysSection";
 import { FinalCTASection } from "./component/FinalCTASection";
 import { faqCopy, projectControlsFaqs } from "./data";
@@ -43,18 +42,19 @@ export default function ProjectControlsPage() {
       <CourseContentSection />
       <BenefitsSection />
       <CareerPathwaysSection />
-      <TestimonialsSection />
       <div className="kbc-figma-home">
         <div id="pc-events" className="scroll-mt-20 sm:scroll-mt-32">
           <FigmaUpcomingEventsSection />
         </div>
-        <LearnerCaseStudiesSection id="pc-case-studies" />
         <div id="pc-recognition" className="scroll-mt-20 sm:scroll-mt-32">
           <RecognitionStandardsSection />
         </div>
         <div id="pc-trusted" className="scroll-mt-20 sm:scroll-mt-32">
           <TrustedOrganisations />
         </div>
+      </div>
+      <div className="kbc-figma-home">
+        <FigmaTestimonialsSection />
       </div>
       <FaqSection
         id="faq"

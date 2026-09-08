@@ -1,15 +1,17 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import basicSsl from "@vitejs/plugin-basic-ssl";
+import { createHash } from "node:crypto";
 import { resolve } from "node:path";
-import { tmpdir } from "node:os";
+import { tmpdir, userInfo } from "node:os";
 import AutoImport from "unplugin-auto-import/vite";
 const base = process.env.BASE_PATH || "/";
+const cacheUser = createHash("sha256").update(userInfo().username).digest("hex").slice(0, 12);
 // https://vite.dev/config/
 export default defineConfig({
-  // Keep the project cache separate from Vite's conventional `.vite` folder.
-  // On Windows that shared path can remain locked after a dev process exits.
-  cacheDir: resolve(__dirname, "node_modules/.vite-kbc"),
+  // Windows users and the Codex sandbox cannot always delete each other's files.
+  // Keep a reusable cache per OS account so config changes can invalidate it safely.
+  cacheDir: resolve(__dirname, `node_modules/.vite-kbc-${cacheUser}`),
   define: {
     __BASE_PATH__: JSON.stringify(base),
   },

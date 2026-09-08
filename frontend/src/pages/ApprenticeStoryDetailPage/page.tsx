@@ -1,7 +1,11 @@
-import { Check } from "lucide-react";
-import { Navigate, useParams } from "react-router-dom";
+﻿import { ArrowLeft, Award, BriefcaseBusiness, Check, Linkedin } from "lucide-react";
+import { Link, Navigate, useParams } from "react-router-dom";
+import { CollegeStats } from "@/components/college/CollegeStats";
+import { shell, section } from "@/components/college/layout";
 import { NavigationButton } from "@/components/navigation";
+import { ProgrammeCardGrid, ProgrammeChecklist } from "@/components/programme/ProgrammeGrids";
 import { RouteMeta } from "@/components/seo/RouteMeta";
+import { FigmaSectionHeading } from "@/components/ui/FigmaSectionHeading";
 import { getApprenticeStory } from "@/pages/ApprenticeStoriesPage/data";
 import { CapabilityCtaSection } from "@/pages/StoriesPage/components/CapabilityCtaSection";
 
@@ -10,85 +14,102 @@ export default function ApprenticeStoryDetailPage() {
   if (!story) return <Navigate to="/apprentices/stories" replace />;
 
   return (
-    <article className="kbc-figma-home overflow-hidden bg-white">
-      <RouteMeta fallbackTitle={`${story.name} | Apprentice Story`} fallbackDescription={story.introduction} />
+    <article className="kbc-figma-home overflow-hidden bg-white [&_h2]:!font-semibold [&_h3]:!font-semibold">
+      <RouteMeta fallbackTitle={`${story.name} | Apprentice Story | Kent Business College`} fallbackDescription={story.introduction} />
 
-      <header className="relative overflow-hidden bg-[linear-gradient(122deg,#1c0d28_0%,#2e123d_55%,#23102f_100%)] py-16 text-white sm:py-20 xl:py-[118px]">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_76%_38%,rgba(119,55,154,.38),transparent_32%),radial-gradient(circle_at_16%_86%,rgba(214,176,78,.10),transparent_30%)]" aria-hidden="true" />
-        <div className="figma-shell relative grid items-center gap-10 lg:grid-cols-[1.08fr_.92fr] lg:gap-16">
-          <div>
-            <span className="figma-eyebrow !text-kbc-gold-500">Success story</span>
-            <h1 className="mt-5 !text-[clamp(2.5rem,11vw,3rem)] !leading-[.96] !text-white sm:!text-6xl lg:!text-7xl">{story.title}</h1>
-            <p className="mt-7 max-w-2xl text-base leading-7 text-white/70 sm:text-lg">{story.introduction}</p>
-            <dl className="mt-10 grid gap-5 border-t border-white/15 pt-6 sm:grid-cols-2">
-              <div><dt className="text-xs uppercase tracking-[.16em] text-kbc-gold-500">Name</dt><dd className="mt-2 font-semibold text-white">{story.name}</dd></div>
-              <div><dt className="text-xs uppercase tracking-[.16em] text-kbc-gold-500">Programme</dt><dd className="mt-2 font-semibold text-white">{story.programme}</dd></div>
-              <div className="sm:col-span-2"><dt className="text-xs uppercase tracking-[.16em] text-kbc-gold-500">Role & company</dt><dd className="mt-2 font-semibold text-white">{story.role}{story.company ? ` · ${story.company}` : ""}</dd></div>
-            </dl>
-          </div>
-          <div className="relative mx-auto w-full max-w-lg">
-            <div className="pointer-events-none absolute -inset-14 bg-[radial-gradient(ellipse_at_center,rgba(180,135,211,.28)_0%,rgba(103,48,130,.17)_42%,transparent_72%)] blur-2xl" aria-hidden="true" />
-            <img className="relative aspect-[4/3] w-full rounded-2xl border border-white/15 object-cover object-top shadow-[0_26px_60px_rgba(0,0,0,.35)]" src={story.image} alt={story.name} loading="lazy" decoding="async" />
+      <header className="relative isolate overflow-hidden bg-primary pb-16 pt-[192px] text-white sm:pb-20 sm:pt-[248px] lg:pb-24" aria-labelledby="story-title">
+        <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-r from-primary-dark via-primary to-primary" aria-hidden="true" />
+        <div className={shell}>
+          <Link className="inline-flex min-h-11 items-center gap-2 rounded-sm text-sm font-medium text-white/80 transition-colors hover:text-kbc-gold-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-kbc-gold-400 focus-visible:ring-offset-4 focus-visible:ring-offset-primary" to="/apprentices/stories">
+            <ArrowLeft className="size-4" aria-hidden="true" /> All apprentice stories
+          </Link>
+          <div className="mt-8 grid items-center gap-10 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,.85fr)] lg:gap-16">
+            <div className="min-w-0">
+              <p className="figma-eyebrow !text-xs !font-bold !tracking-widest !text-kbc-gold-400">Success story</p>
+              <h1 id="story-title" className="!text-4xl !font-semibold !leading-[1.08] !tracking-tight !text-white sm:!text-5xl xl:!text-6xl">{story.title}</h1>
+              <p className="mt-6 max-w-2xl text-base leading-8 text-white/80 sm:text-lg">{story.introduction}</p>
+              <dl className="mt-8 space-y-5 border-t border-white/20 pt-6">
+                <div className="flex items-start gap-3">
+                  <Award className="mt-1 size-5 shrink-0 text-kbc-gold-400" aria-hidden="true" />
+                  <div><dt className="text-xs font-semibold uppercase tracking-widest text-kbc-gold-400">Programme</dt><dd className="mt-2 text-sm font-medium leading-6 text-white sm:text-base">{story.programme}</dd></div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <BriefcaseBusiness className="mt-1 size-5 shrink-0 text-kbc-gold-400" aria-hidden="true" />
+                  <div><dt className="text-xs font-semibold uppercase tracking-widest text-kbc-gold-400">Role & company</dt><dd className="mt-2 text-sm leading-6 text-white/85 sm:text-base">{story.role}{story.company ? ` · ${story.company}` : ""}</dd></div>
+                </div>
+              </dl>
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                <NavigationButton to="#starting-point" variant="accent">Read the story</NavigationButton>
+                <NavigationButton to={story.linkedIn} external newTab variant="inverse"><Linkedin className="mr-2 size-4" aria-hidden="true" />LinkedIn profile</NavigationButton>
+              </div>
+            </div>
+            <figure className="mx-auto w-full max-w-[390px] lg:mr-0">
+              <div className="relative rounded-2xl border border-white/20 bg-white/10 p-3 shadow-[0_24px_70px_rgba(36,13,68,0.2)]">
+                <img className="aspect-[4/5] w-full rounded-xl object-cover object-top" src={story.image} alt={story.name} fetchPriority="high" decoding="async" />
+                <img className="absolute bottom-6 right-6 w-24 rounded-full bg-white p-2 shadow-lg sm:w-28" src={story.stampImage} alt={`${story.programme} achievement badge`} decoding="async" />
+              </div>
+              <figcaption className="mt-5 border-l-2 border-kbc-gold-400 pl-4">
+                <span className="block text-xl font-semibold text-white">{story.name}</span>
+                {story.company && <span className="mt-1 block text-sm text-white/75">{story.company}</span>}
+              </figcaption>
+            </figure>
           </div>
         </div>
       </header>
 
-      {story.result && (
-        <section className="border-b border-kbc-purple-950/10 bg-kbc-purple-50 py-10" aria-label="Headline results">
-          <div className="figma-shell grid gap-5 sm:grid-cols-3">
-            <div><span className="text-xs uppercase tracking-[.16em] text-kbc-dark-500">Course sales growth</span><strong className="mt-2 block text-4xl text-kbc-purple-950">{story.result.value}</strong></div>
-            <div><span className="text-xs uppercase tracking-[.16em] text-kbc-dark-500">Before CRM</span><strong className="mt-2 block text-4xl text-kbc-purple-950">5/year</strong></div>
-            <div><span className="text-xs uppercase tracking-[.16em] text-kbc-dark-500">After CRM</span><strong className="mt-2 block text-4xl text-kbc-purple-950">4–7/month</strong></div>
-          </div>
-        </section>
-      )}
+      {story.result && <section className="border-b border-kbc-purple-100 bg-kbc-purple-50 pb-10" aria-label="Headline results">
+        <div className={shell}><CollegeStats items={[
+          { label: "Course sales growth", value: story.result.value },
+          { label: "Before CRM", value: "5/year" },
+          { label: "After CRM", value: "4–7/month" },
+        ]} surface="white" /></div>
+      </section>}
 
-      <section className="py-16 sm:py-20 xl:py-[118px]" aria-labelledby="starting-point-title">
-        <div className="figma-shell grid gap-10 lg:grid-cols-[.72fr_1.28fr] lg:gap-20">
-          <div><span className="figma-eyebrow">The starting point</span><h2 className="!text-4xl !leading-[1.02] text-kbc-purple-950 sm:!text-5xl" id="starting-point-title">Learning built around an established role.</h2></div>
-          <div className="space-y-5 text-base leading-8 text-kbc-dark-600">{story.startingPoint.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div>
+      <section id="starting-point" className={`${section} sm:!scroll-mt-64`} aria-labelledby="starting-point-title">
+        <div className={`${shell} grid gap-8 lg:grid-cols-[minmax(0,.8fr)_minmax(0,1.2fr)] lg:gap-16`}>
+          <FigmaSectionHeading id="starting-point-title" eyebrow="The starting point" title="Learning built around an established role." align="left" />
+          <div className="space-y-5 text-base leading-8 text-[var(--color-muted)]">{story.startingPoint.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div>
         </div>
       </section>
 
-      <section className="bg-kbc-purple-50 py-16 sm:py-20 xl:py-[118px]" aria-labelledby="role-title">
-        <div className="figma-shell grid gap-8 lg:grid-cols-[.8fr_1.2fr] lg:gap-16">
-          <div><span className="figma-eyebrow">Responsibilities</span><h2 className="!text-4xl !leading-[1.02] text-kbc-purple-950 sm:!text-5xl" id="role-title">My role</h2><p className="mt-6 text-base leading-8 text-kbc-dark-600">{story.roleSummary}</p></div>
-          <div className="grid gap-4 sm:grid-cols-2">{story.responsibilities.map((item, index) => <div className="rounded-2xl border border-kbc-purple-950/10 bg-white p-6" key={item}><span className="text-xs font-bold tracking-[.16em] text-kbc-gold-700">{String(index + 1).padStart(2, "0")}</span><h3 className="mt-7 text-2xl text-kbc-purple-950">{item}</h3></div>)}</div>
+      <section className={`${section} bg-kbc-purple-50`} aria-labelledby="role-title">
+        <div className={shell}>
+          <FigmaSectionHeading id="role-title" eyebrow="Responsibilities" title="My role" description={story.roleSummary} align="left" />
+          <ProgrammeCardGrid items={story.responsibilities.map((title) => ({ title }))} columns={4} editorial editorialSurface="white" />
         </div>
       </section>
 
-      <section className="py-16 sm:py-20 xl:py-[118px]" aria-labelledby="learning-title">
-        <div className="figma-shell">
-          <span className="figma-eyebrow">Outcomes</span>
-          <h2 className="max-w-3xl !text-4xl !leading-[1.02] text-kbc-purple-950 sm:!text-5xl" id="learning-title">What I've learned and how I've applied it.</h2>
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{story.learning.map((item) => <div className="flex items-center gap-3 rounded-2xl border border-kbc-purple-950/10 bg-white p-5 shadow-[0_12px_32px_rgba(58,42,31,.12)]" key={item}><span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-kbc-gold-100 text-kbc-gold-800"><Check className="h-5 w-5" aria-hidden="true" /></span><strong className="text-kbc-purple-950">{item}</strong></div>)}</div>
+      <section className={section} aria-labelledby="learning-title">
+        <div className={shell}>
+          <FigmaSectionHeading id="learning-title" eyebrow="Outcomes" title="What I've learned and how I've applied it." align="left" />
+          <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{story.learning.map((item) => <li className="flex items-start gap-4 rounded-2xl border border-kbc-purple-100 bg-white p-6 shadow-[0_12px_32px_rgba(35,13,63,0.06)]" key={item}><span className="grid size-10 shrink-0 place-items-center rounded-xl bg-kbc-purple-50 text-primary"><Check className="size-5" aria-hidden="true" /></span><span className="pt-2 text-sm font-semibold leading-6 text-[var(--color-ink)]">{item}</span></li>)}</ul>
         </div>
       </section>
 
-      {story.initiative && (
-        <section className="bg-kbc-purple-950 py-16 text-white sm:py-20 xl:py-[118px]" aria-labelledby="initiative-title">
-          <div className="figma-shell grid gap-10 lg:grid-cols-[.8fr_1.2fr] lg:gap-20">
-            <div><span className="figma-eyebrow !text-kbc-gold-500">Key initiative</span><h2 className="!text-4xl !leading-[1.02] !text-white sm:!text-5xl" id="initiative-title">{story.initiative.title}</h2></div>
-            <div className="space-y-5 text-base leading-8 text-white/65">{story.initiative.description.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div>
+      {(story.initiative || story.result) && <div className="bg-primary-dark text-white">
+        {story.initiative && <section className={section} aria-labelledby="initiative-title">
+          <div className={`${shell} grid gap-8 lg:grid-cols-[minmax(0,.8fr)_minmax(0,1.2fr)] lg:gap-16`}>
+            <FigmaSectionHeading id="initiative-title" eyebrow="Key initiative" title={story.initiative.title} align="left" tone="inverse" />
+            <div className="space-y-5 text-base leading-8 text-white/80">{story.initiative.description.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div>
           </div>
-        </section>
-      )}
-
-      {story.result && (
-        <section className="bg-kbc-purple-950 pb-16 text-white sm:pb-20 xl:pb-[118px]" aria-labelledby="result-title">
-          <div className="figma-shell rounded-[20px] border border-white/10 bg-white/[.06] p-7 sm:p-10 lg:p-14">
-            <span className="text-6xl font-semibold text-kbc-gold-500 sm:text-7xl">{story.result.value}</span>
-            <h2 className="mt-5 !text-4xl !text-white sm:!text-5xl" id="result-title">{story.result.label}</h2>
-            <p className="mt-5 max-w-3xl text-base leading-8 text-white/65">{story.result.description}</p>
-            <ul className="mt-8 grid gap-4 sm:grid-cols-2">{story.result.highlights.map((item) => <li className="flex items-center gap-3 text-white/80" key={item}><Check className="h-5 w-5 text-kbc-gold-500" aria-hidden="true" />{item}</li>)}</ul>
+        </section>}
+        {story.result && <section className="pb-16 sm:pb-20 lg:pb-28" aria-labelledby="result-title">
+          <div className={shell}>
+            <div className="grid gap-8 rounded-2xl border border-white/20 bg-white/5 p-7 sm:p-10 lg:grid-cols-[minmax(0,.7fr)_minmax(0,1.3fr)] lg:gap-14">
+              <div><span className="text-6xl font-semibold tracking-tight text-kbc-gold-400 sm:text-7xl">{story.result.value}</span><h2 className="mt-5 !text-3xl !leading-tight !text-white" id="result-title">{story.result.label}</h2></div>
+              <div><p className="text-base leading-8 text-white/80">{story.result.description}</p><ProgrammeChecklist items={story.result.highlights} inverse /></div>
+            </div>
           </div>
-        </section>
-      )}
+        </section>}
+      </div>}
 
-      <section className="bg-kbc-purple-50 py-16 sm:py-20 xl:py-[118px]" aria-labelledby="transformation-title">
-        <div className="figma-shell grid gap-10 lg:grid-cols-[.8fr_1.2fr] lg:gap-20">
-          <div><span className="figma-eyebrow">The transformation</span><h2 className="!text-4xl !leading-[1.02] text-kbc-purple-950 sm:!text-5xl" id="transformation-title">The apprenticeship changed how I think and approach my work.</h2></div>
-          <div><div className="space-y-5 text-base leading-8 text-kbc-dark-600">{story.transformation.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div><div className="mt-8 flex flex-col gap-3 sm:flex-row"><NavigationButton className="figma-btn figma-btn--gold" to="/apprentices/stories" variant="accent">View apprentice stories</NavigationButton><NavigationButton className="figma-btn !border-kbc-purple-950/15 !bg-white !text-kbc-purple-950" to={story.linkedIn} external newTab variant="secondary">LinkedIn profile</NavigationButton></div></div>
+      <section className={`${section} bg-kbc-purple-50`} aria-labelledby="transformation-title">
+        <div className={`${shell} grid gap-8 lg:grid-cols-[minmax(0,.8fr)_minmax(0,1.2fr)] lg:gap-16`}>
+          <FigmaSectionHeading id="transformation-title" eyebrow="The transformation" title="The apprenticeship changed how I think and approach my work." align="left" />
+          <div>
+            <div className="space-y-5 text-base leading-8 text-[var(--color-muted)]">{story.transformation.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap"><NavigationButton to="/apprentices/stories">View apprentice stories</NavigationButton><NavigationButton to={story.linkedIn} external newTab variant="secondary"><Linkedin className="mr-2 size-4" aria-hidden="true" />LinkedIn profile</NavigationButton></div>
+          </div>
         </div>
       </section>
 

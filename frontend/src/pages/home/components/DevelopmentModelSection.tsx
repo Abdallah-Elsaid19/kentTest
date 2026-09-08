@@ -1,4 +1,4 @@
-import { ArrowRight, SlidersHorizontal } from "lucide-react";
+import { ArrowRight, Check, SlidersHorizontal } from "lucide-react";
 import { type ReactNode, useState } from "react";
 import { Link } from "react-router-dom";
 import { FigmaSectionHeading } from "@/components/ui/FigmaSectionHeading";
@@ -10,6 +10,8 @@ type PathwayCard = {
   eyebrow: string;
   title: ReactNode;
   description: string;
+  points?: readonly string[];
+  note?: string;
   detail?: string;
   linkLabel?: string;
   to?: string;
@@ -29,10 +31,39 @@ type AudienceContent = {
 const audienceContent: Record<Audience, AudienceContent> = {
   professionals: {
     cards: [
-      { eyebrow: "01", title: "Specialist Knowledge", description: "Develop role-relevant professional capability" },
-      { eyebrow: "02", title: "Expert Learning", description: "Learn with experienced professionals" },
-      { eyebrow: "03", title: "Workplace Evidence", description: "Apply development through real work" },
-      { eyebrow: "04", title: "Professional Progression", description: "Build evidence for greater responsibility" },
+      {
+        eyebrow: "01", title: "Specialist Knowledge", description: "Develop role-relevant professional capability",
+        points: [
+          "Role-relevant apprenticeships",
+          "Specialist colleges and professional programmes",
+          "Learning matched to your responsibilities and goals",
+        ],
+      },
+      {
+        eyebrow: "02", title: "Expert Learning", description: "Learn with experienced professionals",
+        points: [
+          "Live interactive learning",
+          "Dedicated coaching and one-to-one tutoring",
+          "Session recordings and catch-up support",
+        ],
+      },
+      {
+        eyebrow: "03", title: "Workplace Evidence", description: "Apply development through real work",
+        points: [
+          "Workplace activities connected to your job",
+          "Progress reviews with your employer and coach",
+          "Evidence building and assessment preparation",
+        ],
+      },
+      {
+        eyebrow: "04", title: "Professional Progression", description: "Build evidence for greater responsibility",
+        points: [
+          "Recognised professional qualifications",
+          "Professional memberships and communities",
+          "Pathways towards greater responsibility and chartered progression",
+        ],
+        note: "Subject to programme eligibility and relevant professional-body requirements.",
+      },
     ],
     image: "/assets/images/professional-pathway-training.png",
     imageAlt: "A professional learning project management with an expert trainer",
@@ -75,6 +106,15 @@ function PathwayCard({ card }: { card: PathwayCard }) {
       <p className="figma-pathways__card-eyebrow">{card.eyebrow}</p>
       <h3>{card.title}</h3>
       <p className="figma-pathways__card-copy">{card.description}</p>
+      {card.points && (
+        <ul className="mt-5 space-y-3 text-[13px] leading-6 text-[var(--color-muted)]">
+          {card.points.map((point) => <li className="flex items-start gap-2.5" key={point}>
+            <Check className="mt-1 size-4 shrink-0 text-primary" aria-hidden="true" />
+            <span>{point}</span>
+          </li>)}
+        </ul>
+      )}
+      {card.note && <p className="mt-4 text-xs leading-5 text-[var(--color-muted)]">{card.note}</p>}
       {card.detail && (
         <p className="figma-pathways__card-detail"><SlidersHorizontal aria-hidden="true" /> {card.detail}</p>
       )}

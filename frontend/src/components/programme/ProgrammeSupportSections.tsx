@@ -5,16 +5,24 @@ import { NavigationButton } from "@/components/navigation";
 import { ProgrammeChecklist, type ProgrammeItem } from "./ProgrammeGrids";
 import { ProgrammeSection, type ProgrammeSectionData } from "./ProgrammeSection";
 
-export function ProgrammeOutputs({ data }: { data: ProgrammeSectionData & { items: readonly string[]; image?: string; imageAlt?: string; note?: string } }) {
-  return <ProgrammeSection {...data}>
-    <div className={`mt-12 grid gap-8 ${data.image ? "lg:grid-cols-[1.15fr_.85fr] lg:items-center" : ""}`}>
+export function ProgrammeOutputs({ data, embedded = false }: { data: ProgrammeSectionData & { items: readonly string[]; image?: string; imageAlt?: string; note?: string }; embedded?: boolean }) {
+  const content = <>
+    <div className={`${embedded ? "mt-6" : "mt-12"} grid gap-8 ${data.image ? "lg:grid-cols-[1.15fr_.85fr] lg:items-center" : ""}`}>
       <ul className={`grid gap-3 sm:grid-cols-2 ${data.image ? "" : "lg:grid-cols-3"}`}>{data.items.map((item, index) => <li className="flex items-center gap-4 rounded-2xl border border-kbc-purple-100 bg-white p-5 transition hover:border-kbc-gold-500 hover:shadow-md" key={item}>
         <span className="grid size-10 shrink-0 place-items-center rounded-xl bg-kbc-purple-50 text-xs font-bold text-primary">{String(index + 1).padStart(2, "0")}</span><span className="text-sm font-semibold leading-6 text-[var(--color-ink)]">{item}</span>
       </li>)}</ul>
       {data.image && <img src={data.image} alt={data.imageAlt ?? ""} loading="lazy" decoding="async" className="aspect-[4/3] w-full rounded-2xl object-cover lg:aspect-[3/4]" />}
     </div>
     {data.note && <p className="mt-6 flex items-start gap-3 text-xs leading-6 text-[var(--color-muted)]"><ShieldCheck className="mt-0.5 size-4 shrink-0 text-primary" aria-hidden="true" />{data.note}</p>}
-  </ProgrammeSection>;
+  </>;
+
+  if (embedded) return <div id={data.id} className="mt-10 scroll-mt-64">
+    <h3 id={`${data.id}-title`} className="text-2xl font-semibold">{data.title}</h3>
+    {data.description && <p className="mt-4 text-sm leading-7 text-[var(--color-muted)]">{data.description}</p>}
+    {content}
+  </div>;
+
+  return <ProgrammeSection {...data}>{content}</ProgrammeSection>;
 }
 
 export function ProgrammeFunding({ data }: { data: ProgrammeSectionData & { items: readonly (ProgrammeItem & { amount: string })[]; note: string } }) {
@@ -38,14 +46,15 @@ export function ProgrammeAlternativeRoute({ data }: { data: { title: string; par
   </div></section>;
 }
 
-export function ProgrammeNextSteps({ data }: { data: ProgrammeSectionData & { items: readonly { title: string; description: string; action: { label: string; to: string } }[] } }) {
+export function ProgrammeNextSteps({ data }: { data: ProgrammeSectionData & { action: { label: string; to: string } } }) {
   return <section id={data.id} className={`${section} bg-white sm:!scroll-mt-64`} aria-labelledby={`${data.id}-title`}><div className={shell}>
-    <CollegeCtaPanel id={`${data.id}-title`} eyebrow={data.eyebrow} title={data.title} description={data.description}>
-      <div className="mt-10 grid gap-5 lg:grid-cols-3">{data.items.map((item, index) => <article className="flex min-w-0 flex-col border-t border-white/20 pt-6" key={item.title}>
-        <h3 className="text-lg font-semibold text-white">{item.title}</h3>
-        <p className="mt-3 flex-1 text-sm leading-7 text-white/70">{item.description}</p>
-        <NavigationButton className="mt-6 w-full gap-2" to={item.action.to} variant={index === 0 ? "accent" : "inverse"} newTab={item.action.to.startsWith("https:")}>{item.action.label}<ArrowUpRight className="size-4 shrink-0" aria-hidden="true" /></NavigationButton>
-      </article>)}</div>
-    </CollegeCtaPanel>
+    <CollegeCtaPanel
+      id={`${data.id}-title`}
+      eyebrow={data.eyebrow}
+      title={data.title}
+      description={data.description}
+      actionsAlign="center"
+      actions={<NavigationButton className="w-full gap-2" to={data.action.to} variant="accent">{data.action.label}<ArrowUpRight className="size-4 shrink-0" aria-hidden="true" /></NavigationButton>}
+    />
   </div></section>;
 }

@@ -1,6 +1,6 @@
+import { ProgrammeCurriculumCards } from "@/components/programme/ProgrammeCurriculumCards";
 import { CollegeFeatureCard } from "@/components/college/CollegeFeatureCard";
 import { CollegeStats } from "@/components/college/CollegeStats";
-import { card } from "@/components/college/layout";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -111,7 +111,7 @@ export function PathwaySection() {
             <CollegeFeatureCard key={item.number} marker={item.number} title={item.title} inverse>
               <p>{item.description}</p>
               {item.number === "02" && (
-                <NavigationButton variant="accent" className="mt-6 w-full sm:w-auto">
+                <NavigationButton to="/ai-in-project-controls-certificate" variant="accent" className="mt-6 w-full sm:w-auto">
                   View the AI in Project Controls Certificate
                 </NavigationButton>
               )}
@@ -134,18 +134,7 @@ export function ProgrammeCurriculumSection() {
           title="What you study across the 12 months"
           description="The programme combines core project management capability and applied AI skills to improve project reporting, control and decision-making."
         />
-        <div className="mt-12 grid gap-6 lg:grid-cols-2">
-          {curriculumTracks.map((track, index) => (
-            <article className={`${card} border-t-4 ${index === 0 ? "border-t-primary" : "border-t-[var(--color-gold)]"}`} key={track.title}>
-              <p className="text-xs font-bold uppercase tracking-widest text-primary">{track.eyebrow}</p>
-              <h3 className="mt-5 text-2xl font-semibold leading-tight tracking-tight text-[var(--color-ink)]">{track.title}</h3>
-              <p className="mt-4 text-sm leading-7 text-[var(--color-muted)]">{track.description}</p>
-              <ul className="mt-7 space-y-3">
-                {track.items.map((item) => <li className="flex items-start gap-3 text-sm leading-7 text-[var(--color-muted)]" key={item}><Check className="mt-1.5 size-4 shrink-0 text-primary" aria-hidden="true" />{item}</li>)}
-              </ul>
-            </article>
-          ))}
-        </div>
+        <ProgrammeCurriculumCards tracks={curriculumTracks} />
         <div className="mt-6 border-t border-kbc-purple-200 py-6 sm:p-8">
           <h3 className="text-xl font-semibold text-[var(--color-ink)]">Relevant to different professional backgrounds and cohorts</h3>
           <p className="mt-3 text-sm leading-7 text-[var(--color-muted)]">Case studies, examples and study materials can reflect each learner’s professional background—from engineering, construction and manufacturing to consultancy, marketing, finance, information technology and digital transformation.</p>
@@ -207,10 +196,8 @@ export function AlternativeFundingSection() {
           {alternativeFundingRoutes.map((route, index) => (
             <article className={`rounded-2xl p-7 sm:p-9 ${index === 0 ? "bg-primary-dark text-white" : "border border-kbc-purple-100 bg-white"}`} key={route.eyebrow}>
               <p className={`text-xs font-bold uppercase tracking-[0.16em] ${index === 0 ? "text-[var(--color-gold)]" : "text-primary"}`}>{route.eyebrow}</p>
-              <h3 className={`mt-5 text-3xl font-semibold ${index === 0 ? "text-white" : "text-[var(--color-ink)]"}`}>{route.support}</h3>
-              <p className={`mt-7 text-5xl font-semibold tracking-tight ${index === 0 ? "text-[var(--color-gold)]" : "text-primary"}`}>{route.price}</p>
-              <p className={`mt-2 text-sm font-semibold ${index === 0 ? "text-white" : "text-[var(--color-ink)]"}`}>{route.payment}, with no interest under the current offer.</p>
-              <p className={`mt-5 text-sm leading-7 ${index === 0 ? "text-white/65" : "text-[var(--color-muted)]"}`}>{route.description}</p>
+              <h3 className={`mt-7 text-5xl font-semibold tracking-tight ${index === 0 ? "text-[var(--color-gold)]" : "text-primary"}`}>{route.support}</h3>
+              <p className={`mt-7 text-sm leading-7 ${index === 0 ? "text-white/65" : "text-[var(--color-muted)]"}`}>{route.description}</p>
             </article>
           ))}
         </div>

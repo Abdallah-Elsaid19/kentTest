@@ -19,7 +19,6 @@ export const pageNavigation = [
   { label: "Why choose us", href: "#why-choose-us" },
   { label: "Career pathways", href: "#pc-outcomes" },
   { label: "Events", href: "#pc-events" },
-  { label: "Case studies", href: "#pc-case-studies" },
   { label: "Recognition", href: "#pc-recognition" },
   { label: "Trusted by", href: "#pc-trusted" },
   { label: "FAQs", href: "#faq" },

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useLayoutEffect } from "react";
 
 import { RouteMeta } from "@/components/seo/RouteMeta";
 import { Footer } from "@/components/layout/Footer";
@@ -43,6 +43,12 @@ function useOurStoryAnimations() {
 }
 
 export default function AboutPage() {
+  useLayoutEffect(() => {
+    if (!window.location.hash) {
+      window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    }
+  }, []);
+
   useOurStoryAnimations();
 
   return (

@@ -17,7 +17,7 @@ export default function ExpertDetailPage() {
         fallbackDescription={`${expert.name} — ${expert.role}. Discover their professional experience, expertise and contribution to Kent Business College.`}
       />
 
-      <section className="relative overflow-hidden bg-[#401B8C] px-5 pb-16 pt-[154px] text-white sm:pb-20 sm:pt-[170px] lg:pb-24">
+      <section className="kbc-page-hero-offset relative overflow-hidden bg-[#401B8C] px-5 pb-16 text-white sm:pb-20 lg:pb-24">
         <div className="pointer-events-none absolute -right-28 -top-20 h-[420px] w-[420px] rounded-full border border-white/10" aria-hidden="true" />
         <div className="pointer-events-none absolute right-10 top-36 h-64 w-64 rounded-full border border-kbc-gold-500/20" aria-hidden="true" />
         <div className="relative mx-auto max-w-6xl">

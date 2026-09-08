@@ -50,7 +50,7 @@ export function FaqAccordion({ items, idPrefix = "faq", defaultOpen = 0 }: FaqAc
         return (
           <article key={item.id}>
             <button
-              className="flex w-full items-center justify-between gap-5 py-5 text-left sm:py-6"
+              className="flex w-full items-center justify-between gap-5 py-5 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 sm:py-6"
               type="button"
               aria-expanded={isOpen}
               aria-controls={answerId}
@@ -63,7 +63,7 @@ export function FaqAccordion({ items, idPrefix = "faq", defaultOpen = 0 }: FaqAc
                 {isOpen ? <Minus className="h-4 w-4" aria-hidden="true" /> : <Plus className="h-4 w-4" aria-hidden="true" />}
               </span>
             </button>
-            <div className={`grid transition-[grid-template-rows,opacity] duration-300 ease-out ${isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`} id={answerId}>
+            <div inert={!isOpen} aria-hidden={!isOpen} className={`grid transition-[grid-template-rows,opacity] duration-300 ease-out motion-reduce:transition-none ${isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`} id={answerId}>
               <div className="overflow-hidden">
                 <div className="max-w-3xl pb-6 pr-10 text-sm leading-7 text-kbc-dark-600 sm:text-base sm:leading-8">
                   {item.answer}

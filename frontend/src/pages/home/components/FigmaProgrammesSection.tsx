@@ -40,15 +40,6 @@ const programmes = [
     href: "/marketing-manager-level-6",
     tone: "marketing",
   },
-  {
-    number: "05",
-    level: "Level 7",
-    category: "Leadership",
-    title: "Master of Business Administration",
-    description: "Develop strategic leadership, commercial judgement and the confidence to lead at senior level.",
-    href: "/mba-diploma-level-7",
-    tone: "leadership",
-  },
 ];
 
 export function FigmaProgrammesSection() {
@@ -84,12 +75,10 @@ export function FigmaProgrammesSection() {
   };
 
   const startDragging = (event: React.PointerEvent<HTMLDivElement>) => {
-    if (event.pointerType !== "mouse") return;
+    if (event.pointerType !== "mouse" || event.button !== 0) return;
     const track = trackRef.current;
     if (!track) return;
     dragRef.current = { active: true, startX: event.clientX, startScroll: track.scrollLeft, distance: 0 };
-    setIsDragging(true);
-    track.setPointerCapture(event.pointerId);
   };
 
   const dragSlider = (event: React.PointerEvent<HTMLDivElement>) => {
@@ -97,6 +86,9 @@ export function FigmaProgrammesSection() {
     if (!track || !dragRef.current.active) return;
     const delta = event.clientX - dragRef.current.startX;
     dragRef.current.distance = Math.max(dragRef.current.distance, Math.abs(delta));
+    if (dragRef.current.distance <= 6) return;
+    setIsDragging(true);
+    if (!track.hasPointerCapture(event.pointerId)) track.setPointerCapture(event.pointerId);
     track.scrollLeft = dragRef.current.startScroll - delta;
   };
 
@@ -137,23 +129,31 @@ export function FigmaProgrammesSection() {
           onPointerMove={dragSlider}
           onPointerUp={stopDragging}
           onPointerCancel={stopDragging}
+          onPointerLeave={stopDragging}
           onClickCapture={(event) => {
-            if (dragRef.current.distance > 6) event.preventDefault();
+            if (event.detail > 0 && dragRef.current.distance > 6) event.preventDefault();
             dragRef.current.distance = 0;
           }}
         >
           {programmes.map((programme) => (
-            <article className="featured-programme-card" data-tone={programme.tone} key={programme.number}>
+            <Link
+              className="featured-programme-card"
+              data-tone={programme.tone}
+              key={programme.number}
+              to={programme.href}
+              aria-label={`Explore ${programme.title}`}
+              draggable={false}
+            >
               <span className="featured-programme-card__number" aria-hidden="true">{programme.number}</span>
               <span className="featured-programme-card__level"><Award aria-hidden="true" /> {programme.level}</span>
               <p className="featured-programme-card__category">{programme.category}</p>
               <h3>{programme.title}</h3>
               <p className="featured-programme-card__description">{programme.description}</p>
-              <Link to={programme.href} aria-label={`Explore ${programme.title}`}>
+              <span className="featured-programme-card__cta">
                 <span>Explore programme</span>
                 <i><ArrowUpRight aria-hidden="true" /></i>
-              </Link>
-            </article>
+              </span>
+            </Link>
           ))}
         </div>
 

@@ -1,10 +1,11 @@
-import type { ButtonHTMLAttributes, ReactNode } from "react";
+import type { ButtonHTMLAttributes, ReactNode, Ref } from "react";
 
 import { joinNavigationClasses } from "./linkTarget";
 
 interface NavigationTabButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
   active?: boolean;
+  ref?: Ref<HTMLButtonElement>;
 }
 
 export function NavigationTabButton({ children, active = false, className, ...props }: NavigationTabButtonProps) {

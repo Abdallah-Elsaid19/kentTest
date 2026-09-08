@@ -50,6 +50,13 @@ type FigmaUpcomingEventsSectionProps = {
   eyebrow?: string;
   title?: ReactNode;
   description?: string;
+  fallbackItems?: readonly Event[];
+  getEventHref?: (event: Event) => string;
+  getFeaturedEventHref?: (event: Event) => string;
+  getEventDateLabel?: (event: Event) => string | undefined;
+  featuredActionLabel?: string;
+  compactActionLabel?: string;
+  viewAllLabel?: string;
 };
 
 export function FigmaUpcomingEventsSection({
@@ -58,11 +65,18 @@ export function FigmaUpcomingEventsSection({
   eyebrow = "Upcoming Events",
   title = <>Upcoming events,<br />all in one place.</>,
   description = "Explore the next workshops, information sessions and professional events from Kent Business College.",
+  fallbackItems,
+  getEventHref,
+  getFeaturedEventHref,
+  getEventDateLabel,
+  featuredActionLabel = "Reserve your place",
+  compactActionLabel,
+  viewAllLabel = "View all events",
 }: FigmaUpcomingEventsSectionProps = {}) {
   const upcoming = useEvents(`?status=upcoming&perPage=3${search ? `&search=${encodeURIComponent(search)}` : ""}`);
   const events: Event[] = upcoming.data?.items?.length
     ? upcoming.data.items.slice(0, 3)
-    : search ? [] : fallbackEvents;
+    : fallbackItems?.length ? [...fallbackItems].slice(0, 3) : search ? [] : fallbackEvents;
   const featured = events[0];
   const compactEvents = events.slice(1, 3);
   const headingId = id ? `${id}-title` : "home-upcoming-events-title";
@@ -92,7 +106,7 @@ export function FigmaUpcomingEventsSection({
         {featured && featuredDate ? <div className={`grid gap-5 ${compactEvents.length ? "xl:grid-cols-[1.4fr_.6fr]" : "mx-auto max-w-5xl"}`}>
           <Link
             className="group relative grid min-h-[440px] overflow-hidden rounded-[22px] border border-[#401B8C]/15 bg-white shadow-[0_20px_55px_rgba(64,27,140,0.1)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_26px_70px_rgba(64,27,140,0.16)] sm:grid-cols-2"
-            to={getEventPath(featured)}
+            to={getFeaturedEventHref?.(featured) ?? getEventHref?.(featured) ?? getEventPath(featured)}
           >
             <div className="relative min-h-[260px] overflow-hidden bg-[#401B8C] sm:min-h-full">
               <img
@@ -111,7 +125,7 @@ export function FigmaUpcomingEventsSection({
             <div className="flex min-w-0 flex-col p-6 sm:p-8 lg:p-10">
               <div className="flex w-fit items-center gap-2 rounded-lg bg-[#401B8C] px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.12em] !text-white">
                 <CalendarDays aria-hidden="true" size={15} />
-                <time dateTime={featured.startAt}>{featuredDate.full}</time>
+                <time dateTime={featured.startAt}>{getEventDateLabel?.(featured) ?? featuredDate.full}</time>
               </div>
               <h3 className="mt-6 text-[clamp(27px,2vw,38px)] font-semibold leading-[1.08] tracking-tight !text-kbc-dark-950">
                 {featured.title}
@@ -124,7 +138,7 @@ export function FigmaUpcomingEventsSection({
               </p>
 
               <span className="mt-9 inline-flex w-fit items-center gap-3 rounded-lg bg-[#401B8C] px-5 py-3 text-sm font-semibold !text-white transition-colors group-hover:bg-[#2F1468]">
-                Reserve your place <ArrowRight aria-hidden="true" size={17} />
+                {featuredActionLabel} <ArrowRight aria-hidden="true" size={17} />
               </span>
             </div>
           </Link>
@@ -137,7 +151,7 @@ export function FigmaUpcomingEventsSection({
                 <Link
                   className="group grid min-h-[220px] grid-cols-[minmax(0,1fr)_72px] gap-5 rounded-[18px] border border-[#401B8C]/15 bg-white p-5 shadow-[0_12px_35px_rgba(64,27,140,0.07)] transition-all duration-300 hover:-translate-y-1 hover:border-[#401B8C]/30 hover:shadow-[0_20px_50px_rgba(64,27,140,0.14)] sm:p-6"
                   key={event.id}
-                  to={getEventPath(event)}
+                  to={getEventHref?.(event) ?? getEventPath(event)}
                 >
                   <div className="flex h-full min-w-0 flex-col">
                     <span className="w-fit rounded-md bg-[#401B8C] px-2 py-1 text-[9px] font-bold uppercase tracking-[0.12em] !text-white">
@@ -156,11 +170,13 @@ export function FigmaUpcomingEventsSection({
                     <time
                       className="flex size-[58px] flex-col items-center justify-center rounded-xl bg-[#401B8C] text-center shadow-sm"
                       dateTime={event.startAt}
+                      aria-label={getEventDateLabel?.(event)}
                     >
-                      <strong className="text-xl font-semibold leading-none !text-white">{date.day}</strong>
-                      <span className="mt-1 text-[9px] font-bold uppercase tracking-[0.16em] text-kbc-gold-400">{date.month}</span>
+                      <span aria-hidden="true"><strong className="block text-xl font-semibold leading-none !text-white">{date.day}</strong><span className="mt-1 block text-[9px] font-bold uppercase tracking-[0.16em] text-kbc-gold-400">{date.month.toUpperCase()}</span></span>
+                      {getEventDateLabel?.(event) && <span className="sr-only">{getEventDateLabel(event)}</span>}
                     </time>
                     <span className="grid size-9 place-items-center rounded-md bg-[#401B8C] !text-white transition-all duration-300 group-hover:translate-x-0.5 group-hover:bg-[#2F1468]">
+                      {compactActionLabel && <span className="sr-only">{compactActionLabel}</span>}
                       <ArrowRight aria-hidden="true" size={16} />
                     </span>
                   </div>
@@ -183,7 +199,7 @@ export function FigmaUpcomingEventsSection({
 
         <div className="mt-6 flex justify-end sm:mt-8">
           <ArrowLink className="!text-sm !font-semibold !leading-5 !text-[#401B8C] hover:!text-[#2F1468]" to="/events" direction="up-right">
-            View all events
+            {viewAllLabel}
           </ArrowLink>
         </div>
       </div>

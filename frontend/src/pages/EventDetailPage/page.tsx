@@ -4,6 +4,7 @@ import "@/styles/event-detail-page.css";
 import DOMPurify from "dompurify";
 import { ArrowUpRight, CalendarDays, ChevronLeft, Clock3, Images, MapPin, Ticket, X } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { Link, useParams } from "react-router-dom";
 import { environment } from "@/app/environment";
 import { EventCountdown } from "@/components/common/EventCountdown";
@@ -235,7 +236,7 @@ export default function EventDetailPage() {
           </div>
         </section>
 
-        {isMediaOpen ? (
+        {isMediaOpen ? createPortal(
           <div
             className="event-media-modal"
             onMouseDown={(event) => {
@@ -271,7 +272,8 @@ export default function EventDetailPage() {
                 ))}
               </div>
             </section>
-          </div>
+          </div>,
+          document.body,
         ) : null}
       </div>
     </>
