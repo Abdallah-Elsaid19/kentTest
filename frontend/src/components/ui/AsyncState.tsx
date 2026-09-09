@@ -1,3 +1,7 @@
+export function PageLoadingState({ label = "Loading page" }: { label?: string }) {
+  return <div className="min-h-screen bg-primary pt-32 sm:pt-44"><LoadingState label={label} /></div>;
+}
+
 export function LoadingState({ label = "Loading content" }: { label?: string }) {
   return (
     <div className="mx-auto max-w-[1240px] px-5 py-20" role="status" aria-live="polite">

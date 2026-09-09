@@ -1,3 +1,4 @@
+import { useCmsBindings } from "@/features/cms/publicContent";
 import { ArrowLink } from "@/components/navigation";
 import { FigmaSectionHeading } from "@/components/ui/FigmaSectionHeading";
 import { StoryCard } from "@/pages/StoriesPage/components/CaseStudiesListing";
@@ -6,6 +7,7 @@ import { fallbackStories } from "@/pages/StoriesPage/data";
 interface LearnerCaseStudiesSectionProps {
   id: string;
   category?: string;
+  programme?: string;
   title?: string;
   description?: string;
 }
@@ -13,15 +15,20 @@ interface LearnerCaseStudiesSectionProps {
 export function LearnerCaseStudiesSection({
   id,
   category,
+  programme,
   title = "Professional learning, applied through real responsibility.",
   description = "Explore how KBC learners connect professional theory with their day-to-day workplace responsibilities.",
 }: LearnerCaseStudiesSectionProps) {
-  const stories = (category
-    ? fallbackStories.filter((story) => story.category === category)
-    : fallbackStories
+  const cms = useCmsBindings(["case_studies"]);
+  const cmsValues = cms.resolve({ fallbackStories });
+
+  const stories = cmsValues.fallbackStories.filter((story) =>
+    (!category || story.category === category) && (!programme || story.programme === programme)
   ).slice(0, 3);
 
-  return (
+  if (stories.length === 0) return cms.render(null);
+
+  return cms.render((
     <section id={id} className="scroll-mt-20 bg-white py-16 sm:scroll-mt-32 sm:py-20 xl:py-[108px]" aria-labelledby={`${id}-title`}>
       <div className="figma-shell">
         <FigmaSectionHeading
@@ -43,5 +50,5 @@ export function LearnerCaseStudiesSection({
         </div>
       </div>
     </section>
-  );
+  ));
 }

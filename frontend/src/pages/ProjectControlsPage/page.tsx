@@ -1,7 +1,8 @@
-import { LearnerCaseStudiesSection } from "@/components/college/LearnerCaseStudiesSection";
+import { useCmsBindings } from "@/features/cms/publicContent";
 import { FaqSection } from "@/components/common/FaqSection";
 import { NavigationButton } from "@/components/navigation";
 import { RouteMeta } from "@/components/seo/RouteMeta";
+import { FigmaTestimonialsSection } from "../home/components/FigmaTestimonialsSection";
 import { FigmaUpcomingEventsSection } from "../home/components/FigmaUpcomingEventsSection";
 import { RecognitionStandardsSection } from "../home/components/RecognitionStandardsSection";
 import { TrustedOrganisations } from "../home/components/TrustedOrganisations";
@@ -10,8 +11,8 @@ import { CollegePageNav } from "./component/CollegePageNav";
 import { OverviewSection } from "./component/OverviewSection";
 import { ProgrammesSection } from "./component/ProgrammesSection";
 import { CapabilitiesSection } from "./component/CapabilitiesSection";
+import { CourseContentSection } from "./component/CourseContentSection";
 import { BenefitsSection } from "./component/BenefitsSection";
-import { TestimonialsSection } from "./component/TestimonialsSection";
 import { CareerPathwaysSection } from "./component/CareerPathwaysSection";
 import { FinalCTASection } from "./component/FinalCTASection";
 import { faqCopy, projectControlsFaqs } from "./data";
@@ -27,26 +28,28 @@ const faqSchema = {
 };
 
 export default function ProjectControlsPage() {
-  return (
+  const cms = useCmsBindings(["college_project_controls"]);
+  const cmsValues = cms.resolve({ faqSchema, faqCopy, projectControlsFaqs });
+
+  return cms.render((
     <div className="bg-white font-body text-[var(--color-ink)]">
       <RouteMeta
-        seo={{ schema: [faqSchema] }}
-        fallbackTitle="College of Project Management & Controls | Kent Business College"
-        fallbackDescription="Discover Kent Business College's College of Project Management & Controls — DfE-funded project management and project controls apprenticeships, from Associate Project Manager to Project Control Professional."
+        seo={{ schema: [cmsValues.faqSchema] }}
+        fallbackTitle={cms.text("college_project_controls.pages_project_controls_page_page_project_controls_page.fallback_title_001")}
+        fallbackDescription={cms.text("college_project_controls.pages_project_controls_page_page_project_controls_page.fallback_description_002")}
       />
       <HeroSection />
       <CollegePageNav />
       <OverviewSection />
       <ProgrammesSection />
       <CapabilitiesSection />
+      <CourseContentSection />
       <BenefitsSection />
       <CareerPathwaysSection />
-      <TestimonialsSection />
       <div className="kbc-figma-home">
         <div id="pc-events" className="scroll-mt-20 sm:scroll-mt-32">
           <FigmaUpcomingEventsSection />
         </div>
-        <LearnerCaseStudiesSection id="pc-case-studies" />
         <div id="pc-recognition" className="scroll-mt-20 sm:scroll-mt-32">
           <RecognitionStandardsSection />
         </div>
@@ -54,15 +57,18 @@ export default function ProjectControlsPage() {
           <TrustedOrganisations />
         </div>
       </div>
+      <div className="kbc-figma-home">
+        <FigmaTestimonialsSection />
+      </div>
       <FaqSection
         id="faq"
-        eyebrow={faqCopy.eyebrow}
-        title={faqCopy.title}
-        description={faqCopy.description}
-        items={projectControlsFaqs}
-        action={<NavigationButton className="!min-h-14 min-w-[230px] sm:!min-h-16" to="/book-session">{faqCopy.cta}</NavigationButton>}
+        eyebrow={cmsValues.faqCopy.eyebrow}
+        title={cmsValues.faqCopy.title}
+        description={cmsValues.faqCopy.description}
+        items={cmsValues.projectControlsFaqs}
+        action={<NavigationButton className="!min-h-14 min-w-[230px] sm:!min-h-16" to={cms.text("college_project_controls.pages_project_controls_page_page_project_controls_page.to_003")}>{cmsValues.faqCopy.cta}</NavigationButton>}
       />
       <FinalCTASection />
     </div>
-  );
+  ));
 }

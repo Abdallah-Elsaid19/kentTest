@@ -1,38 +1,41 @@
+import { useCmsBindings } from "@/features/cms/publicContent";
+import { Check } from "lucide-react";
 import { FigmaSectionHeading } from "@/components/ui/FigmaSectionHeading";
 import { learningCopy, learningExperience } from "../data";
 import { section, shell } from "./layout";
 
 export function StudyModelSection() {
-  return (
-    <section id="marketing-learning" className={section} aria-labelledby="marketing-learning-title">
-      <div className={shell}>
-        <FigmaSectionHeading id="marketing-learning-title" eyebrow={learningCopy.eyebrow} title={learningCopy.title} description={learningCopy.description} />
+  const cms = useCmsBindings(["college_marketing"]);
+  const cmsValues = cms.resolve({ section, shell, learningCopy, learningExperience });
+
+  return cms.render((
+    <section id="marketing-learning" className={cmsValues.section} aria-labelledby="marketing-learning-title">
+      <div className={cmsValues.shell}>
+        <FigmaSectionHeading id="marketing-learning-title" eyebrow={cmsValues.learningCopy.eyebrow} title={cmsValues.learningCopy.title} description={cmsValues.learningCopy.description} align="center" />
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {learningExperience.map(({ icon: Icon, title, desc }) => (
-            <article key={title} className="group rounded-2xl border border-kbc-purple-100 bg-white p-6 transition duration-300 hover:-translate-y-1 hover:border-primary/25 hover:shadow-[0_18px_45px_rgba(39,14,73,0.1)] sm:p-8 motion-reduce:transform-none motion-reduce:transition-none">
-              <span className="flex size-12 items-center justify-center rounded-xl bg-kbc-purple-50 text-primary transition-colors duration-300 group-hover:bg-primary group-hover:text-white">
-                <Icon className="size-6" strokeWidth={1.6} aria-hidden="true" />
+          {cmsValues.learningExperience.map(({ title, items }, index) => (
+            <article key={title} className="rounded-2xl border border-kbc-purple-100 bg-white p-6 shadow-[0_14px_36px_rgba(39,14,73,.06)] sm:p-8">
+              <span className="flex size-12 items-center justify-center rounded-xl bg-kbc-purple-100 text-xl font-bold text-primary">
+                {String(index + 1).padStart(2, "0")}
               </span>
               <h3 className="mt-5 text-xl font-semibold tracking-tight">{title}</h3>
-              <p className="mt-3 text-sm leading-7 text-[var(--color-muted)]">{desc}</p>
+              <ul className="mt-6 space-y-5">
+                {items.map((item) => (
+                  <li key={item.title} className="grid grid-cols-[24px_minmax(0,1fr)] gap-3">
+                    <span className="mt-0.5 flex size-5 items-center justify-center rounded-full bg-kbc-purple-100 text-primary">
+                      <Check className="size-3.5" strokeWidth={2.5} aria-hidden="true" />
+                    </span>
+                    <div>
+                      <h4 className="text-sm font-semibold text-kbc-purple-950 sm:text-base">{item.title}</h4>
+                      <p className="mt-1 text-sm leading-6 text-[var(--color-muted)]">{item.description}</p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
             </article>
           ))}
         </div>
-        <div className="mt-12 grid gap-5 rounded-2xl bg-primary-dark p-6 text-white sm:grid-cols-3 sm:p-8 lg:p-10">
-          <div>
-            <strong className="text-3xl font-semibold text-[var(--color-gold)]">2 hours</strong>
-            <p className="mt-2 text-sm text-white/70">Live classes</p>
-          </div>
-          <div>
-            <strong className="text-3xl font-semibold text-[var(--color-gold)]">3 hours</strong>
-            <p className="mt-2 text-sm text-white/70">Reading and quizzes</p>
-          </div>
-          <div>
-            <strong className="text-3xl font-semibold text-[var(--color-gold)]">3 hours</strong>
-            <p className="mt-2 text-sm text-white/70">Reflective reports and workplace application</p>
-          </div>
-        </div>
       </div>
     </section>
-  );
+  ));
 }

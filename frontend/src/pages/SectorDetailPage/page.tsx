@@ -83,7 +83,7 @@ export default function SectorDetailPage() {
             </h1>
             <p className="mt-7 max-w-[690px] text-[15px] leading-7 text-white/72">{sector.heroLead}</p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <NavigationButton to="/project-controls-professional-level-6" variant="projectControls">
+              <NavigationButton to="/college-of-project-controls-and-project-management" variant="projectControls">
                 Compare professional pathways <ArrowRight size={17} />
               </NavigationButton>
               <NavigationButton to="/eligibility" variant="projectControlsInverse">Check workforce eligibility</NavigationButton>
@@ -152,7 +152,7 @@ export default function SectorDetailPage() {
               </article>
             ))}
           </div>
-          <NavigationButton className="mt-8" to="/project-controls-professional-level-6" variant="projectControls">
+          <NavigationButton className="mt-8" to="/college-of-project-controls-and-project-management" variant="projectControls">
             Explore programme pathways <ArrowRight size={17} />
           </NavigationButton>
         </div>

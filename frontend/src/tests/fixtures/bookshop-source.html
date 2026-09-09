@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Kent Business College Bookshop — marketing handbooks and learning resources." />
+  <title>Kent Business College Bookshop</title>
+  
+</head>
+<body>
+  <div class="topbar"></div>
+  <header class="site-header">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="brand" href="#top" aria-label="Kent Business College Bookshop home">
+        <span class="crest">KBC</span>
+        <span class="brand-text">Kent Business College<small>Bookshop</small></span>
+      </a>
+      <div class="nav-links">
+        <a href="#featured">Featured</a>
+        <a href="#releases">Latest releases</a>
+        <a href="#about">About</a>
+      </div>
+      <button class="nav-cta" onclick="document.querySelector('#releases').scrollIntoView()">Browse books</button>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <div class="eyebrow">Kent Business College</div>
+          <h1 id="hero-title">KBC Bookshop</h1>
+          <p>Explore professionally designed marketing handbooks and practical learning resources for apprentices, managers and working professionals.</p>
+          <div class="hero-actions">
+            <a class="btn btn-light" href="#releases">Browse latest releases <span>→</span></a>
+            <a class="btn btn-ghost" href="#featured">View featured title</a>
+          </div>
+        </div>
+        <div class="hero-book-wrap" aria-hidden="true">
+          <img class="hero-book" src="/assets/images/bookshop/marketing-strategy-planning.jpg" alt="" />
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="featured">
+      <div class="container">
+        <div class="section-head">
+          <div><div class="eyebrow" style="color:var(--purple)">Featured</div><h2>Marketing Strategy &amp; Planning</h2></div>
+          <p>A practical handbook for structured marketing thinking, strategic planning and applied workplace learning.</p>
+        </div>
+
+        <article class="featured-card">
+          <div class="featured-copy">
+            <span class="pill">Featured title</span>
+            <h3>Marketing Strategy &amp; Planning</h3>
+            <p>For Marketing Executive Level 4 and Marketing Manager Level 6 learners. Developed as a clear, practical guide with a strong professional focus.</p>
+            <button class="btn outline-btn" data-book="strategy">Details &amp; pricing</button>
+          </div>
+          <div class="featured-visual">
+            <img class="featured-book" src="/assets/images/bookshop/marketing-strategy-planning.jpg" alt="3D Marketing Strategy and Planning handbook" />
+          </div>
+        </article>
+
+        <div class="support-strip" id="about">
+          <div class="support-mark">KBC</div>
+          <div>
+            <strong>Built for applied learning.</strong>
+            <p>These handbooks are designed to support structured study, workplace application and programme delivery across marketing pathways.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="releases" style="padding-top:30px">
+      <div class="container">
+        <div class="section-head">
+          <div><div class="eyebrow" style="color:var(--purple)">Book catalogue</div><h2>Latest releases</h2></div>
+          <p>Browse the current handbook collection. Use the search box or filters to find a title.</p>
+        </div>
+
+        <div class="filter-row">
+          <div class="search-box">
+            <span>⌕</span>
+            <input id="bookSearch" type="search" placeholder="Search books…" aria-label="Search books" />
+          </div>
+          <div class="chips" aria-label="Book categories">
+            <button class="chip active" data-filter="all">All</button>
+            <button class="chip" data-filter="level4">Level 4</button>
+            <button class="chip" data-filter="level6">Level 6</button>
+            <button class="chip" data-filter="social">Social media</button>
+          </div>
+        </div>
+
+        <div class="books-grid" id="booksGrid">
+          <article class="book-card" data-category="level4 social" data-title="social media marketing executive handbook level 4">
+            <div class="book-image"><img src="/assets/images/bookshop/social-media-marketing-executive.jpg" alt="Social Media Marketing Executive Handbook 3D book" /></div>
+            <div class="book-card-body">
+              <div class="book-kicker">Marketing Executive · Level 4</div>
+              <h3>Social Media — Marketing Executive Handbook</h3>
+              <p>A focused handbook for social media marketing learning, structured around practical professional development.</p>
+              <div class="card-bottom">
+                <button class="details-link" data-book="social">Details &amp; pricing</button><span class="arrow">→</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="book-card" data-category="level4 level6" data-title="marketing strategy planning marketing executive manager">
+            <div class="book-image"><img src="/assets/images/bookshop/marketing-strategy-planning.jpg" alt="Marketing Strategy and Planning 3D book" /></div>
+            <div class="book-card-body">
+              <div class="book-kicker">Marketing · Levels 4 &amp; 6</div>
+              <h3>Marketing Strategy &amp; Planning</h3>
+              <p>Strategic thinking, planning structure and practical marketing application for executive and manager pathways.</p>
+              <div class="card-bottom">
+                <button class="details-link" data-book="strategy">Details &amp; pricing</button><span class="arrow">→</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="book-card" data-category="level4 social" data-title="social media marketing executive level 4 cim">
+            <div class="book-image"><img src="/assets/images/bookshop/social-media-study-edition.png" alt="Social Media Marketing Executive Level 4 flat handbook cover" /></div>
+            <div class="book-card-body">
+              <div class="book-kicker">Study edition · Level 4</div>
+              <h3>Social Media Marketing — Study Edition</h3>
+              <p>A clean study-cover edition suited to digital reading, learner packs and programme resource libraries.</p>
+              <div class="card-bottom">
+                <button class="details-link" data-book="social-study">Details &amp; pricing</button><span class="arrow">→</span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="cta-band">
+          <div>
+            <h3>Need a handbook for your cohort?</h3>
+            <p>Use this page as a ready-to-customise bookshop template. Product links, prices, checkout and stock status can be connected to your preferred ecommerce system.</p>
+          </div>
+          <button class="btn btn-light" onclick="window.scrollTo({top:0,behavior:'smooth'})">Back to top</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="brand" style="color:white;margin-bottom:12px"><span class="crest">KBC</span><span>Kent Business College<small style="color:#8f8ca5">Bookshop</small></span></div>
+        <p>A responsive bookshop concept for Kent Business College learning resources and professional handbooks.</p>
+      </div>
+      <div><h4>Bookshop</h4><a href="#featured">Featured</a><a href="#releases">Latest releases</a><a href="#releases">All books</a></div>
+      <div><h4>Programmes</h4><a href="#releases">Marketing Executive L4</a><a href="#releases">Marketing Manager L6</a><a href="#releases">Social Media</a></div>
+      <div><h4>Support</h4><a href="#about">About the collection</a><a href="#releases">Request a copy</a><a href="#top">Contact</a></div>
+    </div>
+    <div class="copyright">© 2026 Kent Business College. Demo bookshop page — update links, pricing and legal information before publishing.</div>
+  </footer>
+
+  <div class="modal-backdrop" id="bookModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal">
+      <button class="close" id="closeModal" aria-label="Close">×</button>
+      <div class="modal-media"><img id="modalImage" src="" alt="" /></div>
+      <div class="modal-content">
+        <div class="book-kicker" id="modalKicker"></div>
+        <h3 id="modalTitle"></h3>
+        <p id="modalDescription"></p>
+        <div class="modal-meta">
+          <div><span>Format</span><strong>Handbook</strong></div>
+          <div><span>Availability</span><strong>Contact KBC</strong></div>
+          <div><span>Pricing</span><strong>On request</strong></div>
+        </div>
+        <button class="btn" style="background:var(--purple);color:white" onclick="alert('Connect this button to your ecommerce, enquiry or checkout page.')">Request a copy</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const books = {
+      social: {
+        title: 'Social Media — Marketing Executive Handbook',
+        kicker: 'Marketing Executive · Level 4',
+        description: 'A focused handbook for social media marketing learning and practical professional development.',
+        image: '/assets/images/bookshop/social-media-marketing-executive.jpg'
+      },
+      strategy: {
+        title: 'Marketing Strategy & Planning',
+        kicker: 'Marketing · Levels 4 & 6',
+        description: 'A practical guide to strategic marketing thinking, planning and applied workplace learning for executive and manager pathways.',
+        image: '/assets/images/bookshop/marketing-strategy-planning.jpg'
+      },
+      'social-study': {
+        title: 'Social Media Marketing — Study Edition',
+        kicker: 'Study edition · Level 4',
+        description: 'A clean study-cover edition suitable for digital reading, learner packs and programme resource libraries.',
+        image: '/assets/images/bookshop/social-media-study-edition.png'
+      }
+    };
+
+    const modal = document.getElementById('bookModal');
+    const closeModal = document.getElementById('closeModal');
+    const openBook = (key) => {
+      const b = books[key]; if(!b) return;
+      document.getElementById('modalTitle').textContent = b.title;
+      document.getElementById('modalKicker').textContent = b.kicker;
+      document.getElementById('modalDescription').textContent = b.description;
+      const img = document.getElementById('modalImage'); img.src = b.image; img.alt = b.title;
+      modal.classList.add('show'); document.body.style.overflow = 'hidden';
+    };
+    document.querySelectorAll('[data-book]').forEach(el => el.addEventListener('click', () => openBook(el.dataset.book)));
+    const hideModal = () => { modal.classList.remove('show'); document.body.style.overflow = ''; };
+    closeModal.addEventListener('click', hideModal);
+    modal.addEventListener('click', e => { if(e.target === modal) hideModal(); });
+    document.addEventListener('keydown', e => { if(e.key === 'Escape') hideModal(); });
+
+    const search = document.getElementById('bookSearch');
+    const cards = [...document.querySelectorAll('.book-card')];
+    let activeFilter = 'all';
+    function filterCards() {
+      const q = search.value.trim().toLowerCase();
+      cards.forEach(card => {
+        const matchesSearch = !q || card.dataset.title.includes(q) || card.innerText.toLowerCase().includes(q);
+        const matchesFilter = activeFilter === 'all' || card.dataset.category.split(' ').includes(activeFilter);
+        card.style.display = matchesSearch && matchesFilter ? '' : 'none';
+      });
+    }
+    search.addEventListener('input', filterCards);
+    document.querySelectorAll('.chip').forEach(chip => chip.addEventListener('click', () => {
+      document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+      chip.classList.add('active'); activeFilter = chip.dataset.filter; filterCards();
+    }));
+  </script>
+</body>
+</html>

@@ -6,13 +6,19 @@ const API_BASE = environment.VITE_API_BASE_URL.replace(/\/$/, "");
 
 export async function apiRequest<T>(path: string, init: Parameters<typeof fetch>[1] = {}): Promise<T> {
   const controller = new AbortController();
-  const timeout = globalThis.setTimeout(() => controller.abort(), 12_000);
+  const isFormUpload = typeof FormData !== "undefined" && init.body instanceof FormData;
+  const timeout = globalThis.setTimeout(() => controller.abort(), isFormUpload ? 120_000 : 12_000);
   try {
+    const headers = new Headers(init.headers);
+    if (!headers.has("Accept")) headers.set("Accept", "application/json");
+    if (!isFormUpload && !headers.has("Content-Type")) {
+      headers.set("Content-Type", "application/json");
+    }
     const response = await fetch(`${API_BASE}${path}`, {
       ...init,
       signal: controller.signal,
-      credentials: "same-origin",
-      headers: { Accept: "application/json", "Content-Type": "application/json", ...init.headers },
+      credentials: init.credentials ?? "same-origin",
+      headers,
     });
     const payload = await response.json().catch(() => null);
     if (!response.ok) {

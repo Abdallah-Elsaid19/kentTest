@@ -1,57 +1,13 @@
+import { useHomeSection } from "../contentContext";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { ArrowLeft, ArrowRight, ArrowUpRight, Award } from "lucide-react";
 import { Link } from "react-router-dom";
 import { FigmaSectionHeading } from "@/components/ui/FigmaSectionHeading";
 
-const programmes = [
-  {
-    number: "01",
-    level: "Level 6",
-    category: "Project Controls",
-    title: "Project Controls Professional",
-    description: "Master schedule, cost, risk and forecasting to keep complex projects on track and under control.",
-    href: "/project-controls-professional-level-6",
-    tone: "controls",
-  },
-  {
-    number: "02",
-    level: "Level 4",
-    category: "Project Management",
-    title: "Associate Project Manager",
-    description: "Build the planning, stakeholder and delivery skills to lead projects with real confidence.",
-    href: "/associate-project-manager-level-4",
-    tone: "management",
-  },
-  {
-    number: "03",
-    level: "Level 4",
-    category: "Marketing",
-    title: "Marketing Executive",
-    description: "Turn customer insight into campaigns that deliver measurable commercial growth.",
-    href: "/marketing-executive-level-4",
-    tone: "marketing",
-  },
-  {
-    number: "04",
-    level: "Level 6",
-    category: "Marketing",
-    title: "Marketing Manager",
-    description: "Lead marketing strategy and performance to shape brand direction and business results.",
-    href: "/marketing-manager-level-6",
-    tone: "marketing",
-  },
-  {
-    number: "05",
-    level: "Level 7",
-    category: "Leadership",
-    title: "Master of Business Administration",
-    description: "Develop strategic leadership, commercial judgement and the confidence to lead at senior level.",
-    href: "/mba-diploma-level-7",
-    tone: "leadership",
-  },
-];
-
 export function FigmaProgrammesSection() {
+  const content = useHomeSection("programmes");
+  const { programmes } = content;
+
   const trackRef = useRef<HTMLDivElement>(null);
   const dragRef = useRef({ active: false, startX: 0, startScroll: 0, distance: 0 });
   const [canScrollBack, setCanScrollBack] = useState(false);
@@ -84,12 +40,10 @@ export function FigmaProgrammesSection() {
   };
 
   const startDragging = (event: React.PointerEvent<HTMLDivElement>) => {
-    if (event.pointerType !== "mouse") return;
+    if (event.pointerType !== "mouse" || event.button !== 0) return;
     const track = trackRef.current;
     if (!track) return;
     dragRef.current = { active: true, startX: event.clientX, startScroll: track.scrollLeft, distance: 0 };
-    setIsDragging(true);
-    track.setPointerCapture(event.pointerId);
   };
 
   const dragSlider = (event: React.PointerEvent<HTMLDivElement>) => {
@@ -97,6 +51,9 @@ export function FigmaProgrammesSection() {
     if (!track || !dragRef.current.active) return;
     const delta = event.clientX - dragRef.current.startX;
     dragRef.current.distance = Math.max(dragRef.current.distance, Math.abs(delta));
+    if (dragRef.current.distance <= 6) return;
+    setIsDragging(true);
+    if (!track.hasPointerCapture(event.pointerId)) track.setPointerCapture(event.pointerId);
     track.scrollLeft = dragRef.current.startScroll - delta;
   };
 
@@ -113,8 +70,8 @@ export function FigmaProgrammesSection() {
       <div className="figma-shell">
         <FigmaSectionHeading
           id="programmes-title"
-          eyebrow="Featured programmes"
-          title="Professional development for real responsibility"
+          eyebrow={content.copy.eyebrow}
+          title={content.copy.title}
           align="center"
         />
 
@@ -137,28 +94,36 @@ export function FigmaProgrammesSection() {
           onPointerMove={dragSlider}
           onPointerUp={stopDragging}
           onPointerCancel={stopDragging}
+          onPointerLeave={stopDragging}
           onClickCapture={(event) => {
-            if (dragRef.current.distance > 6) event.preventDefault();
+            if (event.detail > 0 && dragRef.current.distance > 6) event.preventDefault();
             dragRef.current.distance = 0;
           }}
         >
           {programmes.map((programme) => (
-            <article className="featured-programme-card" data-tone={programme.tone} key={programme.number}>
+            <Link
+              className="featured-programme-card"
+              data-tone={programme.tone}
+              key={programme.number}
+              to={programme.href}
+              aria-label={`Explore ${programme.title}`}
+              draggable={false}
+            >
               <span className="featured-programme-card__number" aria-hidden="true">{programme.number}</span>
               <span className="featured-programme-card__level"><Award aria-hidden="true" /> {programme.level}</span>
               <p className="featured-programme-card__category">{programme.category}</p>
               <h3>{programme.title}</h3>
               <p className="featured-programme-card__description">{programme.description}</p>
-              <Link to={programme.href} aria-label={`Explore ${programme.title}`}>
-                <span>Explore programme</span>
+              <span className="featured-programme-card__cta">
+                <span>{content.copy.text}</span>
                 <i><ArrowUpRight aria-hidden="true" /></i>
-              </Link>
-            </article>
+              </span>
+            </Link>
           ))}
         </div>
 
-        <Link className="figma-featured-programmes__all" to="/programmes">
-          View all programmes <ArrowRight aria-hidden="true" />
+        <Link className="figma-featured-programmes__all" to={content.copy.to}>
+          {content.copy.linkLabel}<ArrowRight aria-hidden="true" />
         </Link>
       </div>
     </section>

@@ -1,10 +1,13 @@
+import { useCmsBindings } from "@/features/cms/publicContent";
 import { Award, CalendarDays, Check, Clock3, GraduationCap, Headphones, MapPin, Sparkles, UsersRound } from "lucide-react";
 import { ArrowLink } from "@/components/navigation";
 import { FigmaSectionHeading } from "@/components/ui/FigmaSectionHeading";
 import { kbcFundBenefits, masterclassBenefits, qualifications, tutoringBenefits, workshopLocations } from "../data";
 
 function CheckList({ items, columns = false }: { items: string[]; columns?: boolean }) {
-  return (
+  const cms = useCmsBindings(["learners"]);
+
+  return cms.render((
     <ul className={`mt-6 grid gap-3 ${columns ? "md:grid-cols-2" : ""}`}>
       {items.map((item) => (
         <li className="flex items-start gap-3 text-sm leading-6 text-[#655d6d]" key={item}>
@@ -13,11 +16,14 @@ function CheckList({ items, columns = false }: { items: string[]; columns?: bool
         </li>
       ))}
     </ul>
-  );
+  ));
 }
 
 export function LearnerExperienceSection() {
-  return (
+  const cms = useCmsBindings(["learners"]);
+  const cmsValues = cms.resolve({ qualifications, kbcFundBenefits, tutoringBenefits, masterclassBenefits, workshopLocations });
+
+  return cms.render((
     <section className="relative isolate overflow-hidden bg-[#f7f4fb] py-16 sm:py-20 lg:py-28" aria-labelledby="learner-experience-title">
       <img className="pointer-events-none absolute -bottom-48 -right-36 -z-10 hidden w-[650px] select-none opacity-[0.035] lg:block" src="/assets/patterns/kbc-horse-growth.png" alt="" aria-hidden="true" />
       <div className="mx-auto w-full max-w-[1240px] px-5 sm:px-8 lg:px-10">
@@ -49,7 +55,7 @@ export function LearnerExperienceSection() {
               <h3 className="mt-3 text-2xl font-semibold tracking-tight text-[#17131d]">Go beyond programme completion.</h3>
               <p className="mt-4 text-sm leading-7 text-[#716a7a]">Selected programmes include support towards relevant professional qualifications, memberships, registration and examination costs.</p>
               <ul className="mt-6 flex flex-wrap gap-2" aria-label="Professional qualifications and pathways">
-                {qualifications.map((item) => <li className="rounded-full border border-primary/15 bg-[#f7f3fb] px-3 py-1.5 text-xs font-bold text-primary" key={item}>{item}</li>)}
+                {cmsValues.qualifications.map((item) => <li className="rounded-full border border-primary/15 bg-[#f7f3fb] px-3 py-1.5 text-xs font-bold text-primary" key={item}>{item}</li>)}
               </ul>
             </article>
 
@@ -58,7 +64,7 @@ export function LearnerExperienceSection() {
               <p className="mt-7 text-[11px] font-bold uppercase tracking-[0.18em] text-[#79580e]">Kent Business College Fund</p>
               <h3 className="mt-3 text-2xl font-semibold tracking-tight text-[#17131d]">Additional investment from KBC</h3>
               <p className="mt-4 text-sm leading-7 text-[#716a7a]">Separate from Department for Education apprenticeship funding.</p>
-              <CheckList items={kbcFundBenefits} columns />
+              <CheckList items={cmsValues.kbcFundBenefits} columns />
               <p className="mt-6 border-t border-[#D6B04E]/30 pt-5 text-xs italic leading-6 text-[#766d7c]">Selected KBC Fund benefits are limited to the first 30 eligible learners per applicable cohort where specified.</p>
               <ArrowLink className="mt-5 text-sm" to="/funding-eligibility#kbc-fund-details" direction="up-right">Discover the KBC Fund</ArrowLink>
             </article>
@@ -70,7 +76,7 @@ export function LearnerExperienceSection() {
             <span className="flex size-12 items-center justify-center rounded-xl bg-[#f0eafb] text-primary"><Headphones className="size-6" aria-hidden="true" /></span>
             <p className="mt-7 text-[11px] font-bold uppercase tracking-[0.18em] text-primary">Extended tutoring & professional guidance</p>
             <h3 className="mt-3 text-2xl font-semibold tracking-tight text-[#17131d]">Support that fits your working week</h3>
-            <CheckList items={tutoringBenefits} columns />
+            <CheckList items={cmsValues.tutoringBenefits} columns />
             <div className="mt-7 grid gap-3 sm:grid-cols-2">
               <span className="flex items-center gap-3 rounded-xl bg-[#f7f3fb] p-4 text-sm font-semibold text-primary"><CalendarDays className="size-5" aria-hidden="true" />7 days a week</span>
               <span className="flex items-center gap-3 rounded-xl bg-[#f7f3fb] p-4 text-sm font-semibold text-primary"><Clock3 className="size-5" aria-hidden="true" />Until 9:00 PM</span>
@@ -82,7 +88,7 @@ export function LearnerExperienceSection() {
               <span className="flex size-12 items-center justify-center rounded-xl bg-[#f0eafb] text-primary"><UsersRound className="size-6" aria-hidden="true" /></span>
               <p className="mt-7 text-[11px] font-bold uppercase tracking-[0.18em] text-primary">Professional Masterclasses & events</p>
               <h3 className="mt-3 text-2xl font-semibold tracking-tight text-[#17131d]">Learn and network with professionals</h3>
-              <CheckList items={masterclassBenefits} columns />
+              <CheckList items={cmsValues.masterclassBenefits} columns />
             </div>
             <figure className="relative mt-2 h-64 overflow-hidden">
               <img className="h-full w-full object-cover" src="/assets/images/learner-home/masterclass.webp" alt="Professionals attending a KBC Masterclass" loading="lazy" decoding="async" />
@@ -96,7 +102,7 @@ export function LearnerExperienceSection() {
             <h3 className="mt-3 text-2xl font-semibold tracking-tight text-[#17131d]">Reach the experiences that matter</h3>
             <CheckList items={["Travel support for applicable workshops", "Travel costs for KBC Masterclasses where included"]} />
             <p className="mt-7 text-xs font-bold uppercase tracking-[0.16em] text-[#6b6372]">Workshop locations</p>
-            <div className="mt-4 flex flex-wrap gap-2">{workshopLocations.map((location) => <span className="rounded-full border border-[#e4ddec] px-3 py-1.5 text-xs text-[#5f5767]" key={location}>{location}</span>)}</div>
+            <div className="mt-4 flex flex-wrap gap-2">{cmsValues.workshopLocations.map((location) => <span className="rounded-full border border-[#e4ddec] px-3 py-1.5 text-xs text-[#5f5767]" key={location}>{location}</span>)}</div>
           </article>
 
           <article className="rounded-2xl border border-[#e4ddec] bg-white p-7 sm:p-8">
@@ -120,5 +126,5 @@ export function LearnerExperienceSection() {
         <p className="mt-6 text-center text-sm font-semibold text-primary">KBC adds more to the experience — and support continues throughout it.</p>
       </div>
     </section>
-  );
+  ));
 }

@@ -1,18 +1,22 @@
+import { useCmsBindings } from "@/features/cms/publicContent";
 import { Link } from "react-router-dom";
 
 import { trustedOrganisationLogos } from "@/components/common/trustedLogos";
 
 export default function Partners() {
-  return (
+  const cms = useCmsBindings(["about","partners"]);
+  const cmsValues = cms.resolve({ trustedOrganisationLogos });
+
+  return cms.render((
     <section id="partners" className="partners">
       <div className="container">
         <div className="section-head center section-head--partners">
-          <span className="eyebrow">Partners in Success</span>
-          <h2>Meet our visionary partners</h2>
-          <p>Together, we deliver exceptional results for our clients and communities.</p>
+          <span className="eyebrow">{cms.text("about.pages_about_page_components_partners_partners.text_001")}</span>
+          <h2>{cms.text("about.pages_about_page_components_partners_partners.text_002")}</h2>
+          <p>{cms.text("about.pages_about_page_components_partners_partners.text_003")}</p>
         </div>
         <div className="partners__grid">
-          {trustedOrganisationLogos.map((logo) => (
+          {cmsValues.trustedOrganisationLogos.map((logo) => (
             <div key={logo.image} className="partner-tile reveal">
               <img
                 className="partner-tile__image"
@@ -26,14 +30,13 @@ export default function Partners() {
         </div>
         <div className="partners__cta">
           <Link
-            to="/our-partners"
+            to={cms.text("about.pages_about_page_components_partners_partners.to_004")}
             className="btn btn--ghost"
             style={{ color: "var(--purple)", borderColor: "var(--purple)" }}
           >
-            View More Partners →
-          </Link>
+            {cms.text("about.pages_about_page_components_partners_partners.text_005")}</Link>
         </div>
       </div>
     </section>
-  );
+  ));
 }

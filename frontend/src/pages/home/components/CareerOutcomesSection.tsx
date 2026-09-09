@@ -1,58 +1,14 @@
+import { useHomeSection } from "../contentContext";
 import { useState } from "react";
 import { ArrowRight, ArrowUpRight, Award } from "lucide-react";
 import { Link } from "react-router-dom";
 
 import { FigmaSectionHeading } from "@/components/ui/FigmaSectionHeading";
 
-const careerPaths = [
-  {
-    id: "project-leader",
-    tab: "Project Leader",
-    role: "Project Leader",
-    roleDescription: "Your current role or the next step you are working towards.",
-    capability: "Project Management",
-    capabilityDescription: "Lead the planning, stakeholder and delivery of projects with greater confidence.",
-    programmes: [
-      { title: "Associate Project Manager", level: "Level 4", href: "/associate-project-manager-level-4" },
-    ],
-  },
-  {
-    id: "project-controls-specialist",
-    tab: "Project Controls Specialist",
-    role: "Project Controls Specialist",
-    roleDescription: "Your current role or the next step you are working towards.",
-    capability: "Project Controls",
-    capabilityDescription: "Master schedule, cost, risk and forecasting for complex project environments.",
-    programmes: [
-      { title: "Project Controls Professional", level: "Level 6", href: "/project-controls-professional-level-6" },
-    ],
-  },
-  {
-    id: "marketing-manager",
-    tab: "Marketing Manager",
-    role: "Marketing Manager",
-    roleDescription: "Your current role or the next step you are working towards.",
-    capability: "Marketing",
-    capabilityDescription: "Turn customer insight into measurable commercial growth and strategic direction.",
-    programmes: [
-      { title: "Marketing Executive", level: "Level 4", href: "/marketing-executive-level-4" },
-      { title: "Marketing Manager", level: "Level 6", href: "/marketing-manager-level-6" },
-    ],
-  },
-  {
-    id: "senior-leader",
-    tab: "Senior Leader",
-    role: "Senior Leader",
-    roleDescription: "Your current role or the next step you are working towards.",
-    capability: "Leadership",
-    capabilityDescription: "Strengthen strategic judgement, leadership and organisational impact at a more senior level.",
-    programmes: [
-      { title: "Master of Business Administration", level: "Level 7", href: "/mba-diploma-level-7" },
-    ],
-  },
-] as const;
-
 export function CareerOutcomesSection() {
+  const content = useHomeSection("careers");
+  const { careerPaths } = content;
+
   const [activeId, setActiveId] = useState<(typeof careerPaths)[number]["id"]>("project-leader");
   const activePath = careerPaths.find((path) => path.id === activeId) ?? careerPaths[0];
 
@@ -71,9 +27,9 @@ export function CareerOutcomesSection() {
       <div className="figma-shell relative">
         <FigmaSectionHeading
           id="career-outcomes-title"
-          eyebrow="Choose your direction"
-          title="Start with the career outcome"
-          description="Select the role you hold or are moving towards, then see the capability and programme built around that next step."
+          eyebrow={content.copy.eyebrow}
+          title={content.copy.title}
+          description={content.copy.description}
           align="center"
         />
 
@@ -114,7 +70,7 @@ export function CareerOutcomesSection() {
           key={activePath.id}
         >
           <article className="group flex min-h-[210px] flex-col rounded-[20px] border border-[#401B8C]/10 bg-white p-7 transition-[transform,border-color,box-shadow] duration-300 hover:-translate-y-1 hover:border-[#401B8C]/35 hover:shadow-[0_20px_50px_rgba(64,27,140,0.10)]">
-            <span className="text-[10px] font-bold uppercase tracking-[0.18em] !text-[#401B8C]">Role</span>
+            <span className="text-[10px] font-bold uppercase tracking-[0.18em] !text-[#401B8C]">{content.copy.text}</span>
             <h3 className="mt-5 font-['Poppins',sans-serif] text-[26px] font-semibold leading-tight !text-[#17131b]">
               {activePath.role}
             </h3>
@@ -126,7 +82,7 @@ export function CareerOutcomesSection() {
           </span>
 
           <article className="group flex min-h-[210px] flex-col rounded-[20px] border border-[#401B8C]/25 bg-[#f1ebff] p-7 transition-[transform,border-color,box-shadow] duration-300 hover:-translate-y-1 hover:border-[#401B8C]/50 hover:shadow-[0_20px_50px_rgba(64,27,140,0.12)]">
-            <span className="text-[10px] font-bold uppercase tracking-[0.18em] !text-[#401B8C]">Capability</span>
+            <span className="text-[10px] font-bold uppercase tracking-[0.18em] !text-[#401B8C]">{content.copy.text2}</span>
             <h3 className="mt-5 font-['Poppins',sans-serif] text-[22px] font-semibold leading-tight !text-[#17131b]">
               {activePath.capability}
             </h3>
@@ -138,7 +94,7 @@ export function CareerOutcomesSection() {
           </span>
 
           <article className="flex min-h-[210px] flex-col justify-center rounded-[20px] border border-[#401B8C]/10 bg-white p-7 shadow-[0_18px_48px_rgba(64,27,140,0.09)] transition-[transform,border-color,box-shadow] duration-300 hover:-translate-y-1 hover:border-[#401B8C]/40 hover:shadow-[0_24px_58px_rgba(64,27,140,0.15)]">
-            <span className="text-[10px] font-bold uppercase tracking-[0.18em] !text-[#401B8C]">Programme</span>
+            <span className="text-[10px] font-bold uppercase tracking-[0.18em] !text-[#401B8C]">{content.copy.text3}</span>
             <div className="mt-4 divide-y divide-[#401B8C]/10">
               {activePath.programmes.map((programme) => (
                 <Link
@@ -165,9 +121,8 @@ export function CareerOutcomesSection() {
         </div>
 
         <div className="career-outcomes__link mt-9 flex justify-center">
-          <Link className="group inline-flex items-center gap-2 text-sm font-semibold !text-[#401B8C] hover:!text-[#2F1468]" to="/programmes">
-            Compare programmes for your role
-            <ArrowUpRight className="transition-transform duration-300 group-hover:-translate-y-1" size={17} aria-hidden="true" />
+          <Link className="group inline-flex items-center gap-2 text-sm font-semibold !text-[#401B8C] hover:!text-[#2F1468]" to={content.copy.to}>
+            {content.copy.linkLabel}<ArrowUpRight className="transition-transform duration-300 group-hover:-translate-y-1" size={17} aria-hidden="true" />
           </Link>
         </div>
       </div>

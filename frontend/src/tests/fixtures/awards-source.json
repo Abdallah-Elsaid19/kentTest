@@ -1,0 +1,181 @@
+{
+  "filters": [
+    {
+      "key": "all",
+      "label": "ALL"
+    },
+    {
+      "key": "quality",
+      "label": "QUALITY STANDARDS"
+    },
+    {
+      "key": "professional",
+      "label": "PROFESSIONAL RELATIONSHIPS"
+    },
+    {
+      "key": "certification",
+      "label": "CERTIFICATIONS"
+    },
+    {
+      "key": "award",
+      "label": "AWARDS & RECOGNITION"
+    }
+  ],
+  "groups": [
+    {
+      "key": "standards",
+      "title": "Quality & organisational standards",
+      "description": "Independent standards that reflect how KBC operates as an organisation, employer and provider of guidance."
+    },
+    {
+      "key": "relationships",
+      "title": "Professional relationships & approved status",
+      "description": "Recognised relationships and approved status with professional bodies, held within their confirmed scope."
+    },
+    {
+      "key": "awards",
+      "title": "Awards & external recognition",
+      "description": "External recognition of the quality and outcomes of KBC's professional provision."
+    }
+  ],
+  "recognitions": [
+    {
+      "id": "matrix-standard",
+      "categoryLabel": "QUALITY STANDARD",
+      "filterGroup": "quality",
+      "group": "standards",
+      "icon": "ri-award-line",
+      "title": "Matrix Standard",
+      "year": "2025",
+      "awardingBody": "The Growth Company",
+      "description": "The Matrix Standard is the national quality standard for information, advice and guidance. It independently assesses the quality of the information, advice and guidance KBC provides to learners and prospective learners, helping people make informed decisions about their development."
+    },
+    {
+      "id": "investors-in-people",
+      "categoryLabel": "PEOPLE STANDARD",
+      "filterGroup": "quality",
+      "group": "standards",
+      "icon": "ri-team-line",
+      "title": "Investors in People – Silver",
+      "year": "2024",
+      "awardingBody": "Investors in People",
+      "description": "Investors in People – Silver reflects KBC's commitment to developing and supporting its people. It recognises organisational practice in leading, supporting and improving colleagues — a people standard, not a programme accreditation."
+    },
+    {
+      "id": "apm-corporate-partner",
+      "categoryLabel": "PROFESSIONAL PARTNERSHIP",
+      "filterGroup": "professional",
+      "group": "relationships",
+      "icon": "ri-user-star-line",
+      "title": "APM Corporate Partner",
+      "year": "2026",
+      "awardingBody": "Association for Project Management",
+      "description": "KBC's corporate partnership with the Association for Project Management supports our engagement with the project profession, recognised standards and relevant professional-development pathways. It does not mean every KBC programme is APM-accredited or every qualification is APM-awarded."
+    },
+    {
+      "id": "cmi-approved-centre",
+      "categoryLabel": "APPROVED CENTRE",
+      "filterGroup": "professional",
+      "group": "relationships",
+      "icon": "ri-building-4-line",
+      "title": "CMI Approved Centre",
+      "year": "2025",
+      "awardingBody": "Chartered Management Institute",
+      "description": "An approved-centre relationship with the Chartered Management Institute confirms KBC's status to deliver CMI-aligned leadership and management development, within the specific scope confirmed by CMI. It does not extend to programmes outside that approval."
+    },
+    {
+      "id": "cim-study-centre",
+      "categoryLabel": "ACCREDITED STUDY CENTRE",
+      "filterGroup": "professional",
+      "group": "relationships",
+      "icon": "ri-graduation-cap-line",
+      "title": "CIM Accredited Study Centre",
+      "year": "2025",
+      "awardingBody": "Chartered Institute of Marketing",
+      "description": "Accredited study-centre status with the Chartered Institute of Marketing reflects marketing programmes delivered in line with CIM's professional framework. This is distinct from KBC's CMI approval — CIM supports marketing, while CMI relates to management and leadership."
+    },
+    {
+      "id": "apprenticeship-provider-finalist",
+      "categoryLabel": "AWARD FINALIST",
+      "filterGroup": "award",
+      "group": "awards",
+      "icon": "ri-trophy-line",
+      "title": "Apprenticeship Provider of the Year – Finalist",
+      "year": "2025",
+      "awardingBody": "Kent Business Awards",
+      "description": "KBC was shortlisted as a finalist for Apprenticeship Provider of the Year. This finalist recognition reflects the quality, outcomes and employer feedback across our professional apprenticeship provision — a shortlist, not a win."
+    },
+    {
+      "id": "cyber-essentials",
+      "categoryLabel": "CYBER SECURITY CERTIFICATION",
+      "filterGroup": "certification",
+      "group": "standards",
+      "icon": "ri-shield-keyhole-line",
+      "title": "Cyber Essentials Certified",
+      "year": "2025",
+      "awardingBody": "National Cyber Security Centre",
+      "description": "Cyber Essentials is a Government-backed certification confirming that KBC's systems and processes meet the required standard for cyber-security controls. It relates to organisational information-security practice — not to academic or programme accreditation."
+    },
+    {
+      "id": "living-wage-employer",
+      "categoryLabel": "EMPLOYER STANDARD",
+      "filterGroup": "quality",
+      "group": "standards",
+      "icon": "ri-user-heart-line",
+      "title": "Living Wage Employer",
+      "year": "2024",
+      "awardingBody": "Living Wage Foundation",
+      "description": "The Living Wage Employer recognition reflects KBC's commitment to paying colleagues the real Living Wage. It is an employer standard about how we value our people — it does not accredit programmes or learning."
+    }
+  ],
+  "benefits": [
+    {
+      "icon": "ri-graduation-cap-line",
+      "title": "For learners",
+      "copy": "Quality support, professional standards and relevant progression relationships that strengthen the wider learning experience."
+    },
+    {
+      "icon": "ri-building-2-line",
+      "title": "For employers",
+      "copy": "Greater confidence in organisational standards, professional relationships, information security and workforce-development practice."
+    },
+    {
+      "icon": "ri-route-line",
+      "title": "For professional development",
+      "copy": "Connections with recognised bodies and standards that support relevant qualifications, professional practice and progression where applicable."
+    }
+  ],
+  "copy": [
+    "the quality we deliver",
+    "Independent standards, professional relationships and external recognition that reflect how Kent Business College supports learners, employers and professional development.",
+    "Our recognition spans quality standards, professional-body relationships, organisational certifications and external awards.",
+    "Standards, recognition & professional relationships",
+    "KBC’s external recognition reflects different aspects of the College — from learner support and organisational quality to professional relationships, information security and employer standards.",
+    "Each recognition below is labelled according to the type of relationship or standard it represents.",
+    "What this means for learners and employers",
+    "Experience KBC",
+    "See what recognised quality looks like in practice",
+    "Explore KBC programmes and employer development, or speak with our team about professional development that fits your goals or organisation."
+  ],
+  "heroImage": "https://readdy.ai/api/search-image?query=An%20elegant%20editorial%20still%20life%20of%20a%20polished%20gold%20award%20trophy%20on%20a%20dark%20marble%20surface%20with%20soft%20dramatic%20spotlight%2C%20deep%20muted%20purple%20and%20graphite%20tones%20with%20warm%20gold%20highlights%2C%20cinematic%20shallow%20depth%20of%20field%2C%20refined%20corporate%20publication%20aesthetic%2C%20high%20detail&width=1800&height=1000&seq=kbc-awards-hero-01&orientation=landscape",
+  "heroTitle": "Recognition that reflects",
+  "links": [
+    "/#programmes",
+    "/for-employer",
+    "/contact"
+  ],
+  "seo": {
+    "title": "Accreditations, Awards & Professional Recognition | Kent Business College",
+    "description": "Explore Kent Business College's quality standards, professional-body relationships, certifications and awards — independent recognition that reflects how we support learners, employers and professional development."
+  },
+  "eyebrows": [
+    "Recognition & Standards",
+    "Our record",
+    "Why recognition matters"
+  ],
+  "actions": [
+    "Explore programmes",
+    "For employers",
+    "Speak to KBC"
+  ]
+}

@@ -1,19 +1,49 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import basicSsl from "@vitejs/plugin-basic-ssl";
+import { createHash } from "node:crypto";
+import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
-import { tmpdir } from "node:os";
+import { tmpdir, userInfo } from "node:os";
 import AutoImport from "unplugin-auto-import/vite";
 const base = process.env.BASE_PATH || "/";
+const cacheUser = createHash("sha256").update(userInfo().username).digest("hex").slice(0, 12);
+const heroMediaPaths = [
+  "/assets/video/home-hero.webm",
+  "/assets/video/home-hero.mp4",
+  "/assets/images/figma-home/hero-group.png",
+];
+const heroHash = createHash("sha256");
+for (const path of heroMediaPaths) heroHash.update(readFileSync(resolve(__dirname, `public${path}`)));
+const heroMediaVersion = heroHash.digest("hex").slice(0, 16);
 // https://vite.dev/config/
 export default defineConfig({
-  // Keep the project cache separate from Vite's conventional `.vite` folder.
-  // On Windows that shared path can remain locked after a dev process exits.
-  cacheDir: resolve(__dirname, "node_modules/.vite-kbc"),
+  // Windows users and the Codex sandbox cannot always delete each other's files.
+  // Keep a reusable cache per OS account so config changes can invalidate it safely.
+  cacheDir: resolve(__dirname, `node_modules/.vite-kbc-${cacheUser}`),
   define: {
     __BASE_PATH__: JSON.stringify(base),
+    __HOME_HERO_MEDIA_VERSION__: JSON.stringify(heroMediaVersion),
   },
   plugins: [
+    {
+      name: "kbc-hero-media-cache",
+      configureServer(server) {
+        server.middlewares.use((request, response, next) => {
+          const url = new URL(request.url || "/", "http://localhost");
+          if (!heroMediaPaths.includes(url.pathname)) return next();
+          const policy = url.searchParams.get("v") === heroMediaVersion
+            ? "public, max-age=31536000, immutable"
+            : "public, max-age=0, must-revalidate";
+          // Keep Vite's static serving, ETags and byte-range support; override
+          // only its development no-cache header for these three media files.
+          const setHeader = response.setHeader.bind(response);
+          response.setHeader = (name, value) => setHeader(name, name.toLowerCase() === "cache-control" ? policy : value);
+          response.setHeader("Cache-Control", policy);
+          next();
+        });
+      },
+    },
     basicSsl({
       name: "Kent Business College Local Development",
       domains: ["localhost", "127.0.0.1"],
@@ -102,12 +132,16 @@ export default defineConfig({
     host: "0.0.0.0",
     strictPort: true,
     proxy: {
+      "/admin": {
+        target: process.env.KBC_API_PROXY_TARGET || "http://127.0.0.1:8000",
+        changeOrigin: true,
+      },
       "/api": {
-        target: "http://127.0.0.1:8000",
+        target: process.env.KBC_API_PROXY_TARGET || "http://127.0.0.1:8000",
         changeOrigin: true,
       },
       "/media": {
-        target: "http://127.0.0.1:8000",
+        target: process.env.KBC_API_PROXY_TARGET || "http://127.0.0.1:8000",
         changeOrigin: true,
       },
     },

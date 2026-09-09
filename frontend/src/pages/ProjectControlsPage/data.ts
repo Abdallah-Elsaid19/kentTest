@@ -1,88 +1,88 @@
-import { Award, BriefcaseBusiness, CalendarCheck, ChartNoAxesCombined, Coins, GitBranch, LayoutDashboard, MessagesSquare, Scale, ShieldCheck, TriangleAlert, UserRoundCheck, Users, Wallet, type LucideIcon } from "lucide-react";
+import { Award, BadgePercent, BriefcaseBusiness, CalendarCheck, ChartNoAxesCombined, Coins, GitBranch, Headphones, LayoutDashboard, MessagesSquare, Scale, ShieldCheck, TriangleAlert, UserRoundCheck, Users, Wallet, type LucideIcon } from "lucide-react";
 
 export const hero = {
-  image: "/assets/images/project-controls-hero.webp",
-  eyebrow: "College of Project Management & Controls",
-  title: "Plan, lead and control with",
-  accent: "greater certainty",
-  description: "The College of Project Management & Controls develops the professionals who plan, lead and deliver complex work — people who engage stakeholders, govern delivery and turn project data into confident, evidence-based decisions.",
-  primaryLabel: "Explore our programmes",
-  secondaryLabel: "Speak to our team",
+  image: ("{{cms:college_project_controls.pages_project_controls_page_data_hero.image_001}}" as string),
+  eyebrow: ("{{cms:college_project_controls.pages_project_controls_page_data_hero.eyebrow_002}}" as string),
+  title: ("{{cms:college_project_controls.pages_project_controls_page_data_hero.title_003}}" as string),
+  accent: ("{{cms:college_project_controls.pages_project_controls_page_data_hero.accent_004}}" as string),
+  description: ("{{cms:college_project_controls.pages_project_controls_page_data_hero.description_005}}" as string),
+  primaryLabel: ("{{cms:college_project_controls.pages_project_controls_page_data_hero.primary_label_006}}" as string),
+  secondaryLabel: ("{{cms:college_project_controls.pages_project_controls_page_data_hero.secondary_label_007}}" as string),
   highlights: ["Planning", "Stakeholders", "Risk", "Governance", "Scheduling", "Cost", "Forecasting"],
 };
 
 export const pageNavigation = [
-  { label: "About the college", href: "#pc-overview" },
-  { label: "Our programmes", href: "#pc-programmes" },
-  { label: "Core capabilities", href: "#pc-capabilities" },
-  { label: "Why choose us", href: "#why-choose-us" },
-  { label: "Career pathways", href: "#pc-outcomes" },
-  { label: "Events", href: "#pc-events" },
-  { label: "Case studies", href: "#pc-case-studies" },
-  { label: "Recognition", href: "#pc-recognition" },
-  { label: "Trusted by", href: "#pc-trusted" },
-  { label: "FAQs", href: "#faq" },
+  { label: ("{{cms:college_project_controls.pages_project_controls_page_data_page_navigation.label_008}}" as string), href: ("{{cms:college_project_controls.pages_project_controls_page_data_page_navigation.href_009}}" as string) },
+  { label: ("{{cms:college_project_controls.pages_project_controls_page_data_page_navigation.label_010}}" as string), href: ("{{cms:college_project_controls.pages_project_controls_page_data_page_navigation.href_011}}" as string) },
+  { label: ("{{cms:college_project_controls.pages_project_controls_page_data_page_navigation.label_012}}" as string), href: ("{{cms:college_project_controls.pages_project_controls_page_data_page_navigation.href_013}}" as string) },
+  { label: ("{{cms:college_project_controls.pages_project_controls_page_data_page_navigation.label_014}}" as string), href: ("{{cms:college_project_controls.pages_project_controls_page_data_page_navigation.href_015}}" as string) },
+  { label: ("{{cms:college_project_controls.pages_project_controls_page_data_page_navigation.label_016}}" as string), href: ("{{cms:college_project_controls.pages_project_controls_page_data_page_navigation.href_017}}" as string) },
+  { label: ("{{cms:college_project_controls.pages_project_controls_page_data_page_navigation.label_018}}" as string), href: ("{{cms:college_project_controls.pages_project_controls_page_data_page_navigation.href_019}}" as string) },
+  { label: ("{{cms:college_project_controls.pages_project_controls_page_data_page_navigation.label_020}}" as string), href: ("{{cms:college_project_controls.pages_project_controls_page_data_page_navigation.href_021}}" as string) },
+  { label: ("{{cms:college_project_controls.pages_project_controls_page_data_page_navigation.label_022}}" as string), href: ("{{cms:college_project_controls.pages_project_controls_page_data_page_navigation.href_023}}" as string) },
+  { label: ("{{cms:college_project_controls.pages_project_controls_page_data_page_navigation.label_024}}" as string), href: ("{{cms:college_project_controls.pages_project_controls_page_data_page_navigation.href_025}}" as string) },
+  { label: ("{{cms:college_project_controls.pages_project_controls_page_data_page_navigation.label_026}}" as string), href: ("{{cms:college_project_controls.pages_project_controls_page_data_page_navigation.href_027}}" as string) },
 ] satisfies { label: string; href: string }[];
 
 export const overview = {
-  eyebrow: "About the college",
-  title: "Project management and controls that turn ambition into delivered outcomes",
+  eyebrow: ("{{cms:college_project_controls.pages_project_controls_page_data_overview.eyebrow_028}}" as string),
+  title: ("{{cms:college_project_controls.pages_project_controls_page_data_overview.title_029}}" as string),
   paragraphs: [
-    "Every successful organisation depends on people who can plan, deliver and control. The College of Project Management & Controls equips professionals to lead work end to end — from stakeholder alignment and risk management to scheduling, cost and forecasting.",
-    "Our programmes blend rigorous project management and controls practice with real workplace application, building capability you can use from day one — and the credentials to progress toward Chartered status and senior responsibility.",
+    ("{{cms:college_project_controls.pages_project_controls_page_data_overview.paragraphs_030}}" as string),
+    ("{{cms:college_project_controls.pages_project_controls_page_data_overview.paragraphs_031}}" as string),
   ],
-  image: "/assets/images/project-controls/overview.jpg",
+  image: ("{{cms:college_project_controls.pages_project_controls_page_data_overview.image_032}}" as string),
 };
 
 export const programmeCopy = {
-  eyebrow: "Our programmes",
-  title: "Two accredited routes into project delivery",
-  description: "Whether you are starting in project management or stepping into senior delivery leadership, there is a funded programme built for you.",
-  learningLabel: "What you will learn",
-  audienceLabel: "Ideal for:",
-  applyLabel: "Apply now",
-  fundingLabel: "Check funding",
-  image: "/assets/images/project-controls/practice.jpg",
-  imageLabel: "Work-based learning",
-  imageCaption: "Apply what you learn through real project delivery and controls work",
+  eyebrow: ("{{cms:college_project_controls.pages_project_controls_page_data_programme_copy.eyebrow_033}}" as string),
+  title: ("{{cms:college_project_controls.pages_project_controls_page_data_programme_copy.title_034}}" as string),
+  description: ("{{cms:college_project_controls.pages_project_controls_page_data_programme_copy.description_035}}" as string),
+  learningLabel: ("{{cms:college_project_controls.pages_project_controls_page_data_programme_copy.learning_label_036}}" as string),
+  audienceLabel: ("{{cms:college_project_controls.pages_project_controls_page_data_programme_copy.audience_label_037}}" as string),
+  applyLabel: ("{{cms:college_project_controls.pages_project_controls_page_data_programme_copy.apply_label_038}}" as string),
+  fundingLabel: ("{{cms:college_project_controls.pages_project_controls_page_data_programme_copy.funding_label_039}}" as string),
+  image: ("{{cms:college_project_controls.pages_project_controls_page_data_programme_copy.image_040}}" as string),
+  imageLabel: ("{{cms:college_project_controls.pages_project_controls_page_data_programme_copy.image_label_041}}" as string),
+  imageCaption: ("{{cms:college_project_controls.pages_project_controls_page_data_programme_copy.image_caption_042}}" as string),
 };
 
 export const capabilityCopy = {
-  eyebrow: "Core capabilities",
-  title: "The full project delivery toolkit",
-  description: "Develop the end-to-end capabilities professionals need to plan, lead and control projects — from stakeholders and governance to cost, risk and forecasting.",
+  eyebrow: ("{{cms:college_project_controls.pages_project_controls_page_data_capability_copy.eyebrow_043}}" as string),
+  title: ("{{cms:college_project_controls.pages_project_controls_page_data_capability_copy.title_044}}" as string),
+  description: ("{{cms:college_project_controls.pages_project_controls_page_data_capability_copy.description_045}}" as string),
 };
 
 export const benefitCopy = {
-  eyebrow: "Why choose us",
-  title: "A college built around delivering complex work with certainty",
-  description: "We combine accredited programmes, expert practitioners and fully funded routes — so you can plan, lead and control projects with confidence, without the cost getting in the way.",
+  eyebrow: ("{{cms:college_project_controls.pages_project_controls_page_data_benefit_copy.eyebrow_046}}" as string),
+  title: ("{{cms:college_project_controls.pages_project_controls_page_data_benefit_copy.title_047}}" as string),
+  description: ("{{cms:college_project_controls.pages_project_controls_page_data_benefit_copy.description_048}}" as string),
 };
 
 export const testimonialCopy = {
-  eyebrow: "What our learners say",
-  title: "Real progress, real careers",
+  eyebrow: ("{{cms:college_project_controls.pages_project_controls_page_data_testimonial_copy.eyebrow_049}}" as string),
+  title: ("{{cms:college_project_controls.pages_project_controls_page_data_testimonial_copy.title_050}}" as string),
 };
 
 export const careerCopy = {
-  eyebrow: "Career pathways",
-  title: "Where project management and controls can take you",
-  description: "From your first project role to leading the function, our programmes build the capability and credentials to progress toward Chartered status and senior responsibility.",
+  eyebrow: ("{{cms:college_project_controls.pages_project_controls_page_data_career_copy.eyebrow_051}}" as string),
+  title: ("{{cms:college_project_controls.pages_project_controls_page_data_career_copy.title_052}}" as string),
+  description: ("{{cms:college_project_controls.pages_project_controls_page_data_career_copy.description_053}}" as string),
 };
 
 export const faqCopy = {
-  eyebrow: "Frequently asked questions",
-  title: "Your questions, answered",
-  description: "Everything you need to know about our programmes, funding and how to get started. Can’t find what you’re looking for? Our team is here to help.",
-  cta: "Speak to our team",
+  eyebrow: ("{{cms:college_project_controls.pages_project_controls_page_data_faq_copy.eyebrow_054}}" as string),
+  title: ("{{cms:college_project_controls.pages_project_controls_page_data_faq_copy.title_055}}" as string),
+  description: ("{{cms:college_project_controls.pages_project_controls_page_data_faq_copy.description_056}}" as string),
+  cta: ("{{cms:college_project_controls.pages_project_controls_page_data_faq_copy.cta_057}}" as string),
 };
 
 export const finalCta = {
-  eyebrow: "Start your project delivery journey",
-  title: "Build a career that plans, leads and controls with certainty",
-  description: "Whether you are new to project delivery or an experienced professional ready for greater responsibility, our DfE-funded programmes help you develop the capability employers rely on.",
-  primaryLabel: "Book information session",
-  secondaryLabel: "Check your eligibility",
+  eyebrow: ("{{cms:college_project_controls.pages_project_controls_page_data_final_cta.eyebrow_058}}" as string),
+  title: ("{{cms:college_project_controls.pages_project_controls_page_data_final_cta.title_059}}" as string),
+  description: ("{{cms:college_project_controls.pages_project_controls_page_data_final_cta.description_060}}" as string),
+  primaryLabel: ("{{cms:college_project_controls.pages_project_controls_page_data_final_cta.primary_label_061}}" as string),
+  secondaryLabel: ("{{cms:college_project_controls.pages_project_controls_page_data_final_cta.secondary_label_062}}" as string),
 };
 
 // Content transcribed from the supplied Readdy reference.
@@ -115,294 +115,414 @@ export interface ProjectControlsOutcome {
 export const projectControlsProgrammes: ProjectControlsProgramme[] = [
   {
     id: "associate-project-manager",
-    discipline: "Project Management",
-    image: "/assets/images/learner-home/associate-project-manager.webp",
-    href: "/associate-project-manager-level-4",
-    title: "Associate Project Manager",
+    discipline: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_programmes.discipline_063}}" as string),
+    image: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_programmes.image_064}}" as string),
+    href: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_programmes.href_065}}" as string),
+    title: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_programmes.title_066}}" as string),
     level: "Level 4",
-    duration: "Typically 12 months",
-    funding: "DfE funded (levy 100%)",
+    duration: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_programmes.duration_067}}" as string),
+    funding: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_programmes.funding_068}}" as string),
     summary:
-      "Build the practical project management skills to plan, organise and deliver work — from stakeholder engagement and risk management to governance and confident delivery.",
+      ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_programmes.summary_069}}" as string),
     outcomes: [
-      "Planning & scheduling",
-      "Stakeholder management",
-      "Risk & issue management",
-      "Governance & delivery",
+      ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_programmes.outcomes_070}}" as string),
+      ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_programmes.outcomes_071}}" as string),
+      ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_programmes.outcomes_072}}" as string),
+      ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_programmes.outcomes_073}}" as string),
     ],
     idealFor:
-      "New and developing project professionals building a strong foundation in project delivery.",
+      ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_programmes.ideal_for_074}}" as string),
   },
   {
     id: "project-controls-professional",
-    discipline: "Project Controls",
-    image: "https://jokdxsdbxorzciulkdyl.supabase.co/storage/v1/object/public/images/2986ecbd61fc4774b1b641ec903368e3.webp",
-    href: "/programmes?search=Project%20Controls%20Professional",
-    title: "Project Controls Professional",
+    discipline: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_programmes.discipline_075}}" as string),
+    image: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_programmes.image_076}}" as string),
+    href: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_programmes.href_077}}" as string),
+    title: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_programmes.title_078}}" as string),
     level: "Level 6",
-    duration: "Typically 24 months",
-    funding: "DfE funded (levy 100% / non-levy 95%)",
+    duration: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_programmes.duration_079}}" as string),
+    funding: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_programmes.funding_080}}" as string),
     summary:
-      "Lead complex projects end to end — integrating scope, schedule, budget and risk to deliver confident outcomes and progress toward Chartered status.",
+      ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_programmes.summary_081}}" as string),
     outcomes: [
-      "Strategic project leadership",
-      "Commercial & budget management",
-      "Stakeholder & governance",
-      "ChPP preparation",
+      ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_programmes.outcomes_082}}" as string),
+      ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_programmes.outcomes_083}}" as string),
+      ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_programmes.outcomes_084}}" as string),
+      ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_programmes.outcomes_085}}" as string),
     ],
     idealFor:
-      "Experienced project professionals stepping into senior and leadership responsibility.",
+      ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_programmes.ideal_for_086}}" as string),
   },
 ];
 
 export const projectControlsCapabilities: ProjectControlsCapability[] = [
   {
     icon: CalendarCheck,
-    title: "Planning & Scheduling",
-    desc: "Build and maintain reliable plans and schedules that keep delivery on track.",
+    title: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_capabilities.title_087}}" as string),
+    desc: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_capabilities.desc_088}}" as string),
   },
   {
     icon: Users,
-    title: "Stakeholder Management",
-    desc: "Engage, influence and align the people who shape your project.",
+    title: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_capabilities.title_089}}" as string),
+    desc: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_capabilities.desc_090}}" as string),
   },
   {
     icon: TriangleAlert,
-    title: "Risk & Issue Management",
-    desc: "Identify, assess and manage uncertainty before it becomes a problem.",
+    title: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_capabilities.title_091}}" as string),
+    desc: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_capabilities.desc_092}}" as string),
   },
   {
     icon: Scale,
-    title: "Governance & Compliance",
-    desc: "Deliver within a clear framework of accountability and control.",
+    title: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_capabilities.title_093}}" as string),
+    desc: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_capabilities.desc_094}}" as string),
   },
   {
     icon: Coins,
-    title: "Cost Engineering & Budgeting",
-    desc: "Estimate, track and control cost across the project lifecycle.",
+    title: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_capabilities.title_095}}" as string),
+    desc: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_capabilities.desc_096}}" as string),
   },
   {
     icon: MessagesSquare,
-    title: "Leadership & Communication",
-    desc: "Lead teams and communicate clearly to drive successful outcomes.",
+    title: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_capabilities.title_097}}" as string),
+    desc: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_capabilities.desc_098}}" as string),
   },
   {
     icon: ChartNoAxesCombined,
-    title: "Earned Value Management",
-    desc: "Measure performance and progress against plan with confidence.",
+    title: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_capabilities.title_099}}" as string),
+    desc: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_capabilities.desc_100}}" as string),
   },
   {
     icon: GitBranch,
-    title: "Forecasting & Change",
-    desc: "Predict outcomes and manage change with clear, defensible baselines.",
+    title: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_capabilities.title_101}}" as string),
+    desc: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_capabilities.desc_102}}" as string),
   },
   {
     icon: LayoutDashboard,
-    title: "Data & Reporting",
-    desc: "Turn project data into insight that drives better decision-making.",
+    title: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_capabilities.title_103}}" as string),
+    desc: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_capabilities.desc_104}}" as string),
+  },
+];
+
+export const courseContentCopy = {
+  eyebrow: ("{{cms:college_project_controls.pages_project_controls_page_data_course_content_copy.eyebrow_105}}" as string),
+  title: ("{{cms:college_project_controls.pages_project_controls_page_data_course_content_copy.title_106}}" as string),
+  description: ("{{cms:college_project_controls.pages_project_controls_page_data_course_content_copy.description_107}}" as string),
+};
+
+export const projectControlsCourseGroups = [
+  {
+    abbreviation: "APM",
+    provider: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_course_groups.provider_108}}" as string),
+    courses: [
+      {
+        title: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_course_groups.courses_title_109}}" as string),
+        description: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_course_groups.courses_description_110}}" as string),
+      },
+      {
+        title: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_course_groups.courses_title_111}}" as string),
+        description: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_course_groups.courses_description_112}}" as string),
+      },
+      {
+        title: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_course_groups.courses_title_113}}" as string),
+        description: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_course_groups.courses_description_114}}" as string),
+      },
+    ],
+  },
+  {
+    abbreviation: "APMG",
+    provider: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_course_groups.provider_115}}" as string),
+    courses: [
+      {
+        title: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_course_groups.courses_title_116}}" as string),
+        description: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_course_groups.courses_description_117}}" as string),
+      },
+      {
+        title: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_course_groups.courses_title_118}}" as string),
+        description: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_course_groups.courses_description_119}}" as string),
+      },
+      {
+        title: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_course_groups.courses_title_120}}" as string),
+        description: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_course_groups.courses_description_121}}" as string),
+      },
+      {
+        title: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_course_groups.courses_title_122}}" as string),
+        description: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_course_groups.courses_description_123}}" as string),
+      },
+    ],
+  },
+  {
+    abbreviation: "PMI",
+    provider: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_course_groups.provider_124}}" as string),
+    courses: [
+      {
+        title: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_course_groups.courses_title_125}}" as string),
+        description: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_course_groups.courses_description_126}}" as string),
+      },
+      {
+        title: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_course_groups.courses_title_127}}" as string),
+        description: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_course_groups.courses_description_128}}" as string),
+      },
+      {
+        title: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_course_groups.courses_title_129}}" as string),
+        description: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_course_groups.courses_description_130}}" as string),
+      },
+      {
+        title: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_course_groups.courses_title_131}}" as string),
+        description: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_course_groups.courses_description_132}}" as string),
+      },
+      {
+        title: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_course_groups.courses_title_133}}" as string),
+        description: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_course_groups.courses_description_134}}" as string),
+      },
+    ],
+  },
+  {
+    abbreviation: "IPC",
+    provider: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_course_groups.provider_135}}" as string),
+    courses: [
+      {
+        title: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_course_groups.courses_title_136}}" as string),
+        description: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_course_groups.courses_description_137}}" as string),
+      },
+      {
+        title: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_course_groups.courses_title_138}}" as string),
+        description: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_course_groups.courses_description_139}}" as string),
+      },
+      {
+        title: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_course_groups.courses_title_140}}" as string),
+        description: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_course_groups.courses_description_141}}" as string),
+      },
+      {
+        title: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_course_groups.courses_title_142}}" as string),
+        description: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_course_groups.courses_description_143}}" as string),
+      },
+      {
+        title: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_course_groups.courses_title_144}}" as string),
+        description: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_course_groups.courses_description_145}}" as string),
+      },
+      {
+        title: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_course_groups.courses_title_146}}" as string),
+        description: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_course_groups.courses_description_147}}" as string),
+      },
+    ],
   },
 ];
 
 export const projectControlsOutcomes: ProjectControlsOutcome[] = [
   {
-    role: "Associate Project Manager",
+    role: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_outcomes.role_148}}" as string),
     level: "Level 4",
-    desc: "Support and deliver projects with solid, reliable capability.",
+    desc: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_outcomes.desc_149}}" as string),
   },
   {
-    role: "Project Manager",
+    role: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_outcomes.role_150}}" as string),
     level: "Level 6",
-    desc: "Own and deliver complex projects end to end.",
+    desc: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_outcomes.desc_151}}" as string),
   },
   {
-    role: "Senior Project Manager",
+    role: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_outcomes.role_152}}" as string),
     level: "Progression",
-    desc: "Lead larger, higher-risk and more strategic initiatives.",
+    desc: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_outcomes.desc_153}}" as string),
   },
   {
-    role: "Programme Manager",
+    role: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_outcomes.role_154}}" as string),
     level: "Progression",
-    desc: "Coordinate multiple related projects toward shared outcomes.",
+    desc: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_outcomes.desc_155}}" as string),
   },
   {
-    role: "Portfolio Manager",
+    role: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_outcomes.role_156}}" as string),
     level: "Leadership",
-    desc: "Shape and prioritise the whole portfolio of change.",
+    desc: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_outcomes.desc_157}}" as string),
   },
   {
-    role: "Head of Project Management",
+    role: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_outcomes.role_158}}" as string),
     level: "Leadership",
-    desc: "Lead the project function and its contribution to the business.",
+    desc: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_outcomes.desc_159}}" as string),
   },
   {
-    role: "Project Controls Technician",
+    role: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_outcomes.role_160}}" as string),
     level: "Level 3",
-    desc: "Support project delivery with reliable schedules, cost and reporting.",
+    desc: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_outcomes.desc_161}}" as string),
   },
   {
-    role: "Planning Engineer",
+    role: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_outcomes.role_162}}" as string),
     level: "Progression",
-    desc: "Own the schedule and sequence of complex programmes of work.",
+    desc: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_outcomes.desc_163}}" as string),
   },
   {
-    role: "Cost Engineer",
+    role: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_outcomes.role_164}}" as string),
     level: "Progression",
-    desc: "Lead cost estimation, tracking and commercial control.",
+    desc: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_outcomes.desc_165}}" as string),
   },
   {
-    role: "Risk Manager",
+    role: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_outcomes.role_166}}" as string),
     level: "Progression",
-    desc: "Shape risk strategy and turn uncertainty into informed decisions.",
+    desc: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_outcomes.desc_167}}" as string),
   },
   {
-    role: "Project Controls Manager",
+    role: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_outcomes.role_168}}" as string),
     level: "Leadership",
-    desc: "Integrate schedule, cost and risk to steer major projects.",
+    desc: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_outcomes.desc_169}}" as string),
   },
   {
-    role: "Head of Project Controls",
+    role: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_outcomes.role_170}}" as string),
     level: "Leadership",
-    desc: "Lead the controls function and its contribution to business outcomes.",
+    desc: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_outcomes.desc_171}}" as string),
   },
 ];
 
 export const projectControlsStats = [
-  { value: "4", label: "Accredited programmes" },
-  { value: "100%", label: "DfE funded routes" },
-  { value: "9", label: "Core capability areas" },
-  { value: "12+", label: "Career pathways" },
+  { value: "4", label: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_stats.label_172}}" as string) },
+  { value: "100%", label: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_stats.label_173}}" as string) },
+  { value: "9", label: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_stats.label_174}}" as string) },
+  { value: "12+", label: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_stats.label_175}}" as string) },
 ];
 
 export const projectControlsWhyChooseUs = [
   {
     icon: BriefcaseBusiness,
-    title: "Work-based learning",
-    desc: "Develop capability while you work, applying every concept to real project delivery and live controls data from day one.",
+    title: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_why_choose_us.title_176}}" as string),
+    desc: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_why_choose_us.desc_177}}" as string),
   },
   {
     icon: Wallet,
-    title: "Fully funded",
-    desc: "DfE-funded routes with little to no cost for eligible employers and learners.",
+    title: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_why_choose_us.title_178}}" as string),
+    desc: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_why_choose_us.desc_179}}" as string),
   },
   {
     icon: Award,
-    title: "Professionally recognised",
-    desc: "Aligned to APM standards, with progression toward Chartered Project Professional and recognised project controls credentials.",
+    title: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_why_choose_us.title_180}}" as string),
+    desc: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_why_choose_us.desc_181}}" as string),
   },
   {
     icon: UserRoundCheck,
-    title: "Expert practitioners",
-    desc: "Learn from experienced project leaders and controls professionals across major projects and sectors.",
+    title: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_why_choose_us.title_182}}" as string),
+    desc: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_why_choose_us.desc_183}}" as string),
   },
   {
     icon: ChartNoAxesCombined,
-    title: "Career progression",
-    desc: "Clear pathways from technician and associate roles through to senior, specialist and leadership positions.",
+    title: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_why_choose_us.title_184}}" as string),
+    desc: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_why_choose_us.desc_185}}" as string),
   },
   {
     icon: ShieldCheck,
-    title: "Governance, rigour & certainty",
-    desc: "A disciplined, data-led, outcome-focused approach to planning, risk and confident delivery.",
+    title: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_why_choose_us.title_186}}" as string),
+    desc: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_why_choose_us.desc_187}}" as string),
+  },
+  {
+    icon: Headphones,
+    title: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_why_choose_us.title_188}}" as string),
+    desc: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_why_choose_us.desc_189}}" as string),
+  },
+  {
+    icon: Users,
+    title: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_why_choose_us.title_190}}" as string),
+    desc: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_why_choose_us.desc_191}}" as string),
+  },
+  {
+    icon: BadgePercent,
+    title: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_why_choose_us.title_192}}" as string),
+    desc: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_why_choose_us.desc_193}}" as string),
   },
 ];
 
 export const projectControlsWhyChooseUsStats = [
-  { value: "94%", label: "Employed in role within 6 months" },
-  { value: "95%", label: "Learner satisfaction score" },
-  { value: "88%", label: "Programme completion rate" },
-  { value: "8 in 10", label: "Advance into senior, leadership or specialist roles" },
+  { value: "94%", label: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_why_choose_us_stats.label_194}}" as string) },
+  { value: "95%", label: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_why_choose_us_stats.label_195}}" as string) },
+  { value: "88%", label: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_why_choose_us_stats.label_196}}" as string) },
+  { value: "8 in 10", label: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_why_choose_us_stats.label_197}}" as string) },
 ];
 
 export const projectControlsTestimonials = [
   {
     quote:
-      "The Associate Project Manager programme gave me a structured way to plan and deliver work I was already responsible for. I'm noticeably more confident leading stakeholders now.",
-    name: "Sarah Mitchell",
-    role: "Project Coordinator, Facilities & Estates",
+      ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_testimonials.quote_198}}" as string),
+    name: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_testimonials.name_199}}" as string),
+    role: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_testimonials.role_200}}" as string),
     image:
-      "/assets/images/project-controls/testimonial-1.jpg",
+      ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_testimonials.image_201}}" as string),
   },
   {
     quote:
-      "The blend of theory and workplace application is excellent. My employer saw the difference within months — better plans, clearer risk management and stronger delivery.",
-    name: "Daniel Okafor",
-    role: "Assistant Project Manager, Infrastructure",
+      ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_testimonials.quote_202}}" as string),
+    name: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_testimonials.name_203}}" as string),
+    role: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_testimonials.role_204}}" as string),
     image:
-      "/assets/images/project-controls/testimonial-2.jpg",
+      ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_testimonials.image_205}}" as string),
   },
   {
     quote:
-      "Progressing toward Chartered status was a real motivator. The support from tutors and my mentor made it feel genuinely achievable.",
-    name: "Priya Shah",
-    role: "Project Manager, Construction",
+      ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_testimonials.quote_206}}" as string),
+    name: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_testimonials.name_207}}" as string),
+    role: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_testimonials.role_208}}" as string),
     image:
-      "/assets/images/project-controls/testimonial-3.jpg",
+      ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_testimonials.image_209}}" as string),
   },
   {
     quote:
-      "The Project Controls Technician programme gave me the technical skills — scheduling, cost, EVM — to add real value from day one.",
-    name: "James Walker",
-    role: "Planning Assistant, Rail",
+      ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_testimonials.quote_210}}" as string),
+    name: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_testimonials.name_211}}" as string),
+    role: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_testimonials.role_212}}" as string),
     image:
-      "/assets/images/project-controls/testimonial-4.jpg",
+      ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_testimonials.image_213}}" as string),
   },
   {
     quote:
-      "I moved from a general admin role into a proper controls career. The forecasting and risk modules transformed how I support my team.",
-    name: "Hannah Price",
-    role: "Cost Analyst, Energy",
+      ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_testimonials.quote_214}}" as string),
+    name: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_testimonials.name_215}}" as string),
+    role: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_testimonials.role_216}}" as string),
     image:
-      "/assets/images/project-controls/testimonial-5.jpg",
+      ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_testimonials.image_217}}" as string),
   },
   {
     quote:
-      "The Level 6 programme sharpened my leadership and commercial thinking. I now run the controls function on major work.",
-    name: "Michael Chen",
-    role: "Project Controls Manager, Construction",
+      ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_testimonials.quote_218}}" as string),
+    name: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_testimonials.name_219}}" as string),
+    role: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_testimonials.role_220}}" as string),
     image:
-      "/assets/images/project-controls/testimonial-6.jpg",
+      ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_testimonials.image_221}}" as string),
   },
 ];
 
 export const projectControlsFaqs = [
   {
-    question: "Who is the College of Project Management & Controls for?",
+    question: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_faqs.question_222}}" as string),
     answer:
-      "It is for professionals across the project delivery spectrum — from project managers who plan, lead and deliver work, to controls specialists in scheduling, cost, risk and data. Whether you are early-career or stepping into senior and leadership responsibility, there is a programme built for you.",
+      ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_faqs.answer_223}}" as string),
   },
   {
-    question: "What is the difference between project management and project controls?",
+    question: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_faqs.question_224}}" as string),
     answer:
-      "Project management focuses on leading and delivering the project end to end — scope, stakeholders, governance and outcomes. Project controls focuses on the data and insight that keep delivery on track — scheduling, cost, risk, forecasting and reporting. Our college develops capability in both, so you can choose the path that fits you.",
+      ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_faqs.answer_225}}" as string),
   },
   {
-    question: "What programmes are available?",
+    question: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_faqs.question_226}}" as string),
     answer:
-      "We offer four accredited apprenticeship programmes: Associate Project Manager (Level 4), Project Manager (Level 6), Project Controls Technician (Level 3) and Project Control Professional (Level 6).",
+      ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_faqs.answer_227}}" as string),
   },
   {
-    question: "How are the programmes funded?",
+    question: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_faqs.question_228}}" as string),
     answer:
-      "Programmes are funded through the Apprenticeship Levy or DfE funding. Levy-paying employers fund 100% through their levy, while non-levy employers typically contribute 5% with the government funding the remaining 95%.",
+      ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_faqs.answer_229}}" as string),
   },
   {
-    question: "Do I need to be employed to join?",
+    question: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_faqs.question_230}}" as string),
     answer:
-      "Yes. These are apprenticeship programmes, so you need to be employed in a relevant project or project controls role. We work with employers across Kent to match learners to suitable positions.",
+      ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_faqs.answer_231}}" as string),
   },
   {
-    question: "How long does each programme take?",
+    question: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_faqs.question_232}}" as string),
     answer:
-      "The Project Controls Technician (Level 3) typically takes around 18 months, while the Associate Project Manager (Level 4) and Project Manager (Level 6) typically take around 24 months, and the Project Control Professional (Level 6) around 30 months — depending on your pace and prior experience.",
+      ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_faqs.answer_233}}" as string),
   },
   {
-    question: "What qualification will I earn?",
+    question: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_faqs.question_234}}" as string),
     answer:
-      "You will earn a recognised apprenticeship qualification, plus professional recognition aligned to the Association for Project Management (APM), supporting progression toward Chartered Project Professional status — alongside recognised project controls credentials for the controls pathways.",
+      ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_faqs.answer_235}}" as string),
   },
   {
-    question: "How do I apply?",
+    question: ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_faqs.question_236}}" as string),
     answer:
-      "Get in touch through our contact page and our team will guide you through eligibility, funding and next steps — whether you are an individual learner or an employer.",
+      ("{{cms:college_project_controls.pages_project_controls_page_data_project_controls_faqs.answer_237}}" as string),
   },
 ];

@@ -1,7 +1,8 @@
-import { LearnerCaseStudiesSection } from "@/components/college/LearnerCaseStudiesSection";
+import { useCmsBindings } from "@/features/cms/publicContent";
 import { FaqSection } from "@/components/common/FaqSection";
 import { NavigationButton } from "@/components/navigation";
 import { RouteMeta } from "@/components/seo/RouteMeta";
+import { FigmaTestimonialsSection } from "@/pages/home/components/FigmaTestimonialsSection";
 import { FigmaUpcomingEventsSection } from "@/pages/home/components/FigmaUpcomingEventsSection";
 import { RecognitionStandardsSection } from "@/pages/home/components/RecognitionStandardsSection";
 import { TrustedOrganisations } from "@/pages/home/components/TrustedOrganisations";
@@ -14,7 +15,6 @@ import { HeroSection } from "./component/HeroSection";
 import { OverviewSection } from "./component/OverviewSection";
 import { ProgrammesSection } from "./component/ProgrammesSection";
 import { StudyModelSection } from "./component/StudyModelSection";
-import { TestimonialsSection } from "./component/TestimonialsSection";
 import { faqCopy, marketingFaqs } from "./data";
 
 const faqSchema = {
@@ -28,12 +28,15 @@ const faqSchema = {
 };
 
 export default function MarketingCollegePage() {
-  return (
+  const cms = useCmsBindings(["college_marketing"]);
+  const cmsValues = cms.resolve({ faqSchema, faqCopy, marketingFaqs });
+
+  return cms.render((
     <div className="bg-white font-body text-[var(--color-ink)]">
       <RouteMeta
-        seo={{ schema: [faqSchema] }}
-        fallbackTitle="College of Marketing | Kent Business College"
-        fallbackDescription="Discover Kent Business College's College of Marketing — DfE-funded Marketing Executive and Marketing Manager apprenticeships that turn customer insight into measurable commercial growth."
+        seo={{ schema: [cmsValues.faqSchema] }}
+        fallbackTitle={cms.text("college_marketing.pages_marketing_college_page_page_marketing_college_page.fallback_title_001")}
+        fallbackDescription={cms.text("college_marketing.pages_marketing_college_page_page_marketing_college_page.fallback_description_002")}
       />
       <HeroSection />
       <CollegePageNav />
@@ -43,17 +46,10 @@ export default function MarketingCollegePage() {
       <BenefitsSection />
       <StudyModelSection />
       <CareerPathwaysSection />
-      <TestimonialsSection />
       <div className="kbc-figma-home">
         <div id="marketing-events" className="scroll-mt-20 sm:scroll-mt-32">
           <FigmaUpcomingEventsSection />
         </div>
-        <LearnerCaseStudiesSection
-          id="marketing-case-studies"
-          category="Marketing"
-          title="Professional marketing, applied through real responsibility"
-          description="See how KBC learners connect customer insight, marketing theory and live workplace priorities."
-        />
         <div id="marketing-recognition" className="scroll-mt-20 sm:scroll-mt-32">
           <RecognitionStandardsSection />
         </div>
@@ -61,15 +57,18 @@ export default function MarketingCollegePage() {
           <TrustedOrganisations />
         </div>
       </div>
+      <div className="kbc-figma-home">
+        <FigmaTestimonialsSection />
+      </div>
       <FaqSection
         id="marketing-faq"
-        eyebrow={faqCopy.eyebrow}
-        title={faqCopy.title}
-        description={faqCopy.description}
-        items={marketingFaqs}
-        action={<NavigationButton className="!min-h-14 min-w-[230px] sm:!min-h-16" to="/book-session">{faqCopy.cta}</NavigationButton>}
+        eyebrow={cmsValues.faqCopy.eyebrow}
+        title={cmsValues.faqCopy.title}
+        description={cmsValues.faqCopy.description}
+        items={cmsValues.marketingFaqs}
+        action={<NavigationButton className="!min-h-14 min-w-[230px] sm:!min-h-16" to={cms.text("college_marketing.pages_marketing_college_page_page_marketing_college_page.to_003")}>{cmsValues.faqCopy.cta}</NavigationButton>}
       />
       <FinalCTASection />
     </div>
-  );
+  ));
 }

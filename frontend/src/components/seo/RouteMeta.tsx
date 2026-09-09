@@ -22,7 +22,7 @@ export function RouteMeta({ seo, fallbackTitle, fallbackDescription = "" }: { se
       <title>{title}</title>
       {description && <meta name="description" content={description} />}
       <link rel="canonical" href={canonical} />
-      <meta name="robots" content={seo?.robots || "index,follow"} />
+      <meta name="robots" content={new URLSearchParams(window.location.search).has("cmsPreview") ? "noindex,nofollow" : seo?.robots || "index,follow"} />
       <meta property="og:title" content={seo?.openGraph?.title || title} />
       {description && <meta property="og:description" content={seo?.openGraph?.description || description} />}
       <meta property="og:image" content={socialImage} />

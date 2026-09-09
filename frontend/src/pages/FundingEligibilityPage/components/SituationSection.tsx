@@ -1,3 +1,4 @@
+import { useCmsBindings } from "@/features/cms/publicContent";
 import { useState } from "react";
 import { Check } from "lucide-react";
 
@@ -5,17 +6,20 @@ import { fundingAudiences, type FundingAudienceId } from "../data";
 import { ArrowLink, containerClass, sectionClass, SectionIntro } from "./shared";
 
 export function SituationSection() {
+  const cms = useCmsBindings(["funding"]);
+  const cmsValues = cms.resolve({ fundingAudiences });
+
   const [activeId, setActiveId] = useState<FundingAudienceId>("professionals");
-  const active = fundingAudiences.find((audience) => audience.id === activeId) ?? fundingAudiences[0];
+  const active = cmsValues.fundingAudiences.find((audience) => audience.id === activeId) ?? cmsValues.fundingAudiences[0];
   const ActiveIcon = active.icon;
 
-  return (
+  return cms.render((
     <section className={`${sectionClass} bg-[#f7f4fa]`}>
       <div className={containerClass}>
         <SectionIntro eyebrow="Find your route" title="Start with what you need to achieve" copy="The right development route depends on your role, employer, programme and the capability you want to build." />
         <div className="mb-10 flex justify-center">
           <div className="inline-flex max-w-full gap-1 rounded-full border border-[#e8e0ef] bg-white p-1" role="tablist" aria-label="Choose your perspective">
-            {fundingAudiences.map((audience) => {
+            {cmsValues.fundingAudiences.map((audience) => {
               const AudienceIcon = audience.icon;
               return <button className={`flex items-center gap-2 whitespace-nowrap rounded-full px-6 py-2.5 text-sm font-semibold transition-colors max-[500px]:px-4 max-[500px]:text-xs ${activeId === audience.id ? "bg-[#2f1468] text-white" : "text-[#766d7c] hover:text-[#24152f]"}`} key={audience.id} onClick={() => setActiveId(audience.id)} role="tab" aria-selected={activeId === audience.id} type="button"><AudienceIcon size={17} />{audience.tab}</button>;
             })}
@@ -37,5 +41,5 @@ export function SituationSection() {
         </div>
       </div>
     </section>
-  );
+  ));
 }

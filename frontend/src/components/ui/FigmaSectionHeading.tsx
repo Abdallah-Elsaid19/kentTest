@@ -10,14 +10,15 @@ export function FigmaSectionHeading({
   eyebrow: string;
   title: React.ReactNode;
   description?: string;
-  align?: "left" | "center";
+  align?: "left" | "center" | "responsive";
   tone?: "default" | "inverse";
 }) {
   const isCentered = align === "center";
+  const isResponsive = align === "responsive";
   const isInverse = tone === "inverse";
   return (
-    <div className={`figma-section-heading !max-w-full ${isCentered ? "is-centered !mx-auto !text-center" : ""}`}>
-      <span className={`figma-eyebrow !text-xs !font-bold !leading-5 !tracking-widest !uppercase ${isInverse ? "!text-[#F5C94F]" : "!text-[#401B8C]"} ${isCentered ? "!mx-auto !justify-center" : ""}`}>{eyebrow}</span>
+    <div className={`figma-section-heading !max-w-full ${isCentered ? "is-centered !mx-auto !text-center" : ""} ${isResponsive ? "max-lg:!mx-auto max-lg:!text-center" : ""}`}>
+      <span className={`figma-eyebrow !text-xs !font-bold !leading-5 !tracking-widest !uppercase ${isInverse ? "!text-[#F5C94F]" : "!text-[#401B8C]"} ${isCentered ? "!mx-auto !justify-center" : ""} ${isResponsive ? "max-lg:!mx-auto max-lg:!justify-center" : ""}`}>{eyebrow}</span>
       <h2 className={`!text-2xl !font-semibold !leading-none !tracking-tight sm:!text-5xl xl:!text-4xl ${isInverse ? "!text-white" : ""}`} id={id}>{title}</h2>
       {description && <p className={`!mt-5 !text-sm !leading-relaxed sm:!mt-6 sm:!text-base ${isInverse ? "!text-white/65" : "!text-[#756F79]"} ${isCentered ? "!mx-auto" : ""}`}>{description}</p>}
     </div>

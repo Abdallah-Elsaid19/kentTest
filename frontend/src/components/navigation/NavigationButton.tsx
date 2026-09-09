@@ -1,11 +1,11 @@
-import type { MouseEventHandler, ReactNode } from "react";
+import type { ButtonHTMLAttributes, MouseEventHandler, ReactNode } from "react";
 import { Link } from "react-router-dom";
 import { joinNavigationClasses, shouldUseAnchor } from "./linkTarget";
 
 type NavigationButtonVariant = "primary" | "secondary" | "accent" | "inverse" | "projectControls" | "projectControlsInverse" | "marketing" | "marketingInverse";
 
 interface NavigationButtonProps {
-  to: string;
+  to?: string;
   children: ReactNode;
   variant?: NavigationButtonVariant;
   external?: boolean;
@@ -13,7 +13,8 @@ interface NavigationButtonProps {
   fullWidth?: boolean;
   className?: string;
   ariaLabel?: string;
-  onClick?: MouseEventHandler<HTMLAnchorElement>;
+  onClick?: MouseEventHandler<HTMLAnchorElement | HTMLButtonElement>;
+  type?: ButtonHTMLAttributes<HTMLButtonElement>["type"];
 }
 
 const variantClasses: Record<NavigationButtonVariant, string> = {
@@ -37,6 +38,7 @@ export function NavigationButton({
   className,
   ariaLabel,
   onClick,
+  type = "button",
 }: NavigationButtonProps) {
   const classes = joinNavigationClasses(
     "inline-flex min-h-12 items-center justify-center rounded-lg px-5 text-center text-sm font-semibold transition-[color,background-color,border-color,box-shadow,transform] duration-200 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-kbc-gold-500 focus-visible:ring-offset-2 motion-reduce:transform-none motion-reduce:transition-none",
@@ -44,6 +46,10 @@ export function NavigationButton({
     fullWidth && "w-full",
     className,
   );
+
+  if (!to) {
+    return <button type={type} className={classes} aria-label={ariaLabel} onClick={onClick}>{children}</button>;
+  }
 
   if (shouldUseAnchor(to, external)) {
     return <a href={to} className={classes} aria-label={ariaLabel} target={newTab ? "_blank" : undefined} rel={newTab ? "noreferrer" : undefined} onClick={onClick}>{children}</a>;

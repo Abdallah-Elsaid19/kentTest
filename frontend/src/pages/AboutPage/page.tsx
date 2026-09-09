@@ -1,4 +1,5 @@
-import { useEffect } from "react";
+import { useCmsBindings } from "@/features/cms/publicContent";
+import { useEffect, useLayoutEffect } from "react";
 
 import { RouteMeta } from "@/components/seo/RouteMeta";
 import { Footer } from "@/components/layout/Footer";
@@ -43,13 +44,21 @@ function useOurStoryAnimations() {
 }
 
 export default function AboutPage() {
+  const cms = useCmsBindings(["about","experts","partners"]);
+
+  useLayoutEffect(() => {
+    if (!window.location.hash) {
+      window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    }
+  }, []);
+
   useOurStoryAnimations();
 
-  return (
+  return cms.render((
     <>
       <RouteMeta
-        fallbackTitle="Who We Are | Kent Business College"
-        fallbackDescription="From IBIS Consultancy to Kent Business College: a decade of wisdom, transformation and momentum."
+        fallbackTitle={cms.text("about.pages_about_page_page_about_page.fallback_title_001")}
+        fallbackDescription={cms.text("about.pages_about_page_page_about_page.fallback_description_002")}
       />
       <Header />
 
@@ -72,5 +81,5 @@ export default function AboutPage() {
       </div>
       <Footer />
     </>
-  );
+  ));
 }

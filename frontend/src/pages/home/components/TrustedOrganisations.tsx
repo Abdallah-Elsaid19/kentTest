@@ -1,9 +1,13 @@
+import { useHomeSection } from "../contentContext";
+import { SharedHomeSection } from "../SharedHomeSection";
 import { ArrowRight } from "lucide-react";
 import { NavigationButton } from "@/components/navigation";
 import { FigmaSectionHeading } from "@/components/ui/FigmaSectionHeading";
-import { trustedOrganisationLogos } from "@/components/common/trustedLogos";
 
-export function TrustedOrganisations() {
+function TrustedContent() {
+  const content = useHomeSection("trusted");
+  const { trustedOrganisationLogos } = content;
+
   const marqueeLogos = [...trustedOrganisationLogos, ...trustedOrganisationLogos];
 
   return (
@@ -12,9 +16,9 @@ export function TrustedOrganisations() {
         <header className="mx-auto mb-9 max-w-[780px]">
           <FigmaSectionHeading
             id="trusted-title"
-            eyebrow="Trusted by"
-            title="Professionals from leading organisations"
-            description="Employees from respected organisations choose KBC to strengthen practical, role-ready capability."
+            eyebrow={content.copy.eyebrow}
+            title={content.copy.title}
+            description={content.copy.description}
           />
         </header>
         <div className="figma-logo-grid motion-reduce:!overflow-x-auto motion-reduce:[scrollbar-width:none] motion-reduce:[&::-webkit-scrollbar]:hidden" aria-label="Organisations whose professionals learn with Kent Business College">
@@ -27,11 +31,15 @@ export function TrustedOrganisations() {
           </div>
         </div>
         <div className="mt-8 flex justify-center sm:mt-10">
-          <NavigationButton className="!bg-[#401B8C] !px-7 !text-white hover:!bg-[#2F1468]" to="/our-partners">
-            View all partner logos <ArrowRight className="ml-2" aria-hidden="true" size={17} />
+          <NavigationButton className="!bg-[#401B8C] !px-7 !text-white hover:!bg-[#2F1468]" to={content.copy.to}>
+            {content.copy.linkLabel}<ArrowRight className="ml-2" aria-hidden="true" size={17} />
           </NavigationButton>
         </div>
       </div>
     </section>
   );
+}
+
+export function TrustedOrganisations() {
+  return <SharedHomeSection section="trusted"><TrustedContent /></SharedHomeSection>;
 }

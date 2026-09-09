@@ -1,13 +1,12 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 export interface CollegePageNavItem {
   label: string;
   href: string;
 }
 
-export function CollegePageNav({ items }: { items: CollegePageNavItem[] }) {
+export function CollegePageNav({ items, ariaLabel = "Page sections" }: { items: readonly CollegePageNavItem[]; ariaLabel?: string }) {
   const [activeHref, setActiveHref] = useState(items[0]?.href ?? "");
-  const scrollerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const sections = items
@@ -24,33 +23,6 @@ export function CollegePageNav({ items }: { items: CollegePageNavItem[] }) {
   }, [items]);
 
   useEffect(() => {
-    const scroller = scrollerRef.current;
-    if (!scroller) return;
-    const revealActiveLink = () => {
-      const activeLink = scroller.querySelector<HTMLElement>('[aria-current="location"]');
-      if (!activeLink || scroller.scrollWidth <= scroller.clientWidth) return;
-      const viewport = scroller.getBoundingClientRect();
-      const link = activeLink.getBoundingClientRect();
-      const inset = 12;
-      const delta = link.left < viewport.left + inset
-        ? link.left - viewport.left - inset
-        : link.right > viewport.right - inset
-          ? link.right - viewport.right + inset
-          : 0;
-      if (delta) {
-        scroller.scrollBy({
-          left: delta,
-          behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth",
-        });
-      }
-    };
-    const observer = new ResizeObserver(revealActiveLink);
-    observer.observe(scroller);
-    revealActiveLink();
-    return () => observer.disconnect();
-  }, [activeHref]);
-
-  useEffect(() => {
     const syncActiveHash = () => {
       const hash = window.location.hash;
       if (items.some(({ href }) => href === hash)) setActiveHref(hash);
@@ -61,13 +33,12 @@ export function CollegePageNav({ items }: { items: CollegePageNavItem[] }) {
   }, [items]);
 
   return (
-    <nav aria-label="College page sections" className="sticky top-[160px] z-30 hidden border-y border-[#e8e0ef] bg-white/95 shadow-[0_8px_24px_rgba(33,17,38,.06)] backdrop-blur-md sm:block">
-      <div className="mx-auto w-full max-w-[1240px] !px-0 xl:!px-8">
-        <div ref={scrollerRef} className="flex w-full min-w-0 flex-wrap items-center justify-center gap-x-1.5 gap-y-2 overflow-visible px-3 py-3 sm:px-5 xl:flex-nowrap xl:justify-between xl:gap-1 xl:px-0">
+    <nav aria-label={ariaLabel} className="sticky top-[160px] z-30 hidden border-y border-[#e8e0ef] bg-white/95 shadow-[0_8px_24px_rgba(33,17,38,.06)] backdrop-blur-md sm:block">
+      <div className="w-full px-3 sm:px-5 xl:px-8">
+        <div className="flex w-full min-w-0 flex-wrap items-center justify-center gap-x-1.5 gap-y-3 py-3 xl:gap-x-2">
           {items.map((item) => (
-            <a key={item.href} href={item.href} onClick={() => setActiveHref(item.href)} aria-current={activeHref === item.href ? "location" : undefined} className={`relative inline-flex min-h-11 shrink-0 items-center justify-center whitespace-nowrap rounded-full px-3 py-2 text-[11px] font-semibold transition-colors focus-visible:outline-offset-[-3px] sm:px-4 sm:text-xs ${activeHref === item.href ? "bg-[#2f1468] text-white" : "text-[#766d7c] hover:bg-[#f7f4fa] hover:text-[#24152f]"}`}>
+            <a key={item.href} href={item.href} onClick={() => setActiveHref(item.href)} aria-current={activeHref === item.href ? "location" : undefined} className={`relative inline-flex min-h-11 shrink-0 items-center justify-center whitespace-nowrap rounded-lg border border-transparent px-3 py-2 text-[11px] font-semibold transition-[color,background-color,border-color,box-shadow,transform] duration-200 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-kbc-gold-500 focus-visible:ring-offset-2 motion-reduce:transform-none motion-reduce:transition-none sm:px-4 sm:text-xs ${activeHref === item.href ? "border-primary bg-primary text-white shadow-[0_8px_20px_rgba(64,27,140,.18)] hover:bg-primary-dark" : "text-kbc-purple-700 hover:border-kbc-purple-100 hover:bg-kbc-purple-50 hover:text-kbc-purple-950"}`}>
               {item.label}
-              {activeHref === item.href && <span aria-hidden="true" className="absolute -bottom-[7px] left-1/2 h-[3px] w-6 -translate-x-1/2 rounded-full bg-[#f5c94f] xl:-bottom-[11px]" />}
             </a>
           ))}
         </div>

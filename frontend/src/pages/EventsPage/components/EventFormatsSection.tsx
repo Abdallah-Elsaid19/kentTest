@@ -1,20 +1,24 @@
+import { useCmsBindings } from "@/features/cms/publicContent";
 import { EventFormatCard } from "@/components/common/EventFormatCard";
 import { FigmaSectionHeading } from "@/components/ui/FigmaSectionHeading";
 
 const formats = [
-  { title: "Information Sessions", description: "Learn about programmes, eligibility, funding routes and application processes.", image: "/assets/images/figma-home/workplace-teaching.png" },
-  { title: "Professional Workshops", description: "Practical sessions focused on skills that can be applied directly in the workplace.", image: "/assets/images/figma-home/marketing-event.png" },
-  { title: "Masterclasses", description: "Expert-led sessions exploring specialist themes across Kent's professional disciplines.", image: "/assets/images/figma-home/project-speaker.png" },
-  { title: "Networking & Employer Events", description: "Opportunities for employers, learners and professionals to connect and share experience.", image: "/assets/images/figma-home/hero-group.png" },
+  { title: "{{cms:events.pages_events_page_components_event_forma_formats.title_001}}", description: "{{cms:events.pages_events_page_components_event_forma_formats.description_002}}", image: "{{cms:events.pages_events_page_components_event_forma_formats.image_003}}" },
+  { title: "{{cms:events.pages_events_page_components_event_forma_formats.title_004}}", description: "{{cms:events.pages_events_page_components_event_forma_formats.description_005}}", image: "{{cms:events.pages_events_page_components_event_forma_formats.image_006}}" },
+  { title: "{{cms:events.pages_events_page_components_event_forma_formats.title_007}}", description: "{{cms:events.pages_events_page_components_event_forma_formats.description_008}}", image: "{{cms:events.pages_events_page_components_event_forma_formats.image_009}}" },
+  { title: "{{cms:events.pages_events_page_components_event_forma_formats.title_010}}", description: "{{cms:events.pages_events_page_components_event_forma_formats.description_011}}", image: "{{cms:events.pages_events_page_components_event_forma_formats.image_012}}" },
 ];
 
 export function EventFormatsSection() {
-  return (
+  const cms = useCmsBindings(["events"]);
+  const cmsValues = cms.resolve({ formats });
+
+  return cms.render((
     <section id="event-formats" aria-labelledby="event-formats-title">
       <div className="figma-shell">
-        <FigmaSectionHeading id="event-formats-title" eyebrow="Formats" title="Event Formats" description="The Institute runs multiple formats to serve different learning styles, seniority levels and professional needs." align="center" />
+        <FigmaSectionHeading id="event-formats-title" eyebrow={cms.text("events.pages_events_page_components_event_forma_event_formats_section.eyebrow_013")} title={cms.text("events.pages_events_page_components_event_forma_event_formats_section.title_014")} description={cms.text("events.pages_events_page_components_event_forma_event_formats_section.description_015")} align="center" />
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
-          {formats.map((format) => (
+          {cmsValues.formats.map((format) => (
             <EventFormatCard
               key={format.title}
               imageSrc={format.image}
@@ -27,5 +31,5 @@ export function EventFormatsSection() {
         </div>
       </div>
     </section>
-  );
+  ));
 }

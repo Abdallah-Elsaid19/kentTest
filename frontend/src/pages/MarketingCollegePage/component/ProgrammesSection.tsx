@@ -1,3 +1,4 @@
+import { useCmsBindings } from "@/features/cms/publicContent";
 import { Check } from "lucide-react";
 
 import { ProgrammeShowcaseCard } from "@/components/common/ProgrammeShowcaseCard";
@@ -6,17 +7,20 @@ import { marketingProgrammes, programmeCopy } from "../data";
 import { section, shell } from "./layout";
 
 export function ProgrammesSection() {
-  return (
-    <section id="marketing-programmes" className={`${section} bg-[var(--color-soft)]`} aria-labelledby="marketing-programmes-title">
-      <div className={shell}>
+  const cms = useCmsBindings(["college_marketing"]);
+  const cmsValues = cms.resolve({ section, shell, programmeCopy, marketingProgrammes });
+
+  return cms.render((
+    <section id="marketing-programmes" className={`${cmsValues.section} bg-[var(--color-soft)]`} aria-labelledby="marketing-programmes-title">
+      <div className={cmsValues.shell}>
         <FigmaSectionHeading
           id="marketing-programmes-title"
-          eyebrow={programmeCopy.eyebrow}
-          title={programmeCopy.title}
-          description={programmeCopy.description}
+          eyebrow={cmsValues.programmeCopy.eyebrow}
+          title={cmsValues.programmeCopy.title}
+          description={cmsValues.programmeCopy.description}
         />
         <div className="mt-12 grid gap-6 lg:grid-cols-2">
-          {marketingProgrammes.map((programme) => (
+          {cmsValues.marketingProgrammes.map((programme) => (
             <div key={programme.id} id={programme.id} className="h-full scroll-mt-44 [&>article]:h-full">
               <ProgrammeShowcaseCard
                 discipline={programme.discipline}
@@ -29,9 +33,9 @@ export function ProgrammesSection() {
                 details={
                   <>
                     <p className="text-xs font-semibold text-[#675f70]">{programme.funding}</p>
-                    {programme.intake && <p className="mt-1 text-xs font-semibold text-primary">Next intake: {programme.intake}</p>}
+                    {programme.intake && <p className="mt-1 text-xs font-semibold text-primary">{cms.text("college_marketing.pages_marketing_college_page_component_p_programmes_section.text_001")}{programme.intake}</p>}
                     <p className="mt-3 text-xs leading-5 text-[#716a7a]">{programme.qualification}</p>
-                    <h4 className="mt-4 text-[11px] font-semibold uppercase tracking-widest text-primary">{programmeCopy.learningLabel}</h4>
+                    <h4 className="mt-4 text-[11px] font-semibold uppercase tracking-widest text-primary">{cmsValues.programmeCopy.learningLabel}</h4>
                     <ul className="mt-3 grid gap-2">
                       {programme.outcomes.map((outcome) => (
                         <li key={outcome} className="flex items-start gap-2 text-xs leading-5 text-[#675f70]">
@@ -40,7 +44,7 @@ export function ProgrammesSection() {
                       ))}
                     </ul>
                     <p className="mt-4 border-t border-[#e8e0ef] pt-4 text-xs leading-5 text-[#716a7a]">
-                      <strong className="font-semibold text-primary">{programmeCopy.audienceLabel} </strong>{programme.idealFor}
+                      <strong className="font-semibold text-primary">{cmsValues.programmeCopy.audienceLabel} </strong>{programme.idealFor}
                     </p>
                   </>
                 }
@@ -50,14 +54,14 @@ export function ProgrammesSection() {
         </div>
 
         <figure className="relative isolate mt-12 overflow-hidden rounded-2xl bg-primary-dark px-6 py-14 text-white sm:px-10 sm:py-20">
-          <img src={programmeCopy.image} alt="Marketing workshop at Kent Business College" width={1000} height={667} loading="lazy" decoding="async" className="absolute inset-0 -z-20 h-full w-full object-cover object-center" />
+          <img src={cmsValues.programmeCopy.image} alt={cms.text("college_marketing.pages_marketing_college_page_component_p_programmes_section.alt_002")} width={1000} height={667} loading="lazy" decoding="async" className="absolute inset-0 -z-20 h-full w-full object-cover object-center" />
           <div className="absolute inset-0 -z-10 bg-gradient-to-r from-primary-dark/95 via-primary-dark/80 to-primary-dark/30" aria-hidden="true" />
           <figcaption className="max-w-xl">
-            <p className="text-xs font-semibold uppercase tracking-widest text-[var(--color-gold)]">{programmeCopy.imageLabel}</p>
-            <p className="mt-4 text-2xl font-medium leading-tight tracking-tight sm:text-3xl">{programmeCopy.imageCaption}</p>
+            <p className="text-xs font-semibold uppercase tracking-widest text-[var(--color-gold)]">{cmsValues.programmeCopy.imageLabel}</p>
+            <p className="mt-4 text-2xl font-medium leading-tight tracking-tight sm:text-3xl">{cmsValues.programmeCopy.imageCaption}</p>
           </figcaption>
         </figure>
       </div>
     </section>
-  );
+  ));
 }

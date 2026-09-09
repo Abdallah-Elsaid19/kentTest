@@ -1,3 +1,4 @@
+import { useCmsBindings } from "@/features/cms/publicContent";
 import { CheckCircle2, Star } from "lucide-react";
 import { ArrowLink } from "@/components/navigation";
 import { FigmaSectionHeading } from "@/components/ui/FigmaSectionHeading";
@@ -12,7 +13,10 @@ const ratingWidthClasses: Record<number, string> = {
 };
 
 export function LearnerReviewsSection() {
-  return (
+  const cms = useCmsBindings(["learners"]);
+  const cmsValues = cms.resolve({ ratingBreakdown, ratingWidthClasses, trustpilotReviews });
+
+  return cms.render((
     <section className="bg-[#f7f4fb] py-16 sm:py-20 lg:py-28" aria-labelledby="learner-reviews-title">
       <div className="mx-auto w-full max-w-[1240px] px-5 sm:px-8 lg:px-10">
         <div className="mx-auto max-w-[900px]">
@@ -26,10 +30,10 @@ export function LearnerReviewsSection() {
             <p className="mt-3 font-semibold text-[#17131d]">Excellent</p>
             <p className="mt-1 text-sm text-[#716a7a]">Based on 150+ reviews</p>
             <div className="mt-8 grid gap-2.5" aria-label="Rating breakdown">
-              {ratingBreakdown.map((rating) => (
+              {cmsValues.ratingBreakdown.map((rating) => (
                 <div className="grid grid-cols-[16px_1fr_34px] items-center gap-3 text-xs text-[#716a7a]" key={rating.stars}>
                   <span>{rating.stars}</span>
-                  <span className="h-2 overflow-hidden rounded-full bg-[#eee9f2]"><span className={`block h-full rounded-full bg-[#00b67a] ${ratingWidthClasses[rating.value]}`} /></span>
+                  <span className="h-2 overflow-hidden rounded-full bg-[#eee9f2]"><span className={`block h-full rounded-full bg-[#00b67a] ${cmsValues.ratingWidthClasses[rating.value]}`} /></span>
                   <span>{rating.value}%</span>
                 </div>
               ))}
@@ -37,7 +41,7 @@ export function LearnerReviewsSection() {
           </div>
 
           <div className="grid gap-px bg-[#e8e1ee] md:grid-cols-3">
-            {trustpilotReviews.map((review) => (
+            {cmsValues.trustpilotReviews.map((review) => (
               <article className="flex min-h-[300px] flex-col bg-white p-6 sm:p-7" key={review.name}>
                 <span className="flex items-center gap-2 text-xs font-semibold text-[#008f62]"><CheckCircle2 className="size-4" aria-hidden="true" />Verified</span>
                 <blockquote className="mt-6 flex-1 text-sm leading-7 text-[#4f4756]">“{review.quote}”</blockquote>
@@ -55,5 +59,5 @@ export function LearnerReviewsSection() {
         </div>
       </div>
     </section>
-  );
+  ));
 }

@@ -1,4 +1,5 @@
 import { ArrowRight, CalendarDays, MapPin } from "lucide-react";
+import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
 
 import { ArrowLink } from "@/components/navigation";
@@ -29,8 +30,8 @@ function formatEventDate(value: string) {
   };
 }
 
-function getEventImage(event: Event, index: number) {
-  return event.imageFeaturedUrl || event.image?.url || fallbackImages[index % fallbackImages.length];
+function getEventImage(event: Event, index: number, images: readonly string[]) {
+  return event.imageFeaturedUrl || event.image?.url || images[index % images.length];
 }
 
 function getEventLocation(event: Event) {
@@ -43,22 +44,54 @@ function getEventPath(event: Event) {
   return event.id >= 0 ? `/events/${event.slug}` : "/events";
 }
 
-export function FigmaUpcomingEventsSection() {
-  const upcoming = useEvents("?status=upcoming&perPage=3");
+type FigmaUpcomingEventsSectionProps = {
+  databaseOnly?: boolean;
+  images?: readonly string[];
+  id?: string;
+  search?: string;
+  eyebrow?: string;
+  title?: ReactNode;
+  description?: string;
+  fallbackItems?: readonly Event[];
+  getEventHref?: (event: Event) => string;
+  getFeaturedEventHref?: (event: Event) => string;
+  getEventDateLabel?: (event: Event) => string | undefined;
+  featuredActionLabel?: string;
+  compactActionLabel?: string;
+  viewAllLabel?: string;
+};
+
+export function FigmaUpcomingEventsSection({
+  databaseOnly = false,
+  images = fallbackImages,
+  id,
+  search,
+  eyebrow = "Upcoming Events",
+  title = <>Upcoming events,<br />all in one place.</>,
+  description = "Explore the next workshops, information sessions and professional events from Kent Business College.",
+  fallbackItems,
+  getEventHref,
+  getFeaturedEventHref,
+  getEventDateLabel,
+  featuredActionLabel = "Reserve your place",
+  compactActionLabel,
+  viewAllLabel = "View all events",
+}: FigmaUpcomingEventsSectionProps = {}) {
+  const upcoming = useEvents(`?status=upcoming&perPage=3${search ? `&search=${encodeURIComponent(search)}` : ""}`);
   const events: Event[] = upcoming.data?.items?.length
     ? upcoming.data.items.slice(0, 3)
-    : fallbackEvents;
+    : databaseOnly ? [] : fallbackItems?.length ? [...fallbackItems].slice(0, 3) : search ? [] : fallbackEvents;
   const featured = events[0];
   const compactEvents = events.slice(1, 3);
+  const headingId = id ? `${id}-title` : "home-upcoming-events-title";
 
-  if (!featured) return null;
-
-  const featuredDate = formatEventDate(featured.startAt);
+  const featuredDate = featured ? formatEventDate(featured.startAt) : undefined;
 
   return (
     <section
-      className="relative overflow-hidden bg-[#f8f4fa] py-16 sm:py-20 xl:py-[118px]"
-      aria-labelledby="home-upcoming-events-title"
+      id={id}
+      className="relative scroll-mt-20 overflow-hidden bg-[#f8f4fa] py-16 sm:scroll-mt-64 sm:py-20 xl:py-[118px]"
+      aria-labelledby={headingId}
     >
       <div className="pointer-events-none absolute -left-24 top-24 size-72 rounded-full border border-[#401B8C]/10" />
       <div className="pointer-events-none absolute -right-20 bottom-16 size-64 rounded-full border border-[#401B8C]/10" />
@@ -66,23 +99,23 @@ export function FigmaUpcomingEventsSection() {
       <div className="figma-shell relative">
         <div className="mb-10 lg:mb-14">
           <FigmaSectionHeading
-            id="home-upcoming-events-title"
-            eyebrow="Upcoming Events"
-            title={<>Upcoming events,<br />all in one place.</>}
-            description="Explore the next workshops, information sessions and professional events from Kent Business College."
+            id={headingId}
+            eyebrow={eyebrow}
+            title={title}
+            description={description}
             align="center"
           />
         </div>
 
-        <div className="grid gap-5 xl:grid-cols-[1.4fr_.6fr]">
+        {featured && featuredDate ? <div className={`grid gap-5 ${compactEvents.length ? "xl:grid-cols-[1.4fr_.6fr]" : "mx-auto max-w-5xl"}`}>
           <Link
             className="group relative grid min-h-[440px] overflow-hidden rounded-[22px] border border-[#401B8C]/15 bg-white shadow-[0_20px_55px_rgba(64,27,140,0.1)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_26px_70px_rgba(64,27,140,0.16)] sm:grid-cols-2"
-            to={getEventPath(featured)}
+            to={getFeaturedEventHref?.(featured) ?? getEventHref?.(featured) ?? getEventPath(featured)}
           >
             <div className="relative min-h-[260px] overflow-hidden bg-[#401B8C] sm:min-h-full">
               <img
                 className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
-                src={getEventImage(featured, 0)}
+                src={getEventImage(featured, 0, images)}
                 alt={featured.image?.altText || ""}
                 loading="lazy"
                 decoding="async"
@@ -96,7 +129,7 @@ export function FigmaUpcomingEventsSection() {
             <div className="flex min-w-0 flex-col p-6 sm:p-8 lg:p-10">
               <div className="flex w-fit items-center gap-2 rounded-lg bg-[#401B8C] px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.12em] !text-white">
                 <CalendarDays aria-hidden="true" size={15} />
-                <time dateTime={featured.startAt}>{featuredDate.full}</time>
+                <time dateTime={featured.startAt}>{getEventDateLabel?.(featured) ?? featuredDate.full}</time>
               </div>
               <h3 className="mt-6 text-[clamp(27px,2vw,38px)] font-semibold leading-[1.08] tracking-tight !text-kbc-dark-950">
                 {featured.title}
@@ -109,12 +142,12 @@ export function FigmaUpcomingEventsSection() {
               </p>
 
               <span className="mt-9 inline-flex w-fit items-center gap-3 rounded-lg bg-[#401B8C] px-5 py-3 text-sm font-semibold !text-white transition-colors group-hover:bg-[#2F1468]">
-                Reserve your place <ArrowRight aria-hidden="true" size={17} />
+                {featuredActionLabel} <ArrowRight aria-hidden="true" size={17} />
               </span>
             </div>
           </Link>
 
-          <div className="grid gap-5 xl:grid-rows-2">
+          {compactEvents.length > 0 && <div className={`grid gap-5 ${compactEvents.length > 1 ? "xl:grid-rows-2" : ""}`}>
             {compactEvents.map((event) => {
               const date = formatEventDate(event.startAt);
 
@@ -122,7 +155,7 @@ export function FigmaUpcomingEventsSection() {
                 <Link
                   className="group grid min-h-[220px] grid-cols-[minmax(0,1fr)_72px] gap-5 rounded-[18px] border border-[#401B8C]/15 bg-white p-5 shadow-[0_12px_35px_rgba(64,27,140,0.07)] transition-all duration-300 hover:-translate-y-1 hover:border-[#401B8C]/30 hover:shadow-[0_20px_50px_rgba(64,27,140,0.14)] sm:p-6"
                   key={event.id}
-                  to={getEventPath(event)}
+                  to={getEventHref?.(event) ?? getEventPath(event)}
                 >
                   <div className="flex h-full min-w-0 flex-col">
                     <span className="w-fit rounded-md bg-[#401B8C] px-2 py-1 text-[9px] font-bold uppercase tracking-[0.12em] !text-white">
@@ -141,23 +174,36 @@ export function FigmaUpcomingEventsSection() {
                     <time
                       className="flex size-[58px] flex-col items-center justify-center rounded-xl bg-[#401B8C] text-center shadow-sm"
                       dateTime={event.startAt}
+                      aria-label={getEventDateLabel?.(event)}
                     >
-                      <strong className="text-xl font-semibold leading-none !text-white">{date.day}</strong>
-                      <span className="mt-1 text-[9px] font-bold uppercase tracking-[0.16em] text-kbc-gold-400">{date.month}</span>
+                      <span aria-hidden="true"><strong className="block text-xl font-semibold leading-none !text-white">{date.day}</strong><span className="mt-1 block text-[9px] font-bold uppercase tracking-[0.16em] text-kbc-gold-400">{date.month.toUpperCase()}</span></span>
+                      {getEventDateLabel?.(event) && <span className="sr-only">{getEventDateLabel(event)}</span>}
                     </time>
                     <span className="grid size-9 place-items-center rounded-md bg-[#401B8C] !text-white transition-all duration-300 group-hover:translate-x-0.5 group-hover:bg-[#2F1468]">
+                      {compactActionLabel && <span className="sr-only">{compactActionLabel}</span>}
                       <ArrowRight aria-hidden="true" size={16} />
                     </span>
                   </div>
                 </Link>
               );
             })}
+          </div>}
+        </div> : (
+          <div className="rounded-2xl border border-primary/15 bg-white p-8 text-center sm:p-10" role="status">
+            <p className="text-sm leading-7 text-[var(--color-muted)]">
+              {upcoming.isLoading
+                ? "Loading programme events…"
+                : upcoming.isError
+                  ? "We couldn't load programme events right now. Please try again shortly."
+                  : "No upcoming events for this programme are currently scheduled. Check back soon or book an information session."}
+            </p>
+            {!upcoming.isLoading && <ArrowLink className="mt-5 !text-primary" to="/book-session">Book an information session</ArrowLink>}
           </div>
-        </div>
+        )}
 
         <div className="mt-6 flex justify-end sm:mt-8">
           <ArrowLink className="!text-sm !font-semibold !leading-5 !text-[#401B8C] hover:!text-[#2F1468]" to="/events" direction="up-right">
-            View all events
+            {viewAllLabel}
           </ArrowLink>
         </div>
       </div>

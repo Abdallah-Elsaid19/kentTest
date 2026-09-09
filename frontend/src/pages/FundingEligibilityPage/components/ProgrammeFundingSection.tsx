@@ -1,3 +1,4 @@
+import { useCmsBindings } from "@/features/cms/publicContent";
 import { useState } from "react";
 import { BadgePoundSterling, Check, GraduationCap, Landmark } from "lucide-react";
 
@@ -5,16 +6,19 @@ import { programmeData, programmeFundingDetails, type ProgrammeKey } from "../da
 import { containerClass, sectionClass, sectionEyebrowClass, SectionIntro } from "./shared";
 
 export function ProgrammeFundingSection() {
-  const [activeProgramme, setActiveProgramme] = useState<ProgrammeKey>("Marketing");
-  const programme = programmeData[activeProgramme];
-  const details = programmeFundingDetails[activeProgramme];
+  const cms = useCmsBindings(["funding"]);
+  const cmsValues = cms.resolve({ programmeData, programmeFundingDetails });
 
-  return (
+  const [activeProgramme, setActiveProgramme] = useState<ProgrammeKey>("Marketing");
+  const programme = cmsValues.programmeData[activeProgramme];
+  const details = cmsValues.programmeFundingDetails[activeProgramme];
+
+  return cms.render((
     <section className={sectionClass} id="programme-funding">
       <div className={containerClass}>
         <SectionIntro eyebrow="Programme funding" title="See what applies to your programme" copy="Funding, professional qualifications and additional KBC benefits vary by programme." />
         <div className="grid grid-cols-3 border-b border-[#e8e0ef]" role="tablist">
-          {(Object.keys(programmeData) as ProgrammeKey[]).map((key) => (
+          {(Object.keys(cmsValues.programmeData) as ProgrammeKey[]).map((key) => (
             <button key={key} onClick={() => setActiveProgramme(key)} className={`min-h-[60px] min-w-0 cursor-pointer border-0 border-b-[3px] border-transparent bg-transparent px-3 py-2 text-sm font-semibold leading-snug text-[#766d7c] max-[500px]:px-1.5 max-[500px]:text-xs ${activeProgramme === key ? "border-[#401b8c] text-[#401b8c]" : ""}`} aria-selected={activeProgramme === key} role="tab" type="button">{key}</button>
           ))}
         </div>
@@ -45,5 +49,5 @@ export function ProgrammeFundingSection() {
         </div>
       </div>
     </section>
-  );
+  ));
 }

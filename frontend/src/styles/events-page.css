@@ -79,14 +79,6 @@
 .events-series__block h3 { margin-top: 14px; color: #fff; font-size: clamp(24px, 2vw, 30px); line-height: 1.25; }
 .events-series__block p { margin-top: 12px; color: rgba(255,255,255,.74); font-size: 16px; line-height: 1.65; }
 
-/* Who our events support */
-.events-audience-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-.events-audience-card { display: flex; min-height: 230px; flex-direction: column; padding: 30px; border-radius: 12px; background: #f8f6fa; }
-.events-audience-card__icon { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 10px; background: var(--events-purple); color: var(--figma-gold); }
-.events-audience-card__icon svg { width: 18px; height: 18px; }
-.events-audience-card h3 { margin-top: 20px; font-size: 22px; line-height: 1.25; }
-.events-audience-card p { margin-top: 10px; color: var(--figma-muted); font-size: 15px; line-height: 1.65; }
-
 /* Registration */
 .events-register { text-align: center; }
 .events-register .figma-section-heading { margin-inline: auto; text-align: center; }
@@ -96,7 +88,6 @@
 @media (max-width: 1180px) {
   .events-grid { grid-template-columns: repeat(2, 1fr); }
   .events-series__grid { grid-template-columns: 1fr; }
-  .events-audience-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 820px) {
@@ -106,7 +97,6 @@
 
 @media (max-width: 560px) {
   .events-grid { grid-template-columns: 1fr; }
-  .events-audience-grid { grid-template-columns: 1fr; }
   .events-strip__inner { flex-direction: column; align-items: flex-start; }
   .events-register__actions { flex-direction: column; align-items: stretch; }
   .events-tabs { width: 100%; }

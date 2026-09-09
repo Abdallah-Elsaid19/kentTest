@@ -1,29 +1,10 @@
+import { useHomeSection } from "../contentContext";
 import { FigmaSectionHeading } from "@/components/ui/FigmaSectionHeading";
 
-const journeySteps = [
-  {
-    number: "01",
-    title: "Check your fit",
-    description: "Confirm your current role, experience, eligibility and preferred professional direction.",
-  },
-  {
-    number: "02",
-    title: "Choose the right programme",
-    description: "Match your responsibilities and goals with the appropriate apprenticeship level.",
-  },
-  {
-    number: "03",
-    title: "Learn and apply",
-    description: "Combine live learning, coaching and workplace activities connected to your job.",
-  },
-  {
-    number: "04",
-    title: "Demonstrate progress",
-    description: "Build evidence, prepare for assessment and continue towards professional recognition.",
-  },
-];
-
 export function AppliedLearningSection() {
+  const content = useHomeSection("applied");
+  const { journeySteps } = content;
+
   return (
     <section className="figma-applied-learning" aria-labelledby="applied-learning-title">
       <img
@@ -37,9 +18,9 @@ export function AppliedLearningSection() {
         <div className="figma-applied-learning__heading">
           <FigmaSectionHeading
             id="applied-learning-title"
-            eyebrow="Applied learning"
-            title="Learn with experts Apply it at work."
-            description="A clear journey from application to progression."
+            eyebrow={content.copy.eyebrow}
+            title={content.copy.title}
+            description={content.copy.description}
             align="center"
           />
         </div>

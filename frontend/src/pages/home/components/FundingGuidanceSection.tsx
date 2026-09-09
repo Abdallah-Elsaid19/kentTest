@@ -1,7 +1,10 @@
+import { useHomeSection } from "../contentContext";
 import { ArrowLink, NavigationButton } from "@/components/navigation";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 
 export function FundingGuidanceSection() {
+  const content = useHomeSection("funding");
+
   return (
     <section className="bg-white py-16 sm:py-20 lg:py-28" id="funding" aria-labelledby="funding-title">
       <div className="mx-auto w-full max-w-[1240px] px-5 sm:px-8 lg:px-10">
@@ -14,15 +17,15 @@ export function FundingGuidanceSection() {
             aria-hidden="true"
           />
           <div>
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#F5C94F]">Your next step</p>
-            <h2 className="mt-5 max-w-[760px] text-4xl font-semibold leading-[1.02] tracking-[-0.04em] text-white sm:text-5xl lg:text-6xl" id="funding-title">Ready to build what comes{"\u00A0"}next?</h2>
-            <p className="mt-6 max-w-[720px] text-sm leading-7 text-white/65 sm:text-base">Find the professional programme, funding route or development option that fits you or your organisation.</p>
-            <small className="mt-8 block text-xs leading-relaxed text-white/50 sm:text-sm">For professionals and employers · Funding subject to eligibility and availability</small>
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#F5C94F]">{content.copy.paragraph}</p>
+            <h2 className="mt-5 max-w-[760px] text-4xl font-semibold leading-[1.02] tracking-[-0.04em] text-white sm:text-5xl lg:text-6xl" id="funding-title">{content.copy.heading}{"\u00A0"}{content.copy.heading2}</h2>
+            <p className="mt-6 max-w-[720px] text-sm leading-7 text-white/65 sm:text-base">{content.copy.paragraph2}</p>
+            <small className="mt-8 block text-xs leading-relaxed text-white/50 sm:text-sm">{content.copy.note}</small>
           </div>
           <div className="mt-9 grid gap-3 lg:mt-0">
-            <NavigationButton className="w-full justify-between px-6" to="#programmes" variant="accent">Find your programme <ArrowRight className="size-4" aria-hidden="true" /></NavigationButton>
-            <NavigationButton className="w-full justify-between px-6" to="/book-session" variant="inverse">Book an information session <ArrowUpRight className="size-4" aria-hidden="true" /></NavigationButton>
-            <ArrowLink className="w-full justify-between px-6 py-3 text-sm font-semibold" to="/eligibility" direction="up-right" tone="inverse">Check eligibility &amp; funding</ArrowLink>
+            <NavigationButton className="w-full justify-between px-6" to={content.copy.to} variant="accent">{content.copy.linkLabel}<ArrowRight className="size-4" aria-hidden="true" /></NavigationButton>
+            <NavigationButton className="w-full justify-between px-6" to={content.copy.to2} variant="inverse">{content.copy.linkLabel2}<ArrowUpRight className="size-4" aria-hidden="true" /></NavigationButton>
+            <ArrowLink className="w-full justify-between px-6 py-3 text-sm font-semibold" to={content.copy.to3} direction="up-right" tone="inverse">{content.copy.linkLabel3}</ArrowLink>
           </div>
         </div>
       </div>

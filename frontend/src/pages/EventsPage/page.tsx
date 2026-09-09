@@ -1,3 +1,4 @@
+import { useCmsBindings } from "@/features/cms/publicContent";
 import "@/styles/events-page.css";
 
 import { environment } from "@/app/environment";
@@ -14,14 +15,16 @@ import { RegistrationSection } from "./components/RegistrationSection";
 import { UpcomingEventsSection } from "./components/UpcomingEventsSection";
 
 export default function EventsPage() {
+  const cms = useCmsBindings(["events"]);
+
   const upcoming = useEvents("?status=upcoming&perPage=13");
   const schema = (upcoming.data?.items || []).slice(0, 10).map((event) => buildEventSchema(event, environment.VITE_SITE_URL));
 
-  return (
+  return cms.render((
     <div className="kbc-figma-home events-page overflow-hidden">
       <RouteMeta
-        fallbackTitle="Events | Kent Business College"
-        fallbackDescription="Workshops, information sessions, masterclasses and networking events from Kent Business College across Project Management, Project Controls, Marketing and Leadership."
+        fallbackTitle={cms.text("events.pages_events_page_page_events_page.fallback_title_001")}
+        fallbackDescription={cms.text("events.pages_events_page_page_events_page.fallback_description_002")}
         seo={schema.length ? { schema } : undefined}
       />
       <EventsHero />
@@ -33,5 +36,5 @@ export default function EventsPage() {
       <RegistrationSection />
       <JoinConversationSection />
     </div>
-  );
+  ));
 }

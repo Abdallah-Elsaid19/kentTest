@@ -1,9 +1,11 @@
+import { useCmsBindings } from "@/features/cms/publicContent";
 import "@/styles/events-page.css";
 import "@/styles/event-detail-page.css";
 
 import DOMPurify from "dompurify";
 import { ArrowUpRight, CalendarDays, ChevronLeft, Clock3, Images, MapPin, Ticket, X } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { Link, useParams } from "react-router-dom";
 import { environment } from "@/app/environment";
 import { EventCountdown } from "@/components/common/EventCountdown";
@@ -61,7 +63,9 @@ function eventDateParts(event: Event) {
 }
 
 function EventDetailLoading() {
-  return (
+  const cms = useCmsBindings(["events"]);
+
+  return cms.render((
     <div className="event-detail-page kbc-figma-home" role="status" aria-live="polite">
       <section className="event-detail-hero">
         <div className="figma-shell event-detail-hero__grid animate-pulse motion-reduce:animate-none">
@@ -76,10 +80,13 @@ function EventDetailLoading() {
       </section>
       <span className="sr-only">Loading event details…</span>
     </div>
-  );
+  ));
 }
 
 export default function EventDetailPage() {
+  const cms = useCmsBindings(["events"]);
+  const cmsValues = cms.resolve({ FALLBACK_IMAGE });
+
   const query = useEvent(useParams().eventSlug || "");
   const [isMediaOpen, setIsMediaOpen] = useState(false);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
@@ -107,8 +114,8 @@ export default function EventDetailPage() {
     };
   }, [isMediaOpen]);
 
-  if (query.isLoading) return <EventDetailLoading />;
-  if (query.isError || !query.data) return <ErrorState message="Event not found." />;
+  if (query.isLoading) return cms.render(<EventDetailLoading />);
+  if (query.isError || !query.data) return cms.render(<ErrorState message="Event not found." />);
 
   const item = query.data;
   const date = eventDateParts(item);
@@ -122,14 +129,14 @@ export default function EventDetailPage() {
     schema: [...(item.seo?.schema || []), buildEventSchema(item, environment.VITE_SITE_URL)],
   };
 
-  return (
+  return cms.render((
     <>
       <RouteMeta seo={eventSeo} fallbackTitle={item.title} fallbackDescription={item.summary} />
       <div className="event-detail-page events-page kbc-figma-home">
         <section className="event-detail-hero" aria-labelledby="event-detail-title">
           <img
             className="event-detail-hero__background"
-            src={item.image?.url || FALLBACK_IMAGE}
+            src={item.image?.url || cmsValues.FALLBACK_IMAGE}
             alt=""
             aria-hidden="true"
             loading="lazy"
@@ -235,7 +242,7 @@ export default function EventDetailPage() {
           </div>
         </section>
 
-        {isMediaOpen ? (
+        {isMediaOpen ? createPortal(
           <div
             className="event-media-modal"
             onMouseDown={(event) => {
@@ -271,9 +278,10 @@ export default function EventDetailPage() {
                 ))}
               </div>
             </section>
-          </div>
+          </div>,
+          document.body,
         ) : null}
       </div>
     </>
-  );
+  ));
 }

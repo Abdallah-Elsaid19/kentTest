@@ -1,3 +1,4 @@
+import { useHomeSection } from "../contentContext";
 import {
   ArrowRight,
   CalendarCheck2,
@@ -6,56 +7,19 @@ import {
   HeartHandshake,
   UserRoundCheck,
   UsersRound,
-  type LucideIcon,
+
 } from "lucide-react";
 import { FigmaSectionHeading } from "@/components/ui/FigmaSectionHeading";
 
 type SupportItem = {
   title: string;
   description: string;
-  icon: LucideIcon;
+  icon: keyof typeof supportIcons;
   note?: string;
 };
 
-const supportItems: SupportItem[] = [
-  {
-    title: "Dedicated coaching",
-    description: "Regular guidance helps you connect learning to your responsibilities and maintain progress.",
-    note: "A coach connected to your professional role",
-    icon: UserRoundCheck,
-  },
-  {
-    title: "Progress reviews",
-    description: "Structured reviews bring learner, employer and coach together around development priorities.",
-    note: "Learner, employer and coach aligned",
-    icon: CalendarCheck2,
-  },
-  {
-    title: "Wellbeing support",
-    description: "Access guidance and support designed to help you manage learning alongside professional life.",
-    icon: HeartHandshake,
-  },
-  {
-    title: "Assessment preparation",
-    description: "Build evidence and prepare confidently for end-point or external assessment requirements.",
-    icon: ClipboardCheck,
-  },
-  {
-    title: "Professional community",
-    description: "Join masterclasses, events and networking opportunities with other working professionals.",
-    icon: UsersRound,
-  },
-  {
-    title: "Career progression",
-    description: "Understand how your programme connects to qualifications, membership and future professional routes.",
-    icon: ChartNoAxesColumnIncreasing,
-  },
-];
-
-const journey = ["Start", "Learn", "Review", "Evidence", "Progress"];
-
 function SupportCard({ item }: { item: SupportItem }) {
-  const Icon = item.icon;
+  const Icon = supportIcons[item.icon];
 
   return (
     <article className="group flex min-h-[250px] flex-col rounded-2xl border border-[#e4ddec] bg-[#fbf9fd] p-6 transition duration-300 hover:-translate-y-1 hover:border-primary/25 hover:bg-white hover:shadow-[0_18px_45px_rgba(39,14,73,0.1)] motion-reduce:transform-none motion-reduce:transition-none">
@@ -70,6 +34,9 @@ function SupportCard({ item }: { item: SupportItem }) {
 }
 
 export function SupportThroughoutSection() {
+  const content = useHomeSection("support");
+  const { supportItems, journey } = content;
+
   return (
     <section className="relative isolate overflow-hidden bg-white py-16 sm:py-20 lg:py-28" aria-labelledby="support-throughout-title">
       <img
@@ -85,9 +52,9 @@ export function SupportThroughoutSection() {
         <header className="mx-auto max-w-[900px]">
           <FigmaSectionHeading
             id="support-throughout-title"
-            eyebrow="Support throughout"
-            title="You are supported as a professional"
-            description="KBC combines structured programme delivery with individual guidance and workplace-focused development."
+            eyebrow={content.copy.eyebrow}
+            title={content.copy.title}
+            description={content.copy.description}
           />
         </header>
 
@@ -110,3 +77,5 @@ export function SupportThroughoutSection() {
     </section>
   );
 }
+
+const supportIcons = { UserRoundCheck, CalendarCheck2, HeartHandshake, ClipboardCheck, UsersRound, ChartNoAxesColumnIncreasing };

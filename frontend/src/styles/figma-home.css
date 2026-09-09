@@ -677,7 +677,7 @@
   transition: transform .2s ease, box-shadow .2s ease;
 }
 
-.figma-college-card:hover {
+a.figma-college-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 18px 36px rgba(24,13,29,.15);
 }
@@ -748,16 +748,18 @@
 
 .figma-college-card__category > span:first-child { color: #d3b141; }
 
-.figma-college-card__category i {
-  width: 24px;
-  height: 1px;
-  flex: 0 0 auto;
-  background: #d3b141;
+.figma-college-card__category {
+  padding-bottom: 14px;
+  margin-bottom: 0;
+}
+
+.figma-college-card__category::after {
+  border-top-color: #d3b141;
 }
 
 .figma-college-card.is-coral > p:first-of-type { color: rgba(75,23,55,.7); }
 .figma-college-card.is-coral .figma-college-card__category > span:first-child { color: #d95372; }
-.figma-college-card.is-coral .figma-college-card__category i { background: #d95372; }
+.figma-college-card.is-coral .figma-college-card__category::after { border-top-color: #d95372; }
 
 .figma-college-card h3 {
   margin-top: 45px;
@@ -1902,6 +1904,31 @@
 
 .figma-hero::after { display: none; }
 
+@keyframes experts-hero-person-enter {
+  from {
+    clip-path: inset(0 var(--expert-clip-from) 0 0);
+    opacity: 0;
+  }
+  to {
+    clip-path: inset(0 var(--expert-clip-to) 0 0);
+    opacity: 1;
+  }
+}
+
+.experts-hero-person {
+  animation: experts-hero-person-enter 1000ms cubic-bezier(.22, 1, .36, 1) both;
+  animation-delay: var(--expert-reveal-delay);
+  will-change: clip-path, opacity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .experts-hero-person {
+    animation: none;
+    clip-path: inset(0 var(--expert-clip-to) 0 0);
+    opacity: 1;
+  }
+}
+
 .figma-hero__grid { grid-template-columns: 1.05fr .95fr; gap: 82px; }
 .figma-hero__copy { max-width: 680px; }
 .figma-hero__eyebrow { position: relative; display: block; width: fit-content; padding-bottom: 16px; margin-bottom: 24px; font-size: 11px; letter-spacing: .16em; }
@@ -2225,6 +2252,7 @@
   background: #1c0d28;
 }
 
+.figma-hero__video-poster,
 .figma-hero__background-video,
 .figma-hero__video-overlay {
   position: absolute;
@@ -2233,10 +2261,18 @@
   height: 100%;
 }
 
+.figma-hero__video-poster,
 .figma-hero__background-video {
-  z-index: -3;
   object-fit: cover;
   object-position: center;
+}
+
+.figma-hero__video-poster { z-index: -4; }
+.figma-hero__background-video { z-index: -3; }
+.figma-hero__background-video--fade-in { opacity: 0; transition: opacity .2s ease; }
+.figma-hero__background-video--fade-in.is-playing { opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .figma-hero__background-video--fade-in { transition: none; }
 }
 
 .figma-hero__video-overlay {
@@ -2691,6 +2727,7 @@
   background: #fff;
   box-shadow: none;
   scroll-snap-align: start;
+  text-decoration: none;
   transition: border-color .25s ease;
 }
 
@@ -2724,6 +2761,11 @@
 
 .featured-programme-card:hover {
   border-color: color-mix(in srgb, var(--programme-accent) 38%, white);
+}
+
+.featured-programme-card:focus-visible {
+  outline: 3px solid var(--figma-purple);
+  outline-offset: -3px;
 }
 
 .featured-programme-card__number {
@@ -2794,7 +2836,7 @@
   line-height: 1.65;
 }
 
-.featured-programme-card > a {
+.featured-programme-card__cta {
   position: relative;
   z-index: 1;
   display: flex;
@@ -2808,7 +2850,7 @@
   font-weight: 700;
 }
 
-.featured-programme-card > a i {
+.featured-programme-card__cta i {
   display: grid;
   width: 42px;
   height: 42px;
@@ -2820,13 +2862,14 @@
   transition: background-color .2s ease, color .2s ease, transform .2s ease;
 }
 
-.featured-programme-card > a:hover i {
+.featured-programme-card:hover .featured-programme-card__cta i,
+.featured-programme-card:focus-visible .featured-programme-card__cta i {
   background: var(--figma-purple);
   color: #fff;
   transform: translate(2px, -2px);
 }
 
-.featured-programme-card > a svg { width: 17px; }
+.featured-programme-card__cta svg { width: 17px; }
 
 .figma-featured-programmes__all {
   display: flex;

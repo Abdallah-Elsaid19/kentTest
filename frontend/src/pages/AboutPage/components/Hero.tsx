@@ -1,3 +1,4 @@
+import { useCmsBindings } from "@/features/cms/publicContent";
 // Round 8: matches the landonorris.com hero composition — a single
 // full-bleed subject centered in the viewport, no title/paragraph/CTA copy
 // overlaid on it. #heroStage fills the entire hero (see .hero__stage in
@@ -7,17 +8,19 @@
 // animations/initHero3d.ts; the cursor "spill" fluid sim lives in animations/initFluidMask.ts —
 // both are booted from App.jsx after mount, see that file's useEffect.
 export default function Hero() {
-  return (
+  const cms = useCmsBindings(["about"]);
+
+  return cms.render((
     <header className="hero" id="top">
       <div className="hero-collapse" id="heroCollapse" aria-hidden="true">
         <div className="hero-collapse__marquee">
           <div className="hero-collapse__row hero-collapse__row--left">
-            <span>Kent Business College — Kent Business College — Kent Business College — Kent Business College — </span>
-            <span>Kent Business College — Kent Business College — Kent Business College — Kent Business College — </span>
+            <span>{cms.text("about.pages_about_page_components_hero_hero.text_001")}</span>
+            <span>{cms.text("about.pages_about_page_components_hero_hero.text_002")}</span>
           </div>
           <div className="hero-collapse__row hero-collapse__row--right">
-            <span>Kent Business College — Kent Business College — Kent Business College — Kent Business College — </span>
-            <span>Kent Business College — Kent Business College — Kent Business College — Kent Business College — </span>
+            <span>{cms.text("about.pages_about_page_components_hero_hero.text_003")}</span>
+            <span>{cms.text("about.pages_about_page_components_hero_hero.text_004")}</span>
           </div>
         </div>
       </div>
@@ -40,7 +43,7 @@ export default function Hero() {
                 is toggled by a double-click, so there is nothing left for a
                 permanent ghost layer to be revealed from. */}
             <canvas className="hero__fluidSim" id="heroFluidCanvas" aria-hidden="true"></canvas>
-            <canvas className="hero__bird" id="heroBird" role="img" aria-label="Kent Business College hero portrait — the IBIS bird"></canvas>
+            <canvas className="hero__bird" id="heroBird" role="img" aria-label={cms.text("about.pages_about_page_components_hero_hero.aria_label_005")}></canvas>
             {/* Round 51 — the second depth-mapped portrait, registered
                 exactly on top of the bird and revealed ONLY inside the
                 cursor's fluid blob, the way the old helmet was: see
@@ -54,18 +57,17 @@ export default function Hero() {
                 model finish loading — see initHero3d.ts -> noteLoadSettled(). */}
             <div className="hero__loading" id="heroLoading" aria-hidden="true">
               <span className="hero__loading-ring"></span>
-              <span className="hero__loading-label">Loading portrait…</span>
+              <span className="hero__loading-label">{cms.text("about.pages_about_page_components_hero_hero.text_006")}</span>
             </div>
             {/* Shown only if an asset genuinely fails to load — most
                 commonly opening the page via file:// instead of http(s). */}
             <div className="hero__load-notice" id="heroLoadNotice" aria-hidden="true">
-              Serve this folder over http(s) to preview the hero portrait — see README
-            </div>
+              {cms.text("about.pages_about_page_components_hero_hero.text_007")}</div>
           </div>
         </div>
         <div className="hero__goldOverlay" id="heroGoldOverlay" aria-hidden="true"></div>
       </div>
-      <div className="hero__scroll" id="heroScrollCue"><span>Scroll</span><span className="line"></span></div>
+      <div className="hero__scroll" id="heroScrollCue"><span>{cms.text("about.pages_about_page_components_hero_hero.text_008")}</span><span className="line"></span></div>
     </header>
-  );
+  ));
 }

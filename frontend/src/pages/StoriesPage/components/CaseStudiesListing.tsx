@@ -1,3 +1,4 @@
+import { useCmsBindings } from "@/features/cms/publicContent";
 import { useMemo, useState } from "react";
 import { Award, Eye, EyeOff, Linkedin } from "lucide-react";
 import { NavigationButton } from "@/components/navigation";
@@ -5,9 +6,11 @@ import { FigmaSectionHeading } from "@/components/ui/FigmaSectionHeading";
 import type { DisplayStory } from "../data";
 
 export function StoryCard({ story }: { story: DisplayStory }) {
+  const cms = useCmsBindings(["case_studies"]);
+
   const [showDescription, setShowDescription] = useState(false);
 
-  return (
+  return cms.render((
     <article className="group flex min-h-full flex-col gap-4 rounded-lg bg-white bg-[url('https://kentbusinesscollege.com/wp-content/uploads/2026/04/Group-212.png')] bg-cover bg-center p-4 shadow-[0_0_10px_rgba(0,0,0,.15)] transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-[0_0_12px_rgba(64,27,140,.48)] motion-reduce:transform-none motion-reduce:transition-none">
       <div className="relative flex aspect-[2/1] items-start justify-start overflow-hidden">
         <img
@@ -18,7 +21,7 @@ export function StoryCard({ story }: { story: DisplayStory }) {
           decoding="async"
         />
         <div className="absolute right-3 top-5 flex w-[38%] items-center justify-center sm:right-5 sm:top-7">
-          <img className="max-h-24 w-full object-contain" src="/assets/logos/kbc-logo.png" alt="Kent Business College" loading="lazy" decoding="async" />
+          <img className="max-h-24 w-full object-contain" src={cms.text("case_studies.pages_stories_page_components_case_studi_story_card.src_001")} alt={cms.text("case_studies.pages_stories_page_components_case_studi_story_card.alt_002")} loading="lazy" decoding="async" />
         </div>
       </div>
 
@@ -57,15 +60,16 @@ export function StoryCard({ story }: { story: DisplayStory }) {
             variant="secondary"
           >
             <Linkedin className="mr-2 h-4 w-4" aria-hidden="true" />
-            Linkedin
-          </NavigationButton>
+            {cms.text("case_studies.pages_stories_page_components_case_studi_story_card.text_003")}</NavigationButton>
         )}
       </div>
     </article>
-  );
+  ));
 }
 
 export function CaseStudiesListing({ stories, isRefreshing }: { stories: DisplayStory[]; isRefreshing?: boolean }) {
+  const cms = useCmsBindings(["case_studies"]);
+
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("all");
   const categories = useMemo(() => [...new Set(stories.map((story) => story.category))].sort(), [stories]);
@@ -78,34 +82,32 @@ export function CaseStudiesListing({ stories, isRefreshing }: { stories: Display
     });
   }, [category, search, stories]);
 
-  return (
+  return cms.render((
     <section className="bg-white !py-16 sm:!py-20 xl:!py-[118px]" id="case-studies" aria-labelledby="case-studies-title" aria-busy={isRefreshing}>
       <div className="figma-shell">
         <div className="grid items-end gap-6 lg:grid-cols-[minmax(0,1.2fr)_minmax(280px,.8fr)] lg:gap-16">
-          <FigmaSectionHeading id="case-studies-title" eyebrow="The learner perspective" title={<>Find the experience most relevant to your role and ambition.</>} align="left" />
-          <p className="max-w-xl text-base leading-7 text-kbc-dark-500">Search the current learner experiences by topic or name and explore how professional learning connects with workplace responsibility.</p>
+          <FigmaSectionHeading id="case-studies-title" eyebrow={cms.text("case_studies.pages_stories_page_components_case_studi_case_studies_listing.eyebrow_004")} title={<>{cms.text("case_studies.pages_stories_page_components_case_studi_case_studies_listing.text_005")}</>} align="left" />
+          <p className="max-w-xl text-base leading-7 text-kbc-dark-500">{cms.text("case_studies.pages_stories_page_components_case_studi_case_studies_listing.text_006")}</p>
         </div>
 
         <form className="mt-10 grid gap-4 rounded-2xl border border-kbc-purple-950/10 bg-kbc-purple-50 p-4 sm:grid-cols-[minmax(0,1fr)_260px] sm:p-5" onSubmit={(event) => event.preventDefault()} role="search">
-          <label className="text-sm font-semibold text-kbc-purple-950" htmlFor="story-search">Search stories
-            <input className="mt-2 min-h-12 w-full rounded-md border border-kbc-purple-950/15 bg-white px-4 text-sm font-normal text-kbc-purple-950 outline-none transition focus:border-kbc-purple-700 focus:ring-2 focus:ring-kbc-purple-200" id="story-search" type="search" value={search} onChange={(event) => setSearch(event.target.value)} placeholder="Search by learner, programme or theme" />
+          <label className="text-sm font-semibold text-kbc-purple-950" htmlFor="story-search">{cms.text("case_studies.pages_stories_page_components_case_studi_case_studies_listing.text_007")}<input className="mt-2 min-h-12 w-full rounded-md border border-kbc-purple-950/15 bg-white px-4 text-sm font-normal text-kbc-purple-950 outline-none transition focus:border-kbc-purple-700 focus:ring-2 focus:ring-kbc-purple-200" id="story-search" type="search" value={search} onChange={(event) => setSearch(event.target.value)} placeholder={cms.text("case_studies.pages_stories_page_components_case_studi_case_studies_listing.placeholder_008")} />
           </label>
-          <label className="text-sm font-semibold text-kbc-purple-950" htmlFor="story-category">Category
-            <select className="mt-2 min-h-12 w-full rounded-md border border-kbc-purple-950/15 bg-white px-4 text-sm font-normal text-kbc-purple-950 outline-none transition focus:border-kbc-purple-700 focus:ring-2 focus:ring-kbc-purple-200" id="story-category" value={category} onChange={(event) => setCategory(event.target.value)}>
-              <option value="all">All categories</option>
+          <label className="text-sm font-semibold text-kbc-purple-950" htmlFor="story-category">{cms.text("case_studies.pages_stories_page_components_case_studi_case_studies_listing.text_009")}<select className="mt-2 min-h-12 w-full rounded-md border border-kbc-purple-950/15 bg-white px-4 text-sm font-normal text-kbc-purple-950 outline-none transition focus:border-kbc-purple-700 focus:ring-2 focus:ring-kbc-purple-200" id="story-category" value={category} onChange={(event) => setCategory(event.target.value)}>
+              <option value="all">{cms.text("case_studies.pages_stories_page_components_case_studi_case_studies_listing.text_010")}</option>
               {categories.map((item) => <option value={item} key={item}>{item}</option>)}
             </select>
           </label>
         </form>
 
-        <p className="mt-4 text-sm text-kbc-dark-500" aria-live="polite">Showing {filteredStories.length} {filteredStories.length === 1 ? "story" : "stories"}</p>
+        <p className="mt-4 text-sm text-kbc-dark-500" aria-live="polite">{cms.text("case_studies.pages_stories_page_components_case_studi_case_studies_listing.text_011")}{filteredStories.length} {filteredStories.length === 1 ? "story" : "stories"}</p>
 
         {filteredStories.length ? (
           <div className="mt-8 grid gap-6 md:grid-cols-2">{filteredStories.map((story) => <StoryCard story={story} key={story.id} />)}</div>
         ) : (
-          <div className="mt-8 rounded-2xl border border-kbc-purple-950/10 bg-kbc-purple-50 p-8 text-center" role="status"><h2 className="text-3xl text-kbc-purple-950">No matching stories</h2><p className="mt-3 text-kbc-dark-500">Try a different search term or category.</p></div>
+          <div className="mt-8 rounded-2xl border border-kbc-purple-950/10 bg-kbc-purple-50 p-8 text-center" role="status"><h2 className="text-3xl text-kbc-purple-950">{cms.text("case_studies.pages_stories_page_components_case_studi_case_studies_listing.text_012")}</h2><p className="mt-3 text-kbc-dark-500">{cms.text("case_studies.pages_stories_page_components_case_studi_case_studies_listing.text_013")}</p></div>
         )}
       </div>
     </section>
-  );
+  ));
 }

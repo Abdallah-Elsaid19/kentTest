@@ -1,5 +1,7 @@
+import { useCmsBindings } from "@/features/cms/publicContent";
 import { RouteMeta } from "@/components/seo/RouteMeta";
 import { KbcExperienceSection } from "../home/components/KbcExperienceSection";
+import { FigmaTestimonialsSection } from "../home/components/FigmaTestimonialsSection";
 import { RecognitionStandardsSection } from "../home/components/RecognitionStandardsSection";
 import { TrustedOrganisations } from "../home/components/TrustedOrganisations";
 import { LearnerAudienceSection } from "./components/LearnerAudienceSection";
@@ -9,16 +11,16 @@ import { LearnerFundingSection } from "./components/LearnerFundingSection";
 import { LearnerHeroSection } from "./components/LearnerHeroSection";
 import { LearnerHowSection } from "./components/LearnerHowSection";
 import { LearnerProgrammesSection } from "./components/LearnerProgrammesSection";
-import { LearnerReviewsSection } from "./components/LearnerReviewsSection";
-import { LearnerStorySection } from "./components/LearnerStorySection";
 import { LearnerSupportSection } from "./components/LearnerSupportSection";
 
 export default function EmployersHomePage() {
-  return (
+  const cms = useCmsBindings(["employers"]);
+
+  return cms.render((
     <div className="overflow-hidden bg-white font-body text-[#17131d]">
       <RouteMeta
-        fallbackTitle="For Employers | Kent Business College"
-        fallbackDescription="Upskill your workforce with levy-funded apprenticeships and tailored professional development delivered flexibly around your business."
+        fallbackTitle={cms.text("employers.pages_employers_page_employers_home_page.fallback_title_001")}
+        fallbackDescription={cms.text("employers.pages_employers_page_employers_home_page.fallback_description_002")}
       />
       <LearnerHeroSection />
       <LearnerAudienceSection />
@@ -29,14 +31,13 @@ export default function EmployersHomePage() {
       <div className="kbc-figma-home">
         <KbcExperienceSection />
       </div>
-      <LearnerStorySection />
-      <LearnerReviewsSection />
       <div className="kbc-figma-home">
         <RecognitionStandardsSection />
         <TrustedOrganisations />
+        <FigmaTestimonialsSection />
       </div>
       <LearnerFaqSection />
       <LearnerFinalCta />
     </div>
-  );
+  ));
 }

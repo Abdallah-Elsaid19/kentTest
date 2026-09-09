@@ -1,3 +1,4 @@
+import { useCmsBindings } from "@/features/cms/publicContent";
 import { ArrowLeft, ArrowUpRight, Award, BriefcaseBusiness, Check, Linkedin } from "lucide-react";
 import { Link, Navigate, useParams } from "react-router-dom";
 import { NavigationButton } from "@/components/navigation";
@@ -5,19 +6,21 @@ import { RouteMeta } from "@/components/seo/RouteMeta";
 import { getExpert } from "@/pages/PeoplePage/data";
 
 export default function ExpertDetailPage() {
+  const cms = useCmsBindings(["experts"]);
+
   const { expertSlug } = useParams();
   const expert = getExpert(expertSlug);
 
-  if (!expert) return <Navigate to="/our-experts" replace />;
+  if (!expert) return cms.render(<Navigate to="/our-experts" replace />);
 
-  return (
+  return cms.render((
     <div className="kbc-figma-home overflow-hidden bg-white">
       <RouteMeta
         fallbackTitle={`${expert.name} | Our Experts | Kent Business College`}
         fallbackDescription={`${expert.name} — ${expert.role}. Discover their professional experience, expertise and contribution to Kent Business College.`}
       />
 
-      <section className="relative overflow-hidden bg-[#401B8C] px-5 pb-16 pt-[154px] text-white sm:pb-20 sm:pt-[170px] lg:pb-24">
+      <section className="kbc-page-hero-offset relative overflow-hidden bg-[#401B8C] px-5 pb-16 text-white sm:pb-20 lg:pb-24">
         <div className="pointer-events-none absolute -right-28 -top-20 h-[420px] w-[420px] rounded-full border border-white/10" aria-hidden="true" />
         <div className="pointer-events-none absolute right-10 top-36 h-64 w-64 rounded-full border border-kbc-gold-500/20" aria-hidden="true" />
         <div className="relative mx-auto max-w-6xl">
@@ -85,5 +88,5 @@ export default function ExpertDetailPage() {
         </div>
       </section>
     </div>
-  );
+  ));
 }

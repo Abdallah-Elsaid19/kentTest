@@ -1,9 +1,13 @@
+import { useCmsBindings } from "@/features/cms/publicContent";
 import { Star } from "lucide-react";
 import { FigmaSectionHeading } from "@/components/ui/FigmaSectionHeading";
 import { learnerStories } from "../data";
 
 export function LearnerStorySection() {
-  return (
+  const cms = useCmsBindings(["learners"]);
+  const cmsValues = cms.resolve({ learnerStories });
+
+  return cms.render((
     <section className="bg-[#f7f6f9] py-16 sm:py-20 lg:py-28" id="learner-stories" aria-labelledby="learner-story-title">
       <div className="mx-auto w-full max-w-[1240px] px-5 sm:px-8 lg:px-10">
         <div className="mx-auto max-w-[900px] [&_h2]:!font-serif [&_h2]:!font-normal">
@@ -11,7 +15,7 @@ export function LearnerStorySection() {
         </div>
 
         <div className="mt-12 grid auto-rows-fr gap-5 md:grid-cols-2 lg:mt-16 lg:grid-cols-3">
-          {learnerStories.map((story) => (
+          {cmsValues.learnerStories.map((story) => (
             <article className="flex min-h-[238px] flex-col rounded-2xl border border-[#e7e2eb] bg-white p-6 transition duration-300 hover:-translate-y-1 hover:border-primary/20 hover:shadow-[0_18px_45px_rgba(39,14,73,0.09)] motion-reduce:transform-none motion-reduce:transition-none sm:p-7" key={story.name}>
               <div className="flex gap-1 text-[#D5A20A]" aria-label="5 out of 5 stars">
                 {Array.from({ length: 5 }, (_, index) => (
@@ -28,5 +32,5 @@ export function LearnerStorySection() {
         </div>
       </div>
     </section>
-  );
+  ));
 }
