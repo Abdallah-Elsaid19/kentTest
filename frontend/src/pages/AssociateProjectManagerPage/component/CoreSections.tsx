@@ -1,3 +1,4 @@
+import { useCmsBindings } from "@/features/cms/publicContent";
 import { ArrowUpRight, Check, Sparkles } from "lucide-react";
 
 import { trustedOrganisationLogos } from "@/components/common/trustedLogos";
@@ -7,9 +8,12 @@ import { SectionHeading } from "./SectionHeading";
 import { section, shell } from "./layout";
 
 export function TrustedSection() {
-  return (
+  const cms = useCmsBindings(["partners","programme_apm_l4"]);
+  const cmsValues = cms.resolve({ section, shell, trustedOrganisationLogos, trustFacts });
+
+  return cms.render((
     <section className="bg-kbc-purple-50 py-14 sm:py-16" aria-labelledby="apm-trusted-title">
-      <div className={shell}>
+      <div className={cmsValues.shell}>
         <SectionHeading
           id="apm-trusted-title"
           eyebrow="Trusted by leading organisations"
@@ -18,26 +22,29 @@ export function TrustedSection() {
           centered
         />
         <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-6">
-          {trustedOrganisationLogos.slice(0, 12).map((logo) => (
+          {cmsValues.trustedOrganisationLogos.slice(0, 12).map((logo) => (
             <div className="flex min-h-24 items-center justify-center rounded-2xl border border-kbc-purple-100 bg-white p-4" key={logo.name}>
               <img src={logo.image} alt={logo.name} loading="lazy" decoding="async" className="max-h-12 max-w-full object-contain" />
             </div>
           ))}
         </div>
         <ul className="mt-10 flex flex-wrap justify-center gap-2" aria-label="Programme summary">
-          {trustFacts.map((fact) => (
+          {cmsValues.trustFacts.map((fact) => (
             <li className="rounded-full border border-kbc-purple-200 bg-white px-4 py-2 text-xs font-semibold text-kbc-purple-800" key={fact}>{fact}</li>
           ))}
         </ul>
       </div>
     </section>
-  );
+  ));
 }
 
 export function AudienceSection() {
-  return (
-    <section id="audience" className={`${section} bg-white`} aria-labelledby="apm-audience-title">
-      <div className={`${shell} grid gap-12 lg:grid-cols-[.9fr_1.1fr] lg:gap-20`}>
+  const cms = useCmsBindings(["partners","programme_apm_l4"]);
+  const cmsValues = cms.resolve({ section, shell, audienceProfiles });
+
+  return cms.render((
+    <section id="audience" className={`${cmsValues.section} bg-white`} aria-labelledby="apm-audience-title">
+      <div className={`${cmsValues.shell} grid gap-12 lg:grid-cols-[.9fr_1.1fr] lg:gap-20`}>
         <div>
           <SectionHeading
             id="apm-audience-title"
@@ -51,7 +58,7 @@ export function AudienceSection() {
           </blockquote>
         </div>
         <div className="divide-y divide-kbc-purple-100 border-y border-kbc-purple-100">
-          {audienceProfiles.map((profile) => (
+          {cmsValues.audienceProfiles.map((profile) => (
             <article className="group grid grid-cols-[42px_1fr_auto] gap-4 py-7 sm:gap-6 sm:py-8" key={profile.number}>
               <span className="pt-1 text-sm font-bold text-primary">{profile.number}</span>
               <div>
@@ -66,13 +73,16 @@ export function AudienceSection() {
         </div>
       </div>
     </section>
-  );
+  ));
 }
 
 export function OutcomesSection() {
-  return (
-    <section id="outcomes" className={`${section} bg-kbc-purple-50`} aria-labelledby="apm-outcomes-title">
-      <div className={shell}>
+  const cms = useCmsBindings(["partners","programme_apm_l4"]);
+  const cmsValues = cms.resolve({ section, shell, capabilities });
+
+  return cms.render((
+    <section id="outcomes" className={`${cmsValues.section} bg-kbc-purple-50`} aria-labelledby="apm-outcomes-title">
+      <div className={cmsValues.shell}>
         <SectionHeading
           id="apm-outcomes-title"
           eyebrow="Workplace outcomes"
@@ -80,7 +90,7 @@ export function OutcomesSection() {
           description="A structured capability map built around the disciplines that matter in day-to-day project delivery."
         />
         <div className="mt-12 grid gap-px overflow-hidden rounded-3xl border border-kbc-purple-100 bg-kbc-purple-100 sm:grid-cols-2 lg:grid-cols-4">
-          {capabilities.map((capability) => (
+          {cmsValues.capabilities.map((capability) => (
             <article className="group min-h-56 bg-white p-6 transition hover:bg-kbc-gold-50 sm:p-7" key={capability.number}>
               <span className="text-xs font-bold text-primary">{capability.number}</span>
               <h3 className="mt-10 text-xl font-semibold text-kbc-purple-950">{capability.title}</h3>
@@ -91,14 +101,17 @@ export function OutcomesSection() {
         </div>
       </div>
     </section>
-  );
+  ));
 }
 
 export function AiSection() {
-  return (
-    <section className={`${section} relative isolate overflow-hidden bg-kbc-purple-950 text-white`} aria-labelledby="apm-ai-title">
+  const cms = useCmsBindings(["partners","programme_apm_l4"]);
+  const cmsValues = cms.resolve({ section, shell, aiLayers });
+
+  return cms.render((
+    <section className={`${cmsValues.section} relative isolate overflow-hidden bg-kbc-purple-950 text-white`} aria-labelledby="apm-ai-title">
       <div className="pointer-events-none absolute -right-40 -top-40 -z-10 size-[520px] rounded-full bg-primary/35 blur-3xl" aria-hidden="true" />
-      <div className={shell}>
+      <div className={cmsValues.shell}>
         <SectionHeading
           id="apm-ai-title"
           eyebrow="Project Management + AI"
@@ -107,7 +120,7 @@ export function AiSection() {
           inverse
         />
         <div className="mt-12 grid gap-5 lg:grid-cols-3">
-          {aiLayers.map((layer) => (
+          {cmsValues.aiLayers.map((layer) => (
             <article className="rounded-3xl border border-white/15 bg-white/[.06] p-6 backdrop-blur-sm sm:p-8" key={layer.number}>
               <div className="flex items-center gap-3">
                 <span className="grid size-10 shrink-0 place-items-center rounded-full border border-kbc-gold-500/45 text-xs font-bold text-kbc-gold-500">{layer.number}</span>
@@ -127,16 +140,19 @@ export function AiSection() {
         </p>
       </div>
     </section>
-  );
+  ));
 }
 
 export function CurriculumSection() {
-  return (
-    <section id="curriculum" className={`${section} bg-white`} aria-labelledby="apm-curriculum-title">
-      <div className={shell}>
+  const cms = useCmsBindings(["partners","programme_apm_l4"]);
+  const cmsValues = cms.resolve({ section, shell, curriculumPhases });
+
+  return cms.render((
+    <section id="curriculum" className={`${cmsValues.section} bg-white`} aria-labelledby="apm-curriculum-title">
+      <div className={cmsValues.shell}>
         <SectionHeading id="apm-curriculum-title" eyebrow="Programme content" title="What you study across the programme" />
         <ol className="mt-12 grid gap-5">
-          {curriculumPhases.map((phase) => (
+          {cmsValues.curriculumPhases.map((phase) => (
             <li className="grid gap-5 rounded-3xl border border-kbc-purple-100 bg-white p-6 shadow-[0_12px_32px_rgba(53,30,81,.05)] sm:grid-cols-[170px_1fr] sm:p-7" key={phase.phase}>
               <div className="flex items-center gap-4">
                 <span className="grid size-12 shrink-0 place-items-center rounded-full bg-primary text-sm font-bold text-white">{phase.phase}</span>
@@ -154,5 +170,5 @@ export function CurriculumSection() {
         </ol>
       </div>
     </section>
-  );
+  ));
 }

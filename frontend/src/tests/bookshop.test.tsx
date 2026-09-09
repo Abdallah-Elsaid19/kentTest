@@ -1,10 +1,12 @@
-import { renderToStaticMarkup } from "react-dom/server";
+import { bookCategories as categoryTemplates } from "@/pages/BookshopPage/data";
+import { resolvedFixture } from "./cmsFixtures";
+import { renderToStaticMarkup } from "./cmsFixtures";
 import { MemoryRouter } from "react-router-dom";
 import { describe, expect, it, vi } from "vitest";
 import BookshopPage from "@/pages/BookshopPage/page";
 import { BookDetails } from "@/pages/BookshopPage/component/BookDetails";
-import { books } from "@/pages/BookshopPage/data";
-import { filterBooks } from "@/pages/BookshopPage/catalogue";
+import { books as booksTemplate } from "@/pages/BookshopPage/data";
+import { filterBooks as filterBookData } from "@/pages/BookshopPage/catalogue";
 import source from "./fixtures/bookshop-source.html?raw";
 
 vi.mock("@/components/seo/RouteMeta", () => ({ RouteMeta: () => null }));
@@ -79,3 +81,7 @@ describe("Bookshop search and filters", () => {
     expect(filterBooks(books, "", "all")).toHaveLength(2);
   });
 });
+
+const { books } = resolvedFixture({ books: booksTemplate });
+
+const filterBooks: typeof filterBookData = (books, query, category) => filterBookData(books, query, category, resolvedFixture(categoryTemplates));

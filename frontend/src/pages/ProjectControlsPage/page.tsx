@@ -1,3 +1,4 @@
+import { useCmsBindings } from "@/features/cms/publicContent";
 import { FaqSection } from "@/components/common/FaqSection";
 import { NavigationButton } from "@/components/navigation";
 import { RouteMeta } from "@/components/seo/RouteMeta";
@@ -27,12 +28,15 @@ const faqSchema = {
 };
 
 export default function ProjectControlsPage() {
-  return (
+  const cms = useCmsBindings(["college_project_controls"]);
+  const cmsValues = cms.resolve({ faqSchema, faqCopy, projectControlsFaqs });
+
+  return cms.render((
     <div className="bg-white font-body text-[var(--color-ink)]">
       <RouteMeta
-        seo={{ schema: [faqSchema] }}
-        fallbackTitle="College of Project Controls and Project Management | Kent Business College"
-        fallbackDescription="Discover Kent Business College's College of Project Controls and Project Management — DfE-funded project management and project controls apprenticeships, from Associate Project Manager to Project Control Professional."
+        seo={{ schema: [cmsValues.faqSchema] }}
+        fallbackTitle={cms.text("college_project_controls.pages_project_controls_page_page_project_controls_page.fallback_title_001")}
+        fallbackDescription={cms.text("college_project_controls.pages_project_controls_page_page_project_controls_page.fallback_description_002")}
       />
       <HeroSection />
       <CollegePageNav />
@@ -58,13 +62,13 @@ export default function ProjectControlsPage() {
       </div>
       <FaqSection
         id="faq"
-        eyebrow={faqCopy.eyebrow}
-        title={faqCopy.title}
-        description={faqCopy.description}
-        items={projectControlsFaqs}
-        action={<NavigationButton className="!min-h-14 min-w-[230px] sm:!min-h-16" to="/book-session">{faqCopy.cta}</NavigationButton>}
+        eyebrow={cmsValues.faqCopy.eyebrow}
+        title={cmsValues.faqCopy.title}
+        description={cmsValues.faqCopy.description}
+        items={cmsValues.projectControlsFaqs}
+        action={<NavigationButton className="!min-h-14 min-w-[230px] sm:!min-h-16" to={cms.text("college_project_controls.pages_project_controls_page_page_project_controls_page.to_003")}>{cmsValues.faqCopy.cta}</NavigationButton>}
       />
       <FinalCTASection />
     </div>
-  );
+  ));
 }

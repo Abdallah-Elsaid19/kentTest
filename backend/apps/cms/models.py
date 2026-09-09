@@ -4,11 +4,27 @@ from django.db import models
 from apps.core.models import TimeStampedModel
 
 
+class ContentPage(TimeStampedModel):
+    """Page identity; editable sections retain the existing publication workflow."""
+
+    key = models.SlugField(max_length=100, unique=True)
+    title = models.CharField(max_length=200)
+    route = models.CharField(max_length=255, unique=True)
+    group = models.CharField(max_length=100)
+
+    class Meta:
+        ordering = ["group", "title"]
+
+    def __str__(self):
+        return self.title
+
+
 class ContentEntry(TimeStampedModel):
     """Working copy and live snapshot have independent publication lifecycles."""
 
     key = models.CharField(max_length=150, unique=True)
     page = models.CharField(max_length=100, db_index=True)
+    content_page = models.ForeignKey(ContentPage, null=True, on_delete=models.PROTECT, related_name="entries")
     section = models.CharField(max_length=100)
     title = models.CharField(max_length=200)
     sort_order = models.PositiveIntegerField(default=0)

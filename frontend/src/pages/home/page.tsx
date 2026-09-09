@@ -1,6 +1,8 @@
-import type { ComponentType } from "react";
+import { useEffect, type ComponentType } from "react";
+import { useOutletContext } from "react-router-dom";
+import type { MainLayoutOutletContext } from "@/components/layout/MainLayout";
 import { RouteMeta } from "@/components/seo/RouteMeta";
-import { LoadingState, ErrorState } from "@/components/ui/AsyncState";
+import { PageLoadingState, ErrorState } from "@/components/ui/AsyncState";
 import type { HomeDocument } from "@/features/cms/schema";
 import { usePublishedHome } from "@/features/cms/queries";
 import type { HomeSection } from "@/features/cms/homeTypes";
@@ -47,7 +49,11 @@ export function HomeSections({ content, preview = false }: { content: HomeDocume
 
 export default function HomePage() {
   const query = usePublishedHome();
-  if (query.isPending) return <LoadingState />;
+  const markPageReady = useOutletContext<MainLayoutOutletContext | null>()?.markPageReady;
+  useEffect(() => {
+    if (!query.isPending) markPageReady?.();
+  }, [markPageReady, query.isPending]);
+  if (query.isPending) return <PageLoadingState />;
   if (!query.data) return <div className="py-24"><ErrorState message="We couldn't load the Home page. Please try again." /><div className="text-center"><button type="button" className="rounded-xl bg-primary px-6 py-3 text-white" onClick={() => void query.refetch()}>Try again</button></div></div>;
   return <HomeSections content={query.data} />;
 }

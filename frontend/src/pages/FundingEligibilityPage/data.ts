@@ -21,86 +21,86 @@ import {
 } from "lucide-react";
 
 export const seo = {
-  title: "Funding & Eligibility | Kent Business College",
-  description: "Compare government-funded apprenticeships, KBC-funded professional benefits and IPC-supported Project Controls routes, then check your eligibility.",
+  title: ("{{cms:funding.pages_funding_eligibility_page_data_seo.title_001}}" as string),
+  description: ("{{cms:funding.pages_funding_eligibility_page_data_seo.description_002}}" as string),
 };
 
 export const fundingRoutes = [
   {
-    eyebrow: "Government funded",
-    title: "Complete professional programmes",
-    text: "Eligible employees can access structured workplace development through government-funded apprenticeship programmes.",
+    eyebrow: ("{{cms:funding.pages_funding_eligibility_page_data_funding_routes.eyebrow_003}}" as string),
+    title: ("{{cms:funding.pages_funding_eligibility_page_data_funding_routes.title_004}}" as string),
+    text: ("{{cms:funding.pages_funding_eligibility_page_data_funding_routes.text_005}}" as string),
     details: [
-      "Associate Project Manager — Level 4",
-      "Project Control Professional — Level 6",
-      "Marketing Executive — Level 4",
-      "Marketing Manager — Level 6",
+      ("{{cms:funding.pages_funding_eligibility_page_data_funding_routes.details_006}}" as string),
+      ("{{cms:funding.pages_funding_eligibility_page_data_funding_routes.details_007}}" as string),
+      ("{{cms:funding.pages_funding_eligibility_page_data_funding_routes.details_008}}" as string),
+      ("{{cms:funding.pages_funding_eligibility_page_data_funding_routes.details_009}}" as string),
     ],
-    note: "100% for levy payers · 95% for non-levy employers",
-    href: "#programme-funding",
+    note: ("{{cms:funding.pages_funding_eligibility_page_data_funding_routes.note_010}}" as string),
+    href: ("{{cms:funding.pages_funding_eligibility_page_data_funding_routes.href_011}}" as string),
   },
   {
-    eyebrow: "Kent Business College Fund",
-    title: "Additional professional investment",
-    text: "KBC separately funds selected benefits that sit outside Department for Education apprenticeship funding.",
+    eyebrow: ("{{cms:funding.pages_funding_eligibility_page_data_funding_routes.eyebrow_012}}" as string),
+    title: ("{{cms:funding.pages_funding_eligibility_page_data_funding_routes.title_013}}" as string),
+    text: ("{{cms:funding.pages_funding_eligibility_page_data_funding_routes.text_014}}" as string),
     details: [
-      "Professional qualifications and memberships",
-      "Professional exam support",
-      "Masterclasses and workshop travel",
-      "Graduation, recognition and progression",
+      ("{{cms:funding.pages_funding_eligibility_page_data_funding_routes.details_015}}" as string),
+      ("{{cms:funding.pages_funding_eligibility_page_data_funding_routes.details_016}}" as string),
+      ("{{cms:funding.pages_funding_eligibility_page_data_funding_routes.details_017}}" as string),
+      ("{{cms:funding.pages_funding_eligibility_page_data_funding_routes.details_018}}" as string),
     ],
-    note: "Selected benefits for the first 30 eligible learners",
-    href: "#kbc-fund-details",
+    note: ("{{cms:funding.pages_funding_eligibility_page_data_funding_routes.note_019}}" as string),
+    href: ("{{cms:funding.pages_funding_eligibility_page_data_funding_routes.href_020}}" as string),
   },
   {
-    eyebrow: "Project Controls commercial",
-    title: "Specialist development without the full programme",
-    text: "Access individual Project Controls modules or combine subjects into a broader professional-development plan.",
+    eyebrow: ("{{cms:funding.pages_funding_eligibility_page_data_funding_routes.eyebrow_021}}" as string),
+    title: ("{{cms:funding.pages_funding_eligibility_page_data_funding_routes.title_022}}" as string),
+    text: ("{{cms:funding.pages_funding_eligibility_page_data_funding_routes.text_023}}" as string),
     details: [
-      "One specialist module",
-      "Multiple connected modules",
-      "A broader Project Controls route",
-      "Flexible development for individuals or teams",
+      ("{{cms:funding.pages_funding_eligibility_page_data_funding_routes.details_024}}" as string),
+      ("{{cms:funding.pages_funding_eligibility_page_data_funding_routes.details_025}}" as string),
+      ("{{cms:funding.pages_funding_eligibility_page_data_funding_routes.details_026}}" as string),
+      ("{{cms:funding.pages_funding_eligibility_page_data_funding_routes.details_027}}" as string),
     ],
-    note: "50% or 75% IPC bursary support where applicable",
-    href: "#commercial-access",
+    note: ("{{cms:funding.pages_funding_eligibility_page_data_funding_routes.note_028}}" as string),
+    href: ("{{cms:funding.pages_funding_eligibility_page_data_funding_routes.href_029}}" as string),
   },
 ] as const;
 
 export const fundingNavItems = [
-  { id: "funding-overview", label: "Funding Overview" },
-  { id: "funding-routes", label: "Funded Programmes" },
-  { id: "programme-funding", label: "Programme Funding" },
-  { id: "kbc-fund-details", label: "KBC Fund" },
-  { id: "commercial-access", label: "Project Controls Commercial" },
-  { id: "eligibility", label: "Eligibility" },
-  { id: "employer-setup", label: "Employer Setup" },
-  { id: "funding-faqs", label: "FAQs" },
+  { id: "funding-overview", label: ("{{cms:funding.pages_funding_eligibility_page_data_funding_nav_items.label_030}}" as string) },
+  { id: "funding-routes", label: ("{{cms:funding.pages_funding_eligibility_page_data_funding_nav_items.label_031}}" as string) },
+  { id: "programme-funding", label: ("{{cms:funding.pages_funding_eligibility_page_data_funding_nav_items.label_032}}" as string) },
+  { id: "kbc-fund-details", label: ("{{cms:funding.pages_funding_eligibility_page_data_funding_nav_items.label_033}}" as string) },
+  { id: "commercial-access", label: ("{{cms:funding.pages_funding_eligibility_page_data_funding_nav_items.label_034}}" as string) },
+  { id: "eligibility", label: ("{{cms:funding.pages_funding_eligibility_page_data_funding_nav_items.label_035}}" as string) },
+  { id: "employer-setup", label: ("{{cms:funding.pages_funding_eligibility_page_data_funding_nav_items.label_036}}" as string) },
+  { id: "funding-faqs", label: ("{{cms:funding.pages_funding_eligibility_page_data_funding_nav_items.label_037}}" as string) },
 ] as const;
 
 export const fundingAudiences = [
   {
     id: "professionals",
-    tab: "For professionals",
-    eyebrow: "Professionals",
-    title: "Build on the experience you already have",
-    copy: "Develop role-relevant capability while remaining in work, apply learning directly to your responsibilities and progress towards relevant professional qualifications where included.",
-    points: ["Develop while working", "Build on existing professional experience", "Apply learning to real responsibilities", "Access eligible funded programmes", "Work towards relevant professional qualifications"],
-    cta: "Explore professional funding routes",
-    href: "#funding-routes",
-    image: "/assets/images/professional-pathway-training.png",
+    tab: ("{{cms:funding.pages_funding_eligibility_page_data_funding_audiences.tab_038}}" as string),
+    eyebrow: ("{{cms:funding.pages_funding_eligibility_page_data_funding_audiences.eyebrow_039}}" as string),
+    title: ("{{cms:funding.pages_funding_eligibility_page_data_funding_audiences.title_040}}" as string),
+    copy: ("{{cms:funding.pages_funding_eligibility_page_data_funding_audiences.copy_041}}" as string),
+    points: [("{{cms:funding.pages_funding_eligibility_page_data_funding_audiences.points_042}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_funding_audiences.points_043}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_funding_audiences.points_044}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_funding_audiences.points_045}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_funding_audiences.points_046}}" as string)],
+    cta: ("{{cms:funding.pages_funding_eligibility_page_data_funding_audiences.cta_047}}" as string),
+    href: ("{{cms:funding.pages_funding_eligibility_page_data_funding_audiences.href_048}}" as string),
+    image: ("{{cms:funding.pages_funding_eligibility_page_data_funding_audiences.image_049}}" as string),
     icon: UserCheck,
   },
   {
     id: "employers",
-    tab: "For employers",
-    eyebrow: "Employers",
-    title: "Develop capability where your organisation needs it",
-    copy: "Use professional development to strengthen existing talent, address capability gaps and align learning with current organisational priorities.",
-    points: ["Develop existing employees", "Address role-specific skills gaps", "Strengthen workforce capability", "Use eligible funding appropriately", "Connect learning directly to work"],
-    cta: "Explore employer funding",
-    href: "#funding-routes",
-    image: "/assets/images/professional-development-employers.png",
+    tab: ("{{cms:funding.pages_funding_eligibility_page_data_funding_audiences.tab_050}}" as string),
+    eyebrow: ("{{cms:funding.pages_funding_eligibility_page_data_funding_audiences.eyebrow_051}}" as string),
+    title: ("{{cms:funding.pages_funding_eligibility_page_data_funding_audiences.title_052}}" as string),
+    copy: ("{{cms:funding.pages_funding_eligibility_page_data_funding_audiences.copy_053}}" as string),
+    points: [("{{cms:funding.pages_funding_eligibility_page_data_funding_audiences.points_054}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_funding_audiences.points_055}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_funding_audiences.points_056}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_funding_audiences.points_057}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_funding_audiences.points_058}}" as string)],
+    cta: ("{{cms:funding.pages_funding_eligibility_page_data_funding_audiences.cta_059}}" as string),
+    href: ("{{cms:funding.pages_funding_eligibility_page_data_funding_audiences.href_060}}" as string),
+    image: ("{{cms:funding.pages_funding_eligibility_page_data_funding_audiences.image_061}}" as string),
     icon: BriefcaseBusiness,
   },
 ] as const;
@@ -110,71 +110,71 @@ export type FundingAudienceId = (typeof fundingAudiences)[number]["id"];
 export const fundingLayers = [
   {
     number: "01",
-    label: "Department for Education / government funding",
-    micro: "Core programme",
-    intro: "Supports eligible apprenticeship programme delivery.",
-    items: ["Apprenticeship tuition", "Programme delivery", "Tutoring services where identified as DfE funded", "Learning materials where identified as DfE funded", "Apprenticeship certificate where applicable"],
+    label: ("{{cms:funding.pages_funding_eligibility_page_data_funding_layers.label_062}}" as string),
+    micro: ("{{cms:funding.pages_funding_eligibility_page_data_funding_layers.micro_063}}" as string),
+    intro: ("{{cms:funding.pages_funding_eligibility_page_data_funding_layers.intro_064}}" as string),
+    items: [("{{cms:funding.pages_funding_eligibility_page_data_funding_layers.items_065}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_funding_layers.items_066}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_funding_layers.items_067}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_funding_layers.items_068}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_funding_layers.items_069}}" as string)],
     tone: "purple",
     icon: Landmark,
   },
   {
     number: "02",
-    label: "Kent Business College Fund",
-    micro: "Additional professional value",
-    intro: "Separately funds selected professional benefits beyond DfE funding.",
-    items: ["Professional memberships", "Registration fees", "Professional examination fees", "CIM-related professional qualification costs", "ChPP application / preparation support", "Relevant professional pathways", "Workshop travel", "Masterclasses", "Graduation", "Rewards", "Additional development opportunities"],
+    label: ("{{cms:funding.pages_funding_eligibility_page_data_funding_layers.label_070}}" as string),
+    micro: ("{{cms:funding.pages_funding_eligibility_page_data_funding_layers.micro_071}}" as string),
+    intro: ("{{cms:funding.pages_funding_eligibility_page_data_funding_layers.intro_072}}" as string),
+    items: [("{{cms:funding.pages_funding_eligibility_page_data_funding_layers.items_073}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_funding_layers.items_074}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_funding_layers.items_075}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_funding_layers.items_076}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_funding_layers.items_077}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_funding_layers.items_078}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_funding_layers.items_079}}" as string), "Masterclasses", "Graduation", "Rewards", ("{{cms:funding.pages_funding_eligibility_page_data_funding_layers.items_080}}" as string)],
     tone: "gold",
     icon: Sparkles,
   },
   {
     number: "03",
-    label: "IPC Project Controls commercial route",
-    micro: "Specialist access",
-    intro: "Specialist commercial Project Controls development supported by IPC bursaries.",
-    items: ["One Project Controls module", "Multiple Project Controls modules", "Specialist capability development", "Employer-funded commercial development", "IPC bursary support", "50% or 75% depending on the selected Project Controls module"],
+    label: ("{{cms:funding.pages_funding_eligibility_page_data_funding_layers.label_081}}" as string),
+    micro: ("{{cms:funding.pages_funding_eligibility_page_data_funding_layers.micro_082}}" as string),
+    intro: ("{{cms:funding.pages_funding_eligibility_page_data_funding_layers.intro_083}}" as string),
+    items: [("{{cms:funding.pages_funding_eligibility_page_data_funding_layers.items_084}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_funding_layers.items_085}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_funding_layers.items_086}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_funding_layers.items_087}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_funding_layers.items_088}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_funding_layers.items_089}}" as string)],
     tone: "neutral",
     icon: BadgePoundSterling,
   },
 ] as const;
 
 export const missionPillars = [
-  { icon: Landmark, title: "Government funding", text: "Supports eligible Level 4 and Level 6 apprenticeship programme delivery." },
-  { icon: Sparkles, title: "KBC Fund", text: "Supports selected additional professional benefits separately from government funding." },
-  { icon: BadgePoundSterling, title: "IPC Project Controls", text: "Supports eligible commercial modules through applicable IPC bursaries." },
+  { icon: Landmark, title: ("{{cms:funding.pages_funding_eligibility_page_data_mission_pillars.title_090}}" as string), text: ("{{cms:funding.pages_funding_eligibility_page_data_mission_pillars.text_091}}" as string) },
+  { icon: Sparkles, title: ("{{cms:funding.pages_funding_eligibility_page_data_mission_pillars.title_092}}" as string), text: ("{{cms:funding.pages_funding_eligibility_page_data_mission_pillars.text_093}}" as string) },
+  { icon: BadgePoundSterling, title: ("{{cms:funding.pages_funding_eligibility_page_data_mission_pillars.title_094}}" as string), text: ("{{cms:funding.pages_funding_eligibility_page_data_mission_pillars.text_095}}" as string) },
 ] as const;
 
 export const impactStats = [
-  ["100%", "Levy payer funding", "Eligible apprenticeship tuition"],
-  ["95%", "Non-levy funding", "With a 5% employer contribution"],
-  ["50%", "IPC bursary", "Select commercial modules"],
-  ["75%", "IPC bursary", "Maximum selected support"],
-  ["10", "KBC Fund places", "Per applicable cohort"],
-  ["10093689", "KBC UKPRN", "For the Apprenticeship Service"],
+  ["100%", ("{{cms:funding.pages_funding_eligibility_page_data_impact_stats.text_096}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_impact_stats.text_097}}" as string)],
+  ["95%", ("{{cms:funding.pages_funding_eligibility_page_data_impact_stats.text_098}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_impact_stats.text_099}}" as string)],
+  ["50%", ("{{cms:funding.pages_funding_eligibility_page_data_impact_stats.text_100}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_impact_stats.text_101}}" as string)],
+  ["75%", ("{{cms:funding.pages_funding_eligibility_page_data_impact_stats.text_102}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_impact_stats.text_103}}" as string)],
+  ["10", ("{{cms:funding.pages_funding_eligibility_page_data_impact_stats.text_104}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_impact_stats.text_105}}" as string)],
+  ["10093689", ("{{cms:funding.pages_funding_eligibility_page_data_impact_stats.text_106}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_impact_stats.text_107}}" as string)],
 ] as const;
 
 export const fundingTransitions = {
-  funded: ["Government-funded development", "Eligibility", "Employer participation", "Workplace capability"],
-  commercial: ["Alternative route", "Commercial Project Controls", "IPC bursary support", "Flexible capability"],
+  funded: [("{{cms:funding.pages_funding_eligibility_page_data_funding_transitions.funded_108}}" as string), "Eligibility", ("{{cms:funding.pages_funding_eligibility_page_data_funding_transitions.funded_109}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_funding_transitions.funded_110}}" as string)],
+  commercial: [("{{cms:funding.pages_funding_eligibility_page_data_funding_transitions.commercial_111}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_funding_transitions.commercial_112}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_funding_transitions.commercial_113}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_funding_transitions.commercial_114}}" as string)],
 } as const;
 
 export const programmeData = {
   Marketing: {
-    title: "Marketing professional programmes",
-    programmes: ["Marketing Executive — Level 4", "Marketing Manager — Level 6"],
-    copy: "Develop practical marketing capability through a complete, role-relevant professional programme.",
-    benefits: ["CIM Membership", "CIM Registration", "CIM Exam Fees", "Workshop travel", "Graduation ceremony", "Graduation rewards", "Laptop prize where applicable", "Private Health Care Insurance", "Travel to applicable London MasterClass events", "Cost of attending applicable KBC MasterClass events in London", "Diploma Level 7 in Strategy and Leadership for eligible learners", "Saturday morning Level 7 sessions where applicable", "No hidden costs"],
+    title: ("{{cms:funding.pages_funding_eligibility_page_data_programme_data.marketing_title_115}}" as string),
+    programmes: [("{{cms:funding.pages_funding_eligibility_page_data_programme_data.marketing_programmes_116}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_programme_data.marketing_programmes_117}}" as string)],
+    copy: ("{{cms:funding.pages_funding_eligibility_page_data_programme_data.marketing_copy_118}}" as string),
+    benefits: [("{{cms:funding.pages_funding_eligibility_page_data_programme_data.marketing_benefits_119}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_programme_data.marketing_benefits_120}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_programme_data.marketing_benefits_121}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_programme_data.marketing_benefits_122}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_programme_data.marketing_benefits_123}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_programme_data.marketing_benefits_124}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_programme_data.marketing_benefits_125}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_programme_data.marketing_benefits_126}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_programme_data.marketing_benefits_127}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_programme_data.marketing_benefits_128}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_programme_data.marketing_benefits_129}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_programme_data.marketing_benefits_130}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_programme_data.marketing_benefits_131}}" as string)],
   },
   "Project Controls": {
-    title: "Project Control Professional",
-    programmes: ["Project Control Professional — Level 6"],
-    copy: "Build integrated planning, cost, risk and control capability around live workplace responsibilities.",
-    benefits: ["Professional exam fees", "Professional memberships", "APM ChPP application support where applicable", "ChPP preparation", "ICostE / Certified Professional Cost Engineer pathways where applicable", "Membership fees", "Registration fees", "Exam fees", "Workshop travel", "Graduation ceremony", "Graduation rewards", "Laptop prize where applicable", "No hidden costs"],
+    title: ("{{cms:funding.pages_funding_eligibility_page_data_programme_data.project_controls_title_132}}" as string),
+    programmes: [("{{cms:funding.pages_funding_eligibility_page_data_programme_data.project_controls_programmes_133}}" as string)],
+    copy: ("{{cms:funding.pages_funding_eligibility_page_data_programme_data.project_controls_copy_134}}" as string),
+    benefits: [("{{cms:funding.pages_funding_eligibility_page_data_programme_data.project_controls_benefits_135}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_programme_data.project_controls_benefits_136}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_programme_data.project_controls_benefits_137}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_programme_data.project_controls_benefits_138}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_programme_data.project_controls_benefits_139}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_programme_data.project_controls_benefits_140}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_programme_data.project_controls_benefits_141}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_programme_data.project_controls_benefits_142}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_programme_data.project_controls_benefits_143}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_programme_data.project_controls_benefits_144}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_programme_data.project_controls_benefits_145}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_programme_data.project_controls_benefits_146}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_programme_data.project_controls_benefits_147}}" as string)],
   },
   "Project Management": {
-    title: "Associate Project Manager",
-    programmes: ["Associate Project Manager — Level 4"],
-    copy: "Strengthen project delivery, stakeholder engagement and governance through workplace-based development.",
-    benefits: ["Professional memberships", "Professional registration fees", "Professional examination support", "Workshop travel", "Graduation ceremony", "Graduation rewards", "Laptop prize where applicable", "No hidden costs"],
+    title: ("{{cms:funding.pages_funding_eligibility_page_data_programme_data.project_management_title_148}}" as string),
+    programmes: [("{{cms:funding.pages_funding_eligibility_page_data_programme_data.project_management_programmes_149}}" as string)],
+    copy: ("{{cms:funding.pages_funding_eligibility_page_data_programme_data.project_management_copy_150}}" as string),
+    benefits: [("{{cms:funding.pages_funding_eligibility_page_data_programme_data.project_management_benefits_151}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_programme_data.project_management_benefits_152}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_programme_data.project_management_benefits_153}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_programme_data.project_management_benefits_154}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_programme_data.project_management_benefits_155}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_programme_data.project_management_benefits_156}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_programme_data.project_management_benefits_157}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_programme_data.project_management_benefits_158}}" as string)],
   },
 } as const;
 
@@ -183,21 +183,21 @@ export type ProgrammeKey = keyof typeof programmeData;
 export const programmeFundingDetails = {
   Marketing: {
     contributions: [
-      { programme: "Marketing Manager Level 6", amount: "£450 total", alternative: "or £30 per month for 15 months" },
-      { programme: "Marketing Executive Level 4", amount: "£300" },
+      { programme: ("{{cms:funding.pages_funding_eligibility_page_data_programme_funding_details.marketing_contributions_programme_159}}" as string), amount: ("{{cms:funding.pages_funding_eligibility_page_data_programme_funding_details.marketing_contributions_amount_160}}" as string), alternative: ("{{cms:funding.pages_funding_eligibility_page_data_programme_funding_details.marketing_contributions_alternative_161}}" as string) },
+      { programme: ("{{cms:funding.pages_funding_eligibility_page_data_programme_funding_details.marketing_contributions_programme_162}}" as string), amount: "£300" },
     ],
-    fundedItems: ["Tutoring services", "Learning materials"],
-    qualifications: ["CIM Level 4 Certificate in Professional and Digital Marketing", "CIM Level 6 Diploma in Professional and Digital Marketing"],
+    fundedItems: [("{{cms:funding.pages_funding_eligibility_page_data_programme_funding_details.marketing_funded_items_163}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_programme_funding_details.marketing_funded_items_164}}" as string)],
+    qualifications: [("{{cms:funding.pages_funding_eligibility_page_data_programme_funding_details.marketing_qualifications_165}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_programme_funding_details.marketing_qualifications_166}}" as string)],
   },
   "Project Controls": {
-    contributions: [{ programme: "Project Control Professional Level 6", amount: "£1,350 total", alternative: "or £45 per month for 30 months" }],
-    fundedItems: ["Tutoring services", "Learning materials", "Apprenticeship certificate"],
-    qualifications: ["Operational professional route", "Strategic professional route", "Diploma Level 7 in Project Management", "Certified Level 6 in Project Management Office", "ChPP preparation and further professional progression"],
+    contributions: [{ programme: ("{{cms:funding.pages_funding_eligibility_page_data_programme_funding_details.project_controls_contributions_programme_167}}" as string), amount: ("{{cms:funding.pages_funding_eligibility_page_data_programme_funding_details.project_controls_contributions_amount_168}}" as string), alternative: ("{{cms:funding.pages_funding_eligibility_page_data_programme_funding_details.project_controls_contributions_alternative_169}}" as string) }],
+    fundedItems: [("{{cms:funding.pages_funding_eligibility_page_data_programme_funding_details.project_controls_funded_items_170}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_programme_funding_details.project_controls_funded_items_171}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_programme_funding_details.project_controls_funded_items_172}}" as string)],
+    qualifications: [("{{cms:funding.pages_funding_eligibility_page_data_programme_funding_details.project_controls_qualifications_173}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_programme_funding_details.project_controls_qualifications_174}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_programme_funding_details.project_controls_qualifications_175}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_programme_funding_details.project_controls_qualifications_176}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_programme_funding_details.project_controls_qualifications_177}}" as string)],
   },
   "Project Management": {
-    contributions: [{ programme: "Associate Project Manager Level 4", amount: "£350 total", alternative: "or £35 per month for 10 months" }],
-    fundedItems: ["£7,000 Department for Education", "£1,000 Kent Business College Fund", "£8,000 total programme package"],
-    qualifications: ["Associate Project Manager Level 4 workplace-development route", "Professional examination support", "Professional registration and membership support"],
+    contributions: [{ programme: ("{{cms:funding.pages_funding_eligibility_page_data_programme_funding_details.project_management_contributions_programme_178}}" as string), amount: ("{{cms:funding.pages_funding_eligibility_page_data_programme_funding_details.project_management_contributions_amount_179}}" as string), alternative: ("{{cms:funding.pages_funding_eligibility_page_data_programme_funding_details.project_management_contributions_alternative_180}}" as string) }],
+    fundedItems: [("{{cms:funding.pages_funding_eligibility_page_data_programme_funding_details.project_management_funded_items_181}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_programme_funding_details.project_management_funded_items_182}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_programme_funding_details.project_management_funded_items_183}}" as string)],
+    qualifications: [("{{cms:funding.pages_funding_eligibility_page_data_programme_funding_details.project_management_qualifications_184}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_programme_funding_details.project_management_qualifications_185}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_programme_funding_details.project_management_qualifications_186}}" as string)],
   },
 } as const satisfies Record<ProgrammeKey, {
   contributions: readonly { programme: string; amount: string; alternative?: string }[];
@@ -208,25 +208,25 @@ export const programmeFundingDetails = {
 export const programmeRouteOptions = [
   {
     tone: "dark",
-    eyebrow: "Route A · Government funded",
-    title: "Complete professional programme",
-    subtitle: "Project Control Professional — Level 6",
-    image: "/assets/images/professional-development-employers.png",
-    imageAlt: "Professionals discussing a complete development programme",
-    items: ["Complete structured programme", "Workplace-based learning", "Broader professional capability", "Professional qualifications where applicable", "Long-term progression"],
-    href: "#eligibility-checker",
-    cta: "Check eligibility",
+    eyebrow: ("{{cms:funding.pages_funding_eligibility_page_data_programme_route_options.eyebrow_187}}" as string),
+    title: ("{{cms:funding.pages_funding_eligibility_page_data_programme_route_options.title_188}}" as string),
+    subtitle: ("{{cms:funding.pages_funding_eligibility_page_data_programme_route_options.subtitle_189}}" as string),
+    image: ("{{cms:funding.pages_funding_eligibility_page_data_programme_route_options.image_190}}" as string),
+    imageAlt: ("{{cms:funding.pages_funding_eligibility_page_data_programme_route_options.image_alt_191}}" as string),
+    items: [("{{cms:funding.pages_funding_eligibility_page_data_programme_route_options.items_192}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_programme_route_options.items_193}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_programme_route_options.items_194}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_programme_route_options.items_195}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_programme_route_options.items_196}}" as string)],
+    href: ("{{cms:funding.pages_funding_eligibility_page_data_programme_route_options.href_197}}" as string),
+    cta: ("{{cms:funding.pages_funding_eligibility_page_data_programme_route_options.cta_198}}" as string),
   },
   {
     tone: "light",
-    eyebrow: "Route B · Commercial access",
-    title: "Project Controls modules",
-    subtitle: "Flexible specialist development with IPC support",
-    image: "/assets/images/professional-pathway-training.png",
-    imageAlt: "Specialist Project Controls development",
-    items: ["One capability or multiple subjects", "Targeted team development", "Flexible access", "No complete apprenticeship required"],
-    href: "#commercial-access",
-    cta: "Explore commercial options",
+    eyebrow: ("{{cms:funding.pages_funding_eligibility_page_data_programme_route_options.eyebrow_199}}" as string),
+    title: ("{{cms:funding.pages_funding_eligibility_page_data_programme_route_options.title_200}}" as string),
+    subtitle: ("{{cms:funding.pages_funding_eligibility_page_data_programme_route_options.subtitle_201}}" as string),
+    image: ("{{cms:funding.pages_funding_eligibility_page_data_programme_route_options.image_202}}" as string),
+    imageAlt: ("{{cms:funding.pages_funding_eligibility_page_data_programme_route_options.image_alt_203}}" as string),
+    items: [("{{cms:funding.pages_funding_eligibility_page_data_programme_route_options.items_204}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_programme_route_options.items_205}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_programme_route_options.items_206}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_programme_route_options.items_207}}" as string)],
+    href: ("{{cms:funding.pages_funding_eligibility_page_data_programme_route_options.href_208}}" as string),
+    cta: ("{{cms:funding.pages_funding_eligibility_page_data_programme_route_options.cta_209}}" as string),
   },
 ] as const;
 
@@ -239,120 +239,120 @@ type IconCard = {
 };
 
 export const kbcFundCards: readonly IconCard[] = [
-  { icon: Award, title: "Professional qualifications", text: "Go beyond programme completion with applicable professional recognition.", wide: true, items: ["Professional memberships", "Professional registration and exam fees", "Relevant CIM, APM, PMI and APMG support", "ChPP application and preparation", "ICostE pathways where applicable"] },
-  { icon: CalendarDays, title: "Masterclasses & professional events", text: "Access relevant masterclasses, networking and development events where included.", items: ["Applicable London MasterClass events", "KBC Saturday morning development sessions", "Professional workshops and networking", "Programme-specific guest sessions"] },
-  { icon: MapPin, title: "Travel support", text: "Support for applicable workshops across London, Kent and selected UK locations.", items: ["London", "Kent", "Birmingham", "Derby", "Manchester", "Nottingham", "York"] },
-  { icon: GraduationCap, title: "Recognition", text: "Graduation, milestone recognition and a visible celebration of professional progress.", items: ["Graduation ceremony", "Rochester Cathedral where applicable", "Graduation rewards", "Laptop prize where applicable"] },
-  { icon: Route, title: "What comes next", text: "Programme-specific progression guidance and further professional-development opportunities.", items: ["Level 7 Strategy and Leadership where eligible", "Professional body progression", "Chartered-status preparation", "Further specialist development"] },
-  { icon: ShieldCheck, title: "Additional programme benefits", text: "Selected programme benefits designed to make professional development easier to complete.", items: ["Private health care insurance where included", "Learning and event support", "No hidden costs", "Benefits confirmed for the applicable programme and cohort"] },
+  { icon: Award, title: ("{{cms:funding.pages_funding_eligibility_page_data_kbc_fund_cards.title_210}}" as string), text: ("{{cms:funding.pages_funding_eligibility_page_data_kbc_fund_cards.text_211}}" as string), wide: true, items: [("{{cms:funding.pages_funding_eligibility_page_data_kbc_fund_cards.items_212}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_kbc_fund_cards.items_213}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_kbc_fund_cards.items_214}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_kbc_fund_cards.items_215}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_kbc_fund_cards.items_216}}" as string)] },
+  { icon: CalendarDays, title: ("{{cms:funding.pages_funding_eligibility_page_data_kbc_fund_cards.title_217}}" as string), text: ("{{cms:funding.pages_funding_eligibility_page_data_kbc_fund_cards.text_218}}" as string), items: [("{{cms:funding.pages_funding_eligibility_page_data_kbc_fund_cards.items_219}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_kbc_fund_cards.items_220}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_kbc_fund_cards.items_221}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_kbc_fund_cards.items_222}}" as string)] },
+  { icon: MapPin, title: ("{{cms:funding.pages_funding_eligibility_page_data_kbc_fund_cards.title_223}}" as string), text: ("{{cms:funding.pages_funding_eligibility_page_data_kbc_fund_cards.text_224}}" as string), items: ["London", "Kent", "Birmingham", "Derby", "Manchester", "Nottingham", "York"] },
+  { icon: GraduationCap, title: ("{{cms:funding.pages_funding_eligibility_page_data_kbc_fund_cards.title_225}}" as string), text: ("{{cms:funding.pages_funding_eligibility_page_data_kbc_fund_cards.text_226}}" as string), items: [("{{cms:funding.pages_funding_eligibility_page_data_kbc_fund_cards.items_227}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_kbc_fund_cards.items_228}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_kbc_fund_cards.items_229}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_kbc_fund_cards.items_230}}" as string)] },
+  { icon: Route, title: ("{{cms:funding.pages_funding_eligibility_page_data_kbc_fund_cards.title_231}}" as string), text: ("{{cms:funding.pages_funding_eligibility_page_data_kbc_fund_cards.text_232}}" as string), items: [("{{cms:funding.pages_funding_eligibility_page_data_kbc_fund_cards.items_233}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_kbc_fund_cards.items_234}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_kbc_fund_cards.items_235}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_kbc_fund_cards.items_236}}" as string)] },
+  { icon: ShieldCheck, title: ("{{cms:funding.pages_funding_eligibility_page_data_kbc_fund_cards.title_237}}" as string), text: ("{{cms:funding.pages_funding_eligibility_page_data_kbc_fund_cards.text_238}}" as string), items: [("{{cms:funding.pages_funding_eligibility_page_data_kbc_fund_cards.items_239}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_kbc_fund_cards.items_240}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_kbc_fund_cards.items_241}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_kbc_fund_cards.items_242}}" as string)] },
 ];
 
 export const commercialAccessOptions = [
-  { icon: Target, title: "One module", text: "Focus on one immediate capability gap." },
-  { icon: Layers3, title: "Multiple modules", text: "Connect several related Project Controls subjects." },
-  { icon: Route, title: "Broader route", text: "Build a more comprehensive specialist plan." },
+  { icon: Target, title: ("{{cms:funding.pages_funding_eligibility_page_data_commercial_access_options.title_243}}" as string), text: ("{{cms:funding.pages_funding_eligibility_page_data_commercial_access_options.text_244}}" as string) },
+  { icon: Layers3, title: ("{{cms:funding.pages_funding_eligibility_page_data_commercial_access_options.title_245}}" as string), text: ("{{cms:funding.pages_funding_eligibility_page_data_commercial_access_options.text_246}}" as string) },
+  { icon: Route, title: ("{{cms:funding.pages_funding_eligibility_page_data_commercial_access_options.title_247}}" as string), text: ("{{cms:funding.pages_funding_eligibility_page_data_commercial_access_options.text_248}}" as string) },
 ] as const;
 
-export const commercialCapabilities = ["Planning", "Scheduling", "Cost", "Earned Value", "Risk", "PMO", "Reporting", "Portfolio Management"] as const;
+export const commercialCapabilities = ["Planning", "Scheduling", "Cost", ("{{cms:funding.pages_funding_eligibility_page_data_commercial_capabilities.text_249}}" as string), "Risk", "PMO", "Reporting", ("{{cms:funding.pages_funding_eligibility_page_data_commercial_capabilities.text_250}}" as string)] as const;
 
 export const alternativeRouteOptions = [
   {
-    eyebrow: "General professional development",
-    title: "Speak to KBC about the most appropriate route",
-    copy: "For Marketing, Project Management, Leadership or other professional-development needs, the KBC team can help identify an appropriate programme or commercial option where available.",
+    eyebrow: ("{{cms:funding.pages_funding_eligibility_page_data_alternative_route_options.eyebrow_251}}" as string),
+    title: ("{{cms:funding.pages_funding_eligibility_page_data_alternative_route_options.title_252}}" as string),
+    copy: ("{{cms:funding.pages_funding_eligibility_page_data_alternative_route_options.copy_253}}" as string),
     items: [] as readonly string[],
-    cta: "Discuss your development needs",
-    href: "/book-session",
+    cta: ("{{cms:funding.pages_funding_eligibility_page_data_alternative_route_options.cta_254}}" as string),
+    href: ("{{cms:funding.pages_funding_eligibility_page_data_alternative_route_options.href_255}}" as string),
     dark: false,
   },
   {
-    eyebrow: "Project Controls",
-    title: "Choose specialist Project Controls development",
-    copy: "Commercial module access can support experienced professionals and employers when a DfE-funded apprenticeship is not the right fit.",
-    items: ["One module", "Multiple modules", "Broader Project Controls route", "Employer-funded development", "Experienced practitioner development"],
-    cta: "Explore IPC-supported Project Controls",
-    href: "https://instituteofprojectcontrols.com/scholarships",
+    eyebrow: ("{{cms:funding.pages_funding_eligibility_page_data_alternative_route_options.eyebrow_256}}" as string),
+    title: ("{{cms:funding.pages_funding_eligibility_page_data_alternative_route_options.title_257}}" as string),
+    copy: ("{{cms:funding.pages_funding_eligibility_page_data_alternative_route_options.copy_258}}" as string),
+    items: [("{{cms:funding.pages_funding_eligibility_page_data_alternative_route_options.items_259}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_alternative_route_options.items_260}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_alternative_route_options.items_261}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_alternative_route_options.items_262}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_alternative_route_options.items_263}}" as string)],
+    cta: ("{{cms:funding.pages_funding_eligibility_page_data_alternative_route_options.cta_264}}" as string),
+    href: ("{{cms:funding.pages_funding_eligibility_page_data_alternative_route_options.href_265}}" as string),
     dark: true,
   },
 ] as const;
 
 export const availabilityItems = [
-  { icon: CalendarDays, title: "First-come, first-served", copy: "Places and benefits are allocated on a first-come, first-served basis subject to eligibility and availability.", tone: "gold" },
-  { icon: Users, title: "Limited KBC Fund benefits", copy: "Selected KBC Fund benefits may be limited to the first 30 eligible learners per applicable cohort.", tone: "purple" },
+  { icon: CalendarDays, title: ("{{cms:funding.pages_funding_eligibility_page_data_availability_items.title_266}}" as string), copy: ("{{cms:funding.pages_funding_eligibility_page_data_availability_items.copy_267}}" as string), tone: "gold" },
+  { icon: Users, title: ("{{cms:funding.pages_funding_eligibility_page_data_availability_items.title_268}}" as string), copy: ("{{cms:funding.pages_funding_eligibility_page_data_availability_items.copy_269}}" as string), tone: "purple" },
 ] as const;
 
 export const projectControlModules = [
-  { title: "Project Management & Delivery", copy: "Professional development across the structures, governance and controls required to deliver complex work.", items: ["Project Management Professional — PMI PMP", "APM Project Management Qualification", "Project Management Office", "Project Planning and Control"] },
-  { title: "Planning & Scheduling", copy: "Strengthen scheduling, planning and control capability across projects and programmes.", items: ["PMI Scheduling Professional — PMI-SP", "Project Planning and Control", "Relevant planning and scheduling development"] },
-  { title: "Cost & Earned Value", copy: "Develop stronger cost visibility, performance measurement and control.", items: ["Cost Engineering", "Earned Value Management", "Relevant APMG development"] },
-  { title: "Risk, Issue & Quality", copy: "Build more structured approaches to uncertainty, issues, quality and control.", items: ["Risk Management Level 1 & 2", "Risk, Issue and Quality Management", "Project governance"] },
-  { title: "Portfolio & Strategic Delivery", copy: "Develop capability beyond individual projects towards programme and portfolio-level decision-making.", items: ["Management of Portfolios", "Managing Successful Programmes", "PMO and strategic delivery"] },
-  { title: "Stakeholder, Communication & Reporting", copy: "Improve the quality of information, reporting and stakeholder decision support surrounding project performance.", items: ["Stakeholder Management", "Communications", "Reporting Systems"] },
-  { title: "Advanced Project Development", copy: "A senior, work-aligned route for experienced practitioners seeking broader strategic delivery capability.", badge: "Diploma Level 7", items: ["Advanced programme development", "Commercial and delivery leadership", "Strategic professional practice"] },
-  { title: "PMO Development", copy: "Develop the structures and reporting systems that keep projects, programmes and portfolios on track.", badge: "Certified Level 6 in PMO", items: ["PMO design and maturity", "Governance and assurance", "Benefits and performance reporting"] },
-  { title: "Professional Progression", copy: "A clear view of how module learning connects to recognised professional development.", items: ["ChPP, APM, PMI, APMG and ICostE pathways", "Professional exams and qualifications", "Membership and chartered progression"] },
+  { title: ("{{cms:funding.pages_funding_eligibility_page_data_project_control_modules.title_270}}" as string), copy: ("{{cms:funding.pages_funding_eligibility_page_data_project_control_modules.copy_271}}" as string), items: [("{{cms:funding.pages_funding_eligibility_page_data_project_control_modules.items_272}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_project_control_modules.items_273}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_project_control_modules.items_274}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_project_control_modules.items_275}}" as string)] },
+  { title: ("{{cms:funding.pages_funding_eligibility_page_data_project_control_modules.title_276}}" as string), copy: ("{{cms:funding.pages_funding_eligibility_page_data_project_control_modules.copy_277}}" as string), items: [("{{cms:funding.pages_funding_eligibility_page_data_project_control_modules.items_278}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_project_control_modules.items_279}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_project_control_modules.items_280}}" as string)] },
+  { title: ("{{cms:funding.pages_funding_eligibility_page_data_project_control_modules.title_281}}" as string), copy: ("{{cms:funding.pages_funding_eligibility_page_data_project_control_modules.copy_282}}" as string), items: [("{{cms:funding.pages_funding_eligibility_page_data_project_control_modules.items_283}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_project_control_modules.items_284}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_project_control_modules.items_285}}" as string)] },
+  { title: ("{{cms:funding.pages_funding_eligibility_page_data_project_control_modules.title_286}}" as string), copy: ("{{cms:funding.pages_funding_eligibility_page_data_project_control_modules.copy_287}}" as string), items: [("{{cms:funding.pages_funding_eligibility_page_data_project_control_modules.items_288}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_project_control_modules.items_289}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_project_control_modules.items_290}}" as string)] },
+  { title: ("{{cms:funding.pages_funding_eligibility_page_data_project_control_modules.title_291}}" as string), copy: ("{{cms:funding.pages_funding_eligibility_page_data_project_control_modules.copy_292}}" as string), items: [("{{cms:funding.pages_funding_eligibility_page_data_project_control_modules.items_293}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_project_control_modules.items_294}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_project_control_modules.items_295}}" as string)] },
+  { title: ("{{cms:funding.pages_funding_eligibility_page_data_project_control_modules.title_296}}" as string), copy: ("{{cms:funding.pages_funding_eligibility_page_data_project_control_modules.copy_297}}" as string), items: [("{{cms:funding.pages_funding_eligibility_page_data_project_control_modules.items_298}}" as string), "Communications", ("{{cms:funding.pages_funding_eligibility_page_data_project_control_modules.items_299}}" as string)] },
+  { title: ("{{cms:funding.pages_funding_eligibility_page_data_project_control_modules.title_300}}" as string), copy: ("{{cms:funding.pages_funding_eligibility_page_data_project_control_modules.copy_301}}" as string), badge: ("{{cms:funding.pages_funding_eligibility_page_data_project_control_modules.badge_302}}" as string), items: [("{{cms:funding.pages_funding_eligibility_page_data_project_control_modules.items_303}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_project_control_modules.items_304}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_project_control_modules.items_305}}" as string)] },
+  { title: ("{{cms:funding.pages_funding_eligibility_page_data_project_control_modules.title_306}}" as string), copy: ("{{cms:funding.pages_funding_eligibility_page_data_project_control_modules.copy_307}}" as string), badge: ("{{cms:funding.pages_funding_eligibility_page_data_project_control_modules.badge_308}}" as string), items: [("{{cms:funding.pages_funding_eligibility_page_data_project_control_modules.items_309}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_project_control_modules.items_310}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_project_control_modules.items_311}}" as string)] },
+  { title: ("{{cms:funding.pages_funding_eligibility_page_data_project_control_modules.title_312}}" as string), copy: ("{{cms:funding.pages_funding_eligibility_page_data_project_control_modules.copy_313}}" as string), items: [("{{cms:funding.pages_funding_eligibility_page_data_project_control_modules.items_314}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_project_control_modules.items_315}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_project_control_modules.items_316}}" as string)] },
 ] as const;
 
 export const eligibilityItems = [
-  { icon: Building2, title: "UK residency", copy: "UK resident for the past 3 years." },
-  { icon: ShieldCheck, title: "Right to work", copy: "Hold an eligible right-to-work status and meet current funding and immigration requirements." },
-  { icon: BookOpen, title: "Other funded training", copy: "Not enrolled in other government-funded training at the time of the programme." },
-  { icon: BriefcaseBusiness, title: "Paid employment in England", copy: "Paid employment, normally 30 or more hours per week, with a minimum of 16 hours where applicable. Self-employed individuals are not eligible for DfE funding." },
-  { icon: Landmark, title: "Employer support", copy: "Your employer must be based in England and registered with the Apprenticeship Service." },
-  { icon: MapPin, title: "Working in England", copy: "Spend at least 50% of your working hours within England." },
+  { icon: Building2, title: ("{{cms:funding.pages_funding_eligibility_page_data_eligibility_items.title_317}}" as string), copy: ("{{cms:funding.pages_funding_eligibility_page_data_eligibility_items.copy_318}}" as string) },
+  { icon: ShieldCheck, title: ("{{cms:funding.pages_funding_eligibility_page_data_eligibility_items.title_319}}" as string), copy: ("{{cms:funding.pages_funding_eligibility_page_data_eligibility_items.copy_320}}" as string) },
+  { icon: BookOpen, title: ("{{cms:funding.pages_funding_eligibility_page_data_eligibility_items.title_321}}" as string), copy: ("{{cms:funding.pages_funding_eligibility_page_data_eligibility_items.copy_322}}" as string) },
+  { icon: BriefcaseBusiness, title: ("{{cms:funding.pages_funding_eligibility_page_data_eligibility_items.title_323}}" as string), copy: ("{{cms:funding.pages_funding_eligibility_page_data_eligibility_items.copy_324}}" as string) },
+  { icon: Landmark, title: ("{{cms:funding.pages_funding_eligibility_page_data_eligibility_items.title_325}}" as string), copy: ("{{cms:funding.pages_funding_eligibility_page_data_eligibility_items.copy_326}}" as string) },
+  { icon: MapPin, title: ("{{cms:funding.pages_funding_eligibility_page_data_eligibility_items.title_327}}" as string), copy: ("{{cms:funding.pages_funding_eligibility_page_data_eligibility_items.copy_328}}" as string) },
 ] as const;
 
-export const eligibilityRequirements = ["Paid employment", "Employer participation", "Eligible residency", "Work in England", "Relevant workplace responsibilities"] as const;
+export const eligibilityRequirements = [("{{cms:funding.pages_funding_eligibility_page_data_eligibility_requirements.text_329}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_eligibility_requirements.text_330}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_eligibility_requirements.text_331}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_eligibility_requirements.text_332}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_eligibility_requirements.text_333}}" as string)] as const;
 
 export const checkerQuestions = [
-  { text: "Are you currently in paid employment?", answers: ["Yes", "No"] },
-  { text: "Have you been a UK resident for the past 3 years?", answers: ["Yes", "No", "Unsure"] },
-  { text: "Is your employer based in England?", answers: ["Yes", "No", "Self-employed"] },
-  { text: "Do you normally work 30 or more hours per week?", answers: ["Yes — 30 or more hours", "No — between 16 and 29 hours", "Less than 16 hours"] },
-  { text: "Do you spend at least 50% of your working hours within England?", answers: ["Yes", "No", "Unsure"] },
-  { text: "Are you currently enrolled in other government-funded training?", answers: ["No", "Yes"] },
-  { text: "Is your employer registered (or willing to register) with the Apprenticeship Service?", answers: ["Yes", "No", "Unsure"] },
-  { text: "Which area best describes your interest?", answers: ["Project Management", "Project Controls", "Marketing", "Not sure yet"] },
+  { text: ("{{cms:funding.pages_funding_eligibility_page_data_checker_questions.text_334}}" as string), answers: ["Yes", "No"] },
+  { text: ("{{cms:funding.pages_funding_eligibility_page_data_checker_questions.text_335}}" as string), answers: ["Yes", "No", "Unsure"] },
+  { text: ("{{cms:funding.pages_funding_eligibility_page_data_checker_questions.text_336}}" as string), answers: ["Yes", "No", "Self-employed"] },
+  { text: ("{{cms:funding.pages_funding_eligibility_page_data_checker_questions.text_337}}" as string), answers: [("{{cms:funding.pages_funding_eligibility_page_data_checker_questions.answers_338}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_checker_questions.answers_339}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_checker_questions.answers_340}}" as string)] },
+  { text: ("{{cms:funding.pages_funding_eligibility_page_data_checker_questions.text_341}}" as string), answers: ["Yes", "No", "Unsure"] },
+  { text: ("{{cms:funding.pages_funding_eligibility_page_data_checker_questions.text_342}}" as string), answers: ["No", "Yes"] },
+  { text: ("{{cms:funding.pages_funding_eligibility_page_data_checker_questions.text_343}}" as string), answers: ["Yes", "No", "Unsure"] },
+  { text: ("{{cms:funding.pages_funding_eligibility_page_data_checker_questions.text_344}}" as string), answers: [("{{cms:funding.pages_funding_eligibility_page_data_checker_questions.answers_345}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_checker_questions.answers_346}}" as string), "Marketing", ("{{cms:funding.pages_funding_eligibility_page_data_checker_questions.answers_347}}" as string)] },
 ] as const;
 
 export const employerSteps = [
-  { icon: Target, title: "Confirm the right programme", text: "Identify the employee, their responsibilities, development goals and the most relevant programme." },
-  { icon: FileCheck2, title: "Sign the digital contract", text: "Review the complete agreement and confirm the programme arrangements with KBC." },
-  { icon: Landmark, title: "Add KBC to the Apprenticeship Service", text: "Use your Government Gateway account to add Kent Business College as the training provider.", code: "KBC UKPRN · 10093689" },
-  { icon: UserCheck, title: "Continue the application", text: "KBC will guide the learner and employer through the remaining assessment and onboarding steps." },
+  { icon: Target, title: ("{{cms:funding.pages_funding_eligibility_page_data_employer_steps.title_348}}" as string), text: ("{{cms:funding.pages_funding_eligibility_page_data_employer_steps.text_349}}" as string) },
+  { icon: FileCheck2, title: ("{{cms:funding.pages_funding_eligibility_page_data_employer_steps.title_350}}" as string), text: ("{{cms:funding.pages_funding_eligibility_page_data_employer_steps.text_351}}" as string) },
+  { icon: Landmark, title: ("{{cms:funding.pages_funding_eligibility_page_data_employer_steps.title_352}}" as string), text: ("{{cms:funding.pages_funding_eligibility_page_data_employer_steps.text_353}}" as string), code: ("{{cms:funding.pages_funding_eligibility_page_data_employer_steps.code_354}}" as string) },
+  { icon: UserCheck, title: ("{{cms:funding.pages_funding_eligibility_page_data_employer_steps.title_355}}" as string), text: ("{{cms:funding.pages_funding_eligibility_page_data_employer_steps.text_356}}" as string) },
 ] as const;
 
-export const employerBenefits = ["Develop existing talent", "Address capability gaps", "Use available funding appropriately", "Connect learning to work", "Build longer-term capability"] as const;
+export const employerBenefits = [("{{cms:funding.pages_funding_eligibility_page_data_employer_benefits.text_357}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_employer_benefits.text_358}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_employer_benefits.text_359}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_employer_benefits.text_360}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_employer_benefits.text_361}}" as string)] as const;
 
 export const comparisonRoutes = [
-  { icon: Landmark, route: "Route 01", title: "Government-funded programme", best: "Eligible employees and employers", structure: "A complete workplace-based apprenticeship", funding: "Government-supported", objective: "Broader role-relevant professional capability", examples: "Marketing Executive L4, Marketing Manager L6, Associate Project Manager L4, Project Control Professional L6", employer: "Employer participation and Apprenticeship Service setup required", link: "#eligibility-checker" },
-  { icon: Sparkles, route: "Route 02", title: "Kent Business College Fund", best: "Eligible learners on applicable KBC programmes", structure: "Additional benefits alongside the programme", funding: "Funded by KBC", objective: "Extra professional value beyond programme completion", examples: "Memberships, registration and exams, masterclasses, travel, graduation and progression", employer: "Available only with applicable KBC programmes and cohorts", link: "#kbc-fund-details" },
-  { icon: BadgePoundSterling, route: "Route 03", title: "IPC Project Controls commercial", best: "Professionals or teams needing focused capability", structure: "One module, multiple modules or a broader route", funding: "Commercial with 50% or 75% IPC support", objective: "Flexible specialist Project Controls development", examples: "Planning, scheduling, cost, earned value, risk, PMO, reporting and portfolio management", employer: "Can be selected for an individual or an employer-led team", link: "#commercial-access", dark: true },
+  { icon: Landmark, route: "Route 01", title: ("{{cms:funding.pages_funding_eligibility_page_data_comparison_routes.title_362}}" as string), best: ("{{cms:funding.pages_funding_eligibility_page_data_comparison_routes.best_363}}" as string), structure: ("{{cms:funding.pages_funding_eligibility_page_data_comparison_routes.structure_364}}" as string), funding: "Government-supported", objective: ("{{cms:funding.pages_funding_eligibility_page_data_comparison_routes.objective_365}}" as string), examples: ("{{cms:funding.pages_funding_eligibility_page_data_comparison_routes.examples_366}}" as string), employer: ("{{cms:funding.pages_funding_eligibility_page_data_comparison_routes.employer_367}}" as string), link: "#eligibility-checker" },
+  { icon: Sparkles, route: "Route 02", title: ("{{cms:funding.pages_funding_eligibility_page_data_comparison_routes.title_368}}" as string), best: ("{{cms:funding.pages_funding_eligibility_page_data_comparison_routes.best_369}}" as string), structure: ("{{cms:funding.pages_funding_eligibility_page_data_comparison_routes.structure_370}}" as string), funding: ("{{cms:funding.pages_funding_eligibility_page_data_comparison_routes.funding_371}}" as string), objective: ("{{cms:funding.pages_funding_eligibility_page_data_comparison_routes.objective_372}}" as string), examples: ("{{cms:funding.pages_funding_eligibility_page_data_comparison_routes.examples_373}}" as string), employer: ("{{cms:funding.pages_funding_eligibility_page_data_comparison_routes.employer_374}}" as string), link: "#kbc-fund-details" },
+  { icon: BadgePoundSterling, route: "Route 03", title: ("{{cms:funding.pages_funding_eligibility_page_data_comparison_routes.title_375}}" as string), best: ("{{cms:funding.pages_funding_eligibility_page_data_comparison_routes.best_376}}" as string), structure: ("{{cms:funding.pages_funding_eligibility_page_data_comparison_routes.structure_377}}" as string), funding: ("{{cms:funding.pages_funding_eligibility_page_data_comparison_routes.funding_378}}" as string), objective: ("{{cms:funding.pages_funding_eligibility_page_data_comparison_routes.objective_379}}" as string), examples: ("{{cms:funding.pages_funding_eligibility_page_data_comparison_routes.examples_380}}" as string), employer: ("{{cms:funding.pages_funding_eligibility_page_data_comparison_routes.employer_381}}" as string), link: "#commercial-access", dark: true },
 ] as const;
 
 export const faqs = [
-  ["What is the difference between government funding and the KBC Fund?", "Government funding supports eligible apprenticeship programme delivery. The KBC Fund is a separate KBC investment in selected benefits outside DfE funding, such as qualifications, memberships, exam fees, masterclasses, travel and graduation."],
-  ["Which KBC programmes can be government funded?", "Subject to learner, employer and programme eligibility, the funded routes shown here include Marketing Executive Level 4, Marketing Manager Level 6, Associate Project Manager Level 4 and Project Control Professional Level 6."],
-  ["Are professional qualifications included?", "Applicable qualifications and professional-body support vary by programme. The programme funding tabs explain the qualifications, registrations, memberships and examination support included for each route."],
-  ["Does my employer need to be involved?", "Yes. A government-funded apprenticeship is workplace based. Your employer must support the programme, confirm relevant responsibilities and complete the required Apprenticeship Service and contractual steps."],
-  ["Do I have to be new to my field to qualify for a funded apprenticeship?", "No. These are professional-development routes. Experienced professionals can enrol where the programme develops new or expanded capability relevant to their role."],
-  ["Can self-employed professionals access government-funded programmes?", "No. DfE-funded apprenticeships require paid employment with an eligible employer. IPC-supported Project Controls commercial development may provide another route."],
-  ["Can I access Project Controls without completing the full apprenticeship?", "Yes. The IPC-supported commercial route allows you to select one module, combine multiple modules or build a broader specialist Project Controls plan."],
-  ["Can I choose only one Project Controls module?", "Yes. Commercial access is designed to be flexible, so you can focus on one immediate capability gap or connect several subjects into a wider plan."],
-  ["What is an IPC bursary and how does it work?", "The IPC bursary supports eligible professionals accessing specialist Project Controls development. Support of 50% or 75% depends on the selected module, approval and availability."],
-  ["Does the IPC bursary apply to Marketing or Project Management programmes?", "No. The IPC bursary described on this page applies to eligible commercial Project Controls modules. Other programmes follow their stated DfE and KBC funding arrangements."],
-  ["What do levy payer and non-levy mean?", "Employers with a payroll over £3 million pay the Apprenticeship Levy. Non-levy employers normally contribute 5% of the training cost, with 95% funded by government, subject to eligibility."],
-  ["How do I know which programme is right?", "The right route depends on the role, responsibilities, development goals and capability required. Use the checker below, then discuss the result with KBC."],
-  ["Are KBC Fund benefits available to all learners?", "Not necessarily. Benefits vary by programme and cohort, and selected benefits may be limited to the first 30 eligible learners per applicable cohort."],
-  ["Does my employer need an Apprenticeship Service account?", "Yes. Employers using a DfE-funded apprenticeship route need an Apprenticeship Service account and must add Kent Business College as their training provider."],
-  ["What if my employer does not have an account yet?", "The employer can create or access an Apprenticeship Service account using Government Gateway. KBC can guide the employer through the setup steps."],
-  ["What is a UKPRN and where do I use it?", "A UKPRN is a training provider’s unique reference. Use KBC’s UKPRN 10093689 when adding Kent Business College to your Apprenticeship Service account."],
-  ["Is ChPP status guaranteed?", "No. KBC can provide applicable preparation and application support, but chartered status is awarded by the relevant professional body and remains subject to its assessment requirements."],
-  ["Who confirms final eligibility?", "The checker provides an initial indication only. KBC confirms final eligibility after reviewing the learner, employer, role, working pattern, residency, existing training and selected programme."],
+  [("{{cms:funding.pages_funding_eligibility_page_data_faqs.text_382}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_faqs.text_383}}" as string)],
+  [("{{cms:funding.pages_funding_eligibility_page_data_faqs.text_384}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_faqs.text_385}}" as string)],
+  [("{{cms:funding.pages_funding_eligibility_page_data_faqs.text_386}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_faqs.text_387}}" as string)],
+  [("{{cms:funding.pages_funding_eligibility_page_data_faqs.text_388}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_faqs.text_389}}" as string)],
+  [("{{cms:funding.pages_funding_eligibility_page_data_faqs.text_390}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_faqs.text_391}}" as string)],
+  [("{{cms:funding.pages_funding_eligibility_page_data_faqs.text_392}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_faqs.text_393}}" as string)],
+  [("{{cms:funding.pages_funding_eligibility_page_data_faqs.text_394}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_faqs.text_395}}" as string)],
+  [("{{cms:funding.pages_funding_eligibility_page_data_faqs.text_396}}" as string), "Yes. Commercial access is designed to be flexible, so you can focus on one immediate capability gap or connect several subjects into a wider plan."],
+  [("{{cms:funding.pages_funding_eligibility_page_data_faqs.text_397}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_faqs.text_398}}" as string)],
+  [("{{cms:funding.pages_funding_eligibility_page_data_faqs.text_399}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_faqs.text_400}}" as string)],
+  [("{{cms:funding.pages_funding_eligibility_page_data_faqs.text_401}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_faqs.text_402}}" as string)],
+  [("{{cms:funding.pages_funding_eligibility_page_data_faqs.text_403}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_faqs.text_404}}" as string)],
+  [("{{cms:funding.pages_funding_eligibility_page_data_faqs.text_405}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_faqs.text_406}}" as string)],
+  [("{{cms:funding.pages_funding_eligibility_page_data_faqs.text_407}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_faqs.text_408}}" as string)],
+  [("{{cms:funding.pages_funding_eligibility_page_data_faqs.text_409}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_faqs.text_410}}" as string)],
+  [("{{cms:funding.pages_funding_eligibility_page_data_faqs.text_411}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_faqs.text_412}}" as string)],
+  [("{{cms:funding.pages_funding_eligibility_page_data_faqs.text_413}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_faqs.text_414}}" as string)],
+  [("{{cms:funding.pages_funding_eligibility_page_data_faqs.text_415}}" as string), ("{{cms:funding.pages_funding_eligibility_page_data_faqs.text_416}}" as string)],
 ] as const;
 
 export const finalRoutes = [
-  { icon: Compass, label: "Start here", title: "Check your eligibility", text: "Use the 8-question checker to identify an initial direction.", href: "#eligibility-checker" },
-  { icon: Building2, label: "For employers", title: "Employer setup", text: "See the steps to register and start a funded programme.", href: "#employer-setup" },
-  { icon: GraduationCap, label: "Explore further", title: "Programme funding", text: "See what applies to each KBC programme.", href: "#programme-funding" },
+  { icon: Compass, label: ("{{cms:funding.pages_funding_eligibility_page_data_final_routes.label_417}}" as string), title: ("{{cms:funding.pages_funding_eligibility_page_data_final_routes.title_418}}" as string), text: ("{{cms:funding.pages_funding_eligibility_page_data_final_routes.text_419}}" as string), href: ("{{cms:funding.pages_funding_eligibility_page_data_final_routes.href_420}}" as string) },
+  { icon: Building2, label: ("{{cms:funding.pages_funding_eligibility_page_data_final_routes.label_421}}" as string), title: ("{{cms:funding.pages_funding_eligibility_page_data_final_routes.title_422}}" as string), text: ("{{cms:funding.pages_funding_eligibility_page_data_final_routes.text_423}}" as string), href: ("{{cms:funding.pages_funding_eligibility_page_data_final_routes.href_424}}" as string) },
+  { icon: GraduationCap, label: ("{{cms:funding.pages_funding_eligibility_page_data_final_routes.label_425}}" as string), title: ("{{cms:funding.pages_funding_eligibility_page_data_final_routes.title_426}}" as string), text: ("{{cms:funding.pages_funding_eligibility_page_data_final_routes.text_427}}" as string), href: ("{{cms:funding.pages_funding_eligibility_page_data_final_routes.href_428}}" as string) },
 ] as const;

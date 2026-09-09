@@ -1,15 +1,19 @@
+import { useCmsBindings } from "@/features/cms/publicContent";
 import { Check } from "lucide-react";
 import { FigmaSectionHeading } from "@/components/ui/FigmaSectionHeading";
 import { learningCopy, learningExperience } from "../data";
 import { section, shell } from "./layout";
 
 export function StudyModelSection() {
-  return (
-    <section id="marketing-learning" className={section} aria-labelledby="marketing-learning-title">
-      <div className={shell}>
-        <FigmaSectionHeading id="marketing-learning-title" eyebrow={learningCopy.eyebrow} title={learningCopy.title} description={learningCopy.description} align="center" />
+  const cms = useCmsBindings(["college_marketing"]);
+  const cmsValues = cms.resolve({ section, shell, learningCopy, learningExperience });
+
+  return cms.render((
+    <section id="marketing-learning" className={cmsValues.section} aria-labelledby="marketing-learning-title">
+      <div className={cmsValues.shell}>
+        <FigmaSectionHeading id="marketing-learning-title" eyebrow={cmsValues.learningCopy.eyebrow} title={cmsValues.learningCopy.title} description={cmsValues.learningCopy.description} align="center" />
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {learningExperience.map(({ title, items }, index) => (
+          {cmsValues.learningExperience.map(({ title, items }, index) => (
             <article key={title} className="rounded-2xl border border-kbc-purple-100 bg-white p-6 shadow-[0_14px_36px_rgba(39,14,73,.06)] sm:p-8">
               <span className="flex size-12 items-center justify-center rounded-xl bg-kbc-purple-100 text-xl font-bold text-primary">
                 {String(index + 1).padStart(2, "0")}
@@ -33,5 +37,5 @@ export function StudyModelSection() {
         </div>
       </div>
     </section>
-  );
+  ));
 }

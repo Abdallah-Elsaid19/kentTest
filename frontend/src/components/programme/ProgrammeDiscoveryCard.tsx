@@ -1,16 +1,20 @@
+import { useCmsBindings } from "@/features/cms/publicContent";
 import { ProgrammeShowcaseCard } from "@/components/common/ProgrammeShowcaseCard";
 import { currentIntake, programmeColleges, programmeTypeLabels, type ProgrammeSummary } from "@/data/programmes";
 
 /** Typed catalogue adapter for the existing College programme card. */
 export function ProgrammeDiscoveryCard({ programme }: { programme: ProgrammeSummary }) {
+  const cms = useCmsBindings(["programmes"]);
+  const cmsValues = cms.resolve({ programmeColleges, programmeTypeLabels });
+
   const intake = currentIntake(programme);
-  return <ProgrammeShowcaseCard
-    discipline={programmeColleges[programme.college].label}
-    college={programmeColleges[programme.college].title}
+  return cms.render(<ProgrammeShowcaseCard
+    discipline={cmsValues.programmeColleges[programme.college].label}
+    college={cmsValues.programmeColleges[programme.college].title}
     title={programme.title}
     level={programme.level ? `Level ${programme.level}` : undefined}
     duration={programme.duration}
-    programmeType={programme.type === "apprenticeship" ? undefined : programmeTypeLabels[programme.type]}
+    programmeType={programme.type === "apprenticeship" ? undefined : cmsValues.programmeTypeLabels[programme.type]}
     description={programme.summary}
     image={programme.image}
     imageAlt={programme.imageAlt}
@@ -21,5 +25,5 @@ export function ProgrammeDiscoveryCard({ programme }: { programme: ProgrammeSumm
       {programme.qualification && <div><dt className="font-semibold text-[#17131d]">Professional qualification</dt><dd>{programme.qualification}</dd></div>}
       {programme.professionalRecognition?.map((recognition) => <div key={recognition}><dt className="sr-only">Professional progression</dt><dd>{recognition}</dd></div>)}
     </dl>}
-  />;
+  />);
 }

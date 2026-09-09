@@ -1,7 +1,8 @@
+import { resolvedFixture } from "./cmsFixtures";
 import { isValidElement } from "react";
 import { matchRoutes, type RouteObject } from "react-router-dom";
 import { describe, expect, it, vi } from "vitest";
-import { newsArticles } from "@/pages/BlogPage/data";
+import { newsArticles as newsArticleTemplates } from "@/pages/BlogPage/data";
 
 vi.hoisted(() => { vi.stubGlobal("__BASE_PATH__", "/"); });
 vi.mock("@/components/layout/MainLayout", () => ({ MainLayout: () => null }));
@@ -39,3 +40,5 @@ describe("News URL integration", () => {
     expect(matchRoutes(router.routes, "/blog/existing-article")!.at(-1)!.route.path).toBe("blog/:articleSlug");
   });
 });
+
+const newsArticles = resolvedFixture(newsArticleTemplates);

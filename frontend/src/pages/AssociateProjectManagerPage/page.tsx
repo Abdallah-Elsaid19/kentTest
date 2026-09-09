@@ -1,3 +1,4 @@
+import { useCmsBindings } from "@/features/cms/publicContent";
 import { FaqSection } from "@/components/common/FaqSection";
 import { LearnerCaseStudiesSection } from "@/components/college/LearnerCaseStudiesSection";
 import { CollegePageNav } from "@/components/college/CollegePageNav";
@@ -27,15 +28,18 @@ import { FinalCtaSection } from "./component/ProofAndCtaSections";
 import { courseSchema, faqSchema, faqs, pageNavigation, programmeMeta } from "./data";
 
 export default function AssociateProjectManagerPage() {
-  return (
+  const cms = useCmsBindings(["programme_apm_l4","case_studies"]);
+  const cmsValues = cms.resolve({ courseSchema, faqSchema, programmeMeta, pageNavigation, faqs });
+
+  return cms.render((
     <div className="bg-white font-body text-[var(--color-ink)]">
       <RouteMeta
-        seo={{ schema: [courseSchema, faqSchema] }}
-        fallbackTitle={programmeMeta.title}
-        fallbackDescription={programmeMeta.description}
+        seo={{ schema: [cmsValues.courseSchema, cmsValues.faqSchema] }}
+        fallbackTitle={cmsValues.programmeMeta.title}
+        fallbackDescription={cmsValues.programmeMeta.description}
       />
       <HeroSection />
-      <CollegePageNav items={pageNavigation} />
+      <CollegePageNav items={cmsValues.pageNavigation} />
       <MobileProgrammeCta />
       <ProgrammeOverviewSection />
       <AudienceRolesSection />
@@ -63,13 +67,13 @@ export default function AssociateProjectManagerPage() {
       </div>
       <FaqSection
         id="apm-faq"
-        eyebrow="Programme questions"
-        title="What professionals and employers usually want to know"
-        items={faqs}
+        eyebrow={cms.text("programme_apm_l4.pages_associate_project_manager_page_pag_associate_project_manager_page.eyebrow_001")}
+        title={cms.text("programme_apm_l4.pages_associate_project_manager_page_pag_associate_project_manager_page.title_002")}
+        items={cmsValues.faqs}
         className="sm:!scroll-mt-64"
-        action={<NavigationButton className="!min-h-14 w-full sm:w-auto sm:!min-h-16" to="/book-session">Book an information session</NavigationButton>}
+        action={<NavigationButton className="!min-h-14 w-full sm:w-auto sm:!min-h-16" to={cms.text("programme_apm_l4.pages_associate_project_manager_page_pag_associate_project_manager_page.to_003")}>{cms.text("programme_apm_l4.pages_associate_project_manager_page_pag_associate_project_manager_page.text_004")}</NavigationButton>}
       />
       <FinalCtaSection />
     </div>
-  );
+  ));
 }

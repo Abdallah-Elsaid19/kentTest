@@ -1,15 +1,19 @@
+import { useCmsBindings } from "@/features/cms/publicContent";
 import { Check } from "lucide-react";
 
 import { programmeRouteOptions } from "../data";
 import { ArrowLink, containerClass, eyebrowClass, goldEyebrowClass, sectionClass, SectionIntro } from "./shared";
 
 export function ProjectControlsChoiceSection() {
-  return (
+  const cms = useCmsBindings(["funding"]);
+  const cmsValues = cms.resolve({ programmeRouteOptions });
+
+  return cms.render((
     <section className={sectionClass}>
       <div className={containerClass}>
         <SectionIntro eyebrow="Project Controls · Choose your route" title="Complete programme or specialist development?" copy="Two distinct paths make it easier to choose between a complete professional programme and focused capability development." />
         <div className="grid grid-cols-2 gap-[26px] max-[780px]:grid-cols-1">
-          {programmeRouteOptions.map((route) => {
+          {cmsValues.programmeRouteOptions.map((route) => {
             const isDark = route.tone === "dark";
             return (
               <article className={`relative overflow-hidden rounded-[36px_11px] border p-[clamp(28px,4vw,46px)] ${isDark ? "border-transparent bg-[#2f1468] text-white" : "border-[#e8e0ef] bg-[#f7f4fa]"}`} key={route.title}>
@@ -25,5 +29,5 @@ export function ProjectControlsChoiceSection() {
         </div>
       </div>
     </section>
-  );
+  ));
 }

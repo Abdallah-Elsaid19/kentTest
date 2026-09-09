@@ -158,7 +158,7 @@ class CMSTests(TestCase):
         self.assertEqual(self.mutate("deactivate").status_code, 200)
         data = self.client.get("/api/v1/cms/entries/?status=inactive&search=hero").json()
         self.assertEqual([item["key"] for item in data["items"]], ["home.hero"])
-        collection = self.client.get("/api/v1/cms/collections/").json()["items"][0]
+        collection = next(item for item in self.client.get("/api/v1/cms/collections/").json()["items"] if item["key"] == "home")
         self.assertEqual(collection["live"], 14)
         self.assertEqual(collection["inactive"], 1)
 
@@ -177,3 +177,79 @@ class CMSTests(TestCase):
         for _ in range(10):
             self.client.post("/api/v1/cms/login/", {"username": "unknown", "password": "invalid"}, format="json", HTTP_X_CSRFTOKEN=token)
         self.assertEqual(self.client.post("/api/v1/cms/login/", {"username": "unknown", "password": "invalid"}, format="json", HTTP_X_CSRFTOKEN=token).status_code, 429)
+
+class DropdownCMSTests(CMSTests):
+    """Exercise the same authorization/publication contract for every registered page."""
+    def test_complete_inventory_and_no_excluded_editors(self):
+        from .models import ContentPage
+        from .schemas import COLLECTIONS, PAGE_CONTRACT
+        self.assertEqual(set(ContentPage.objects.values_list("key", flat=True)), set(COLLECTIONS))
+        self.assertEqual(len(PAGE_CONTRACT["pages"]), 23)
+        excluded = ["/employer-agreement", "/book-session", "/book-consultation", "/careers", "/college-of-leadership", "/explore-jobs", "/login-lms", "/login-aptem"]
+        self.assertFalse(ContentPage.objects.filter(route__in=excluded).exists())
+        self.assertFalse(ContentEntry.objects.filter(content_page__isnull=True).exists())
+        for entry in ContentEntry.objects.select_related("content_page"):
+            self.assertEqual(entry.page, entry.content_page.key)
+            self.assertLessEqual(len(entry.key), 150)
+
+    def test_every_page_preserves_keys_and_isolates_drafts(self):
+        from .schemas import PAGE_CONTRACT
+        self.login()
+        for page in PAGE_CONTRACT["pages"]:
+            with self.subTest(page=page):
+                self.entry = ContentEntry.objects.filter(page=page).first()
+                original = deepcopy(self.entry.content)
+                field = next(iter(original))
+                # Use a text field so this checks publication rather than URL validation.
+                from .schemas import COLLECTIONS
+                field = next((k for k, v in COLLECTIONS[page][self.entry.section]["properties"].items() if not v.get("format")), None)
+                if field is None:
+                    continue
+                changed = {**original, field: "Private page draft"}
+                version = self.entry.version
+                self.assertEqual(self.mutate("draft", changed).status_code, 200)
+                public = self.client.get(f"/api/v1/content/{page}/").json()
+                published = next(e["content"] for e in public["sections"] if e["key"] == self.entry.key)
+                self.assertEqual(published, original)
+                private = self.client.get(f"/api/v1/cms/pages/{page}/preview/").json()
+                self.assertEqual(next(e["content"] for e in private["sections"] if e["key"] == self.entry.key), changed)
+                self.assertEqual(self.mutate("publish", changed, version=version).status_code, 409)
+                self.assertEqual(self.mutate("publish", changed).status_code, 200)
+                public = self.client.get(f"/api/v1/content/{page}/").json()
+                self.assertEqual(next(e["content"] for e in public["sections"] if e["key"] == self.entry.key), changed)
+                self.assertEqual(self.entry.revisions.count(), 3)
+
+    def test_page_preview_and_section_schema_require_admin(self):
+        page = "faq"
+        self.entry = ContentEntry.objects.filter(page=page).first()
+        for client in [APIClient()]:
+            self.assertEqual(client.get(f"/api/v1/cms/pages/{page}/preview/").status_code, 403)
+            self.assertEqual(client.get(f"/api/v1/cms/entries/{self.entry.key}/").status_code, 403)
+        self.login()
+        response = self.client.get(f"/api/v1/cms/entries/{self.entry.key}/").json()
+        self.assertEqual(set(response["schema"]["properties"]), set(response["content"]))
+        self.assertEqual(self.client.get("/api/v1/content/employer_agreement/").status_code, 404)
+
+    def test_page_search_filters_and_last_editor(self):
+        self.login()
+        self.entry = ContentEntry.objects.filter(page="faq").first()
+        self.assertEqual(self.mutate("draft", self.entry.content).status_code, 200)
+        items = self.client.get("/api/v1/cms/collections/?group=Information&search=/faq").json()["items"]
+        self.assertEqual([item["key"] for item in items], ["faq"])
+        self.assertEqual(items[0]["updatedByName"], self.admin.username)
+        self.assertEqual(items[0]["route"], "/faq")
+        self.assertTrue(items[0]["sectionNames"])
+
+    def test_dropdown_import_never_overwrites_editorial_content(self):
+        from django.apps import apps
+        from django.db import connection
+        from .models import ContentPage, ContentRevision
+        self.login()
+        self.entry = ContentEntry.objects.filter(page="faq").first()
+        content = {k: "Preserved editorial text" for k in self.entry.content}
+        self.assertEqual(self.mutate("draft", content).status_code, 200)
+        counts = (ContentPage.objects.count(), ContentEntry.objects.count(), ContentRevision.objects.count())
+        import_module("apps.cms.migrations.0004_import_dropdown_pages").import_pages(apps, SimpleNamespace(connection=connection))
+        self.entry.refresh_from_db()
+        self.assertEqual(self.entry.content, content)
+        self.assertEqual(counts, (ContentPage.objects.count(), ContentEntry.objects.count(), ContentRevision.objects.count()))

@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import ContentEntry, ContentRevision
+from .models import ContentEntry, ContentPage, ContentRevision
 
 
 class CMSReadOnlyAdmin(admin.ModelAdmin):
@@ -12,6 +12,11 @@ class CMSReadOnlyAdmin(admin.ModelAdmin):
 
     def has_delete_permission(self, request, obj=None):
         return False
+
+
+@admin.register(ContentPage)
+class ContentPageAdmin(CMSReadOnlyAdmin):
+    list_display = ["title", "key", "route", "group"]
 
 
 @admin.register(ContentEntry)

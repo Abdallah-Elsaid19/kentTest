@@ -1,9 +1,10 @@
-import { renderToStaticMarkup } from "react-dom/server";
+import { resolvedFixture, cmsTestClient } from "./cmsFixtures";
+import { renderToStaticMarkup } from "./cmsFixtures";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { MemoryRouter } from "react-router-dom";
 import { describe, expect, it, vi } from "vitest";
 import MarketingExecutiveLevel4Page from "@/pages/MarketingExecutiveLevel4Page/page";
-import { curriculumJourney, faqs, heroData, pageNavigation } from "@/pages/MarketingExecutiveLevel4Page/data";
+import { curriculumJourney as curriculumJourneyTemplate, faqs as faqsTemplate, heroData as heroDataTemplate, pageNavigation as pageNavigationTemplate } from "@/pages/MarketingExecutiveLevel4Page/data";
 import { testimonials } from "@/pages/home/components/data";
 import { marketingSourceBlocks } from "./fixtures/marketingExecutiveSource";
 
@@ -11,7 +12,7 @@ vi.mock("@/components/seo/RouteMeta", () => ({ RouteMeta: () => null }));
 vi.mock("@/features/content/queries", () => ({ useEvents: () => ({ data: { items: [] }, isLoading: false, isError: false }) }));
 
 function renderPage() {
-  return renderToStaticMarkup(<QueryClientProvider client={new QueryClient()}><MemoryRouter><MarketingExecutiveLevel4Page /></MemoryRouter></QueryClientProvider>);
+  return renderToStaticMarkup(<QueryClientProvider client={cmsTestClient()}><MemoryRouter><MarketingExecutiveLevel4Page /></MemoryRouter></QueryClientProvider>);
 }
 
 function normalise(text: string) {
@@ -59,3 +60,5 @@ describe("Marketing Executive Level 4 source fidelity", () => {
     expect(html).toContain("September 2026 intake");
   });
 });
+
+const { curriculumJourney, faqs, heroData, pageNavigation } = resolvedFixture({ curriculumJourney: curriculumJourneyTemplate, faqs: faqsTemplate, heroData: heroDataTemplate, pageNavigation: pageNavigationTemplate });

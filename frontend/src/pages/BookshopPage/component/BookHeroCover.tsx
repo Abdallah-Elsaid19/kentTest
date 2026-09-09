@@ -1,7 +1,10 @@
+import { useCmsBindings } from "@/features/cms/publicContent";
 import type { Book } from "../data";
 
 export function BookHeroCover({ cover }: { cover: Pick<Book, "image" | "imageAlt" | "imageWidth" | "imageHeight"> }) {
-  return (
+  const cms = useCmsBindings(["bookshop"]);
+
+  return cms.render((
     <div className="mx-auto w-full max-w-lg">
       <img
         src={cover.image}
@@ -12,5 +15,5 @@ export function BookHeroCover({ cover }: { cover: Pick<Book, "image" | "imageAlt
         className="h-auto w-full object-contain"
       />
     </div>
-  );
+  ));
 }

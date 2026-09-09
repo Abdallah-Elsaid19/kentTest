@@ -4,6 +4,7 @@ from apps.core.views import HealthView
 
 urlpatterns = [
     path("", include("apps.cms.urls")),
+    path("", include("apps.media_library.urls")),
     path("health/", HealthView.as_view(), name="api-health"),
     path("", include("apps.site_config.urls")),
     path("", include("apps.navigation.urls")),

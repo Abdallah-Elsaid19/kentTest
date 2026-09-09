@@ -1,3 +1,4 @@
+import { useCmsBindings } from "@/features/cms/publicContent";
 import { ArrowLeft, ArrowUpRight, Award, BriefcaseBusiness, Check, Linkedin } from "lucide-react";
 import { Link, Navigate, useParams } from "react-router-dom";
 import { NavigationButton } from "@/components/navigation";
@@ -5,12 +6,14 @@ import { RouteMeta } from "@/components/seo/RouteMeta";
 import { getExpert } from "@/pages/PeoplePage/data";
 
 export default function ExpertDetailPage() {
+  const cms = useCmsBindings(["experts"]);
+
   const { expertSlug } = useParams();
   const expert = getExpert(expertSlug);
 
-  if (!expert) return <Navigate to="/our-experts" replace />;
+  if (!expert) return cms.render(<Navigate to="/our-experts" replace />);
 
-  return (
+  return cms.render((
     <div className="kbc-figma-home overflow-hidden bg-white">
       <RouteMeta
         fallbackTitle={`${expert.name} | Our Experts | Kent Business College`}
@@ -85,5 +88,5 @@ export default function ExpertDetailPage() {
         </div>
       </section>
     </div>
-  );
+  ));
 }

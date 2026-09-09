@@ -35,277 +35,277 @@ export type AccountabilityRow = {
 };
 
 export const governanceMeta = {
-  title: "Governance Board | Kent Business College",
+  title: ("{{cms:governance.pages_governance_board_page_data_governance_meta.title_001}}" as string),
   description:
-    "Kent Business College governance arrangements, independent oversight and public accountability, including an expression of interest for future governance roles.",
+    ("{{cms:governance.pages_governance_board_page_data_governance_meta.description_002}}" as string),
 };
 
 export const governanceHero = {
-  eyebrow: "Governance Board",
-  title: "Current Governance and Oversight",
+  eyebrow: ("{{cms:governance.pages_governance_board_page_data_governance_hero.eyebrow_003}}" as string),
+  title: ("{{cms:governance.pages_governance_board_page_data_governance_hero.title_004}}" as string),
   description:
-    "Kent Business College maintains governance and oversight arrangements that provide independent scrutiny, support and challenge to senior leaders. Governance activity focuses on learners and apprentices, safeguarding, quality of education, employer engagement, responsible use of resources and compliance with current apprenticeship requirements.",
-  action: { label: "View Details", href: "#current-governance" },
-  image: "/assets/images/about-campus.jpg",
+    ("{{cms:governance.pages_governance_board_page_data_governance_hero.description_005}}" as string),
+  action: { label: ("{{cms:governance.pages_governance_board_page_data_governance_hero.action_label_006}}" as string), href: ("{{cms:governance.pages_governance_board_page_data_governance_hero.action_href_007}}" as string) },
+  image: ("{{cms:governance.pages_governance_board_page_data_governance_hero.image_008}}" as string),
 };
 
 export const governancePageNav = [
-  { label: "Provider Status", href: "#provider-status" },
-  { label: "About", href: "#current-governance" },
-  { label: "Structure", href: "#governance-structure" },
-  { label: "Board", href: "#governance-board-members" },
-  { label: "Assurance", href: "#oversight-assurance" },
-  { label: "Accountability", href: "#roles-accountability" },
-  { label: "Expression of Interest", href: "#eoi-form" },
+  { label: ("{{cms:governance.pages_governance_board_page_data_governance_page_nav.label_009}}" as string), href: ("{{cms:governance.pages_governance_board_page_data_governance_page_nav.href_010}}" as string) },
+  { label: ("{{cms:governance.pages_governance_board_page_data_governance_page_nav.label_011}}" as string), href: ("{{cms:governance.pages_governance_board_page_data_governance_page_nav.href_012}}" as string) },
+  { label: ("{{cms:governance.pages_governance_board_page_data_governance_page_nav.label_013}}" as string), href: ("{{cms:governance.pages_governance_board_page_data_governance_page_nav.href_014}}" as string) },
+  { label: ("{{cms:governance.pages_governance_board_page_data_governance_page_nav.label_015}}" as string), href: ("{{cms:governance.pages_governance_board_page_data_governance_page_nav.href_016}}" as string) },
+  { label: ("{{cms:governance.pages_governance_board_page_data_governance_page_nav.label_017}}" as string), href: ("{{cms:governance.pages_governance_board_page_data_governance_page_nav.href_018}}" as string) },
+  { label: ("{{cms:governance.pages_governance_board_page_data_governance_page_nav.label_019}}" as string), href: ("{{cms:governance.pages_governance_board_page_data_governance_page_nav.href_020}}" as string) },
+  { label: ("{{cms:governance.pages_governance_board_page_data_governance_page_nav.label_021}}" as string), href: ("{{cms:governance.pages_governance_board_page_data_governance_page_nav.href_022}}" as string) },
 ];
 
 export const providerStatus = {
-  title: "Provider Status",
+  title: ("{{cms:governance.pages_governance_board_page_data_provider_status.title_023}}" as string),
   description:
-    "These details help employers, apprentices, governors and stakeholders identify the provider correctly across public education, funding and company records.",
+    ("{{cms:governance.pages_governance_board_page_data_provider_status.description_024}}" as string),
   items: [
     {
-      label: "Legal and trading name",
+      label: ("{{cms:governance.pages_governance_board_page_data_provider_status.items_label_025}}" as string),
       value: "Kent Business College Ltd T/A Kent Business College",
     },
-    { label: "UKPRN", value: "10093689" },
-    { label: "Ofsted URN", value: "2814708" },
-    { label: "Provider type", value: "Independent Learning Provider" },
+    { label: ("{{cms:governance.pages_governance_board_page_data_provider_status.items_label_026}}" as string), value: "10093689" },
+    { label: ("{{cms:governance.pages_governance_board_page_data_provider_status.items_label_027}}" as string), value: "2814708" },
+    { label: ("{{cms:governance.pages_governance_board_page_data_provider_status.items_label_028}}" as string), value: "Independent Learning Provider" },
   ] satisfies ProviderStatusItem[],
 };
 
 export const governanceOverview = {
-  title: "About the Governance Board",
+  title: ("{{cms:governance.pages_governance_board_page_data_governance_overview.title_029}}" as string),
   paragraphs: [
-    "The Governance Board provides independent oversight of Kent Business College's apprenticeship and training provision. It reviews evidence from senior leaders, tests the accuracy of self-assessment, monitors improvement activity and checks that decisions remain focused on the interests of learners, apprentices, employers and stakeholders.",
-    "Governors receive assurance on curriculum quality, teaching and training, safeguarding, learner voice, employer engagement, finance, risk, data and funding compliance. Challenge and agreed actions are recorded through normal governance papers, minutes and action tracking.",
-    "The Governance Board does not replace the statutory duties of the company directors or the operational responsibilities of senior leaders. Its purpose is to provide scrutiny, support, challenge and public accountability.",
+    ("{{cms:governance.pages_governance_board_page_data_governance_overview.paragraphs_030}}" as string),
+    ("{{cms:governance.pages_governance_board_page_data_governance_overview.paragraphs_031}}" as string),
+    ("{{cms:governance.pages_governance_board_page_data_governance_overview.paragraphs_032}}" as string),
   ],
-  keyDetailsTitle: "Key Details",
+  keyDetailsTitle: ("{{cms:governance.pages_governance_board_page_data_governance_overview.key_details_title_033}}" as string),
   keyDetails: [
-    { label: "Current Chair", value: "Dr Amgad Badewi" },
+    { label: ("{{cms:governance.pages_governance_board_page_data_governance_overview.key_details_label_034}}" as string), value: "Dr Amgad Badewi" },
     {
-      label: "Board Meetings",
+      label: ("{{cms:governance.pages_governance_board_page_data_governance_overview.key_details_label_035}}" as string),
       value:
         "Four scheduled Board meetings per year, with additional committee or assurance activity where required.",
     },
     {
-      label: "Primary Responsibilities",
+      label: ("{{cms:governance.pages_governance_board_page_data_governance_overview.key_details_label_036}}" as string),
       value:
         "Strategic oversight, quality assurance, safeguarding assurance, funding compliance, financial stewardship and risk oversight.",
     },
     {
-      label: "Governance Contact",
+      label: ("{{cms:governance.pages_governance_board_page_data_governance_overview.key_details_label_037}}" as string),
       value: "office@kentbusinesscollege.org",
-      href: "mailto:office@kentbusinesscollege.org",
+      href: ("{{cms:governance.pages_governance_board_page_data_governance_overview.key_details_href_038}}" as string),
     },
   ] satisfies KeyDetail[],
 };
 
 export const governanceStructure = {
-  title: "Governance Structure",
+  title: ("{{cms:governance.pages_governance_board_page_data_governance_structure.title_039}}" as string),
   description:
-    "The structure separates independent oversight from day-to-day leadership and statutory company responsibilities.",
+    ("{{cms:governance.pages_governance_board_page_data_governance_structure.description_040}}" as string),
   items: [
     {
-      eyebrow: "Independent oversight",
-      title: "Governance Board",
+      eyebrow: ("{{cms:governance.pages_governance_board_page_data_governance_structure.items_eyebrow_041}}" as string),
+      title: ("{{cms:governance.pages_governance_board_page_data_governance_structure.items_title_042}}" as string),
       description:
-        "Reviews evidence, challenges leaders, monitors agreed actions and checks the impact of provision on learners and apprentices.",
+        ("{{cms:governance.pages_governance_board_page_data_governance_structure.items_description_043}}" as string),
     },
     {
-      eyebrow: "Operational leadership",
-      title: "Senior Leadership Team",
+      eyebrow: ("{{cms:governance.pages_governance_board_page_data_governance_structure.items_eyebrow_044}}" as string),
+      title: ("{{cms:governance.pages_governance_board_page_data_governance_structure.items_title_045}}" as string),
       description:
-        "Leads delivery, safeguarding, quality improvement, employer engagement, learner support and compliance activity.",
+        ("{{cms:governance.pages_governance_board_page_data_governance_structure.items_description_046}}" as string),
     },
     {
-      eyebrow: "Corporate accountability",
-      title: "Company Directors",
+      eyebrow: ("{{cms:governance.pages_governance_board_page_data_governance_structure.items_eyebrow_047}}" as string),
+      title: ("{{cms:governance.pages_governance_board_page_data_governance_structure.items_title_048}}" as string),
       description:
-        "Hold statutory and corporate responsibilities for Kent Business College Ltd and receive assurance through governance and leadership processes.",
+        ("{{cms:governance.pages_governance_board_page_data_governance_structure.items_description_049}}" as string),
     },
   ] satisfies GovernanceStructureItem[],
 };
 
 export const governanceMembers = {
-  title: "Current Governance Board and Attendees",
+  title: ("{{cms:governance.pages_governance_board_page_data_governance_members.title_050}}" as string),
   description:
-    "The people below contribute to governance, assurance, reporting and operational oversight. Director and staff roles are shown transparently so they are not confused with independent governor roles.",
+    ("{{cms:governance.pages_governance_board_page_data_governance_members.description_051}}" as string),
   items: [
     {
-      name: "Dr Amgad Badewi",
-      role: "Director and Chair of Governance Board",
+      name: ("{{cms:governance.pages_governance_board_page_data_governance_members.items_name_052}}" as string),
+      role: ("{{cms:governance.pages_governance_board_page_data_governance_members.items_role_053}}" as string),
       description:
-        "Chairs governance discussions, supports transparent accountability and ensures agreed actions are followed through.",
-      image: "/assets/images/governance-board/dr-amgad-badewi.png",
+        ("{{cms:governance.pages_governance_board_page_data_governance_members.items_description_054}}" as string),
+      image: ("{{cms:governance.pages_governance_board_page_data_governance_members.items_image_055}}" as string),
     },
     {
-      name: "Nada Ibrahim",
-      role: "Executive Director",
+      name: ("{{cms:governance.pages_governance_board_page_data_governance_members.items_name_056}}" as string),
+      role: ("{{cms:governance.pages_governance_board_page_data_governance_members.items_role_057}}" as string),
       description:
-        "Provides director-level assurance on leadership, compliance, finance, risk and the delivery of improvement priorities.",
-      image: "/assets/images/governance-board/nada-ibrahim.png",
+        ("{{cms:governance.pages_governance_board_page_data_governance_members.items_description_058}}" as string),
+      image: ("{{cms:governance.pages_governance_board_page_data_governance_members.items_image_059}}" as string),
     },
     {
-      name: "Graham Heath",
-      role: "Head of Quality and Compliance",
+      name: ("{{cms:governance.pages_governance_board_page_data_governance_members.items_name_060}}" as string),
+      role: ("{{cms:governance.pages_governance_board_page_data_governance_members.items_role_061}}" as string),
       description:
-        "Reports on curriculum quality, teaching, training, assessment, learner progress and compliance evidence.",
-      image: "/assets/images/governance-board/graham-heath.png",
+        ("{{cms:governance.pages_governance_board_page_data_governance_members.items_description_062}}" as string),
+      image: ("{{cms:governance.pages_governance_board_page_data_governance_members.items_image_063}}" as string),
     },
     {
-      name: "Tina Wright",
-      role: "Designated Safeguarding Lead",
+      name: ("{{cms:governance.pages_governance_board_page_data_governance_members.items_name_064}}" as string),
+      role: ("{{cms:governance.pages_governance_board_page_data_governance_members.items_role_065}}" as string),
       description:
-        "Provides assurance on safeguarding, Prevent, safer recruitment, staff training, referrals and learner wellbeing.",
-      image: "/assets/images/governance-board/tina-wright.png",
+        ("{{cms:governance.pages_governance_board_page_data_governance_members.items_description_066}}" as string),
+      image: ("{{cms:governance.pages_governance_board_page_data_governance_members.items_image_067}}" as string),
     },
     {
-      name: "Lisa Sedge",
-      role: "Finance and Compliance Manager",
+      name: ("{{cms:governance.pages_governance_board_page_data_governance_members.items_name_068}}" as string),
+      role: ("{{cms:governance.pages_governance_board_page_data_governance_members.items_role_069}}" as string),
       description:
-        "Supports oversight of financial controls, funding compliance, audit evidence, data quality and risk tracking.",
-      image: "/assets/images/governance-board/lisa-sedge.png",
+        ("{{cms:governance.pages_governance_board_page_data_governance_members.items_description_070}}" as string),
+      image: ("{{cms:governance.pages_governance_board_page_data_governance_members.items_image_071}}" as string),
     },
     {
-      name: "Prof. Yousef Sultan",
-      role: "Performance Delivery Manager",
+      name: ("{{cms:governance.pages_governance_board_page_data_governance_members.items_name_072}}" as string),
+      role: ("{{cms:governance.pages_governance_board_page_data_governance_members.items_role_073}}" as string),
       description:
-        "Contributes assurance on delivery performance, employer engagement, skills outcomes and learner progress.",
-      image: "/assets/images/governance-board/prof-yousef-sultan.png",
+        ("{{cms:governance.pages_governance_board_page_data_governance_members.items_description_074}}" as string),
+      image: ("{{cms:governance.pages_governance_board_page_data_governance_members.items_image_075}}" as string),
     },
     {
-      name: "Mohamed Elmasry",
-      role: "Chief Technology Officer",
+      name: ("{{cms:governance.pages_governance_board_page_data_governance_members.items_name_076}}" as string),
+      role: ("{{cms:governance.pages_governance_board_page_data_governance_members.items_role_077}}" as string),
       description:
-        "Attends as a senior leader to provide assurance on technology, systems, data security and online learning support.",
-      image: "/assets/images/governance-board/mohamed-elmasry.png",
+        ("{{cms:governance.pages_governance_board_page_data_governance_members.items_description_078}}" as string),
+      image: ("{{cms:governance.pages_governance_board_page_data_governance_members.items_image_079}}" as string),
     },
     {
-      name: "Alex Pennington",
-      role: "HR Manager",
+      name: ("{{cms:governance.pages_governance_board_page_data_governance_members.items_name_080}}" as string),
+      role: ("{{cms:governance.pages_governance_board_page_data_governance_members.items_role_081}}" as string),
       description:
-        "Provides assurance on people processes, safer recruitment, staff training, workforce capacity and HR compliance.",
-      image: "/assets/images/governance-board/alex-pennington.png",
+        ("{{cms:governance.pages_governance_board_page_data_governance_members.items_description_082}}" as string),
+      image: ("{{cms:governance.pages_governance_board_page_data_governance_members.items_image_083}}" as string),
     },
     {
-      name: "Youmna Ibrahim",
-      role: "Corporate Account Executive",
+      name: ("{{cms:governance.pages_governance_board_page_data_governance_members.items_name_084}}" as string),
+      role: ("{{cms:governance.pages_governance_board_page_data_governance_members.items_role_085}}" as string),
       description:
-        "Supports employer communication, stakeholder engagement and feedback evidence for governance reporting.",
-      image: "/assets/images/governance-board/youmna-ibrahim.png",
+        ("{{cms:governance.pages_governance_board_page_data_governance_members.items_description_086}}" as string),
+      image: ("{{cms:governance.pages_governance_board_page_data_governance_members.items_image_087}}" as string),
     },
   ] satisfies GovernanceMember[],
 };
 
 export const oversightAndAssurance = {
-  title: "Oversight and Assurance",
+  title: ("{{cms:governance.pages_governance_board_page_data_oversight_and_assurance.title_088}}" as string),
   description:
-    "The Board uses routine evidence from directors and operational leads to provide support, challenge and assurance. Its work focuses on the quality and impact of provision rather than paperwork alone.",
+    ("{{cms:governance.pages_governance_board_page_data_oversight_and_assurance.description_089}}" as string),
   items: [
     {
-      title: "Quality of Education",
+      title: ("{{cms:governance.pages_governance_board_page_data_oversight_and_assurance.items_title_090}}" as string),
       description:
-        "Curriculum quality, teaching, training, assessment, progress, achievement and learner feedback.",
+        ("{{cms:governance.pages_governance_board_page_data_oversight_and_assurance.items_description_091}}" as string),
       icon: "quality",
     },
     {
-      title: "Safeguarding and Prevent",
+      title: ("{{cms:governance.pages_governance_board_page_data_oversight_and_assurance.items_title_092}}" as string),
       description:
-        "Safeguarding leadership, Prevent, safer recruitment, online safety, concerns, referrals and wellbeing.",
+        ("{{cms:governance.pages_governance_board_page_data_oversight_and_assurance.items_description_093}}" as string),
       icon: "safeguarding",
     },
     {
-      title: "Learner Voice and Inclusion",
+      title: ("{{cms:governance.pages_governance_board_page_data_oversight_and_assurance.items_title_094}}" as string),
       description:
-        "Apprentice experience, complaints, barriers to learning, reasonable adjustments and support for those with additional needs.",
+        ("{{cms:governance.pages_governance_board_page_data_oversight_and_assurance.items_description_095}}" as string),
       icon: "learner",
     },
     {
-      title: "Funding and Data",
+      title: ("{{cms:governance.pages_governance_board_page_data_oversight_and_assurance.items_title_096}}" as string),
       description:
-        "Assurance on learner eligibility, recognition of prior learning, training plans, off-the-job training evidence, progress reviews and ILR data.",
+        ("{{cms:governance.pages_governance_board_page_data_oversight_and_assurance.items_description_097}}" as string),
       icon: "funding",
     },
     {
-      title: "Employers and Skills",
+      title: ("{{cms:governance.pages_governance_board_page_data_oversight_and_assurance.items_title_098}}" as string),
       description:
-        "Employer engagement, workplace application of skills, skills needs, partnerships and feedback from employers.",
+        ("{{cms:governance.pages_governance_board_page_data_oversight_and_assurance.items_description_099}}" as string),
       icon: "employers",
     },
     {
-      title: "Action Tracking",
+      title: ("{{cms:governance.pages_governance_board_page_data_oversight_and_assurance.items_title_100}}" as string),
       description:
-        "Board minutes record support, challenge, decisions, owners, target dates and follow-up on agreed improvement actions.",
+        ("{{cms:governance.pages_governance_board_page_data_oversight_and_assurance.items_description_101}}" as string),
       icon: "actions",
     },
   ] satisfies AssuranceArea[],
 };
 
 export const governanceAccountability = {
-  title: "Governance Roles and Accountability",
-  columns: ["Role", "Main Responsibility", "How It Connects to Governance"],
+  title: ("{{cms:governance.pages_governance_board_page_data_governance_accountability.title_102}}" as string),
+  columns: ["Role", ("{{cms:governance.pages_governance_board_page_data_governance_accountability.columns_103}}" as string), ("{{cms:governance.pages_governance_board_page_data_governance_accountability.columns_104}}" as string)],
   rows: [
     {
-      role: "Company Directors",
+      role: ("{{cms:governance.pages_governance_board_page_data_governance_accountability.rows_role_105}}" as string),
       responsibility:
-        "Statutory and corporate responsibilities for Kent Business College Ltd, including director duties held by Dr Amgad Badewi and Nada Ibrahim.",
+        ("{{cms:governance.pages_governance_board_page_data_governance_accountability.rows_responsibility_106}}" as string),
       connection:
-        "Receive assurance from governance and leadership processes while retaining company responsibilities. Director roles are shown separately from independent governor roles.",
+        ("{{cms:governance.pages_governance_board_page_data_governance_accountability.rows_connection_107}}" as string),
     },
     {
-      role: "Governance Board",
+      role: ("{{cms:governance.pages_governance_board_page_data_governance_accountability.rows_role_108}}" as string),
       responsibility:
-        "Strategic oversight, scrutiny, support, challenge, assurance and public accountability.",
+        ("{{cms:governance.pages_governance_board_page_data_governance_accountability.rows_responsibility_109}}" as string),
       connection:
-        "Reviews evidence, challenges leaders and monitors whether improvement actions are effective across quality, safeguarding, finance, risk, employers and skills.",
+        ("{{cms:governance.pages_governance_board_page_data_governance_accountability.rows_connection_110}}" as string),
     },
     {
-      role: "Operational Assurance Leads",
+      role: ("{{cms:governance.pages_governance_board_page_data_governance_accountability.rows_role_111}}" as string),
       responsibility:
-        "Day-to-day leadership and evidence for quality, safeguarding, finance, compliance, HR, employer engagement, technology and delivery performance.",
+        ("{{cms:governance.pages_governance_board_page_data_governance_accountability.rows_responsibility_112}}" as string),
       connection:
-        "Provide reports and evidence to governance. These roles support assurance and are not presented as independent governor roles unless formally appointed.",
+        ("{{cms:governance.pages_governance_board_page_data_governance_accountability.rows_connection_113}}" as string),
     },
   ] satisfies AccountabilityRow[],
 };
 
 export const fundingAndQualityAssurance = {
-  title: "Funding and Quality Assurance",
+  title: ("{{cms:governance.pages_governance_board_page_data_funding_and_quality_assurance.title_114}}" as string),
   paragraphs: [
-    "Kent Business College is listed on the Apprenticeship Provider and Assessment Register as a main provider. Governors receive assurance that apprenticeship provision is managed in line with current government apprenticeship funding rules, provider agreement requirements and normal quality assurance processes.",
-    "This includes assurance on learner eligibility, recognition of prior learning, agreed training plans, off-the-job training evidence, progress reviews, English and maths support where required, subcontracting where applicable, ILR/data compliance and end-point assessment arrangements.",
+    ("{{cms:governance.pages_governance_board_page_data_funding_and_quality_assurance.paragraphs_115}}" as string),
+    ("{{cms:governance.pages_governance_board_page_data_funding_and_quality_assurance.paragraphs_116}}" as string),
   ],
 };
 
 export const safeguardingAndPrevent = {
-  title: "Safeguarding and Prevent",
+  title: ("{{cms:governance.pages_governance_board_page_data_safeguarding_and_prevent.title_117}}" as string),
   details: [
     {
-      label: "Who is covered",
+      label: ("{{cms:governance.pages_governance_board_page_data_safeguarding_and_prevent.details_label_118}}" as string),
       value:
         "Safeguarding arrangements apply to apprentices and learners, including those under 18 and adults who may be at risk.",
     },
     {
-      label: "Governance assurance",
+      label: ("{{cms:governance.pages_governance_board_page_data_safeguarding_and_prevent.details_label_119}}" as string),
       value:
         "Governors receive updates on safeguarding culture, Prevent, staff training, safer recruitment, concerns, referrals, online safety and learner wellbeing.",
     },
   ],
   publicInformation: {
-    label: "Public information",
-    action: "View the Safeguarding Handbook",
-    href: "/safeguarding-handbook",
+    label: ("{{cms:governance.pages_governance_board_page_data_safeguarding_and_prevent.public_information_label_120}}" as string),
+    action: ("{{cms:governance.pages_governance_board_page_data_safeguarding_and_prevent.public_information_action_121}}" as string),
+    href: ("{{cms:governance.pages_governance_board_page_data_safeguarding_and_prevent.public_information_href_122}}" as string),
   },
 };
 
 export const expressionOfInterest = {
-  title: "Expression of Interest",
+  title: ("{{cms:governance.pages_governance_board_page_data_expression_of_interest.title_123}}" as string),
   description:
-    "Recruitment for future governance roles is separate from the current governance information above. Expressions of interest are welcome from people with relevant expertise and a commitment to improving outcomes for learners and apprentices.",
+    ("{{cms:governance.pages_governance_board_page_data_expression_of_interest.description_124}}" as string),
   form: {
-    title: "Governance Board EOI",
+    title: ("{{cms:governance.pages_governance_board_page_data_expression_of_interest.form_title_125}}" as string),
     formName: "GovernanceBoardEOI",
     formPerma: "65YUCGdJQ48FCsLf6iW1sBNw6syR5mLU2EWbZ99sS8E",
     initialHeight: 2850,

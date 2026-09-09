@@ -8,7 +8,7 @@ The first collection is **Home Content**: page metadata and all 14 visible Home 
 
 Recognition, trusted organisations and KBC experience are shared with existing programme, learner and employer pages. Those components also consume the same published Home records, so changes to these sections affect their shared appearances. The dashboard's Home event section manages its heading, calls to action and fallback imagery; event records continue to come from the existing Neon-backed Events API and Eventbrite sync. It does not invent fallback events.
 
-Other collections can be registered in `apps.cms.schemas.COLLECTIONS`, with matching serializers/contracts and React renderers. Programmes, News, Awards, Bookshop and global-content editing have not been added to this initial dashboard scope. Existing Django models/admin for other collections remain available.
+The dropdown expansion adds 23 managed pages alongside Home. See [the route inventory](CMS_ROUTE_INVENTORY.md) for the exact scope, exclusions, aliases and source modules. Existing Django models/admin for domain collections remain available. Global navigation editing is outside this phase.
 
 ## Database and initial migration
 
@@ -60,9 +60,9 @@ For the default Vite HTTPS setup, configure `CSRF_TRUSTED_ORIGINS` and `CORS_ALL
 
 Each mutation supplies the last-read version. The API locks the row and checks that version before updating. A stale request receives `409`; the UI keeps the user's edits and offers an explicit reload. Drafts are valid structured content, not incomplete arbitrary JSON. Unknown properties, unsafe URLs, invalid icons, oversized content and invalid card counts are rejected.
 
-The public React query refreshes on focus and every 15 seconds while active. A successful dashboard publication invalidates the public query in that application instance. The public endpoint reads current Neon records and sends `Cache-Control: no-store`; no local TypeScript or JSON snapshot substitutes for an API failure. The API returning no active record hides that section.
+The public React query refreshes on focus and every 15 seconds while active. A successful dashboard publication invalidates public queries in that application instance and sends a same-origin BroadcastChannel signal to other open tabs. Each tab refetches published content from Django without a page reload; the signal contains no content or credentials. Draft saves do not send a publication signal. The public endpoint reads current Neon records and sends `Cache-Control: no-store`; no local TypeScript or JSON snapshot substitutes for an API failure. The API returning no active record hides that section.
 
-The 15-second refresh applies to the Home page. Shared sections on other pages request only their own published record, for example `/content/home/?section=recognition`, and do not poll. Their queries refresh on mounting and window focus, share in-flight requests by section, and participate in dashboard publication invalidation. The `home` URL identifies the record's CMS collection; it does not load the Home page or its hero media. A filtered response omits inactive/unpublished sections and rejects unknown section names.
+The 15-second refresh applies to Home, managed dropdown pages and shared content sections. Shared sections on other pages request only their own published record, for example `/content/home/?section=recognition`. They also poll every 15 seconds while active, refresh on mounting and window focus, share in-flight requests by section, and participate in cross-tab publication invalidation. The app subscribes once at its provider boundary and cleans up listeners/channels on unmount. Returning to a visible tab triggers a refresh even when BroadcastChannel is unavailable; publication from another browser/device is picked up by polling. The `home` URL identifies the record's CMS collection; it does not load the Home page or its hero media. A filtered response omits inactive/unpublished sections and rejects unknown section names.
 
 ## API
 
@@ -115,3 +115,34 @@ npm run build
 `cmsNeon.integration.test.tsx` is skipped by default. To opt into read-only HTTP/React verification, set `VITE_API_BASE_URL` to a running Django API and `VITE_CMS_ACCEPTANCE_EXPECTED` to the exact published Hero heading, then run that single test. This test never writes content or creates accounts.
 
 Once an administrator is available, perform the final acceptance in `/dashboard`: save a draft, confirm Home still shows the published copy, publish, reload Home, restart both applications, and confirm the new copy still appears. Record the result and restore any temporary test copy through Publish. Retain the audit trail.
+
+
+## Dropdown page expansion (2026-09-09)
+
+The shared desktop/mobile `primaryNavigation` and the actual React router determine the scope: **23 pages plus Home**, in Home, Colleges, Programmes, Information, Apprentice and Employer groups. Careers (which currently points to Contact), Employer Agreement and booking destinations do not get editors. Contact independently qualifies under Employers. Leadership and other routes absent from the dropdown are not recreated.
+
+`ContentPage` stores each key, title, canonical route and group once. Its related `ContentEntry` rows reuse the existing JSONB drafts, published snapshots, version conflicts, revision history and audit log. `page` remains on entries for compatibility with the Home API; the new `content_page` foreign key connects the hierarchy. No per-page database tables are created.
+
+- `cms.0003` adds page identities and the section relationship.
+- `cms.0004` imports the existing React copy into **369 new content sections** (4,073 editable text, media and link fields), creates initial revisions and associates the existing 15 Home entries. It inserts missing records only and never overwrites editorial content. Its frozen embedded snapshot is a one-time migration input, never a runtime fallback.
+- `page_contracts.json` contains field validation and route metadata, not public copy. Unlike the Home contract, non-Home editor schemas arrive on the authenticated entry-detail response. The CMS renderer preserves JSONB/schema property names while camelizing the API envelope.
+- React data modules now contain layout bindings such as `{{cms:page.section.field}}`; `useCmsBindings` resolves them using the published Django response. These bindings preserve icons, layout, stable identities, form handlers and existing route logic. They are not a content store. This phase edits the existing layout's fields; adding/removing layout elements or changing catalogue topology remains a code change.
+- Managed routes wait for their content and any shared page dependencies, show a service error on failure, and refresh published queries every 15 seconds and on focus. There is no local content fallback. Shared Home sections still use their existing Home queries; live event records still use the Events API. Shared catalogue/profile consumers resolve the same published records.
+- Deactivated content is omitted from the public endpoint. The renderer removes affected visual sections/components when their required content bindings are absent. Activating a section restores its existing published snapshot without publishing its draft.
+
+**Dashboard:** All Content contains one row/card per page, with title, key, route, group, section count, status, publication state, last update and actor. Search covers titles, keys, routes and section names. Group/status filters narrow the list. Collapsible sidebar groups lead to a page's section list. Section editors use the existing structured-field editor and draft/publish/conflict workflow.
+
+**Preview:** `/cms/pages/<key>/preview/` returns all saved sections to authenticated CMS administrators only. `/cms/entries/<key>/preview/` still previews one saved section with the remaining published sections. Non-Home previews open the actual public layout in an iframe with `?cmsPreview=all` or a section key; that parameter uses protected API requests, never grants access, and sets `noindex,nofollow`. Home previews continue using `HomeSections`. View actions open read-only section views.
+
+**Validation:** source-fidelity tests now resolve the frozen migration snapshot through the real binding layer. The dedicated dropdown test compares the registry to every actual dropdown destination and renders all 23 managed routes. Backend tests cover every page's draft isolation/publication, schema-key preservation, permission denial, stale versions, page search, exclusions and import idempotency. The regular unit-test database remains isolated and disposable; application persistence continues to require Neon PostgreSQL.
+
+Deployment order: apply the two additive CMS migrations, restart Django so it loads the schema registry, then serve the updated frontend build. No seed/import executes during application startup.
+
+
+### Expansion acceptance results
+
+Both additive migrations were applied to the existing Neon database on 2026-09-09. Confirmed **24 page identities, 384 sections (15 existing Home + 369 imported), and PostgreSQL JSONB content columns**. All 24 public content API responses validated against their contracts; anonymous administration and draft-preview requests were denied. Fresh database connections retained the imported records. The already-running local Django HTTP server returned Home, FAQ, Marketing College, Marketing Manager Level 6 and Contact content with HTTP 200 and `no-store`.
+
+A real-Neon draft → private preview → publish → stale-version rejection check ran inside an explicitly rolled-back transaction. A fresh connection confirmed the original content, version and revision count after rollback. No test content or revisions were committed, and no account was created or changed.
+
+Automated checks passed: 117 frontend tests (one opt-in integration test skipped), 55 Django tests, TypeScript, ESLint, migration consistency and a production build. The build retains the existing large About/WebGL chunk warning. No browser was connected to the computer-use surface, so a visual browser walkthrough of the dashboard and responsive public layouts remains unverified; server-rendered route and source-fidelity checks passed.

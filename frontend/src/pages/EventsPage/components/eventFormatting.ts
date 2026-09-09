@@ -46,7 +46,7 @@ export function buildEventSchema(event: Event, siteUrl: string): Record<string, 
       : { "@type": "Place", name: event.location || "Kent Business College", address: event.address || undefined },
     image: event.image?.url || undefined,
     description: event.summary || undefined,
-    organizer: { "@type": "Organization", name: "Kent Business College", url: siteUrl },
+    organizer: { "@type": "Organization", name: ("{{cms:events.pages_events_page_components_event_forma_organizer.name_001}}" as string), url: siteUrl },
     url: `${siteUrl}/events/${event.slug}`,
   };
 }

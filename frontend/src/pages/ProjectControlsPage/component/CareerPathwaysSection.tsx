@@ -1,21 +1,25 @@
+import { useCmsBindings } from "@/features/cms/publicContent";
 import { BriefcaseBusiness } from "lucide-react";
 import { FigmaSectionHeading } from "@/components/ui/FigmaSectionHeading";
 import { careerCopy, projectControlsOutcomes } from "../data";
 import { section, shell } from "./layout";
 
 export function CareerPathwaysSection() {
-  return (
-    <section id="pc-outcomes" className={`${section} relative isolate overflow-hidden bg-primary-dark text-white`} aria-labelledby="pc-careers-title">
+  const cms = useCmsBindings(["college_project_controls"]);
+  const cmsValues = cms.resolve({ section, shell, careerCopy, projectControlsOutcomes });
+
+  return cms.render((
+    <section id="pc-outcomes" className={`${cmsValues.section} relative isolate overflow-hidden bg-primary-dark text-white`} aria-labelledby="pc-careers-title">
       <img
         className="pointer-events-none absolute -left-44 top-1/2 z-0 hidden w-[clamp(420px,38vw,680px)] -translate-y-1/2 select-none opacity-[0.07] lg:block"
-        src="/assets/patterns/kbc-horse-growth.png"
+        src={cms.text("college_project_controls.pages_project_controls_page_component_ca_career_pathways_section.src_001")}
         alt=""
         aria-hidden="true"
       />
-      <div className={`${shell} relative z-10`}>
-        <FigmaSectionHeading id="pc-careers-title" eyebrow={careerCopy.eyebrow} title={careerCopy.title} description={careerCopy.description} tone="inverse" />
+      <div className={`${cmsValues.shell} relative z-10`}>
+        <FigmaSectionHeading id="pc-careers-title" eyebrow={cmsValues.careerCopy.eyebrow} title={cmsValues.careerCopy.title} description={cmsValues.careerCopy.description} tone="inverse" />
         <div className="mt-12 grid gap-x-8 sm:grid-cols-2 lg:grid-cols-3">
-          {projectControlsOutcomes.map((outcome) => (
+          {cmsValues.projectControlsOutcomes.map((outcome) => (
             <article
               key={outcome.role}
               className="group relative border-b border-white/20 px-5 py-8 transition-[background-color,box-shadow] duration-300 after:absolute after:inset-x-0 after:-bottom-px after:h-[3px] after:origin-left after:scale-x-0 after:bg-[var(--color-gold)] after:transition-transform after:duration-[420ms] hover:bg-white/[.075] hover:shadow-[0_14px_34px_rgba(0,0,0,.16)] hover:after:scale-x-100 sm:px-6"
@@ -31,5 +35,5 @@ export function CareerPathwaysSection() {
         </div>
       </div>
     </section>
-  );
+  ));
 }

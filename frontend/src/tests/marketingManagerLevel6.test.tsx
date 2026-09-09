@@ -1,9 +1,10 @@
+import { resolvedFixture, cmsTestClient } from "./cmsFixtures";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { renderToStaticMarkup } from "react-dom/server";
+import { renderToStaticMarkup } from "./cmsFixtures";
 import { MemoryRouter } from "react-router-dom";
 import { describe, expect, it, vi } from "vitest";
 import MarketingManagerLevel6Page from "@/pages/MarketingManagerLevel6Page/page";
-import { curriculumData, enquiryData, faqs, heroData, pageNavigation, programmeStats } from "@/pages/MarketingManagerLevel6Page/data";
+import { curriculumData as curriculumDataTemplate, enquiryData as enquiryDataTemplate, faqs as faqsTemplate, heroData as heroDataTemplate, pageNavigation as pageNavigationTemplate, programmeStats as programmeStatsTemplate } from "@/pages/MarketingManagerLevel6Page/data";
 import { FigmaTestimonialsSection } from "@/pages/home/components/FigmaTestimonialsSection";
 import ProgrammeInterestDialog from "@/components/programme/ProgrammeInterestDialog";
 import { buildProgrammeInterestPayload } from "@/components/programme/programmeInterest";
@@ -15,7 +16,7 @@ vi.mock("@/features/content/queries", () => ({ useEvents: () => ({ data: { items
 function plainText(html: string) {
   return html.replace(/<[^>]*>/g, " ").replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/&#x27;|&#39;/g, "'").replace(/&gt;/g, ">").replace(/&lt;/g, "<").replace(/\s+/g, " ").trim();
 }
-const renderPage = () => renderToStaticMarkup(<QueryClientProvider client={new QueryClient()}><MemoryRouter><MarketingManagerLevel6Page /></MemoryRouter></QueryClientProvider>);
+const renderPage = () => renderToStaticMarkup(<QueryClientProvider client={cmsTestClient()}><MemoryRouter><MarketingManagerLevel6Page /></MemoryRouter></QueryClientProvider>);
 
 describe("Marketing Manager Level 6 source fidelity", () => {
   it("includes every official programme content block except testimonials replaced with the home section", () => {
@@ -57,7 +58,7 @@ describe("Marketing Manager Level 6 source fidelity", () => {
   });
 
   it("renders the complete two-step source enquiry using the existing contact dialog", () => {
-    const html = plainText(renderToStaticMarkup(<QueryClientProvider client={new QueryClient()}><MemoryRouter><ProgrammeInterestDialog data={enquiryData} cohort={heroData.cohorts[0].label} cohorts={heroData.cohorts} onClose={() => undefined} /></MemoryRouter></QueryClientProvider>));
+    const html = plainText(renderToStaticMarkup(<QueryClientProvider client={cmsTestClient()}><MemoryRouter><ProgrammeInterestDialog data={enquiryData} cohort={heroData.cohorts[0].label} cohorts={heroData.cohorts} onClose={() => undefined} /></MemoryRouter></QueryClientProvider>));
     for (const step of enquiryData.enquiry.steps) {
       expect(html).toContain(step.title);
       for (const field of step.fields) expect(html).toContain(field.label);
@@ -82,3 +83,5 @@ describe("Marketing Manager Level 6 source fidelity", () => {
     expect(result.phone).toBe("");
   });
 });
+
+const { curriculumData, enquiryData, faqs, heroData, pageNavigation, programmeStats } = resolvedFixture({ curriculumData: curriculumDataTemplate, enquiryData: enquiryDataTemplate, faqs: faqsTemplate, heroData: heroDataTemplate, pageNavigation: pageNavigationTemplate, programmeStats: programmeStatsTemplate });

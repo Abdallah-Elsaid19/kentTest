@@ -1,10 +1,14 @@
+import { useCmsBindings } from "@/features/cms/publicContent";
 import { ArrowRight } from "lucide-react";
 
 import { missionPillars } from "../data";
 import { actionsClass, ArrowLink, containerClass, sectionClass, SectionIntro } from "./shared";
 
 export function MissionSection() {
-  return (
+  const cms = useCmsBindings(["funding"]);
+  const cmsValues = cms.resolve({ missionPillars });
+
+  return cms.render((
     <section className={`${sectionClass} bg-[#f7f4fa]`}>
       <img className="pointer-events-none absolute left-[clamp(-180px,-9vw,-75px)] top-1/2 z-0 w-[clamp(330px,30vw,540px)] -translate-y-1/2 select-none opacity-[.045]" src="/assets/patterns/kbc-gold-leaf.png" alt="" />
       <div className={containerClass}>
@@ -17,7 +21,7 @@ export function MissionSection() {
         />
       </div>
       <div className={`${containerClass} mt-20 grid grid-cols-3 border-y border-[#e8e0ef] max-[780px]:grid-cols-1`}>
-        {missionPillars.map(({ icon: Icon, title, text }, index) => (
+        {cmsValues.missionPillars.map(({ icon: Icon, title, text }, index) => (
           <article className="group relative min-h-[255px] border-r border-[#e8e0ef] bg-transparent px-[34px] py-[38px] transition-[background-color,box-shadow] duration-300 after:absolute after:inset-x-0 after:-bottom-px after:h-[3px] after:origin-left after:scale-x-0 after:bg-[#f5c94f] after:transition-transform after:duration-[420ms] hover:bg-[#401b8c]/[.065] hover:after:scale-x-100 last:border-r-0 max-[780px]:min-h-0 max-[780px]:border-b max-[780px]:border-r-0 max-[780px]:last:border-b-0" key={title}>
             <span className="absolute right-7 top-7 text-xs font-bold text-[#c9bed1] transition-colors group-hover:text-[#401b8c]">0{index + 1}</span>
             <Icon className="block text-[#401b8c]" /><h3 className="mt-6 text-[21px] font-semibold">{title}</h3><p className="mt-3 text-sm leading-[1.75] text-[#766d7c]">{text}</p>
@@ -34,5 +38,5 @@ export function MissionSection() {
         </div>
       </div>
     </section>
-  );
+  ));
 }

@@ -1,9 +1,10 @@
-import { renderToStaticMarkup } from "react-dom/server";
+import { resolvedFixture, cmsTestClient } from "./cmsFixtures";
+import { renderToStaticMarkup } from "./cmsFixtures";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { MemoryRouter } from "react-router-dom";
 import { describe, expect, it, vi } from "vitest";
 import ProjectControlsProfessionalLevel6Page from "@/pages/ProjectControlsProfessionalLevel6Page/page";
-import { heroData, pageNavigation, pathwayData, faqs, fundingData, outputsData, coachData, workloadData } from "@/pages/ProjectControlsProfessionalLevel6Page/data";
+import { heroData as heroDataTemplate, pageNavigation as pageNavigationTemplate, pathwayData as pathwayDataTemplate, faqs as faqsTemplate, fundingData as fundingDataTemplate, outputsData as outputsDataTemplate, coachData as coachDataTemplate, workloadData as workloadDataTemplate } from "@/pages/ProjectControlsProfessionalLevel6Page/data";
 import { HeroSection } from "@/pages/AssociateProjectManagerPage/component/HeroSection";
 import { WorkloadSection } from "@/pages/AssociateProjectManagerPage/component/LearningSupportSections";
 import { buildProgrammeInterestPayload } from "@/components/programme/programmeInterest";
@@ -12,7 +13,7 @@ vi.mock("@/components/seo/RouteMeta", () => ({ RouteMeta: () => null }));
 vi.mock("@/features/content/queries", () => ({ useEvents: () => ({ data: { items: [] }, isLoading: false, isError: false }) }));
 
 function renderPage() {
-  return renderToStaticMarkup(<QueryClientProvider client={new QueryClient()}><MemoryRouter><ProjectControlsProfessionalLevel6Page /></MemoryRouter></QueryClientProvider>);
+  return renderToStaticMarkup(<QueryClientProvider client={cmsTestClient()}><MemoryRouter><ProjectControlsProfessionalLevel6Page /></MemoryRouter></QueryClientProvider>);
 }
 
 describe("Project Controls Professional Level 6", () => {
@@ -78,3 +79,5 @@ describe("Project Controls Professional Level 6", () => {
     expect(buildProgrammeInterestPayload(form, payload.interest, payload.sourcePage, "").consent).toBe(false);
   });
 });
+
+const { heroData, pageNavigation, pathwayData, faqs, fundingData, outputsData, coachData, workloadData } = resolvedFixture({ heroData: heroDataTemplate, pageNavigation: pageNavigationTemplate, pathwayData: pathwayDataTemplate, faqs: faqsTemplate, fundingData: fundingDataTemplate, outputsData: outputsDataTemplate, coachData: coachDataTemplate, workloadData: workloadDataTemplate });

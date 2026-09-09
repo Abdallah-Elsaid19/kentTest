@@ -7,12 +7,12 @@ export function publishedSectionQueryOptions(section: HomeSection) {
   return {
     queryKey: ["cms-public", "home", "section", section],
     queryFn: async () => parseHomeDocument(await apiGet(`/content/home/?section=${encodeURIComponent(section)}`), section),
-    // Reuse one in-memory request for shared instances. Published changes are
-    // refreshed on navigation/focus and invalidated by the dashboard.
+    // Share requests between instances. Cross-tab notifications refresh immediately;
+    // polling also picks up publication from another browser or device.
     staleTime: 30_000,
     refetchOnMount: "always" as const,
     refetchOnWindowFocus: "always" as const,
-    refetchInterval: false as const,
+    refetchInterval: 15_000,
   };
 }
 

@@ -1,8 +1,12 @@
+import { useCmsBindings } from "@/features/cms/publicContent";
 import { FigmaSectionHeading } from "@/components/ui/FigmaSectionHeading";
 import { recognitionLogos } from "../data";
 
 export function LearnerRecognitionSection() {
-  return (
+  const cms = useCmsBindings(["learners"]);
+  const cmsValues = cms.resolve({ recognitionLogos });
+
+  return cms.render((
     <section className="bg-white py-16 sm:py-20 lg:py-28" id="learner-recognition" aria-labelledby="learner-recognition-title">
       <div className="mx-auto w-full max-w-[1240px] px-5 sm:px-8 lg:px-10">
         <div className="mx-auto max-w-[980px]">
@@ -15,7 +19,7 @@ export function LearnerRecognitionSection() {
         </div>
 
         <ul className="mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-[#e4ddec] bg-[#e4ddec] sm:grid-cols-3 lg:mt-16 lg:grid-cols-4">
-          {recognitionLogos.map((logo) => (
+          {cmsValues.recognitionLogos.map((logo) => (
             <li className="group flex min-h-[180px] flex-col items-center justify-center bg-white p-5 text-center" key={logo.name}>
               {logo.src ? (
                 <img className="h-14 max-w-[150px] object-contain transition-transform duration-300 group-hover:scale-110 motion-reduce:transition-none" src={logo.src} alt={`${logo.name} logo`} loading="lazy" decoding="async" />
@@ -30,5 +34,5 @@ export function LearnerRecognitionSection() {
         <p className="mx-auto mt-8 max-w-[760px] text-center text-xs leading-6 text-[#766d7c]">Qualifications, memberships, professional-body relationships and recognition vary by programme.</p>
       </div>
     </section>
-  );
+  ));
 }

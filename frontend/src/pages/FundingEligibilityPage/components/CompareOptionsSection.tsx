@@ -1,15 +1,19 @@
+import { useCmsBindings } from "@/features/cms/publicContent";
 import { ArrowUpRight } from "lucide-react";
 
 import { comparisonRoutes } from "../data";
 import { containerClass, eyebrowClass, softSectionClass, SectionIntro } from "./shared";
 
 export function CompareOptionsSection() {
-  return (
+  const cms = useCmsBindings(["funding"]);
+  const cmsValues = cms.resolve({ comparisonRoutes });
+
+  return cms.render((
     <section className={softSectionClass}>
       <div className={containerClass}>
         <SectionIntro eyebrow="Compare your options" title="Which route fits your circumstances?" align="center" />
         <div className="grid grid-cols-3 gap-[18px] max-[780px]:grid-cols-1">
-          {comparisonRoutes.map(({ icon: Icon, route, title, best, structure, funding, objective, examples, employer, link, ...option }) => {
+          {cmsValues.comparisonRoutes.map(({ icon: Icon, route, title, best, structure, funding, objective, examples, employer, link, ...option }) => {
             const isDark = "dark" in option && option.dark;
             return (
               <article className={`flex flex-col rounded-[31px_9px] border p-[31px] ${isDark ? "border-transparent bg-primary text-white" : "border-[#e8e0ef] bg-white"}`} key={title}>
@@ -22,5 +26,5 @@ export function CompareOptionsSection() {
         </div>
       </div>
     </section>
-  );
+  ));
 }

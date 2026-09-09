@@ -1,11 +1,12 @@
-import { renderToStaticMarkup } from "react-dom/server";
+import { resolvedFixture, cmsTestClient } from "./cmsFixtures";
+import { renderToStaticMarkup } from "./cmsFixtures";
 import { MemoryRouter } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { describe, expect, it, vi } from "vitest";
 import BlogPage from "@/pages/BlogPage/page";
 import { NewsArticleContent } from "@/pages/BlogPage/article";
-import { filterNewsArticles, relatedNewsArticles } from "@/pages/BlogPage/catalogue";
-import { newsArticles, newsCategories, newsHero, newsPath } from "@/pages/BlogPage/data";
+import { filterNewsArticles as filterNewsData, relatedNewsArticles as relatedNewsData } from "@/pages/BlogPage/catalogue";
+import { newsArticles as newsArticlesTemplate, newsCategories as newsCategoriesTemplate, newsHero as newsHeroTemplate, newsPath as newsPathTemplate } from "@/pages/BlogPage/data";
 import source from "./fixtures/news-source.json";
 
 vi.mock("@/components/seo/RouteMeta", () => ({ RouteMeta: () => null }));
@@ -35,7 +36,7 @@ describe("News source fidelity", () => {
   });
 
   it("renders all ten articles, all source page sections and working local links", () => {
-    const client = new QueryClient();
+    const client = cmsTestClient();
     const markup = renderToStaticMarkup(<QueryClientProvider client={client}><MemoryRouter><BlogPage /></MemoryRouter></QueryClientProvider>);
     const text = plainText(markup);
     expect(markup.match(/<h1\b/g)).toHaveLength(1);
@@ -87,3 +88,8 @@ describe("News category and related-reading behaviour", () => {
     expect(new Set(related.map(item => item.id)).size).toBe(3);
   });
 });
+
+const { newsArticles, newsCategories, newsHero, newsPath } = resolvedFixture({ newsArticles: newsArticlesTemplate, newsCategories: newsCategoriesTemplate, newsHero: newsHeroTemplate, newsPath: newsPathTemplate });
+
+const filterNewsArticles = (category: Parameters<typeof filterNewsData>[0]) => filterNewsData(category, newsArticles);
+const relatedNewsArticles = (article: Parameters<typeof relatedNewsData>[0]) => relatedNewsData(article, newsArticles);

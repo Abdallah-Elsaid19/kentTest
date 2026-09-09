@@ -1,3 +1,4 @@
+import { useCmsBindings } from "@/features/cms/publicContent";
 import { CollegePageNav } from "@/components/college/CollegePageNav";
 import { RouteMeta } from "@/components/seo/RouteMeta";
 import { GovernanceHero } from "./component/GovernanceHero";
@@ -14,11 +15,14 @@ import {
 import { governanceMeta, governancePageNav } from "./data";
 
 export default function GovernanceBoardPage() {
-  return (
+  const cms = useCmsBindings(["governance"]);
+  const cmsValues = cms.resolve({ governanceMeta, governancePageNav });
+
+  return cms.render((
     <main className="bg-white">
-      <RouteMeta fallbackTitle={governanceMeta.title} fallbackDescription={governanceMeta.description} />
+      <RouteMeta fallbackTitle={cmsValues.governanceMeta.title} fallbackDescription={cmsValues.governanceMeta.description} />
       <GovernanceHero />
-      <CollegePageNav items={governancePageNav} ariaLabel="Governance page sections" />
+      <CollegePageNav items={cmsValues.governancePageNav} ariaLabel="Governance page sections" />
       <ProviderStatusSection />
       <GovernanceOverviewSection />
       <GovernanceStructureSection />
@@ -28,5 +32,5 @@ export default function GovernanceBoardPage() {
       <GovernanceComplianceSection />
       <GovernanceEoiSection />
     </main>
-  );
+  ));
 }

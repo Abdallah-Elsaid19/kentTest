@@ -1,138 +1,138 @@
 export const heroStats = [
-  { value: "7 days", label: "Free one-to-one tutoring support" },
-  { value: "100%", label: "DfE funded for levy payers" },
-  { value: "8.5 hrs", label: "Structured learning each week" },
+  { value: "7 days", label: ("{{cms:learners.pages_learners_data_hero_stats.label_001}}" as string) },
+  { value: "100%", label: ("{{cms:learners.pages_learners_data_hero_stats.label_002}}" as string) },
+  { value: "8.5 hrs", label: ("{{cms:learners.pages_learners_data_hero_stats.label_003}}" as string) },
 ];
 
 export const learnerAudiences = [
-  { title: "Fill capability gaps", description: "Develop project management, controls and marketing skills that directly support your delivery." },
-  { title: "Retain your talent", description: "Invest in your people and strengthen retention with a recognised development pathway." },
-  { title: "Use your levy", description: "Make the most of Apprenticeship Levy funding that might otherwise go unused." },
-  { title: "Measure the return", description: "See tangible workplace impact through evidence-based, work-applied learning." },
+  { title: ("{{cms:learners.pages_learners_data_learner_audiences.title_004}}" as string), description: ("{{cms:learners.pages_learners_data_learner_audiences.description_005}}" as string) },
+  { title: ("{{cms:learners.pages_learners_data_learner_audiences.title_006}}" as string), description: ("{{cms:learners.pages_learners_data_learner_audiences.description_007}}" as string) },
+  { title: ("{{cms:learners.pages_learners_data_learner_audiences.title_008}}" as string), description: ("{{cms:learners.pages_learners_data_learner_audiences.description_009}}" as string) },
+  { title: ("{{cms:learners.pages_learners_data_learner_audiences.title_010}}" as string), description: ("{{cms:learners.pages_learners_data_learner_audiences.description_011}}" as string) },
 ];
 
 export const learningSteps = [
-  { number: "01", title: "Identify your need", description: "Tell us which roles or skills gaps you want to develop, and we'll recommend the right programme." },
-  { number: "02", title: "Check your funding", description: "Use your Apprenticeship Levy or access 95% government co-investment as a non-levy employer." },
-  { number: "03", title: "Onboard your learners", description: "We manage enrolment, eligibility checks and onboarding for each employee you nominate." },
-  { number: "04", title: "Track real impact", description: "Learners apply new skills on the job, with progress visible through structured reporting." },
+  { number: "01", title: ("{{cms:learners.pages_learners_data_learning_steps.title_012}}" as string), description: ("{{cms:learners.pages_learners_data_learning_steps.description_013}}" as string) },
+  { number: "02", title: ("{{cms:learners.pages_learners_data_learning_steps.title_014}}" as string), description: ("{{cms:learners.pages_learners_data_learning_steps.description_015}}" as string) },
+  { number: "03", title: ("{{cms:learners.pages_learners_data_learning_steps.title_016}}" as string), description: ("{{cms:learners.pages_learners_data_learning_steps.description_017}}" as string) },
+  { number: "04", title: ("{{cms:learners.pages_learners_data_learning_steps.title_018}}" as string), description: ("{{cms:learners.pages_learners_data_learning_steps.description_019}}" as string) },
 ];
 
 export const learnerProgrammes = [
   {
-    discipline: "Project Management",
-    title: "Associate Project Manager",
+    discipline: ("{{cms:learners.pages_learners_data_learner_programmes.discipline_020}}" as string),
+    title: ("{{cms:learners.pages_learners_data_learner_programmes.title_021}}" as string),
     level: "Level 4",
-    duration: "12 months + EPA",
-    description: "Develop structured project management capability and practical AI application across your delivery teams.",
-    image: "/assets/images/learner-home/associate-project-manager.webp",
-    href: "/associate-project-manager-level-4",
+    duration: ("{{cms:learners.pages_learners_data_learner_programmes.duration_022}}" as string),
+    description: ("{{cms:learners.pages_learners_data_learner_programmes.description_023}}" as string),
+    image: ("{{cms:learners.pages_learners_data_learner_programmes.image_024}}" as string),
+    href: ("{{cms:learners.pages_learners_data_learner_programmes.href_025}}" as string),
   },
   {
-    discipline: "Project Controls",
-    title: "Project Controls Professional",
+    discipline: ("{{cms:learners.pages_learners_data_learner_programmes.discipline_026}}" as string),
+    title: ("{{cms:learners.pages_learners_data_learner_programmes.title_027}}" as string),
     level: "Level 6",
-    duration: "27 months",
-    description: "Strengthen planning, cost, risk, PMO and governance capability for complex delivery.",
-    image: "/assets/images/learner-home/project-controls.webp",
-    href: "/college-of-project-controls-and-project-management",
+    duration: ("{{cms:learners.pages_learners_data_learner_programmes.duration_028}}" as string),
+    description: ("{{cms:learners.pages_learners_data_learner_programmes.description_029}}" as string),
+    image: ("{{cms:learners.pages_learners_data_learner_programmes.image_030}}" as string),
+    href: ("{{cms:learners.pages_learners_data_learner_programmes.href_031}}" as string),
   },
   {
     discipline: "Marketing",
-    title: "Marketing Executive",
+    title: ("{{cms:learners.pages_learners_data_learner_programmes.title_032}}" as string),
     level: "Level 4",
-    duration: "12 months + EPA",
-    description: "Build campaign delivery capability and professional behaviours across your marketing function.",
-    image: "/assets/images/learner-home/marketing-executive.webp",
-    href: "/marketing-executive-level-4",
+    duration: ("{{cms:learners.pages_learners_data_learner_programmes.duration_033}}" as string),
+    description: ("{{cms:learners.pages_learners_data_learner_programmes.description_034}}" as string),
+    image: ("{{cms:learners.pages_learners_data_learner_programmes.image_035}}" as string),
+    href: ("{{cms:learners.pages_learners_data_learner_programmes.href_036}}" as string),
   },
   {
     discipline: "Marketing",
-    title: "Marketing Manager",
+    title: ("{{cms:learners.pages_learners_data_learner_programmes.title_037}}" as string),
     level: "Level 6",
-    duration: "18 months + EPA",
-    description: "Develop strategic marketing leadership, brand and campaign management across your organisation.",
-    image: "/assets/images/learner-home/marketing-manager.webp",
-    href: "/marketing-manager-level-6",
+    duration: ("{{cms:learners.pages_learners_data_learner_programmes.duration_038}}" as string),
+    description: ("{{cms:learners.pages_learners_data_learner_programmes.description_039}}" as string),
+    image: ("{{cms:learners.pages_learners_data_learner_programmes.image_040}}" as string),
+    href: ("{{cms:learners.pages_learners_data_learner_programmes.href_041}}" as string),
   },
 ];
 
-export const dfeBenefits = ["Tutoring services", "Learning materials", "Apprenticeship certificate"];
+export const dfeBenefits = [("{{cms:learners.pages_learners_data_dfe_benefits.text_042}}" as string), ("{{cms:learners.pages_learners_data_dfe_benefits.text_043}}" as string), ("{{cms:learners.pages_learners_data_dfe_benefits.text_044}}" as string)];
 
 export const kbcFundBenefits = [
-  "Professional exam fees",
-  "Registration fees",
-  "APM ChPP application & preparation support where applicable",
-  "Workshop travel",
-  "Graduation rewards",
-  "No hidden costs",
-  "Professional memberships",
-  "Relevant professional exam support",
-  "ICostE / Certified Professional Cost Engineer pathway support where applicable",
-  "Graduation ceremony",
-  "Laptop prize where applicable",
+  ("{{cms:learners.pages_learners_data_kbc_fund_benefits.text_045}}" as string),
+  ("{{cms:learners.pages_learners_data_kbc_fund_benefits.text_046}}" as string),
+  ("{{cms:learners.pages_learners_data_kbc_fund_benefits.text_047}}" as string),
+  ("{{cms:learners.pages_learners_data_kbc_fund_benefits.text_048}}" as string),
+  ("{{cms:learners.pages_learners_data_kbc_fund_benefits.text_049}}" as string),
+  ("{{cms:learners.pages_learners_data_kbc_fund_benefits.text_050}}" as string),
+  ("{{cms:learners.pages_learners_data_kbc_fund_benefits.text_051}}" as string),
+  ("{{cms:learners.pages_learners_data_kbc_fund_benefits.text_052}}" as string),
+  ("{{cms:learners.pages_learners_data_kbc_fund_benefits.text_053}}" as string),
+  ("{{cms:learners.pages_learners_data_kbc_fund_benefits.text_054}}" as string),
+  ("{{cms:learners.pages_learners_data_kbc_fund_benefits.text_055}}" as string),
 ];
 
-export const ipcBenefits = ["Advanced Project Controls modules", "Planning & scheduling", "Cost management & risk analysis"];
+export const ipcBenefits = [("{{cms:learners.pages_learners_data_ipc_benefits.text_056}}" as string), ("{{cms:learners.pages_learners_data_ipc_benefits.text_057}}" as string), ("{{cms:learners.pages_learners_data_ipc_benefits.text_058}}" as string)];
 
 export const learnerSupport = [
-  { title: "Dedicated account support", description: "A single point of contact for enrolment and progression." },
-  { title: "Flexible delivery", description: "Live online sessions designed around your working patterns." },
-  { title: "Progress reporting", description: "Clear visibility of learner engagement and achievement." },
-  { title: "Line manager guidance", description: "Support for managers to coach learners effectively on the job." },
+  { title: ("{{cms:learners.pages_learners_data_learner_support.title_059}}" as string), description: ("{{cms:learners.pages_learners_data_learner_support.description_060}}" as string) },
+  { title: ("{{cms:learners.pages_learners_data_learner_support.title_061}}" as string), description: ("{{cms:learners.pages_learners_data_learner_support.description_062}}" as string) },
+  { title: ("{{cms:learners.pages_learners_data_learner_support.title_063}}" as string), description: ("{{cms:learners.pages_learners_data_learner_support.description_064}}" as string) },
+  { title: ("{{cms:learners.pages_learners_data_learner_support.title_065}}" as string), description: ("{{cms:learners.pages_learners_data_learner_support.description_066}}" as string) },
 ];
 
 export const qualifications = ["CIM", "APM", "PMI", "APMG", "ChPP", "IPC", "ICostE", "CaSA"];
 
-export const tutoringBenefits = ["Live interactive learning", "Session recordings", "Catch-up support", "One-to-one tutoring"];
+export const tutoringBenefits = [("{{cms:learners.pages_learners_data_tutoring_benefits.text_067}}" as string), ("{{cms:learners.pages_learners_data_tutoring_benefits.text_068}}" as string), ("{{cms:learners.pages_learners_data_tutoring_benefits.text_069}}" as string), ("{{cms:learners.pages_learners_data_tutoring_benefits.text_070}}" as string)];
 
 export const masterclassBenefits = [
-  "KBC professional Masterclasses",
-  "London Masterclass events",
-  "Networking opportunities",
-  "Optional UK in-person workshops",
-  "Professional community",
+  ("{{cms:learners.pages_learners_data_masterclass_benefits.text_071}}" as string),
+  ("{{cms:learners.pages_learners_data_masterclass_benefits.text_072}}" as string),
+  ("{{cms:learners.pages_learners_data_masterclass_benefits.text_073}}" as string),
+  ("{{cms:learners.pages_learners_data_masterclass_benefits.text_074}}" as string),
+  ("{{cms:learners.pages_learners_data_masterclass_benefits.text_075}}" as string),
 ];
 
 export const workshopLocations = ["London", "Kent", "Nottingham", "Derby", "Birmingham", "York", "Manchester"];
 
 export const learnerStories = [
   {
-    quote: "It was really good to go through all the system elements. Affan was very good at explaining everything, and I now feel much more comfortable using it.",
-    name: "Gill Stoney",
-    role: "Workforce Scheduling Team Manager · St John Ambulance",
+    quote: ("{{cms:learners.pages_learners_data_learner_stories.quote_076}}" as string),
+    name: ("{{cms:learners.pages_learners_data_learner_stories.name_077}}" as string),
+    role: ("{{cms:learners.pages_learners_data_learner_stories.role_078}}" as string),
   },
   {
-    quote: "The structured approach gave me a clear framework to apply to complex infrastructure projects. The mentoring support was exceptional.",
-    name: "James Porter",
-    role: "Project Controls Lead · Balfour Beatty",
+    quote: ("{{cms:learners.pages_learners_data_learner_stories.quote_079}}" as string),
+    name: ("{{cms:learners.pages_learners_data_learner_stories.name_080}}" as string),
+    role: ("{{cms:learners.pages_learners_data_learner_stories.role_081}}" as string),
   },
   {
-    quote: "The lecturers are knowledgeable and friendly. I really enjoy the live sessions with high-quality slides and the option to rewatch recordings later.",
-    name: "Inga Lightley",
-    role: "Administrator & Marketing Professional · Independent professional",
+    quote: ("{{cms:learners.pages_learners_data_learner_stories.quote_082}}" as string),
+    name: ("{{cms:learners.pages_learners_data_learner_stories.name_083}}" as string),
+    role: ("{{cms:learners.pages_learners_data_learner_stories.role_084}}" as string),
   },
   {
-    quote: "KBC helped me balance the demands of a full-time logistics role with a genuinely useful qualification. The flexible tutoring made all the difference.",
-    name: "Sarah Mitchell",
-    role: "Associate Project Manager · Wincanton",
+    quote: ("{{cms:learners.pages_learners_data_learner_stories.quote_085}}" as string),
+    name: ("{{cms:learners.pages_learners_data_learner_stories.name_086}}" as string),
+    role: ("{{cms:learners.pages_learners_data_learner_stories.role_087}}" as string),
   },
   {
-    quote: "I wanted to move from operational marketing to strategic thinking. This programme gave me the tools and confidence to lead campaigns from start to finish.",
-    name: "David Chen",
-    role: "Marketing Executive · Shell Energy",
+    quote: ("{{cms:learners.pages_learners_data_learner_stories.quote_088}}" as string),
+    name: ("{{cms:learners.pages_learners_data_learner_stories.name_089}}" as string),
+    role: ("{{cms:learners.pages_learners_data_learner_stories.role_090}}" as string),
   },
   {
-    quote: "The apprenticeship helped me connect more than ten years of hands-on experience to proper marketing theory and build real strategic confidence.",
-    name: "Corinna Denbow",
-    role: "Marketing Manager · Clevertouch",
+    quote: ("{{cms:learners.pages_learners_data_learner_stories.quote_091}}" as string),
+    name: ("{{cms:learners.pages_learners_data_learner_stories.name_092}}" as string),
+    role: ("{{cms:learners.pages_learners_data_learner_stories.role_093}}" as string),
   },
 ];
 
 export const trustpilotReviews = [
-  { quote: "Outstanding support from start to finish. The funding route was clear and my adviser was genuinely helpful.", initials: "AT", name: "Alex T.", date: "2 days ago" },
-  { quote: "The project management programme gave me practical skills I use every day. Highly recommend KBC.", initials: "PK", name: "Priya K.", date: "1 week ago" },
-  { quote: "Great learning experience. The masterclasses in London were a real highlight.", initials: "MW", name: "Marcus W.", date: "2 weeks ago" },
+  { quote: ("{{cms:learners.pages_learners_data_trustpilot_reviews.quote_094}}" as string), initials: "AT", name: ("{{cms:learners.pages_learners_data_trustpilot_reviews.name_095}}" as string), date: "2 days ago" },
+  { quote: ("{{cms:learners.pages_learners_data_trustpilot_reviews.quote_096}}" as string), initials: "PK", name: ("{{cms:learners.pages_learners_data_trustpilot_reviews.name_097}}" as string), date: "1 week ago" },
+  { quote: ("{{cms:learners.pages_learners_data_trustpilot_reviews.quote_098}}" as string), initials: "MW", name: ("{{cms:learners.pages_learners_data_trustpilot_reviews.name_099}}" as string), date: "2 weeks ago" },
 ];
 
 export const ratingBreakdown = [
@@ -144,21 +144,21 @@ export const ratingBreakdown = [
 ];
 
 export const recognitionLogos = [
-  { name: "CIM", description: "Professional body", src: "https://jokdxsdbxorzciulkdyl.supabase.co/storage/v1/object/public/images/356aeb204f224be68e62727bcbbb1c75.webp" },
-  { name: "PMI", description: "Professional body", src: "https://jokdxsdbxorzciulkdyl.supabase.co/storage/v1/object/public/images/c2cd9e7a9c4842ab822c0aac16ffa061.webp" },
-  { name: "APM", description: "Professional body", src: "https://jokdxsdbxorzciulkdyl.supabase.co/storage/v1/object/public/images/bb930e8a6230490b850425c0f6643aab.webp" },
-  { name: "APMG", description: "Qualification pathway", src: "https://jokdxsdbxorzciulkdyl.supabase.co/storage/v1/object/public/images/5c4f7558699844a28d0d1fbf308b7b25.webp" },
-  { name: "IPC", description: "Professional body", src: "https://jokdxsdbxorzciulkdyl.supabase.co/storage/v1/object/public/images/cfc267af22a941a4bf58b79926482616.png" },
-  { name: "ICostE", description: "Professional body", src: "https://jokdxsdbxorzciulkdyl.supabase.co/storage/v1/object/public/images/8ba3636c4a53491f86912fe3fa597438.webp" },
-  { name: "ChPP", description: "Chartered pathway", src: "" },
-  { name: "CaSA", description: "Professional body", src: "" },
+  { name: ("{{cms:learners.pages_learners_data_recognition_logos.name_100}}" as string), description: ("{{cms:learners.pages_learners_data_recognition_logos.description_101}}" as string), src: ("{{cms:learners.pages_learners_data_recognition_logos.src_102}}" as string) },
+  { name: ("{{cms:learners.pages_learners_data_recognition_logos.name_103}}" as string), description: ("{{cms:learners.pages_learners_data_recognition_logos.description_104}}" as string), src: ("{{cms:learners.pages_learners_data_recognition_logos.src_105}}" as string) },
+  { name: ("{{cms:learners.pages_learners_data_recognition_logos.name_106}}" as string), description: ("{{cms:learners.pages_learners_data_recognition_logos.description_107}}" as string), src: ("{{cms:learners.pages_learners_data_recognition_logos.src_108}}" as string) },
+  { name: ("{{cms:learners.pages_learners_data_recognition_logos.name_109}}" as string), description: ("{{cms:learners.pages_learners_data_recognition_logos.description_110}}" as string), src: ("{{cms:learners.pages_learners_data_recognition_logos.src_111}}" as string) },
+  { name: ("{{cms:learners.pages_learners_data_recognition_logos.name_112}}" as string), description: ("{{cms:learners.pages_learners_data_recognition_logos.description_113}}" as string), src: ("{{cms:learners.pages_learners_data_recognition_logos.src_114}}" as string) },
+  { name: ("{{cms:learners.pages_learners_data_recognition_logos.name_115}}" as string), description: ("{{cms:learners.pages_learners_data_recognition_logos.description_116}}" as string), src: ("{{cms:learners.pages_learners_data_recognition_logos.src_117}}" as string) },
+  { name: ("{{cms:learners.pages_learners_data_recognition_logos.name_118}}" as string), description: ("{{cms:learners.pages_learners_data_recognition_logos.description_119}}" as string), src: "" },
+  { name: ("{{cms:learners.pages_learners_data_recognition_logos.name_120}}" as string), description: ("{{cms:learners.pages_learners_data_recognition_logos.description_121}}" as string), src: "" },
 ];
 
 export const faqs = [
-  { question: "Do I need to leave my job to study?", answer: "No. You continue in your current role while learning, with learning applied directly to your real professional responsibilities during paid working hours where applicable." },
-  { question: "Is the programme fully funded?", answer: "Apprenticeship tuition is funded 100% for levy payers and 95% for non-levy employers, with a 5% employer contribution. The KBC Fund additionally provides professional exam fees, memberships and other benefits, separate from DfE funding." },
-  { question: "How much time will I need each week?", answer: "Around 8.5 hours per week: 2.5 hours of live classes, 3 hours of reading and quizzes, and 3 hours of reflective reports and workplace application." },
-  { question: "What support is available outside class?", answer: "Free one-to-one tutoring 7 days a week until 9:00 PM, recordings of every session, catch-up support and a professional community across the UK." },
-  { question: "Am I eligible for DfE funding?", answer: "You must be UK resident for the past 3 years, hold the right to work, be in paid employment in England, and your employer must be based in England and registered with the Apprenticeship Service." },
-  { question: "What happens after I complete the programme?", answer: "You progress through End-Point Assessment preparation, then continue towards Chartered Project Professional or wider professional recognition, subject to the requirements of the relevant professional body." },
+  { question: ("{{cms:learners.pages_learners_data_faqs.question_122}}" as string), answer: ("{{cms:learners.pages_learners_data_faqs.answer_123}}" as string) },
+  { question: ("{{cms:learners.pages_learners_data_faqs.question_124}}" as string), answer: ("{{cms:learners.pages_learners_data_faqs.answer_125}}" as string) },
+  { question: ("{{cms:learners.pages_learners_data_faqs.question_126}}" as string), answer: ("{{cms:learners.pages_learners_data_faqs.answer_127}}" as string) },
+  { question: ("{{cms:learners.pages_learners_data_faqs.question_128}}" as string), answer: ("{{cms:learners.pages_learners_data_faqs.answer_129}}" as string) },
+  { question: ("{{cms:learners.pages_learners_data_faqs.question_130}}" as string), answer: ("{{cms:learners.pages_learners_data_faqs.answer_131}}" as string) },
+  { question: ("{{cms:learners.pages_learners_data_faqs.question_132}}" as string), answer: ("{{cms:learners.pages_learners_data_faqs.answer_133}}" as string) },
 ];

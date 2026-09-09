@@ -10,126 +10,126 @@ type PeopleSectionData = ProgrammeSectionData & { people: readonly (CoachCardPro
 
 // Content: official Level 6 page, reviewed 7 September 2026. See docs/PROJECT_CONTROLS_LEVEL6.md.
 export const heroData = {
-  cohortAction: { label: "Save your place", to: "/book-session" },
+  cohortAction: { label: ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_hero_data.cohort_action_label_001}}" as string), to: "/book-session" },
   "titleId": "pcp-title",
   "hero": {
-    "eyebrow": "Project Controls",
-    "title": "Project Controls Professional",
-    "accent": "Level\u00a06",
-    "lead": "A fully funded, work-based pathway for professionals who plan, control, forecast and govern complex projects with Operational, Strategic and Chartered Project Professional routes.",
-    "fundingTitle": "Fully funded for eligible learners",
-    "fundingDescription": "Government-funded apprenticeship route, subject to eligibility.",
-    "audience": "For professionals working across project controls, planning, cost, risk, reporting, governance and transformation.",
+    "eyebrow": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_hero_data.hero_eyebrow_002}}" as string),
+    "title": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_hero_data.hero_title_003}}" as string),
+    "accent": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_hero_data.hero_accent_004}}" as string),
+    "lead": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_hero_data.hero_lead_005}}" as string),
+    "fundingTitle": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_hero_data.hero_funding_title_006}}" as string),
+    "fundingDescription": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_hero_data.hero_funding_description_007}}" as string),
+    "audience": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_hero_data.hero_audience_008}}" as string),
     "catalogue": "https://kentbusinesscollege.com/wp-content/uploads/2026/05/Edit-Project-Control-Professional-with-ChPP_compressed.pdf",
-    "image": "https://jokdxsdbxorzciulkdyl.supabase.co/storage/v1/object/public/images/3d7cdf074fc541438b52cff451f31120.jpg"
+    "image": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_hero_data.hero_image_009}}" as string)
   },
   "cohorts": [
     {
       "id": "january",
-      "label": "January",
+      "label": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_hero_data.cohorts_label_010}}" as string),
       "upcoming": false
     },
     {
       "id": "april",
-      "label": "April",
+      "label": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_hero_data.cohorts_label_011}}" as string),
       "upcoming": false
     },
     {
       "id": "september",
-      "label": "September",
+      "label": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_hero_data.cohorts_label_012}}" as string),
       "upcoming": true
     }
   ],
   "highlights": [
     {
-      "title": "27 months",
-      "description": "Soft start, modules and final workshops."
+      "title": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_hero_data.highlights_title_013}}" as string),
+      "description": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_hero_data.highlights_description_014}}" as string)
     },
     {
-      "title": "6 credits",
-      "description": "Each credit is delivered as a four-month block."
+      "title": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_hero_data.highlights_title_015}}" as string),
+      "description": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_hero_data.highlights_description_016}}" as string)
     },
     {
-      "title": "3 pathways",
-      "description": "Operational, Strategic or Chartered Professional."
+      "title": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_hero_data.highlights_title_017}}" as string),
+      "description": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_hero_data.highlights_description_018}}" as string)
     },
     {
-      "title": "£34,000 support",
-      "description": "Potential package, subject to eligibility."
+      "title": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_hero_data.highlights_title_019}}" as string),
+      "description": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_hero_data.highlights_description_020}}" as string)
     }
   ],
   "commitments": [
     {
-      "label": "Tailored route:",
-      "description": "module mix can reflect employer requirements."
+      "label": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_hero_data.commitments_label_021}}" as string),
+      "description": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_hero_data.commitments_description_022}}" as string)
     },
     {
-      "label": "Level 7 access:",
-      "description": "Strategy and Leadership sessions on Saturdays."
+      "label": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_hero_data.commitments_label_023}}" as string),
+      "description": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_hero_data.commitments_description_024}}" as string)
     }
   ],
   "secondaryAction": {
-    "label": "Compare pathways",
+    "label": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_hero_data.secondary_action_label_025}}" as string),
     "to": "#pathways"
   }
 } as const satisfies ProgrammeHeroData;
 
 export const overviewData = {
   "id": "overview",
-  "eyebrow": "Programme overview",
-  "title": "From project controls practice to senior delivery confidence",
-  "description": "Project Controls Professional Level 6 is for people who need to turn project data into reliable plans, controlled costs, credible schedules, early warnings, governance decisions and executive confidence.",
+  "eyebrow": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_overview_data.eyebrow_026}}" as string),
+  "title": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_overview_data.title_027}}" as string),
+  "description": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_overview_data.description_028}}" as string),
   "items": [
     {
-      "title": "Build senior project controls capability",
-      "description": "Develop stronger capability in planning, scheduling, cost control, performance measurement, risk, reporting, governance and decision support."
+      "title": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_overview_data.items_title_029}}" as string),
+      "description": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_overview_data.items_description_030}}" as string)
     },
     {
-      "title": "Apply learning at work",
-      "description": "Use your own job duties, projects, reports, dashboards, controls challenges and employer context as the basis for applied learning and evidence."
+      "title": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_overview_data.items_title_031}}" as string),
+      "description": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_overview_data.items_description_032}}" as string)
     },
     {
-      "title": "Progress towards recognition",
-      "description": "Each pathway supports Project Controls Professional Level 6, with route-specific recognition opportunities through the Institute of Project Controls, the Controls and Skills Authority, and the Association for Project Management."
+      "title": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_overview_data.items_title_033}}" as string),
+      "description": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_overview_data.items_description_034}}" as string)
     }
   ],
-  "note": "Recognition summary All pathways lead to the Project Controls Professional Level 6 work-based route and are designed to support Institute of Project Controls Fellowship and Incorporated Cost Engineer progression. The Chartered Pathway is the route designed around the Association for Project Management recognised assessment for Chartered Project Professional technical knowledge. Chartered Project Professional status is awarded only by the Association for Project Management after its full requirements are met."
+  "note": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_overview_data.note_035}}" as string)
 } as const satisfies FeatureSectionData;
 
 export const audienceData = {
   "id": "who",
-  "eyebrow": "Who should apply",
-  "title": "For professionals who plan, control, analyse, govern and deliver projects",
-  "description": "The programme is not only for Project Management Office professionals. It is also suitable for engineering, infrastructure, construction, consultancy, digital transformation, marketing and business-service environments where project performance matters.",
+  "eyebrow": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_audience_data.eyebrow_036}}" as string),
+  "title": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_audience_data.title_037}}" as string),
+  "description": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_audience_data.description_038}}" as string),
   "items": [
     {
-      "title": "Project controls and performance roles",
+      "title": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_audience_data.items_title_039}}" as string),
       "description": "",
       "items": [
-        "Project controls managers and project controllers.",
-        "Planning leads, planners and schedulers.",
-        "Cost engineering leads, cost engineers and cost controllers.",
-        "Estimators, reporting analysts and performance analysts."
+        ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_audience_data.items_items_040}}" as string),
+        ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_audience_data.items_items_041}}" as string),
+        ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_audience_data.items_items_042}}" as string),
+        ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_audience_data.items_items_043}}" as string)
       ]
     },
     {
-      "title": "Project engineering and delivery roles",
+      "title": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_audience_data.items_title_044}}" as string),
       "description": "",
       "items": [
-        "Project engineers, site engineers and delivery coordinators.",
-        "Project managers, programme managers and delivery leads.",
-        "Risk practitioners, assurance practitioners and change professionals.",
-        "People working in complex project environments who need better control systems."
+        ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_audience_data.items_items_045}}" as string),
+        ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_audience_data.items_items_046}}" as string),
+        ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_audience_data.items_items_047}}" as string),
+        ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_audience_data.items_items_048}}" as string)
       ]
     },
     {
-      "title": "Strategic governance and leadership roles",
+      "title": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_audience_data.items_title_049}}" as string),
       "description": "",
       "items": [
-        "Heads of project controls, senior planning leads and scheduling leads.",
-        "Heads of Project Management Office and portfolio governance professionals.",
-        "Senior risk, assurance, transformation and benefits practitioners.",
-        "Professionals preparing for senior controls, portfolio or governance leadership."
+        ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_audience_data.items_items_050}}" as string),
+        ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_audience_data.items_items_051}}" as string),
+        ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_audience_data.items_items_052}}" as string),
+        ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_audience_data.items_items_053}}" as string)
       ]
     }
   ]
@@ -137,180 +137,180 @@ export const audienceData = {
 
 export const structureData = {
   "id": "structure",
-  "eyebrow": "How the programme works",
-  "title": "A six-credit work-based programme over 27 months",
-  "description": "The programme uses a credit system. A normal credit is one four-month course. The Project Management Professional course is two credits because it is delivered over eight months.",
+  "eyebrow": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_structure_data.eyebrow_054}}" as string),
+  "title": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_structure_data.title_055}}" as string),
+  "description": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_structure_data.description_056}}" as string),
   "items": [
     {
-      "title": "One-month soft start",
-      "description": "Induction, role review, employer engagement, funding checks, diagnostic review, learning platform access and pathway confirmation."
+      "title": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_structure_data.items_title_057}}" as string),
+      "description": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_structure_data.items_description_058}}" as string)
     },
     {
-      "title": "Six credits over 24 months",
-      "description": "Select a standard pathway or tailor your six credits to match your current job duties, evidence opportunities and employer priorities.",
+      "title": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_structure_data.items_title_059}}" as string),
+      "description": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_structure_data.items_description_060}}" as string),
       "tags": [
-        "Operational route",
-        "Strategic route",
-        "Chartered route",
-        "Tailored route"
+        ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_structure_data.items_tags_061}}" as string),
+        ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_structure_data.items_tags_062}}" as string),
+        ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_structure_data.items_tags_063}}" as string),
+        ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_structure_data.items_tags_064}}" as string)
       ]
     },
     {
-      "title": "Two-month closing workshops",
-      "description": "Portfolio consolidation, employer progress review, professional discussion preparation and End-Point Assessment readiness support."
+      "title": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_structure_data.items_title_065}}" as string),
+      "description": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_structure_data.items_description_066}}" as string)
     }
   ],
-  "note": "Additional professional development access Learners also receive access to the Diploma Level 7 in Strategy and Leadership, delivered on Saturdays from 9:00 AM to 11:00 AM. The diploma structure includes six modules, each lasting three months, with an overall duration of 18 months."
+  "note": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_structure_data.note_067}}" as string)
 } as const satisfies FeatureSectionData;
 
 export const pathwayData = {
   "id": "pathways",
-  "eyebrow": "Choose your pathway",
-  "title": "Pick a standard route or tailor the six credits around your job duties",
-  "description": "There are three standard pathways. Learners can also tailor the module mix after employer engagement and approval where their current duties require a different balance of planning, controls, governance, portfolio, artificial intelligence or reporting capability.",
+  "eyebrow": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.eyebrow_068}}" as string),
+  "title": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.title_069}}" as string),
+  "description": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.description_070}}" as string),
   "routes": [
     {
-      "name": "Operational Pathway",
-      "title": "For project controls delivery, planning and performance roles",
-      "description": "Best suited to learners focused on schedules, earned value, planning, control, reporting and operational delivery confidence.",
+      "name": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_name_071}}" as string),
+      "title": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_title_072}}" as string),
+      "description": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_description_073}}" as string),
       "tags": [
-        "Operational Pathway"
+        ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_tags_074}}" as string)
       ],
-      "detail": "This route is designed for people working close to operational project controls, planning, scheduling, earned value, delivery reporting and performance control.",
-      "note": "Operational Pathway select six credits",
+      "detail": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_detail_075}}" as string),
+      "note": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_note_076}}" as string),
       "modules": [
         {
-          "title": "Project Management Professional",
-          "body": "Project Management Institute",
-          "credits": "2 credits",
-          "duration": "8 months"
+          "title": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_modules_title_077}}" as string),
+          "body": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_modules_body_078}}" as string),
+          "credits": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_modules_credits_079}}" as string),
+          "duration": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_modules_duration_080}}" as string)
         },
         {
-          "title": "Artificial Intelligence in Project Controls Certificate",
-          "body": "Institute of Project Controls",
-          "credits": "1 credit",
-          "duration": "4 months"
+          "title": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_modules_title_081}}" as string),
+          "body": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_modules_body_082}}" as string),
+          "credits": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_modules_credits_083}}" as string),
+          "duration": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_modules_duration_084}}" as string)
         },
         {
-          "title": "Risk Management",
-          "body": "Association for Project Management",
-          "credits": "1 credit",
-          "duration": "4 months"
+          "title": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_modules_title_085}}" as string),
+          "body": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_modules_body_086}}" as string),
+          "credits": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_modules_credits_087}}" as string),
+          "duration": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_modules_duration_088}}" as string)
         },
         {
-          "title": "Scheduling Professional",
-          "body": "Project Management Institute",
-          "credits": "1 credit",
-          "duration": "4 months"
+          "title": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_modules_title_089}}" as string),
+          "body": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_modules_body_090}}" as string),
+          "credits": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_modules_credits_091}}" as string),
+          "duration": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_modules_duration_092}}" as string)
         },
         {
-          "title": "Earned Value Management",
-          "body": "APMG International",
-          "credits": "1 credit",
-          "duration": "4 months"
+          "title": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_modules_title_093}}" as string),
+          "body": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_modules_body_094}}" as string),
+          "credits": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_modules_credits_095}}" as string),
+          "duration": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_modules_duration_096}}" as string)
         },
         {
-          "title": "Project Planning and Controls",
-          "body": "APMG International",
-          "credits": "1 credit",
-          "duration": "4 months"
+          "title": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_modules_title_097}}" as string),
+          "body": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_modules_body_098}}" as string),
+          "credits": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_modules_credits_099}}" as string),
+          "duration": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_modules_duration_100}}" as string)
         }
       ]
     },
     {
-      "name": "Strategic Pathway",
-      "title": "For senior project control, portfolio and governance roles",
-      "description": "Best suited to learners working with strategic governance, programme management, portfolios, Project Management Office leadership and senior decision support.",
+      "name": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_name_101}}" as string),
+      "title": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_title_102}}" as string),
+      "description": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_description_103}}" as string),
       "tags": [
-        "Strategic Pathway"
+        ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_tags_104}}" as string)
       ],
-      "detail": "This route is designed for senior project control roles, leading project controls, Project Management Offices, risk practitioners, heads of project controls and professionals preparing for strategic positions.",
-      "note": "Strategic Pathway select six credits",
+      "detail": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_detail_105}}" as string),
+      "note": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_note_106}}" as string),
       "modules": [
         {
-          "title": "Project Management Professional",
-          "body": "Project Management Institute",
-          "credits": "2 credits",
-          "duration": "8 months"
+          "title": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_modules_title_107}}" as string),
+          "body": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_modules_body_108}}" as string),
+          "credits": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_modules_credits_109}}" as string),
+          "duration": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_modules_duration_110}}" as string)
         },
         {
-          "title": "Artificial Intelligence in Project Controls Certificate",
-          "body": "Institute of Project Controls",
-          "credits": "1 credit",
-          "duration": "4 months"
+          "title": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_modules_title_111}}" as string),
+          "body": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_modules_body_112}}" as string),
+          "credits": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_modules_credits_113}}" as string),
+          "duration": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_modules_duration_114}}" as string)
         },
         {
-          "title": "Risk Management",
-          "body": "Association for Project Management",
-          "credits": "1 credit",
-          "duration": "4 months"
+          "title": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_modules_title_115}}" as string),
+          "body": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_modules_body_116}}" as string),
+          "credits": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_modules_credits_117}}" as string),
+          "duration": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_modules_duration_118}}" as string)
         },
         {
-          "title": "Managing Successful Programmes",
-          "body": "PeopleCert / AXELOS",
-          "credits": "1 credit",
-          "duration": "4 months"
+          "title": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_modules_title_119}}" as string),
+          "body": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_modules_body_120}}" as string),
+          "credits": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_modules_credits_121}}" as string),
+          "duration": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_modules_duration_122}}" as string)
         },
         {
-          "title": "Management of Portfolios",
-          "body": "APMG International",
-          "credits": "1 credit",
-          "duration": "4 months"
+          "title": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_modules_title_123}}" as string),
+          "body": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_modules_body_124}}" as string),
+          "credits": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_modules_credits_125}}" as string),
+          "duration": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_modules_duration_126}}" as string)
         },
         {
-          "title": "Project Management Office course",
-          "body": "Project Management Institute",
-          "credits": "1 credit",
-          "duration": "4 months"
+          "title": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_modules_title_127}}" as string),
+          "body": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_modules_body_128}}" as string),
+          "credits": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_modules_credits_129}}" as string),
+          "duration": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_modules_duration_130}}" as string)
         }
       ]
     },
     {
-      "name": "Chartered Pathway",
-      "action": { "label": "Explore Chartered Pathway", "to": "/chartered-pathway" },
-      "title": "For Chartered Project Professional readiness",
-      "description": "Best suited to learners who want the Association for Project Management recognised assessment route for Chartered Project Professional technical knowledge.",
+      "name": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_name_131}}" as string),
+      "action": { "label": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_action_label_132}}" as string), "to": "/chartered-pathway" },
+      "title": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_title_133}}" as string),
+      "description": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_description_134}}" as string),
       "tags": [
-        "Chartered Pathway"
+        ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_tags_135}}" as string)
       ],
-      "detail": "This route is designed for learners whose priority is Chartered Project Professional technical-knowledge recognition through the Project Management Office Professional Level 6 route.",
-      "note": "Chartered Pathway Association for Project Management recognised assessment route",
+      "detail": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_detail_136}}" as string),
+      "note": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_note_137}}" as string),
       "modules": [
         {
-          "title": "Certified Project Management Office Professional Level 6: Module 1 — Project Planning and Control",
-          "body": "Institute of Project Controls / recognised assessment route for Association for Project Management technical knowledge",
-          "credits": "1 credit",
-          "duration": "4 months"
+          "title": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_modules_title_138}}" as string),
+          "body": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_modules_body_139}}" as string),
+          "credits": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_modules_credits_140}}" as string),
+          "duration": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_modules_duration_141}}" as string)
         },
         {
-          "title": "Certified Project Management Office Professional Level 6: Module 2 — Risk, Issue and Quality Management",
-          "body": "Institute of Project Controls / recognised assessment route for Association for Project Management technical knowledge",
-          "credits": "1 credit",
-          "duration": "4 months"
+          "title": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_modules_title_142}}" as string),
+          "body": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_modules_body_143}}" as string),
+          "credits": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_modules_credits_144}}" as string),
+          "duration": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_modules_duration_145}}" as string)
         },
         {
-          "title": "Certified Project Management Office Professional Level 6: Module 3 — Stakeholder Engagement, Communications Management and Reporting Systems",
-          "body": "Institute of Project Controls / recognised assessment route for Association for Project Management technical knowledge",
-          "credits": "1 credit",
-          "duration": "4 months"
+          "title": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_modules_title_146}}" as string),
+          "body": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_modules_body_147}}" as string),
+          "credits": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_modules_credits_148}}" as string),
+          "duration": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_modules_duration_149}}" as string)
         },
         {
-          "title": "Certified Project Management Office Professional Level 6: Module 4 — Project Management Office",
-          "body": "Institute of Project Controls / recognised assessment route for Association for Project Management technical knowledge",
-          "credits": "1 credit",
-          "duration": "4 months"
+          "title": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_modules_title_150}}" as string),
+          "body": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_modules_body_151}}" as string),
+          "credits": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_modules_credits_152}}" as string),
+          "duration": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_modules_duration_153}}" as string)
         },
         {
-          "title": "Artificial Intelligence in Project Controls Certificate",
-          "body": "Institute of Project Controls",
-          "credits": "1 credit",
-          "duration": "4 months"
+          "title": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_modules_title_154}}" as string),
+          "body": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_modules_body_155}}" as string),
+          "credits": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_modules_credits_156}}" as string),
+          "duration": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_modules_duration_157}}" as string)
         },
         {
-          "title": "Earned Value Management or Management of Portfolios",
-          "body": "APMG International",
-          "credits": "1 credit",
-          "duration": "4 months"
+          "title": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_modules_title_158}}" as string),
+          "body": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_modules_body_159}}" as string),
+          "credits": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_modules_credits_160}}" as string),
+          "duration": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_pathway_data.routes_modules_duration_161}}" as string)
         }
       ]
     }
@@ -319,30 +319,30 @@ export const pathwayData = {
 
 export const cohortData = {
   "id": "cohorts",
-  "eyebrow": "Cohort orientation",
-  "title": "Case studies and study materials can be tailored to your sector",
-  "description": "The same professional standard can be applied to different industries. Kent Business College can tailor case studies, exercises, examples and templates to match the orientation of each cohort.",
+  "eyebrow": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_cohort_data.eyebrow_162}}" as string),
+  "title": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_cohort_data.title_163}}" as string),
+  "description": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_cohort_data.description_164}}" as string),
   "items": [
     {
-      "title": "Cohort 1: Engineering, construction and infrastructure projects",
-      "description": "For learners working in construction, civil engineering, infrastructure, manufacturing, carbon sustainability, complex engineering delivery, project controls, cost engineering and major project environments.",
+      "title": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_cohort_data.items_title_165}}" as string),
+      "description": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_cohort_data.items_description_166}}" as string),
       "tags": [
         "Construction",
         "Infrastructure",
         "Manufacturing",
-        "Carbon sustainability",
-        "Engineering delivery"
+        ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_cohort_data.items_tags_167}}" as string),
+        ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_cohort_data.items_tags_168}}" as string)
       ]
     },
     {
-      "title": "Cohort 2: Business, consultancy, digital and service-sector projects",
-      "description": "For learners working in management, consultancy, marketing, accountancy, financial services, management services, strategic management solutions, information technology and digital transformation services.",
+      "title": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_cohort_data.items_title_169}}" as string),
+      "description": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_cohort_data.items_description_170}}" as string),
       "tags": [
-        "Business consultancy",
+        ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_cohort_data.items_tags_171}}" as string),
         "Marketing",
         "Accountancy",
-        "Financial services",
-        "Digital transformation"
+        ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_cohort_data.items_tags_172}}" as string),
+        ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_cohort_data.items_tags_173}}" as string)
       ]
     }
   ]
@@ -350,67 +350,67 @@ export const cohortData = {
 
 export const outputsData = {
   "id": "outputs",
-  "eyebrow": "Capability and workplace outputs",
-  "title": "What learners can evidence at work",
-  "description": "The programme is designed to turn learning into visible project controls evidence, stronger decisions and better workplace systems.",
+  "eyebrow": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_outputs_data.eyebrow_174}}" as string),
+  "title": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_outputs_data.title_175}}" as string),
+  "description": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_outputs_data.description_176}}" as string),
   "items": [
-    "Integrated project baseline",
-    "Project schedule and critical path analysis",
-    "Earned value performance report",
-    "Cost forecast and variance analysis",
-    "Risk and issue register",
-    "Change control process",
-    "Executive project dashboard",
-    "Stakeholder engagement plan",
-    "Project Management Office operating model",
-    "Portfolio or programme governance pack",
-    "Artificial intelligence workflow or dashboard",
-    "Professional practice portfolio"
+    ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_outputs_data.items_177}}" as string),
+    ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_outputs_data.items_178}}" as string),
+    ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_outputs_data.items_179}}" as string),
+    ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_outputs_data.items_180}}" as string),
+    ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_outputs_data.items_181}}" as string),
+    ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_outputs_data.items_182}}" as string),
+    ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_outputs_data.items_183}}" as string),
+    ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_outputs_data.items_184}}" as string),
+    ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_outputs_data.items_185}}" as string),
+    ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_outputs_data.items_186}}" as string),
+    ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_outputs_data.items_187}}" as string),
+    ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_outputs_data.items_188}}" as string)
   ],
-  "image": "https://jokdxsdbxorzciulkdyl.supabase.co/storage/v1/object/public/images/eb52115f56cf48c682a1a336ceb560b3.jpg",
-  "imageAlt": "Project controls professionals collaborating during a learning session"
+  "image": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_outputs_data.image_189}}" as string),
+  "imageAlt": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_outputs_data.image_alt_190}}" as string)
 } as const;
 
 export const deliveryData = {
   "id": "delivery",
-  "eyebrow": "Delivery and assessment",
-  "title": "Live, applied and work-based",
-  "description": "The programme is designed for working professionals. Learners prepare before class, explore concepts with tutors, apply tools at work and reflect on evidence, impact and professional judgement.",
+  "eyebrow": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_delivery_data.eyebrow_191}}" as string),
+  "title": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_delivery_data.title_192}}" as string),
+  "description": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_delivery_data.description_193}}" as string),
   "items": [
     {
-      "title": "Prepare",
-      "description": "Short reading, diagnostic questions, project evidence review or workplace context preparation."
+      "title": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_delivery_data.items_title_194}}" as string),
+      "description": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_delivery_data.items_description_195}}" as string)
     },
     {
-      "title": "Explore",
-      "description": "Live tutor-led classes, cases, worked examples, professional discussion and practical workshops."
+      "title": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_delivery_data.items_title_196}}" as string),
+      "description": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_delivery_data.items_description_197}}" as string)
     },
     {
-      "title": "Apply",
-      "description": "Use the framework, template or technique in a real project, approved workplace scenario or simulated professional context."
+      "title": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_delivery_data.items_title_198}}" as string),
+      "description": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_delivery_data.items_description_199}}" as string)
     },
     {
-      "title": "Reflect",
-      "description": "Capture evidence, evaluate impact, improve the artefact and prepare for portfolio or End-Point Assessment review."
+      "title": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_delivery_data.items_title_200}}" as string),
+      "description": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_delivery_data.items_description_201}}" as string)
     },
     {
-      "title": "Assessment approach",
+      "title": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_delivery_data.items_title_202}}" as string),
       "description": "",
       "items": [
-        "Applied work-based evidence aligned to programme outcomes.",
-        "Professional portfolio development and reflective commentary.",
-        "Knowledge, practice and evidence review throughout the journey.",
-        "Final workshops to prepare for professional discussion and End-Point Assessment."
+        ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_delivery_data.items_items_203}}" as string),
+        ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_delivery_data.items_items_204}}" as string),
+        ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_delivery_data.items_items_205}}" as string),
+        ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_delivery_data.items_items_206}}" as string)
       ]
     },
     {
-      "title": "Employer involvement",
+      "title": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_delivery_data.items_title_207}}" as string),
       "description": "",
       "items": [
-        "Confirm suitable duties, evidence opportunities and route fit.",
-        "Support the learner with protected off-the-job learning time.",
-        "Review workplace application and progression where relevant.",
-        "Help align the module mix with operational and strategic business needs."
+        ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_delivery_data.items_items_208}}" as string),
+        ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_delivery_data.items_items_209}}" as string),
+        ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_delivery_data.items_items_210}}" as string),
+        ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_delivery_data.items_items_211}}" as string)
       ]
     }
   ]
@@ -418,113 +418,113 @@ export const deliveryData = {
 
 export const workloadData = {
   "id": "workload",
-  "eyebrow": "Expected workload and learning commitment",
-  "title": "A structured weekly rhythm designed for working professionals",
-  "description": "The programme combines live online learning, guided independent study, practical portfolio-building and regular coaching. Learners apply project controls and project management principles to real work-life contexts and build evidence of their Knowledge, Skills and Behaviours progression throughout the programme.",
+  "eyebrow": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_workload_data.eyebrow_212}}" as string),
+  "title": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_workload_data.title_213}}" as string),
+  "description": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_workload_data.description_214}}" as string),
   "stats": [
     {
-      "title": "Apprenticeship requirement",
+      "title": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_workload_data.stats_title_215}}" as string),
       "value": "860 hours",
-      "description": "Apprenticeship learners must complete the required off-the-job training hours across the programme."
+      "description": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_workload_data.stats_description_216}}" as string)
     },
     {
-      "title": "Weekly live teaching",
+      "title": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_workload_data.stats_title_217}}" as string),
       "value": "2 hours",
-      "description": "Live, interactive online class with your tutor, including discussion, worked examples, case analysis and applied project controls practice."
+      "description": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_workload_data.stats_description_218}}" as string)
     },
     {
-      "title": "Typical weekly study",
+      "title": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_workload_data.stats_title_219}}" as string),
       "value": "8 hours",
-      "description": "A balanced weekly commitment combining live learning, guided reading and practical portfolio-building activities."
+      "description": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_workload_data.stats_description_220}}" as string)
     }
   ],
-  "weeklyTitle": "Your weekly learning commitment",
-  "weeklyDescription": "Each week is designed to help you learn, apply, evidence and reflect. The expected weekly workload is approximately eight hours.",
+  "weeklyTitle": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_workload_data.weekly_title_221}}" as string),
+  "weeklyDescription": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_workload_data.weekly_description_222}}" as string),
   "hours": [
     {
-      "hours": "2 h",
-      "label": "Live online interactive session",
-      "description": "Tutor-led online class with explanation, group discussion, workshops, project controls examples and practical application."
+      "hours": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_workload_data.hours_hours_223}}" as string),
+      "label": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_workload_data.hours_label_224}}" as string),
+      "description": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_workload_data.hours_description_225}}" as string)
     },
     {
-      "hours": "3 h",
-      "label": "Reading, quizzes and podcasts",
-      "description": "Guided Learning Management System activities including reading materials, quizzes, podcasts, reflective prompts and learning checks."
+      "hours": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_workload_data.hours_hours_226}}" as string),
+      "label": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_workload_data.hours_label_227}}" as string),
+      "description": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_workload_data.hours_description_228}}" as string)
     },
     {
-      "hours": "3 h",
-      "label": "Portfolio-building activities",
-      "description": "Practical evidence-building tasks, such as capturing workplace examples, screenshots, anonymised documents, photos or reflections showing how project controls and project management are applied in real work-life contexts."
+      "hours": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_workload_data.hours_hours_229}}" as string),
+      "label": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_workload_data.hours_label_230}}" as string),
+      "description": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_workload_data.hours_description_231}}" as string)
     }
   ],
-  "note": "Important: Portfolio evidence should be authentic, relevant and professionally presented. Learners should anonymise confidential employer, client, project and commercial information where required.",
-  "monthlyTitle": "What you submit each month",
-  "monthlyDescription": "There are two regular monthly submissions to your coach. These help keep your progress visible, structured and aligned with the programme requirements.",
+  "note": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_workload_data.note_232}}" as string),
+  "monthlyTitle": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_workload_data.monthly_title_233}}" as string),
+  "monthlyDescription": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_workload_data.monthly_description_234}}" as string),
   "submissions": [
     {
-      "title": "Learning Management System activities",
-      "description": "Reading materials, quizzes, podcasts and online learning tasks completed through the Learning Management System."
+      "title": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_workload_data.submissions_title_235}}" as string),
+      "description": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_workload_data.submissions_description_236}}" as string)
     },
     {
-      "title": "Portfolio-building activities",
-      "description": "Evidence of applied project controls and project management practice, supported by reflection and professional commentary."
+      "title": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_workload_data.submissions_title_237}}" as string),
+      "description": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_workload_data.submissions_description_238}}" as string)
     }
   ],
   "reviews": [
     {
-      "title": "Monthly coaching meeting",
-      "description": "You will have a one-hour monthly coaching meeting. During this meeting, you make a short presentation to your coach about your Knowledge, Skills and Behaviours progression and discuss your evidence, learning needs and next actions."
+      "title": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_workload_data.reviews_title_239}}" as string),
+      "description": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_workload_data.reviews_description_240}}" as string)
     },
     {
-      "title": "Progress review every 10 weeks",
-      "description": "Every 10 weeks, there is a one-hour progress review with your line manager and coach. Your coach presents your progression, listens to feedback from your line manager and identifies learning needs to support your development and career progression."
+      "title": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_workload_data.reviews_title_241}}" as string),
+      "description": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_workload_data.reviews_description_242}}" as string)
     },
     {
-      "title": "Workplace support matters",
-      "description": "Apprenticeship learners need employer support for off-the-job learning. Your line manager should help protect learning time, support workplace application and provide feedback on how your learning is supporting your role and organisation."
+      "title": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_workload_data.reviews_title_243}}" as string),
+      "description": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_workload_data.reviews_description_244}}" as string)
     }
   ],
   "alternative": {
-    "title": "If your line manager cannot support off-the-job hours, speak to us",
+    "title": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_workload_data.alternative_title_245}}" as string),
     "paragraphs": [
-      "If your employer or line manager is not able to support the required off-the-job learning hours, you may still be able to join through a partially funded programme supported by the Institute of Project Controls. Funding support may be available from 50% to 75%, depending on eligibility and approval.",
-      "Our admissions team will explain the apprenticeship route, employer responsibilities, Institute of Project Controls funding options and the best route for your situation."
+      ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_workload_data.alternative_paragraphs_246}}" as string),
+      ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_workload_data.alternative_paragraphs_247}}" as string)
     ]
   }
 } as const satisfies ProgrammeWorkloadData & { alternative: { title: string; paragraphs: readonly string[] } };
 
 export const coachData = {
   "id": "coaches",
-  "eyebrow": "Coaching support",
-  "title": "Coaches who support your portfolio, skills and progress",
-  "description": "Coaches support study habits, evidence development, professional confidence and the connection between training and workplace performance.",
+  "eyebrow": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_coach_data.eyebrow_248}}" as string),
+  "title": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_coach_data.title_249}}" as string),
+  "description": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_coach_data.description_250}}" as string),
   "people": [
     {
-      "name": "Adeyomi",
-      "bio": "Master of Science in Strategic Project Management and Master of Science in Urban Planning. Certified in Project Management Professional, Scheduling Professional, Earned Value Management and Chartered Institute of Marketing routes.",
-      "image": "https://jokdxsdbxorzciulkdyl.supabase.co/storage/v1/object/public/images/9bf28cbc8b24423e8168e9ba2f6c3496.png",
-      "imageAlt": "Adeyomi photo",
+      "name": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_coach_data.people_name_251}}" as string),
+      "bio": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_coach_data.people_bio_252}}" as string),
+      "image": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_coach_data.people_image_253}}" as string),
+      "imageAlt": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_coach_data.people_image_alt_254}}" as string),
       "linkedIn": "https://www.linkedin.com/in/adeyemiadeshina/"
     },
     {
-      "name": "Patryck",
-      "bio": "Master of Science in Strategic Project Management, supporting learners with project management thinking, evidence development and applied study progress.",
-      "image": "https://jokdxsdbxorzciulkdyl.supabase.co/storage/v1/object/public/images/73ddd02520ed4db48e96eb2ab8fc3d2a.png",
-      "imageAlt": "Patryck photo",
+      "name": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_coach_data.people_name_255}}" as string),
+      "bio": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_coach_data.people_bio_256}}" as string),
+      "image": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_coach_data.people_image_257}}" as string),
+      "imageAlt": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_coach_data.people_image_alt_258}}" as string),
       "linkedIn": "https://www.linkedin.com/in/patrykzajac1/"
     },
     {
-      "name": "Aryan",
-      "bio": "Master of Science in Strategic Project Management, supporting learners with portfolio evidence, study planning and workplace application of learning.",
-      "image": "https://jokdxsdbxorzciulkdyl.supabase.co/storage/v1/object/public/images/cfe680627d044677a09533a28f66b7d9.png",
-      "imageAlt": "Aryan photo",
+      "name": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_coach_data.people_name_259}}" as string),
+      "bio": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_coach_data.people_bio_260}}" as string),
+      "image": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_coach_data.people_image_261}}" as string),
+      "imageAlt": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_coach_data.people_image_alt_262}}" as string),
       "linkedIn": "https://www.linkedin.com/in/aryan-harikumar-70a99b1a4/"
     },
     {
-      "name": "Dr Randa",
-      "bio": "Master of Science and Doctor of Philosophy in Operations Research, supporting learners with analytical thinking, data-informed decisions and structured evidence.",
-      "image": "https://jokdxsdbxorzciulkdyl.supabase.co/storage/v1/object/public/images/91303f2a88114537bc61d8a8af805e21.png",
-      "imageAlt": "Dr Randa photo",
+      "name": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_coach_data.people_name_263}}" as string),
+      "bio": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_coach_data.people_bio_264}}" as string),
+      "image": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_coach_data.people_image_265}}" as string),
+      "imageAlt": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_coach_data.people_image_alt_266}}" as string),
       "linkedIn": "https://www.linkedin.com/in/randa-elabd-1923a4403/"
     }
   ]
@@ -532,43 +532,43 @@ export const coachData = {
 
 export const benefitsData = {
   "id": "benefits",
-  "eyebrow": "Benefits of studying with Kent Business College",
-  "title": "More than a qualification",
-  "description": "Your funded learning journey is designed to support your wellbeing, confidence, career direction, professional recognition and long-term success.",
+  "eyebrow": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_benefits_data.eyebrow_267}}" as string),
+  "title": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_benefits_data.title_268}}" as string),
+  "description": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_benefits_data.description_269}}" as string),
   "items": [
     {
-      "title": "Wellbeing and learner support",
-      "description": "Supporting you personally, professionally and academically throughout your learning journey.",
+      "title": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_benefits_data.items_title_270}}" as string),
+      "description": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_benefits_data.items_description_271}}" as string),
       "items": [
-        "Private healthcare insurance through Benenden Health.",
-        "Access to our mental wellbeing system.",
-        "Mental wellbeing self-assessment tools.",
-        "Inclusiveness assessments.",
-        "Free optional assessment of potential barriers to education, such as attention, anxiety or learning-support needs.",
-        "Artificial intelligence-powered learning management system and learner dashboards.",
-        "Original hard-copy and soft-copy learning materials."
+        ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_benefits_data.items_items_272}}" as string),
+        ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_benefits_data.items_items_273}}" as string),
+        ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_benefits_data.items_items_274}}" as string),
+        ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_benefits_data.items_items_275}}" as string),
+        ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_benefits_data.items_items_276}}" as string),
+        ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_benefits_data.items_items_277}}" as string),
+        ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_benefits_data.items_items_278}}" as string)
       ]
     },
     {
-      "title": "Know yourself and build your career",
-      "description": "Helping you understand your strengths, personality, interests and career direction.",
+      "title": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_benefits_data.items_title_279}}" as string),
+      "description": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_benefits_data.items_description_280}}" as string),
       "items": [
-        "Free optional personality traits assessment.",
-        "RAISEC career interest test.",
-        "Job-fit and career-fit psychological tests.",
-        "Personal development dashboards.",
-        "Career guidance to identify the right pathway and module mix."
+        ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_benefits_data.items_items_281}}" as string),
+        ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_benefits_data.items_items_282}}" as string),
+        ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_benefits_data.items_items_283}}" as string),
+        ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_benefits_data.items_items_284}}" as string),
+        ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_benefits_data.items_items_285}}" as string)
       ]
     },
     {
-      "title": "Professional recognition and networking",
-      "description": "Connecting you with professional bodies, events and recognition opportunities.",
+      "title": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_benefits_data.items_title_286}}" as string),
+      "description": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_benefits_data.items_description_287}}" as string),
       "items": [
-        "Graduation ceremony.",
-        "London Masterclass events three times a year.",
-        "Professional body memberships linked to your programme.",
-        "Institute of Project Controls membership for two years.",
-        "Professional clubs, workshops and networking opportunities in different cities."
+        ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_benefits_data.items_items_288}}" as string),
+        ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_benefits_data.items_items_289}}" as string),
+        ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_benefits_data.items_items_290}}" as string),
+        ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_benefits_data.items_items_291}}" as string),
+        ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_benefits_data.items_items_292}}" as string)
       ]
     }
   ]
@@ -576,163 +576,163 @@ export const benefitsData = {
 
 export const fundingData = {
   "id": "funding",
-  "eyebrow": "Funding and included package",
-  "title": "Funding options after we confirm fit",
-  "description": "Kent Business College confirms programme suitability, apprenticeship eligibility, employer support and the most suitable route before enrolment. The funding package is designed to remove barriers and include more than tuition alone.",
+  "eyebrow": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_funding_data.eyebrow_293}}" as string),
+  "title": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_funding_data.title_294}}" as string),
+  "description": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_funding_data.description_295}}" as string),
   "items": [
     {
-      "title": "Department for Education apprenticeship funding",
-      "description": "Designed to support the eligible apprenticeship route where learner, employer and programme conditions are met.",
+      "title": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_funding_data.items_title_296}}" as string),
+      "description": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_funding_data.items_description_297}}" as string),
       "items": [
-        "Education and training delivery.",
-        "End-Point Assessment costs.",
-        "Coaching services.",
-        "Learning materials."
+        ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_funding_data.items_items_298}}" as string),
+        ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_funding_data.items_items_299}}" as string),
+        ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_funding_data.items_items_300}}" as string),
+        ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_funding_data.items_items_301}}" as string)
       ],
       "amount": "£27,000"
     },
     {
-      "title": "Institute of Project Controls support package",
-      "description": "Designed to support the wider professional development package for eligible learners.",
+      "title": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_funding_data.items_title_302}}" as string),
+      "description": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_funding_data.items_description_303}}" as string),
       "items": [
-        "Memberships and professional exam costs.",
-        "Diploma Level 7 in Strategy and Leadership.",
-        "Transport and attendance support for London Masterclass events.",
-        "Club and workshop costs in different cities.",
-        "Private healthcare insurance during the programme.",
-        "Graduation ceremony costs."
+        ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_funding_data.items_items_304}}" as string),
+        ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_funding_data.items_items_305}}" as string),
+        ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_funding_data.items_items_306}}" as string),
+        ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_funding_data.items_items_307}}" as string),
+        ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_funding_data.items_items_308}}" as string),
+        ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_funding_data.items_items_309}}" as string)
       ],
       "amount": "£7,000"
     }
   ],
-  "note": "Important: Funding is subject to current rules, learner eligibility, employer agreement, prior-learning review, residency and work-location checks, programme suitability and written confirmation. Professional-body membership, exam, fellowship, incorporated status and chartered outcomes are subject to the relevant organisation’s own rules and assessment requirements."
+  "note": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_funding_data.note_310}}" as string)
 } as const;
 
 export const partnerData = {
   "id": "employers",
-  "eyebrow": "Employer partnerships",
-  "title": "Employer partnerships across project-driven sectors",
-  "description": "Trusted partnerships across construction, public sector, healthcare, consultancy, education, aerospace, defence and energy.",
+  "eyebrow": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_partner_data.eyebrow_311}}" as string),
+  "title": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_partner_data.title_312}}" as string),
+  "description": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_partner_data.description_313}}" as string),
   "sectors": [
     {
-      "title": "Infrastructure and construction sector",
+      "title": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_partner_data.sectors_title_314}}" as string),
       "logos": [
         {
-          "name": "Barhale",
-          "image": "https://jokdxsdbxorzciulkdyl.supabase.co/storage/v1/object/public/images/edf9285f313b4fc7bebc2a6f92f0492c.png"
+          "name": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_partner_data.sectors_logos_name_315}}" as string),
+          "image": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_partner_data.sectors_logos_image_316}}" as string)
         },
         {
-          "name": "Morgan Sindall Construction",
-          "image": "https://jokdxsdbxorzciulkdyl.supabase.co/storage/v1/object/public/images/f17b25910a6942deacf83df93000e1d4.webp"
+          "name": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_partner_data.sectors_logos_name_317}}" as string),
+          "image": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_partner_data.sectors_logos_image_318}}" as string)
         },
         {
-          "name": "Primech Building Services",
-          "image": "https://jokdxsdbxorzciulkdyl.supabase.co/storage/v1/object/public/images/6e5e38eb6e1e44ed84032e856ab0d5cd.webp"
+          "name": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_partner_data.sectors_logos_name_319}}" as string),
+          "image": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_partner_data.sectors_logos_image_320}}" as string)
         },
         {
-          "name": "Oakes Power Services",
-          "image": "https://jokdxsdbxorzciulkdyl.supabase.co/storage/v1/object/public/images/cded24f7b7cb430195e825af07d7355a.webp"
+          "name": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_partner_data.sectors_logos_name_321}}" as string),
+          "image": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_partner_data.sectors_logos_image_322}}" as string)
         }
       ]
     },
     {
-      "title": "Councils and public sector",
+      "title": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_partner_data.sectors_title_323}}" as string),
       "logos": [
         {
-          "name": "Kirklees Council",
-          "image": "https://jokdxsdbxorzciulkdyl.supabase.co/storage/v1/object/public/images/2284f4f65590424a942faf24bc04666a.png"
+          "name": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_partner_data.sectors_logos_name_324}}" as string),
+          "image": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_partner_data.sectors_logos_image_325}}" as string)
         },
         {
-          "name": "North Yorkshire Council",
-          "image": "https://jokdxsdbxorzciulkdyl.supabase.co/storage/v1/object/public/images/7727308e293245f1962419946ec16ad0.jfif"
+          "name": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_partner_data.sectors_logos_name_326}}" as string),
+          "image": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_partner_data.sectors_logos_image_327}}" as string)
         },
         {
-          "name": "Trafford Council",
-          "image": "https://jokdxsdbxorzciulkdyl.supabase.co/storage/v1/object/public/images/1077053bf11c40399c194b6bf74c1c33.png"
+          "name": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_partner_data.sectors_logos_name_328}}" as string),
+          "image": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_partner_data.sectors_logos_image_329}}" as string)
         }
       ]
     },
     {
-      "title": "Healthcare and pharmaceutical sector",
+      "title": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_partner_data.sectors_title_330}}" as string),
       "logos": [
         {
-          "name": "Amber Therapeutics",
-          "image": "https://jokdxsdbxorzciulkdyl.supabase.co/storage/v1/object/public/images/1c5c753910a343858dd6cf7ac15f6c70.png"
+          "name": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_partner_data.sectors_logos_name_331}}" as string),
+          "image": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_partner_data.sectors_logos_image_332}}" as string)
         },
         {
-          "name": "Callisto Pharma Group",
-          "image": "https://jokdxsdbxorzciulkdyl.supabase.co/storage/v1/object/public/images/2728569ca4e74a26b44d1787983f88d1.jfif"
+          "name": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_partner_data.sectors_logos_name_333}}" as string),
+          "image": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_partner_data.sectors_logos_image_334}}" as string)
         },
         {
-          "name": "DHU Healthcare",
-          "image": "https://jokdxsdbxorzciulkdyl.supabase.co/storage/v1/object/public/images/c5bdf826bfae4bcc864fffffa345cdc9.png"
+          "name": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_partner_data.sectors_logos_name_335}}" as string),
+          "image": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_partner_data.sectors_logos_image_336}}" as string)
         },
         {
-          "name": "St John Ambulance Jersey",
-          "image": "https://jokdxsdbxorzciulkdyl.supabase.co/storage/v1/object/public/images/cf7ca0ac5a3b41a4a73b57204ec94004.png"
+          "name": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_partner_data.sectors_logos_name_337}}" as string),
+          "image": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_partner_data.sectors_logos_image_338}}" as string)
         }
       ]
     },
     {
-      "title": "Business and engineering consultancy sector",
+      "title": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_partner_data.sectors_title_339}}" as string),
       "logos": [
         {
-          "name": "PKF Smith Cooper Systems",
-          "image": "https://jokdxsdbxorzciulkdyl.supabase.co/storage/v1/object/public/images/d25085e03e8049b690fb7510ac18ff61.png"
+          "name": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_partner_data.sectors_logos_name_340}}" as string),
+          "image": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_partner_data.sectors_logos_image_341}}" as string)
         },
         {
-          "name": "Pragmatics 3D",
-          "image": "https://jokdxsdbxorzciulkdyl.supabase.co/storage/v1/object/public/images/db02979c2ea049aab6bb767bbbe82ce8.jfif"
+          "name": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_partner_data.sectors_logos_name_342}}" as string),
+          "image": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_partner_data.sectors_logos_image_343}}" as string)
         },
         {
-          "name": "NuVision",
-          "image": "https://jokdxsdbxorzciulkdyl.supabase.co/storage/v1/object/public/images/b47cf844b33c45f2bf8d32e23b678293.webp"
+          "name": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_partner_data.sectors_logos_name_344}}" as string),
+          "image": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_partner_data.sectors_logos_image_345}}" as string)
         },
         {
-          "name": "Indeed",
-          "image": "https://jokdxsdbxorzciulkdyl.supabase.co/storage/v1/object/public/images/572c55cfe2c84390a6d122b946061a6a.png"
+          "name": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_partner_data.sectors_logos_name_346}}" as string),
+          "image": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_partner_data.sectors_logos_image_347}}" as string)
         }
       ]
     },
     {
-      "title": "University and education sector",
+      "title": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_partner_data.sectors_title_348}}" as string),
       "logos": [
         {
-          "name": "Education and Training Foundation",
-          "image": "https://jokdxsdbxorzciulkdyl.supabase.co/storage/v1/object/public/images/245be9c28efb4622940cbed048324b01.webp"
+          "name": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_partner_data.sectors_logos_name_349}}" as string),
+          "image": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_partner_data.sectors_logos_image_350}}" as string)
         },
         {
-          "name": "University of Hull",
-          "image": "https://jokdxsdbxorzciulkdyl.supabase.co/storage/v1/object/public/images/7bad9e0e4b8a4b308206b3561d538063.png"
+          "name": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_partner_data.sectors_logos_name_351}}" as string),
+          "image": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_partner_data.sectors_logos_image_352}}" as string)
         },
         {
-          "name": "University of Sheffield",
-          "image": "https://jokdxsdbxorzciulkdyl.supabase.co/storage/v1/object/public/images/4dfd6a8809d74ca88831efbd34c7c480.png"
+          "name": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_partner_data.sectors_logos_name_353}}" as string),
+          "image": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_partner_data.sectors_logos_image_354}}" as string)
         },
         {
-          "name": "UK Agri-Tech Centre",
-          "image": "https://jokdxsdbxorzciulkdyl.supabase.co/storage/v1/object/public/images/abe2fdd4255447a3a8c8211ffabdb066.png"
+          "name": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_partner_data.sectors_logos_name_355}}" as string),
+          "image": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_partner_data.sectors_logos_image_356}}" as string)
         }
       ]
     },
     {
-      "title": "Aerospace, defence and oil and gas sector",
+      "title": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_partner_data.sectors_title_357}}" as string),
       "logos": [
         {
-          "name": "BMT",
-          "image": "https://jokdxsdbxorzciulkdyl.supabase.co/storage/v1/object/public/images/dcc7742ecfb84cbab3a835e956f1103b.jfif"
+          "name": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_partner_data.sectors_logos_name_358}}" as string),
+          "image": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_partner_data.sectors_logos_image_359}}" as string)
         },
         {
-          "name": "Bilfinger",
-          "image": "https://jokdxsdbxorzciulkdyl.supabase.co/storage/v1/object/public/images/b25f42a62d564028b7fc2ee9e87ccd83.jpg"
+          "name": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_partner_data.sectors_logos_name_360}}" as string),
+          "image": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_partner_data.sectors_logos_image_361}}" as string)
         },
         {
-          "name": "Stanlow Terminals",
-          "image": "https://jokdxsdbxorzciulkdyl.supabase.co/storage/v1/object/public/images/4d32dd29a0f54f96911429817594774f.png"
+          "name": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_partner_data.sectors_logos_name_362}}" as string),
+          "image": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_partner_data.sectors_logos_image_363}}" as string)
         },
         {
-          "name": "Wincanton",
-          "image": "https://jokdxsdbxorzciulkdyl.supabase.co/storage/v1/object/public/images/f1b007c5c5314826b51cc5e408ad4322.webp"
+          "name": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_partner_data.sectors_logos_name_364}}" as string),
+          "image": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_partner_data.sectors_logos_image_365}}" as string)
         }
       ]
     }
@@ -740,88 +740,88 @@ export const partnerData = {
 } as const satisfies PartnerSectionData;
 
 export const eventsData = {
-  upcomingTitle: "Find the right upcoming event",
-  upcomingDescription: "See dates and formats for programme, employer funding and professional recognition sessions in one place.",
-  "eyebrow": "Upcoming programme events",
-  "search": "\"project control\""
+  upcomingTitle: ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_events_data.upcoming_title_366}}" as string),
+  upcomingDescription: ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_events_data.upcoming_description_367}}" as string),
+  "eyebrow": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_events_data.eyebrow_368}}" as string),
+  "search": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_events_data.search_369}}" as string)
 } as const;
 
 export const finalCTA = {
   "id": "next-step",
-  "eyebrow": "Take the next step",
-  "title": "Ready to choose the right Project Controls Professional Level 6 pathway?",
-  "description": "Start with a one-to-one conversation. The team can help you understand your pathway, employer requirements, funding eligibility, professional recognition route and next intake.",
+  "eyebrow": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_final_cta.eyebrow_370}}" as string),
+  "title": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_final_cta.title_371}}" as string),
+  "description": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_final_cta.description_372}}" as string),
   "action": {
-    "label": "Book an information session",
+    "label": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_final_cta.action_label_373}}" as string),
     "to": "/book-session"
   }
 } as const;
 
 export const faqs = [
   {
-    "question": "When do the courses start?",
-    "answer": "The course start windows are September, January and April. The team will confirm which pathway and module sequence is available for your chosen intake."
+    "question": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_faqs.question_374}}" as string),
+    "answer": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_faqs.answer_375}}" as string)
   },
   {
-    "question": "How long is the programme?",
-    "answer": "The full Project Controls Professional Level 6 journey is designed as a 27-month programme: one month of soft start, six credits delivered over 24 months, and two months of closing workshops for End-Point Assessment preparation."
+    "question": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_faqs.question_376}}" as string),
+    "answer": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_faqs.answer_377}}" as string)
   },
   {
-    "question": "Can I tailor the programme rather than follow one standard route?",
-    "answer": "Yes. The programme is built on a credit system. You can choose a standard route or tailor your six credits based on your current job description, duties, employer needs and evidence opportunities, subject to employer engagement and approval."
+    "question": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_faqs.question_378}}" as string),
+    "answer": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_faqs.answer_379}}" as string)
   },
   {
-    "question": "I want to do Level 6, but some Level 3 modules fit my job. Can I take them?",
-    "answer": "Yes, this can be discussed. Our programmes are built on the credit system. Each module is a credit and each normal credit is delivered over four months. The only module that is two credits is the Project Management Professional or Certified Associate in Project Management route. Any cross-level choice must still make sense for your job duties, evidence and funding route."
+    "question": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_faqs.question_380}}" as string),
+    "answer": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_faqs.answer_381}}" as string)
   },
   {
-    "question": "What is the apprenticeship funding eligibility for the 100% funded route?",
-    "answer": "Typical apprenticeship funding checks include that the learner lives and works in England, spends at least 50% of working time in England, and has an employer who supports the learner with around 7 to 8 hours per week for off-the-job study. Apprenticeships are not based on age, seniority or maximum salary. The learner must be employed and paid at least the applicable minimum wage rules. Final eligibility is confirmed before enrolment."
+    "question": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_faqs.question_382}}" as string),
+    "answer": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_faqs.answer_383}}" as string)
   },
   {
-    "question": "What if I am not eligible for apprenticeship funding?",
-    "answer": "Kent Business College can assist you in exploring the Institute of Project Controls fund. This may be relevant for international applicants, learners outside apprenticeship eligibility, unemployed applicants, self-employed applicants, or employed applicants whose employers cannot support 7 to 8 hours of off-the-job study time. The fund application may require your curriculum vitae, a positive-character statement and a statement about your future passions and goals."
+    "question": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_faqs.question_384}}" as string),
+    "answer": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_faqs.answer_385}}" as string)
   },
   {
-    "question": "Which route should I choose if I want Chartered Project Professional status?",
-    "answer": "The Chartered Pathway is the route designed around the Association for Project Management recognised assessment for Chartered Project Professional technical knowledge. Completion of the programme does not automatically confer Chartered Project Professional status. The Association for Project Management awards Chartered Project Professional status only when the candidate meets its current professional practice, continuing professional development, ethics and assessment requirements."
+    "question": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_faqs.question_386}}" as string),
+    "answer": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_faqs.answer_387}}" as string)
   },
   {
-    "question": "Does every pathway include Institute of Project Controls Fellowship and Incorporated Cost Engineer progression?",
-    "answer": "The programme is designed so all pathways support Project Controls Professional Level 6 and the professional development route towards Institute of Project Controls Fellowship and Controls and Skills Authority Incorporated Cost Engineer recognition. Final recognition depends on the relevant organisation’s assessment, membership and evidence requirements."
+    "question": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_faqs.question_388}}" as string),
+    "answer": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_faqs.answer_389}}" as string)
   },
   {
-    "question": "Is the Level 7 Diploma in Strategy and Leadership included?",
-    "answer": "Yes, access to the Diploma Level 7 in Strategy and Leadership is included in the wider support package. It is scheduled on Saturdays from 9:00 AM to 11:00 AM, with six modules, each lasting three months, over an 18-month structure."
+    "question": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_faqs.question_390}}" as string),
+    "answer": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_faqs.answer_391}}" as string)
   },
   {
-    "question": "What does the funding package include?",
-    "answer": "The Department for Education apprenticeship funding package is designed to cover education, End-Point Assessment costs, coaching services and materials. The Institute of Project Controls package is designed to support memberships, professional exams, Diploma Level 7 access, London Masterclass attendance and transport, professional clubs and workshops, private healthcare insurance and graduation ceremony costs."
+    "question": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_faqs.question_392}}" as string),
+    "answer": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_faqs.answer_393}}" as string)
   },
   {
-    "question": "Is this suitable outside engineering and construction?",
-    "answer": "Yes. The programme has two orientation options: one for construction, engineering and infrastructure projects, and one for management, consultancy, information technology, digital transformation, marketing and wider business-service environments."
+    "question": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_faqs.question_394}}" as string),
+    "answer": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_faqs.answer_395}}" as string)
   },
   {
-    "question": "What is the best next step?",
-    "answer": "The best next step is to book a one-to-one information session with a coach. They can review your current duties, employer position, funding route, cohort orientation and most suitable pathway."
+    "question": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_faqs.question_396}}" as string),
+    "answer": ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_faqs.answer_397}}" as string)
   }
 ] as const;
 
 export const pageNavigation = [
-  { label: "Overview", href: "#overview" }, { label: "Who it is for", href: "#who" },
-  { label: "Structure", href: "#structure" }, { label: "Pathways", href: "#pathways" },
-  { label: "Cohorts", href: "#cohorts" }, { label: "Outputs", href: "#outputs" },
-  { label: "Delivery", href: "#delivery" }, { label: "Workload", href: "#workload" },
-  { label: "Coaches", href: "#coaches" },
-  { label: "Benefits", href: "#benefits" }, { label: "Funding", href: "#funding" },
-  { label: "Events", href: "#upcoming-programme-events" }, { label: "Recognition", href: "#recognition" },
-  { label: "Employer partners", href: "#employers" },
-  { label: "Testimonials", href: "#testimonials" }, { label: "FAQs", href: "#faq" }, { label: "Next step", href: "#next-step" },
+  { label: ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_page_navigation.label_398}}" as string), href: ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_page_navigation.href_399}}" as string) }, { label: ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_page_navigation.label_400}}" as string), href: ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_page_navigation.href_401}}" as string) },
+  { label: ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_page_navigation.label_402}}" as string), href: ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_page_navigation.href_403}}" as string) }, { label: ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_page_navigation.label_404}}" as string), href: ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_page_navigation.href_405}}" as string) },
+  { label: ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_page_navigation.label_406}}" as string), href: ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_page_navigation.href_407}}" as string) }, { label: ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_page_navigation.label_408}}" as string), href: ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_page_navigation.href_409}}" as string) },
+  { label: ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_page_navigation.label_410}}" as string), href: ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_page_navigation.href_411}}" as string) }, { label: ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_page_navigation.label_412}}" as string), href: ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_page_navigation.href_413}}" as string) },
+  { label: ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_page_navigation.label_414}}" as string), href: ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_page_navigation.href_415}}" as string) },
+  { label: ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_page_navigation.label_416}}" as string), href: ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_page_navigation.href_417}}" as string) }, { label: ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_page_navigation.label_418}}" as string), href: ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_page_navigation.href_419}}" as string) },
+  { label: ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_page_navigation.label_420}}" as string), href: ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_page_navigation.href_421}}" as string) }, { label: ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_page_navigation.label_422}}" as string), href: ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_page_navigation.href_423}}" as string) },
+  { label: ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_page_navigation.label_424}}" as string), href: ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_page_navigation.href_425}}" as string) },
+  { label: ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_page_navigation.label_426}}" as string), href: ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_page_navigation.href_427}}" as string) }, { label: ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_page_navigation.label_428}}" as string), href: ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_page_navigation.href_429}}" as string) }, { label: ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_page_navigation.label_430}}" as string), href: ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_page_navigation.href_431}}" as string) },
 ] as const;
 
 export const programmeMeta = {
-  title: "Project Controls Professional Level 6 | Kent Business College",
+  title: ("{{cms:programme_pcp_l6.pages_project_controls_professional_leve_programme_meta.title_432}}" as string),
   description: heroData.hero.lead,
   path: "/project-controls-professional-level-6",
 };

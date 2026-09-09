@@ -1,9 +1,13 @@
+import { useCmsBindings } from "@/features/cms/publicContent";
 const SKELETON_CARDS = 3;
 
 export function EventsLoadingSkeleton() {
-  return (
+  const cms = useCmsBindings(["events"]);
+  const cmsValues = cms.resolve({ SKELETON_CARDS });
+
+  return cms.render((
     <div className="events-grid events-loading-skeleton" role="status" aria-live="polite">
-      {Array.from({ length: SKELETON_CARDS }, (_, index) => (
+      {Array.from({ length: cmsValues.SKELETON_CARDS }, (_, index) => (
         <article className="events-skeleton-card" aria-hidden="true" key={index}>
           <div className="events-skeleton-card__media events-skeleton-block" />
           <div className="events-skeleton-card__body">
@@ -19,7 +23,7 @@ export function EventsLoadingSkeleton() {
           </div>
         </article>
       ))}
-      <span className="sr-only">Loading events...</span>
+      <span className="sr-only">{cms.text("events.pages_events_page_components_events_load_events_loading_skeleton.text_001")}</span>
     </div>
-  );
+  ));
 }

@@ -1,13 +1,13 @@
 import { programmeColleges, programmeTypeLabels, type ProgrammeSummary } from "@/data/programmes";
 
-export function filterProgrammes(programmes: readonly ProgrammeSummary[], params: URLSearchParams) {
+export function filterProgrammes(programmes: readonly ProgrammeSummary[], params: URLSearchParams, labels = { colleges: programmeColleges, types: programmeTypeLabels }) {
   const terms = (params.get("search") || params.get("q") || "").trim().toLocaleLowerCase("en-GB").split(/\s+/).filter(Boolean);
   return programmes.filter((programme) => {
     if (params.get("college") && programme.college !== params.get("college")) return false;
     if (params.get("level") && String(programme.level) !== params.get("level")) return false;
     if (params.get("type") && programme.type !== params.get("type")) return false;
-    const searchable = [programme.title, programmeColleges[programme.college].title, programme.level && `Level ${programme.level}`,
-      programme.summary, programme.qualification, ...(programme.professionalRecognition || []), programmeTypeLabels[programme.type]]
+    const searchable = [programme.title, labels.colleges[programme.college].title, programme.level && `Level ${programme.level}`,
+      programme.summary, programme.qualification, ...(programme.professionalRecognition || []), labels.types[programme.type]]
       .filter(Boolean).join(" ").toLocaleLowerCase("en-GB");
     return terms.every((term) => searchable.includes(term));
   });

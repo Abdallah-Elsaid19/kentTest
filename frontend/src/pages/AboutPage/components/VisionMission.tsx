@@ -1,22 +1,25 @@
+import { useCmsBindings } from "@/features/cms/publicContent";
 export default function VisionMission() {
-  return (
+  const cms = useCmsBindings(["about"]);
+
+  return cms.render((
     <section id="vision-mission" className="vm">
       <div className="container">
         <div className="section-head center vm__head">
-          <span className="eyebrow">Vision &amp; Mission</span>
-          <h2>What drives us forward</h2>
+          <span className="eyebrow">{cms.text("about.pages_about_page_components_vision_missi_vision_mission.text_001")}</span>
+          <h2>{cms.text("about.pages_about_page_components_vision_missi_vision_mission.text_002")}</h2>
         </div>
         <div className="vm__grid">
           <div className="vm__card reveal">
-            <h3>Our Vision</h3>
-            <p>To establish Kent Business College as a globally recognised leader in consultancy and education — renowned for translating cutting-edge academic research into practical strategies that drive industry innovation and sustainable growth.</p>
+            <h3>{cms.text("about.pages_about_page_components_vision_missi_vision_mission.text_003")}</h3>
+            <p>{cms.text("about.pages_about_page_components_vision_missi_vision_mission.text_004")}</p>
           </div>
           <div className="vm__card reveal">
-            <h3>Our Mission</h3>
-            <p>To bridge the gap between rigorous academic research and real-world application — fostering meaningful partnerships with employers through tailored recruitment services and bespoke training programmes.</p>
+            <h3>{cms.text("about.pages_about_page_components_vision_missi_vision_mission.text_005")}</h3>
+            <p>{cms.text("about.pages_about_page_components_vision_missi_vision_mission.text_006")}</p>
           </div>
         </div>
       </div>
     </section>
-  );
+  ));
 }

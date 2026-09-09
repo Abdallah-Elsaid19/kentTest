@@ -31,6 +31,7 @@
             "minLength": 1,
             "maxLength": 2048,
             "format": "url",
+            "mediaKind": "image",
             "title": "Video poster image"
           },
           "src": {
@@ -38,6 +39,7 @@
             "minLength": 1,
             "maxLength": 2048,
             "format": "url",
+            "mediaKind": "video",
             "title": "Background video (WebM)"
           },
           "src2": {
@@ -45,6 +47,7 @@
             "minLength": 1,
             "maxLength": 2048,
             "format": "url",
+            "mediaKind": "video",
             "title": "Background video (MP4)"
           },
           "paragraph": {
@@ -150,6 +153,7 @@
             "minLength": 1,
             "maxLength": 2048,
             "format": "url",
+            "mediaKind": "image",
             "title": "Feature image"
           },
           "alt": {
@@ -222,7 +226,8 @@
               "type": "string",
               "minLength": 1,
               "maxLength": 2048,
-              "format": "url"
+              "format": "url",
+              "mediaKind": "image"
             }
           },
           "required": [
@@ -340,7 +345,8 @@
                 "type": "string",
                 "minLength": 1,
                 "maxLength": 2048,
-                "format": "url"
+                "format": "url",
+                "mediaKind": "image"
               },
               "imageAlt": {
                 "type": "string",
@@ -468,7 +474,8 @@
                 "type": "string",
                 "minLength": 1,
                 "maxLength": 2048,
-                "format": "url"
+                "format": "url",
+                "mediaKind": "image"
               },
               "imageAlt": {
                 "type": "string",
@@ -981,6 +988,7 @@
             "minLength": 1,
             "maxLength": 2048,
             "format": "url",
+            "mediaKind": "image",
             "title": "Feature image URL"
           },
           "alt": {
@@ -1034,7 +1042,8 @@
             "type": "string",
             "minLength": 1,
             "maxLength": 2048,
-            "format": "url"
+            "format": "url",
+            "mediaKind": "image"
           },
           "alt2": {
             "type": "string",
@@ -1079,7 +1088,8 @@
             "type": "string",
             "minLength": 1,
             "maxLength": 2048,
-            "format": "url"
+            "format": "url",
+            "mediaKind": "image"
           },
           "alt3": {
             "type": "string",
@@ -1120,7 +1130,8 @@
             "type": "string",
             "minLength": 1,
             "maxLength": 2048,
-            "format": "url"
+            "format": "url",
+            "mediaKind": "image"
           },
           "alt4": {
             "type": "string",
@@ -1176,7 +1187,8 @@
             "type": "string",
             "minLength": 1,
             "maxLength": 2048,
-            "format": "url"
+            "format": "url",
+            "mediaKind": "image"
           },
           "alt5": {
             "type": "string",
@@ -1207,7 +1219,8 @@
             "type": "string",
             "minLength": 1,
             "maxLength": 2048,
-            "format": "url"
+            "format": "url",
+            "mediaKind": "image"
           },
           "alt6": {
             "type": "string",
@@ -1452,7 +1465,8 @@
           "type": "string",
           "minLength": 1,
           "maxLength": 2048,
-          "format": "url"
+          "format": "url",
+          "mediaKind": "image"
         }
       }
     },
@@ -1747,7 +1761,8 @@
               "type": "string",
               "minLength": 1,
               "maxLength": 2048,
-              "format": "url"
+              "format": "url",
+              "mediaKind": "image"
             }
           },
           "required": [
@@ -1822,7 +1837,8 @@
               "type": "string",
               "minLength": 1,
               "maxLength": 2048,
-              "format": "url"
+              "format": "url",
+              "mediaKind": "image"
             },
             "quote": {
               "type": "string",
@@ -1847,7 +1863,8 @@
         "type": "string",
         "minLength": 1,
         "maxLength": 2048,
-        "format": "url"
+        "format": "url",
+        "mediaKind": "image"
       }
     },
     "required": [

@@ -1,16 +1,21 @@
 from rest_framework import serializers
 
 from .models import ContentEntry, ContentRevision
+from .schemas import COLLECTIONS
 
 
 class EntrySerializer(serializers.ModelSerializer):
     status = serializers.CharField(read_only=True)
     has_draft = serializers.BooleanField(read_only=True)
     updated_by_name = serializers.CharField(source="updated_by.username", read_only=True, default=None)
+    schema = serializers.SerializerMethodField()
+
+    def get_schema(self, obj):
+        return COLLECTIONS.get(obj.page, {}).get(obj.section)
 
     class Meta:
         model = ContentEntry
-        fields = ["key", "page", "section", "title", "sort_order", "content", "published_content", "is_active", "status", "has_draft", "version", "created_at", "updated_at", "published_at", "updated_by_name"]
+        fields = ["key", "page", "section", "title", "sort_order", "content", "published_content", "is_active", "status", "has_draft", "version", "created_at", "updated_at", "published_at", "updated_by_name", "schema"]
         read_only_fields = fields
 
 

@@ -1,3 +1,4 @@
+import { useCmsBindings } from "@/features/cms/publicContent";
 import {
   Award,
   BrainCircuit,
@@ -15,25 +16,25 @@ const groupStyles = [
   {
     surface: "#f0efff",
     border: "#ded9fb",
-    accent: "#6658d3",
+    accent: "{{cms:college_project_controls.pages_project_controls_page_component_co_group_styles.accent_001}}",
     soft: "#d9d5fa",
   },
   {
     surface: "#f7eafa",
     border: "#edd4f3",
-    accent: "#b94fca",
+    accent: "{{cms:college_project_controls.pages_project_controls_page_component_co_group_styles.accent_002}}",
     soft: "#ead0f0",
   },
   {
     surface: "#fbeaf0",
     border: "#f1d0db",
-    accent: "#d54e7a",
+    accent: "{{cms:college_project_controls.pages_project_controls_page_component_co_group_styles.accent_003}}",
     soft: "#f1ccda",
   },
   {
     surface: "#fcf9ef",
     border: "#efdfad",
-    accent: "#b78d32",
+    accent: "{{cms:college_project_controls.pages_project_controls_page_component_co_group_styles.accent_004}}",
     soft: "#f7efd7",
   },
 ] as const;
@@ -41,7 +42,9 @@ const groupStyles = [
 const groupIcons: LucideIcon[] = [BriefcaseBusiness, Network, Award, BrainCircuit];
 
 function CourseIllustration({ Icon, accent, soft }: { Icon: LucideIcon; accent: string; soft: string }) {
-  return (
+  const cms = useCmsBindings(["college_project_controls"]);
+
+  return cms.render((
     <div className="w-16 shrink-0 max-[520px]:w-12" aria-hidden="true">
       <svg className="h-auto w-full overflow-visible" viewBox="0 0 160 112" fill="none">
         <circle cx="16" cy="19" r="6" fill={soft} />
@@ -63,16 +66,19 @@ function CourseIllustration({ Icon, accent, soft }: { Icon: LucideIcon; accent: 
         <circle cx="34" cy="88" r="2" fill={accent} />
       </svg>
     </div>
-  );
+  ));
 }
 
 export function CourseContentSection() {
+  const cms = useCmsBindings(["college_project_controls"]);
+  const cmsValues = cms.resolve({ section, shell, courseContentCopy, projectControlsCourseGroups, groupStyles, groupIcons });
+
   const [openProvider, setOpenProvider] = useState<number | null>(0);
 
-  return (
+  return cms.render((
     <section
       id="pc-course-content"
-      className={`${section} relative isolate overflow-hidden bg-[#fbfafc]`}
+      className={`${cmsValues.section} relative isolate overflow-hidden bg-[#fbfafc]`}
       aria-labelledby="pc-course-content-title"
     >
       <div
@@ -80,18 +86,18 @@ export function CourseContentSection() {
         aria-hidden="true"
       />
 
-      <div className={`${shell} relative z-10`}>
+      <div className={`${cmsValues.shell} relative z-10`}>
         <FigmaSectionHeading
           id="pc-course-content-title"
-          eyebrow={courseContentCopy.eyebrow}
-          title={courseContentCopy.title}
-          description={courseContentCopy.description}
+          eyebrow={cmsValues.courseContentCopy.eyebrow}
+          title={cmsValues.courseContentCopy.title}
+          description={cmsValues.courseContentCopy.description}
         />
 
         <div className="mt-14 space-y-4">
-          {projectControlsCourseGroups.map((group, groupIndex) => {
-            const style = groupStyles[groupIndex];
-            const Icon = groupIcons[groupIndex];
+          {cmsValues.projectControlsCourseGroups.map((group, groupIndex) => {
+            const style = cmsValues.groupStyles[groupIndex];
+            const Icon = cmsValues.groupIcons[groupIndex];
             const isOpen = openProvider === groupIndex;
             const headingId = `course-provider-${group.abbreviation.toLowerCase()}`;
             const panelId = `${headingId}-panel`;
@@ -115,8 +121,7 @@ export function CourseContentSection() {
                       </span>
                     </span>
                     <span className="hidden rounded-full border border-kbc-purple-100 bg-white px-4 py-2 text-xs font-semibold text-kbc-purple-700 sm:block">
-                      {group.courses.length} courses
-                    </span>
+                      {group.courses.length} {cms.text("college_project_controls.pages_project_controls_page_component_co_course_content_section.text_005")}</span>
                     <span className="flex size-10 shrink-0 items-center justify-center rounded-full border border-kbc-purple-100 bg-kbc-purple-50 text-primary">
                       <ChevronDown className={`size-5 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`} strokeWidth={2} aria-hidden="true" />
                     </span>
@@ -146,7 +151,7 @@ export function CourseContentSection() {
                                 {course.description}
                               </p>
                               <p className="mt-4 text-[11px] text-kbc-purple-600">
-                                Offered by <strong className="font-semibold text-kbc-purple-950">{group.abbreviation}</strong>
+                                {cms.text("college_project_controls.pages_project_controls_page_component_co_course_content_section.text_006")}<strong className="font-semibold text-kbc-purple-950">{group.abbreviation}</strong>
                               </p>
                             </div>
 
@@ -162,5 +167,5 @@ export function CourseContentSection() {
         </div>
       </div>
     </section>
-  );
+  ));
 }

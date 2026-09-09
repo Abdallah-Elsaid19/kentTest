@@ -1,14 +1,15 @@
 import json
 import re
 from pathlib import Path
-from urllib.parse import urlsplit
+from urllib.parse import urlsplit, unquote
 
 from rest_framework.exceptions import ValidationError
 
 
 # Schema contains structure and limits, never fallback content.
 HOME_SCHEMAS = json.loads(Path(__file__).with_name("home_contract.json").read_text(encoding="utf-8"))
-COLLECTIONS = {"home": HOME_SCHEMAS}
+PAGE_CONTRACT = json.loads(Path(__file__).with_name("page_contracts.json").read_text(encoding="utf-8"))
+COLLECTIONS = {"home": HOME_SCHEMAS, **PAGE_CONTRACT["sections"]}
 
 
 def safe_url(value):
@@ -64,6 +65,10 @@ def validate_node(value, schema, path="content"):
                 errors[path] = "Enter text within the field length limit."
             elif schema.get("format") == "url" and not safe_url(value):
                 errors[path] = "Use a root-relative path, an anchor or an HTTPS URL without credentials or whitespace."
+            elif schema.get("format") == "email-link" and not (re.fullmatch(r"mailto:[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}(?:\?[^\s<>]*)?", value) and not re.search(r"[\r\n]", unquote(value))):
+                errors[path] = "Use a mailto link with a valid email address."
+            elif schema.get("format") == "phone-link" and not re.fullmatch(r"tel:\+?[0-9() .\-]+", value):
+                errors[path] = "Use a tel link with a telephone number."
         elif kind == "boolean" and not isinstance(value, bool):
             errors[path] = "Must be true or false."
         elif kind == "number" and (type(value) not in (int, float) or not schema["minimum"] <= value <= schema["maximum"]):

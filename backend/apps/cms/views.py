@@ -17,7 +17,8 @@ from rest_framework.throttling import SimpleRateThrottle
 from rest_framework.views import APIView
 
 from apps.audit.models import AuditLog
-from .models import ContentEntry, ContentRevision
+from .models import ContentEntry, ContentPage, ContentRevision
+from .renderers import CMSJSONRenderer
 from .permissions import IsCMSAdmin, is_cms_admin
 from .schemas import COLLECTIONS, validate_content
 from .serializers import EntryMutationSerializer, EntrySerializer, RevisionSerializer
@@ -34,6 +35,7 @@ class CMSView(APIView):
     permission_classes = [IsCMSAdmin]
     # Preserve the schema's JSON keys; the public project renderer still camelizes envelope fields.
     parser_classes = [JSONParser]
+    renderer_classes = [CMSJSONRenderer]
 
 
 def session_user(user):
@@ -90,11 +92,30 @@ class LogoutView(CMSView):
 class CollectionView(CMSView):
     def get(self, request):
         result = []
-        for key, schemas in COLLECTIONS.items():
-            entries = ContentEntry.objects.filter(page=key)
-            live = entries.filter(is_active=True, published_content__isnull=False).count()
-            drafts = entries.filter(Q(published_content__isnull=True) | ~Q(content=F("published_content"))).count()
-            result.append({"key": key, "title": f"{key.title()} Content", "total": entries.count(), "live": live, "drafts": drafts, "inactive": entries.filter(is_active=False).count(), "schemas": schemas})
+        for page in ContentPage.objects.prefetch_related("entries__updated_by"):
+            entries = list(page.entries.all())
+            live = sum(e.is_active and e.published_content is not None for e in entries)
+            drafts = sum(e.has_draft for e in entries)
+            latest = max(entries, key=lambda e: e.updated_at, default=None)
+            status = "inactive" if entries and not any(e.is_active for e in entries) else "draft" if drafts or not live else "published"
+            row = {"key": page.key, "title": page.title, "route": page.route, "group": page.group,
+                   "total": len(entries), "live": live, "drafts": drafts, "inactive": sum(not e.is_active for e in entries),
+                   "status": status, "publish_state": "Live with draft changes" if live and drafts else "Published" if live else "Not published",
+                   "updated_at": latest.updated_at if latest else page.updated_at,
+                   "updated_by_name": (latest.updated_by.username if latest.updated_by else None) if latest else None,
+                   "section_names": [e.title for e in entries]}
+            if group := request.query_params.get("group"):
+                if page.group != group:
+                    continue
+            if search := request.query_params.get("search", "").casefold():
+                if search not in " ".join([page.title, page.key, page.route, *row["section_names"]]).casefold():
+                    continue
+            if requested_status := request.query_params.get("status"):
+                if requested_status not in {"published", "draft", "inactive"}:
+                    raise ValidationError({"status": "Unknown filter."})
+                if status != requested_status:
+                    continue
+            result.append(row)
         return Response({"items": result})
 
 
@@ -103,13 +124,14 @@ class EntryListView(ListAPIView):
     permission_classes = [IsCMSAdmin]
     serializer_class = EntrySerializer
     filter_backends = []
+    renderer_classes = [CMSJSONRenderer]
 
     def get_queryset(self):
-        query = ContentEntry.objects.select_related("updated_by").all()
+        query = ContentEntry.objects.select_related("updated_by").filter(page__in=COLLECTIONS)
         if page := self.request.query_params.get("collection"):
             query = query.filter(page=page)
         if search := self.request.query_params.get("search"):
-            query = query.filter(Q(title__icontains=search) | Q(key__icontains=search) | Q(content__icontains=search))
+            query = query.filter(Q(title__icontains=search) | Q(key__icontains=search) | Q(content__icontains=search) | Q(content_page__title__icontains=search) | Q(content_page__route__icontains=search))
         status = self.request.query_params.get("status")
         if status == "inactive":
             query = query.filter(is_active=False)
@@ -124,12 +146,12 @@ class EntryListView(ListAPIView):
 
 class EntryDetailView(CMSView):
     def get(self, request, key):
-        entry = get_object_or_404(ContentEntry.objects.select_related("updated_by"), key=key)
+        entry = get_object_or_404(ContentEntry.objects.select_related("updated_by"), key=key, page__in=COLLECTIONS)
         return Response(EntrySerializer(entry).data)
 
     @transaction.atomic
     def patch(self, request, key):
-        entry = get_object_or_404(ContentEntry.objects.select_for_update(), key=key)
+        entry = get_object_or_404(ContentEntry.objects.select_for_update(), key=key, page__in=COLLECTIONS)
         mutation = EntryMutationSerializer(data=request.data)
         mutation.is_valid(raise_exception=True)
         data = mutation.validated_data
@@ -163,9 +185,10 @@ class RevisionListView(ListAPIView):
     permission_classes = [IsCMSAdmin]
     serializer_class = RevisionSerializer
     filter_backends = []
+    renderer_classes = [CMSJSONRenderer]
 
     def get_queryset(self):
-        entry = get_object_or_404(ContentEntry, key=self.kwargs["key"])
+        entry = get_object_or_404(ContentEntry, key=self.kwargs["key"], page__in=COLLECTIONS)
         return entry.revisions.select_related("actor").all()
 
 
@@ -187,6 +210,15 @@ class PublicContentView(CMSView):
 
 class PreviewView(CMSView):
     def get(self, request, key):
-        target = get_object_or_404(ContentEntry, key=key)
+        target = get_object_or_404(ContentEntry, key=key, page__in=COLLECTIONS)
         entries = ContentEntry.objects.filter(page=target.page)
         return Response({"page": target.page, "sections": [{"key": e.key, "section": e.section, "content": e.content if e.pk == target.pk else e.published_content} for e in entries if e.pk == target.pk or (e.is_active and e.published_content is not None)]})
+
+
+class PagePreviewView(CMSView):
+    def get(self, request, page):
+        get_object_or_404(ContentPage, key=page)
+        if page not in COLLECTIONS:
+            raise ValidationError({"page": "Unsupported page."})
+        entries = ContentEntry.objects.filter(page=page)
+        return Response({"page": page, "sections": [{"key": e.key, "section": e.section, "content": e.content} for e in entries]})

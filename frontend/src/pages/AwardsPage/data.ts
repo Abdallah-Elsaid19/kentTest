@@ -17,198 +17,198 @@ export interface Recognition {
 }
 
 export const awardsSeo = {
-  "title": "Accreditations, Awards & Professional Recognition | Kent Business College",
-  "description": "Explore Kent Business College's quality standards, professional-body relationships, certifications and awards — independent recognition that reflects how we support learners, employers and professional development."
+  "title": ("{{cms:awards.pages_awards_page_data_awards_seo.title_001}}" as string),
+  "description": ("{{cms:awards.pages_awards_page_data_awards_seo.description_002}}" as string)
 };
 
 export const awardsHero = {
-  "eyebrow": "Recognition & Standards",
-  "title": "Recognition that reflects",
-  "accent": "the quality we deliver",
+  "eyebrow": ("{{cms:awards.pages_awards_page_data_awards_hero.eyebrow_003}}" as string),
+  "title": ("{{cms:awards.pages_awards_page_data_awards_hero.title_004}}" as string),
+  "accent": ("{{cms:awards.pages_awards_page_data_awards_hero.accent_005}}" as string),
   "paragraphs": [
-    "Independent standards, professional relationships and external recognition that reflect how Kent Business College supports learners, employers and professional development.",
-    "Our recognition spans quality standards, professional-body relationships, organisational certifications and external awards."
+    ("{{cms:awards.pages_awards_page_data_awards_hero.paragraphs_006}}" as string),
+    ("{{cms:awards.pages_awards_page_data_awards_hero.paragraphs_007}}" as string)
   ],
-  "image": "/assets/images/awards/recognition-hero.jpg"
+  "image": ("{{cms:awards.pages_awards_page_data_awards_hero.image_008}}" as string)
 };
 
 export const awardsIntro = {
-  "eyebrow": "Our record",
-  "title": "Standards, recognition & professional relationships",
-  "description": "KBC’s external recognition reflects different aspects of the College — from learner support and organisational quality to professional relationships, information security and employer standards.",
-  "note": "Each recognition below is labelled according to the type of relationship or standard it represents."
+  "eyebrow": ("{{cms:awards.pages_awards_page_data_awards_intro.eyebrow_009}}" as string),
+  "title": ("{{cms:awards.pages_awards_page_data_awards_intro.title_010}}" as string),
+  "description": ("{{cms:awards.pages_awards_page_data_awards_intro.description_011}}" as string),
+  "note": ("{{cms:awards.pages_awards_page_data_awards_intro.note_012}}" as string)
 };
 
 export const recognitionFilters = [
   {
     "key": "all",
-    "label": "ALL"
+    "label": ("{{cms:awards.pages_awards_page_data_recognition_filters.label_013}}" as string)
   },
   {
     "key": "quality",
-    "label": "QUALITY STANDARDS"
+    "label": ("{{cms:awards.pages_awards_page_data_recognition_filters.label_014}}" as string)
   },
   {
     "key": "professional",
-    "label": "PROFESSIONAL RELATIONSHIPS"
+    "label": ("{{cms:awards.pages_awards_page_data_recognition_filters.label_015}}" as string)
   },
   {
     "key": "certification",
-    "label": "CERTIFICATIONS"
+    "label": ("{{cms:awards.pages_awards_page_data_recognition_filters.label_016}}" as string)
   },
   {
     "key": "award",
-    "label": "AWARDS & RECOGNITION"
+    "label": ("{{cms:awards.pages_awards_page_data_recognition_filters.label_017}}" as string)
   }
 ] as const satisfies readonly { key: RecognitionFilter; label: string }[];
 
 export const recognitionGroups = [
   {
     "key": "standards",
-    "title": "Quality & organisational standards",
-    "description": "Independent standards that reflect how KBC operates as an organisation, employer and provider of guidance."
+    "title": ("{{cms:awards.pages_awards_page_data_recognition_groups.title_018}}" as string),
+    "description": ("{{cms:awards.pages_awards_page_data_recognition_groups.description_019}}" as string)
   },
   {
     "key": "relationships",
-    "title": "Professional relationships & approved status",
-    "description": "Recognised relationships and approved status with professional bodies, held within their confirmed scope."
+    "title": ("{{cms:awards.pages_awards_page_data_recognition_groups.title_020}}" as string),
+    "description": ("{{cms:awards.pages_awards_page_data_recognition_groups.description_021}}" as string)
   },
   {
     "key": "awards",
-    "title": "Awards & external recognition",
-    "description": "External recognition of the quality and outcomes of KBC's professional provision."
+    "title": ("{{cms:awards.pages_awards_page_data_recognition_groups.title_022}}" as string),
+    "description": ("{{cms:awards.pages_awards_page_data_recognition_groups.description_023}}" as string)
   }
 ] as const satisfies readonly { key: RecognitionGroup; title: string; description: string }[];
 
 export const recognitions: readonly Recognition[] = [
   {
     "id": "matrix-standard",
-    "categoryLabel": "QUALITY STANDARD",
+    "categoryLabel": ("{{cms:awards.pages_awards_page_data_recognitions.category_label_024}}" as string),
     "filterGroup": "quality",
     "group": "standards",
     "icon": Award,
-    "title": "Matrix Standard",
+    "title": ("{{cms:awards.pages_awards_page_data_recognitions.title_025}}" as string),
     "year": "2025",
-    "awardingBody": "The Growth Company",
-    "description": "The Matrix Standard is the national quality standard for information, advice and guidance. It independently assesses the quality of the information, advice and guidance KBC provides to learners and prospective learners, helping people make informed decisions about their development."
+    "awardingBody": ("{{cms:awards.pages_awards_page_data_recognitions.awarding_body_026}}" as string),
+    "description": ("{{cms:awards.pages_awards_page_data_recognitions.description_027}}" as string)
   },
   {
     "id": "investors-in-people",
-    "categoryLabel": "PEOPLE STANDARD",
+    "categoryLabel": ("{{cms:awards.pages_awards_page_data_recognitions.category_label_028}}" as string),
     "filterGroup": "quality",
     "group": "standards",
     "icon": UsersRound,
-    "title": "Investors in People – Silver",
+    "title": ("{{cms:awards.pages_awards_page_data_recognitions.title_029}}" as string),
     "year": "2024",
-    "awardingBody": "Investors in People",
-    "description": "Investors in People – Silver reflects KBC's commitment to developing and supporting its people. It recognises organisational practice in leading, supporting and improving colleagues — a people standard, not a programme accreditation."
+    "awardingBody": ("{{cms:awards.pages_awards_page_data_recognitions.awarding_body_030}}" as string),
+    "description": ("{{cms:awards.pages_awards_page_data_recognitions.description_031}}" as string)
   },
   {
     "id": "apm-corporate-partner",
-    "categoryLabel": "PROFESSIONAL PARTNERSHIP",
+    "categoryLabel": ("{{cms:awards.pages_awards_page_data_recognitions.category_label_032}}" as string),
     "filterGroup": "professional",
     "group": "relationships",
     "icon": UserRoundCheck,
-    "title": "APM Corporate Partner",
+    "title": ("{{cms:awards.pages_awards_page_data_recognitions.title_033}}" as string),
     "year": "2026",
-    "awardingBody": "Association for Project Management",
-    "description": "KBC's corporate partnership with the Association for Project Management supports our engagement with the project profession, recognised standards and relevant professional-development pathways. It does not mean every KBC programme is APM-accredited or every qualification is APM-awarded."
+    "awardingBody": ("{{cms:awards.pages_awards_page_data_recognitions.awarding_body_034}}" as string),
+    "description": ("{{cms:awards.pages_awards_page_data_recognitions.description_035}}" as string)
   },
   {
     "id": "cmi-approved-centre",
-    "categoryLabel": "APPROVED CENTRE",
+    "categoryLabel": ("{{cms:awards.pages_awards_page_data_recognitions.category_label_036}}" as string),
     "filterGroup": "professional",
     "group": "relationships",
     "icon": Building2,
-    "title": "CMI Approved Centre",
+    "title": ("{{cms:awards.pages_awards_page_data_recognitions.title_037}}" as string),
     "year": "2025",
-    "awardingBody": "Chartered Management Institute",
-    "description": "An approved-centre relationship with the Chartered Management Institute confirms KBC's status to deliver CMI-aligned leadership and management development, within the specific scope confirmed by CMI. It does not extend to programmes outside that approval."
+    "awardingBody": ("{{cms:awards.pages_awards_page_data_recognitions.awarding_body_038}}" as string),
+    "description": ("{{cms:awards.pages_awards_page_data_recognitions.description_039}}" as string)
   },
   {
     "id": "cim-study-centre",
-    "categoryLabel": "ACCREDITED STUDY CENTRE",
+    "categoryLabel": ("{{cms:awards.pages_awards_page_data_recognitions.category_label_040}}" as string),
     "filterGroup": "professional",
     "group": "relationships",
     "icon": GraduationCap,
-    "title": "CIM Accredited Study Centre",
+    "title": ("{{cms:awards.pages_awards_page_data_recognitions.title_041}}" as string),
     "year": "2025",
-    "awardingBody": "Chartered Institute of Marketing",
-    "description": "Accredited study-centre status with the Chartered Institute of Marketing reflects marketing programmes delivered in line with CIM's professional framework. This is distinct from KBC's CMI approval — CIM supports marketing, while CMI relates to management and leadership."
+    "awardingBody": ("{{cms:awards.pages_awards_page_data_recognitions.awarding_body_042}}" as string),
+    "description": ("{{cms:awards.pages_awards_page_data_recognitions.description_043}}" as string)
   },
   {
     "id": "apprenticeship-provider-finalist",
-    "categoryLabel": "AWARD FINALIST",
+    "categoryLabel": ("{{cms:awards.pages_awards_page_data_recognitions.category_label_044}}" as string),
     "filterGroup": "award",
     "group": "awards",
     "icon": Trophy,
-    "title": "Apprenticeship Provider of the Year – Finalist",
+    "title": ("{{cms:awards.pages_awards_page_data_recognitions.title_045}}" as string),
     "year": "2025",
-    "awardingBody": "Kent Business Awards",
-    "description": "KBC was shortlisted as a finalist for Apprenticeship Provider of the Year. This finalist recognition reflects the quality, outcomes and employer feedback across our professional apprenticeship provision — a shortlist, not a win."
+    "awardingBody": ("{{cms:awards.pages_awards_page_data_recognitions.awarding_body_046}}" as string),
+    "description": ("{{cms:awards.pages_awards_page_data_recognitions.description_047}}" as string)
   },
   {
     "id": "cyber-essentials",
-    "categoryLabel": "CYBER SECURITY CERTIFICATION",
+    "categoryLabel": ("{{cms:awards.pages_awards_page_data_recognitions.category_label_048}}" as string),
     "filterGroup": "certification",
     "group": "standards",
     "icon": ShieldCheck,
-    "title": "Cyber Essentials Certified",
+    "title": ("{{cms:awards.pages_awards_page_data_recognitions.title_049}}" as string),
     "year": "2025",
-    "awardingBody": "National Cyber Security Centre",
-    "description": "Cyber Essentials is a Government-backed certification confirming that KBC's systems and processes meet the required standard for cyber-security controls. It relates to organisational information-security practice — not to academic or programme accreditation."
+    "awardingBody": ("{{cms:awards.pages_awards_page_data_recognitions.awarding_body_050}}" as string),
+    "description": ("{{cms:awards.pages_awards_page_data_recognitions.description_051}}" as string)
   },
   {
     "id": "living-wage-employer",
-    "categoryLabel": "EMPLOYER STANDARD",
+    "categoryLabel": ("{{cms:awards.pages_awards_page_data_recognitions.category_label_052}}" as string),
     "filterGroup": "quality",
     "group": "standards",
     "icon": HeartHandshake,
-    "title": "Living Wage Employer",
+    "title": ("{{cms:awards.pages_awards_page_data_recognitions.title_053}}" as string),
     "year": "2024",
-    "awardingBody": "Living Wage Foundation",
-    "description": "The Living Wage Employer recognition reflects KBC's commitment to paying colleagues the real Living Wage. It is an employer standard about how we value our people — it does not accredit programmes or learning."
+    "awardingBody": ("{{cms:awards.pages_awards_page_data_recognitions.awarding_body_054}}" as string),
+    "description": ("{{cms:awards.pages_awards_page_data_recognitions.description_055}}" as string)
   }
 ];
 
 export const recognitionBenefits = {
-  "eyebrow": "Why recognition matters",
-  "title": "What this means for learners and employers",
+  "eyebrow": ("{{cms:awards.pages_awards_page_data_recognition_benefits.eyebrow_056}}" as string),
+  "title": ("{{cms:awards.pages_awards_page_data_recognition_benefits.title_057}}" as string),
   "items": [
     {
       "icon": GraduationCap,
-      "title": "For learners",
-      "copy": "Quality support, professional standards and relevant progression relationships that strengthen the wider learning experience."
+      "title": ("{{cms:awards.pages_awards_page_data_recognition_benefits.items_title_058}}" as string),
+      "copy": ("{{cms:awards.pages_awards_page_data_recognition_benefits.items_copy_059}}" as string)
     },
     {
       "icon": Building2,
-      "title": "For employers",
-      "copy": "Greater confidence in organisational standards, professional relationships, information security and workforce-development practice."
+      "title": ("{{cms:awards.pages_awards_page_data_recognition_benefits.items_title_060}}" as string),
+      "copy": ("{{cms:awards.pages_awards_page_data_recognition_benefits.items_copy_061}}" as string)
     },
     {
       "icon": Route,
-      "title": "For professional development",
-      "copy": "Connections with recognised bodies and standards that support relevant qualifications, professional practice and progression where applicable."
+      "title": ("{{cms:awards.pages_awards_page_data_recognition_benefits.items_title_062}}" as string),
+      "copy": ("{{cms:awards.pages_awards_page_data_recognition_benefits.items_copy_063}}" as string)
     }
   ]
 };
 
 export const awardsCta = {
-  "eyebrow": "Experience KBC",
-  "title": "See what recognised quality looks like in practice",
-  "description": "Explore KBC programmes and employer development, or speak with our team about professional development that fits your goals or organisation.",
+  "eyebrow": ("{{cms:awards.pages_awards_page_data_awards_cta.eyebrow_064}}" as string),
+  "title": ("{{cms:awards.pages_awards_page_data_awards_cta.title_065}}" as string),
+  "description": ("{{cms:awards.pages_awards_page_data_awards_cta.description_066}}" as string),
   "actions": [
     {
-      "label": "Explore programmes",
-      "href": "/#programmes"
+      "label": ("{{cms:awards.pages_awards_page_data_awards_cta.actions_label_067}}" as string),
+      "href": ("{{cms:awards.pages_awards_page_data_awards_cta.actions_href_068}}" as string)
     },
     {
-      "label": "For employers",
-      "href": "/employers"
+      "label": ("{{cms:awards.pages_awards_page_data_awards_cta.actions_label_069}}" as string),
+      "href": ("{{cms:awards.pages_awards_page_data_awards_cta.actions_href_070}}" as string)
     },
     {
-      "label": "Speak to KBC",
-      "href": "/contact"
+      "label": ("{{cms:awards.pages_awards_page_data_awards_cta.actions_label_071}}" as string),
+      "href": ("{{cms:awards.pages_awards_page_data_awards_cta.actions_href_072}}" as string)
     }
   ]
 };

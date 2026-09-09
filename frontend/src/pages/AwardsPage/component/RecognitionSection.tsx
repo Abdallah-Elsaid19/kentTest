@@ -1,3 +1,4 @@
+import { useCmsBindings } from "@/features/cms/publicContent";
 import { useState } from "react";
 
 import { SplitDetailTabs } from "@/components/common/SplitDetailTabs";
@@ -7,16 +8,19 @@ import { containerClass, sectionClass, SectionIntro } from "@/pages/FundingEligi
 import { awardsIntro, recognitionFilters, recognitionGroups, recognitions, type RecognitionFilter } from "../data";
 
 export function RecognitionSection() {
+  const cms = useCmsBindings(["awards"]);
+  const cmsValues = cms.resolve({ awardsIntro, recognitionFilters, recognitionGroups, recognitions });
+
   const [activeFilter, setActiveFilter] = useState<RecognitionFilter>("all");
 
-  return (
+  return cms.render((
     <section className={sectionClass} aria-labelledby="recognition-record-title">
       <div className={containerClass}>
-        <SectionIntro id="recognition-record-title" eyebrow={awardsIntro.eyebrow} title={awardsIntro.title} copy={awardsIntro.description} align="center" spaced={false} />
-        <p className="mx-auto mt-4 max-w-3xl text-center text-sm leading-7 text-[#756F79]">{awardsIntro.note}</p>
+        <SectionIntro id="recognition-record-title" eyebrow={cmsValues.awardsIntro.eyebrow} title={cmsValues.awardsIntro.title} copy={cmsValues.awardsIntro.description} align="center" spaced={false} />
+        <p className="mx-auto mt-4 max-w-3xl text-center text-sm leading-7 text-[#756F79]">{cmsValues.awardsIntro.note}</p>
 
-        <div className="my-10 grid gap-2 sm:flex sm:flex-wrap sm:justify-center" role="group" aria-label="Filter recognition">
-          {recognitionFilters.map((filter) => (
+        <div className="my-10 grid gap-2 sm:flex sm:flex-wrap sm:justify-center" role="group" aria-label={cms.text("awards.pages_awards_page_component_recognition__recognition_section.aria_label_001")}>
+          {cmsValues.recognitionFilters.map((filter) => (
             <NavigationTabButton
               key={filter.key}
               active={activeFilter === filter.key}
@@ -31,8 +35,8 @@ export function RecognitionSection() {
         </div>
 
         <div id="recognition-results" className="space-y-16 sm:space-y-20" aria-live="polite" aria-atomic="false">
-          {recognitionGroups.map((group) => {
-            const items = recognitions.filter((item) => item.group === group.key && (activeFilter === "all" || item.filterGroup === activeFilter));
+          {cmsValues.recognitionGroups.map((group) => {
+            const items = cmsValues.recognitions.filter((item) => item.group === group.key && (activeFilter === "all" || item.filterGroup === activeFilter));
             if (!items.length) return null;
 
             return (
@@ -48,7 +52,7 @@ export function RecognitionSection() {
                     icon: <Icon size={23} aria-hidden="true" />,
                     eyebrow: item.categoryLabel,
                     content: <p>{item.description}</p>,
-                    footer: <p className="font-semibold">{item.awardingBody} <span aria-hidden="true">·</span> <time dateTime={item.year}>{item.year}</time></p>,
+                    footer: <p className="font-semibold">{item.awardingBody} <span aria-hidden="true">{cms.text("awards.pages_awards_page_component_recognition__footer.text_002")}</span> <time dateTime={item.year}>{item.year}</time></p>,
                   }))} />
                 </div>
               </section>
@@ -57,5 +61,5 @@ export function RecognitionSection() {
         </div>
       </div>
     </section>
-  );
+  ));
 }

@@ -15,102 +15,101 @@ export interface Book {
 }
 
 export const bookshopSeo = {
-  title: "Kent Business College Bookshop",
-  description: "Kent Business College Bookshop — marketing handbooks and learning resources.",
+  title: ("{{cms:bookshop.pages_bookshop_page_data_bookshop_seo.title_001}}" as string),
+  description: ("{{cms:bookshop.pages_bookshop_page_data_bookshop_seo.description_002}}" as string),
 };
 
 export const bookshopHero = {
   cover: {
-    image: "https://jokdxsdbxorzciulkdyl.supabase.co/storage/v1/object/public/images/d0589fa8f0be41f2864944972b4dc1ef.webp",
-    imageAlt: "Marketing Strategy and Planning handbook framed by purple and gold olive branches",
+    image: ("{{cms:bookshop.pages_bookshop_page_data_bookshop_hero.cover_image_003}}" as string),
+    imageAlt: ("{{cms:bookshop.pages_bookshop_page_data_bookshop_hero.cover_image_alt_004}}" as string),
     imageWidth: 1292,
     imageHeight: 1218,
   },
-  eyebrow: "Kent Business College",
-  title: "KBC Bookshop",
-  description: "Explore professionally designed marketing handbooks and practical learning resources for apprentices, managers and working professionals.",
+  eyebrow: ("{{cms:bookshop.pages_bookshop_page_data_bookshop_hero.eyebrow_005}}" as string),
+  title: ("{{cms:bookshop.pages_bookshop_page_data_bookshop_hero.title_006}}" as string),
+  description: ("{{cms:bookshop.pages_bookshop_page_data_bookshop_hero.description_007}}" as string),
   actions: [
-    { label: "Browse latest releases", href: "#releases" },
-    { label: "View featured title", href: "#featured" },
+    { label: ("{{cms:bookshop.pages_bookshop_page_data_bookshop_hero.actions_label_008}}" as string), href: ("{{cms:bookshop.pages_bookshop_page_data_bookshop_hero.actions_href_009}}" as string) },
   ],
 };
 
 export const featuredTitle = {
   bookId: "strategy",
-  eyebrow: "Featured",
-  badge: "Featured title",
-  description: "A practical handbook for structured marketing thinking, strategic planning and applied workplace learning.",
-  copy: "For Marketing Executive Level 4 and Marketing Manager Level 6 learners. Developed as a clear, practical guide with a strong professional focus.",
+  eyebrow: ("{{cms:bookshop.pages_bookshop_page_data_featured_title.eyebrow_012}}" as string),
+  badge: ("{{cms:bookshop.pages_bookshop_page_data_featured_title.badge_013}}" as string),
+  description: ("{{cms:bookshop.pages_bookshop_page_data_featured_title.description_014}}" as string),
+  copy: ("{{cms:bookshop.pages_bookshop_page_data_featured_title.copy_015}}" as string),
 };
 
 export const appliedLearning = {
   mark: "KBC",
-  title: "Built for applied learning.",
-  description: "These handbooks are designed to support structured study, workplace application and programme delivery across marketing pathways.",
+  title: ("{{cms:bookshop.pages_bookshop_page_data_applied_learning.title_016}}" as string),
+  description: ("{{cms:bookshop.pages_bookshop_page_data_applied_learning.description_017}}" as string),
 };
 
 export const catalogue = {
-  eyebrow: "Book catalogue",
-  title: "Latest releases",
-  description: "Browse the current handbook collection. Use the search box to find a title.",
-  searchLabel: "Search books",
-  searchPlaceholder: "Search books…",
-  detailsAction: "Details & pricing",
-  requestAction: "Request a copy",
-  requestHref: "/contact",
-  emptyTitle: "No books found",
-  emptyDescription: "Try another search.",
-  resetLabel: "Clear search",
+  eyebrow: ("{{cms:bookshop.pages_bookshop_page_data_catalogue.eyebrow_018}}" as string),
+  title: ("{{cms:bookshop.pages_bookshop_page_data_catalogue.title_019}}" as string),
+  description: ("{{cms:bookshop.pages_bookshop_page_data_catalogue.description_020}}" as string),
+  searchLabel: ("{{cms:bookshop.pages_bookshop_page_data_catalogue.search_label_021}}" as string),
+  searchPlaceholder: ("{{cms:bookshop.pages_bookshop_page_data_catalogue.search_placeholder_022}}" as string),
+  detailsAction: ("{{cms:bookshop.pages_bookshop_page_data_catalogue.details_action_023}}" as string),
+  requestAction: ("{{cms:bookshop.pages_bookshop_page_data_catalogue.request_action_024}}" as string),
+  requestHref: "https://mail.google.com/mail/?view=cm&fs=1&to=office%40kentbusinesscollege.org",
+  emptyTitle: ("{{cms:bookshop.pages_bookshop_page_data_catalogue.empty_title_026}}" as string),
+  emptyDescription: ("{{cms:bookshop.pages_bookshop_page_data_catalogue.empty_description_027}}" as string),
+  resetLabel: ("{{cms:bookshop.pages_bookshop_page_data_catalogue.reset_label_028}}" as string),
 };
 
 export const bookCategories = [
-  { key: "all", label: "All" },
-  { key: "level4", label: "Level 4" },
-  { key: "level6", label: "Level 6" },
-  { key: "social", label: "Social media" },
+  { key: "all", label: ("{{cms:bookshop.pages_bookshop_page_data_book_categories.label_029}}" as string) },
+  { key: "level4", label: ("{{cms:bookshop.pages_bookshop_page_data_book_categories.label_030}}" as string) },
+  { key: "level6", label: ("{{cms:bookshop.pages_bookshop_page_data_book_categories.label_031}}" as string) },
+  { key: "social", label: ("{{cms:bookshop.pages_bookshop_page_data_book_categories.label_032}}" as string) },
 ] as const satisfies readonly { key: BookCategory; label: string }[];
 
 export const bookMetadata = [
-  { label: "Format", value: "Handbook" },
-  { label: "Availability", value: "Contact KBC" },
-  { label: "Pricing", value: "On request" },
+  { label: ("{{cms:bookshop.pages_bookshop_page_data_book_metadata.label_033}}" as string), value: "Handbook" },
+  { label: ("{{cms:bookshop.pages_bookshop_page_data_book_metadata.label_034}}" as string), value: "Contact KBC" },
+  { label: ("{{cms:bookshop.pages_bookshop_page_data_book_metadata.label_035}}" as string), value: "On request" },
 ] as const;
 
 export const cohortCta = {
-  title: "Need a handbook for your cohort?",
-  backLabel: "Back to top",
+  title: ("{{cms:bookshop.pages_bookshop_page_data_cohort_cta.title_036}}" as string),
+  backLabel: ("{{cms:bookshop.pages_bookshop_page_data_cohort_cta.back_label_037}}" as string),
 };
 
 export const books: readonly Book[] = [
   {
     "id": "social",
-    "title": "Social Media — Marketing Executive Handbook",
-    "kicker": "Marketing Executive · Level 4",
-    "description": "A focused handbook for social media marketing learning, structured around practical professional development.",
-    "detailDescription": "A focused handbook for social media marketing learning and practical professional development.",
+    "title": ("{{cms:bookshop.pages_bookshop_page_data_books.title_038}}" as string),
+    "kicker": ("{{cms:bookshop.pages_bookshop_page_data_books.kicker_039}}" as string),
+    "description": ("{{cms:bookshop.pages_bookshop_page_data_books.description_040}}" as string),
+    "detailDescription": ("{{cms:bookshop.pages_bookshop_page_data_books.detail_description_041}}" as string),
     "categories": [
       "level4",
       "social"
     ],
-    "searchTerms": "social media marketing executive handbook level 4",
-    "image": "https://jokdxsdbxorzciulkdyl.supabase.co/storage/v1/object/public/images/a6f2eabd6d8a47b6a2844dca0d7fae06.webp",
-    "imageAlt": "Social Media Marketing Executive Handbook 3D book",
+    "searchTerms": ("{{cms:bookshop.pages_bookshop_page_data_books.search_terms_042}}" as string),
+    "image": ("{{cms:bookshop.pages_bookshop_page_data_books.image_043}}" as string),
+    "imageAlt": ("{{cms:bookshop.pages_bookshop_page_data_books.image_alt_044}}" as string),
     "imageWidth": 1122,
     "imageHeight": 1402
   },
   {
     "id": "strategy",
-    "title": "Marketing Strategy & Planning",
-    "kicker": "Marketing · Levels 4 & 6",
-    "description": "Strategic thinking, planning structure and practical marketing application for executive and manager pathways.",
-    "detailDescription": "A practical guide to strategic marketing thinking, planning and applied workplace learning for executive and manager pathways.",
+    "title": ("{{cms:bookshop.pages_bookshop_page_data_books.title_045}}" as string),
+    "kicker": ("{{cms:bookshop.pages_bookshop_page_data_books.kicker_046}}" as string),
+    "description": ("{{cms:bookshop.pages_bookshop_page_data_books.description_047}}" as string),
+    "detailDescription": ("{{cms:bookshop.pages_bookshop_page_data_books.detail_description_048}}" as string),
     "categories": [
       "level4",
       "level6"
     ],
-    "searchTerms": "marketing strategy planning marketing executive manager",
-    "image": "https://jokdxsdbxorzciulkdyl.supabase.co/storage/v1/object/public/images/2690dd5dafe74a679b3f56f3f268b33f.webp",
-    "imageAlt": "Marketing Strategy and Planning 3D book",
+    "searchTerms": ("{{cms:bookshop.pages_bookshop_page_data_books.search_terms_049}}" as string),
+    "image": ("{{cms:bookshop.pages_bookshop_page_data_books.image_050}}" as string),
+    "imageAlt": ("{{cms:bookshop.pages_bookshop_page_data_books.image_alt_051}}" as string),
     "imageWidth": 1122,
     "imageHeight": 1402
   }

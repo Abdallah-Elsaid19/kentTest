@@ -1,18 +1,19 @@
-import { renderToStaticMarkup } from "react-dom/server";
+import { resolvedFixture } from "./cmsFixtures";
+import { renderToStaticMarkup } from "./cmsFixtures";
 import { MemoryRouter } from "react-router-dom";
 import { describe, expect, it, vi } from "vitest";
 
 import GovernanceBoardPage from "@/pages/GovernanceBoardPage/page";
 import {
-  expressionOfInterest,
-  fundingAndQualityAssurance,
-  governanceAccountability,
-  governanceMembers,
-  governanceOverview,
-  governanceStructure,
-  oversightAndAssurance,
-  providerStatus,
-  safeguardingAndPrevent,
+  expressionOfInterest as expressionOfInterestTemplate,
+  fundingAndQualityAssurance as fundingAndQualityAssuranceTemplate,
+  governanceAccountability as governanceAccountabilityTemplate,
+  governanceMembers as governanceMembersTemplate,
+  governanceOverview as governanceOverviewTemplate,
+  governanceStructure as governanceStructureTemplate,
+  oversightAndAssurance as oversightAndAssuranceTemplate,
+  providerStatus as providerStatusTemplate,
+  safeguardingAndPrevent as safeguardingAndPreventTemplate,
 } from "@/pages/GovernanceBoardPage/data";
 
 vi.mock("@/components/seo/RouteMeta", () => ({ RouteMeta: () => null }));
@@ -105,3 +106,5 @@ describe("Governance Board page", () => {
     expect(markup).toContain(`title="${expressionOfInterest.form.title}"`);
   });
 });
+
+const { expressionOfInterest, fundingAndQualityAssurance, governanceAccountability, governanceMembers, governanceOverview, governanceStructure, oversightAndAssurance, providerStatus, safeguardingAndPrevent } = resolvedFixture({ expressionOfInterest: expressionOfInterestTemplate, fundingAndQualityAssurance: fundingAndQualityAssuranceTemplate, governanceAccountability: governanceAccountabilityTemplate, governanceMembers: governanceMembersTemplate, governanceOverview: governanceOverviewTemplate, governanceStructure: governanceStructureTemplate, oversightAndAssurance: oversightAndAssuranceTemplate, providerStatus: providerStatusTemplate, safeguardingAndPrevent: safeguardingAndPreventTemplate });

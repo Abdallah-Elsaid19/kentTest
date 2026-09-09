@@ -18,64 +18,64 @@ export const heroData = {
   "audienceTabletAlign": "left",
   "audienceBeforeActions": true,
   "hero": {
-    "eyebrow": "Level 6 Strategic Professional Marketing",
-    "title": "Gain a",
-    "accent": "CIM Diploma Level 6",
-    "titleSuffix": "in Professional and Digital Marketing",
-    "lead": "Advance your marketing career through a workplace-focused Level 6 apprenticeship that develops strategic thinking, commercial confidence, AI-enabled marketing capability and measurable business impact.",
-    "fundingTitle": "Fully funded route*",
-    "fundingDescription": "Limited funded places are available through Kent Business College. Final funding, suitability and programme terms are confirmed before enrolment.",
-    "audienceLabel": "Applied progression",
-    "audience": "Build strategic marketing leadership capability.",
+    "eyebrow": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_hero_data.hero_eyebrow_001}}" as string),
+    "title": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_hero_data.hero_title_002}}" as string),
+    "accent": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_hero_data.hero_accent_003}}" as string),
+    "titleSuffix": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_hero_data.hero_title_suffix_004}}" as string),
+    "lead": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_hero_data.hero_lead_005}}" as string),
+    "fundingTitle": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_hero_data.hero_funding_title_006}}" as string),
+    "fundingDescription": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_hero_data.hero_funding_description_007}}" as string),
+    "audienceLabel": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_hero_data.hero_audience_label_008}}" as string),
+    "audience": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_hero_data.hero_audience_009}}" as string),
     "catalogue": "https://kentbusinesscollege.com/wp-content/uploads/2026/05/Apprentice-Charter-Agreement-with-the-Marketing-Manager-Level-6-with-Level-6-Certificate-in-Professional-and-Digital-Marketing_compressed-1.pdf",
-    "catalogueLabel": "Download catalogue",
-    "image": "/assets/images/programme-marketing-manager.jpg"
+    "catalogueLabel": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_hero_data.hero_catalogue_label_010}}" as string),
+    "image": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_hero_data.hero_image_011}}" as string)
   },
   "cohorts": [
     {
       "id": "september-2026",
-      "label": "September 2026 intake",
+      "label": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_hero_data.cohorts_label_012}}" as string),
       "upcoming": false
     }
   ],
   "highlights": [
     {
-      "title": "Strategy & Planning",
-      "description": "Set direction, priorities and evidence-led marketing plans.",
+      "title": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_hero_data.highlights_title_013}}" as string),
+      "description": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_hero_data.highlights_description_014}}" as string),
       "marker": "01"
     },
     {
-      "title": "Customer Journey",
-      "description": "Optimise experience, value, retention and loyalty.",
+      "title": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_hero_data.highlights_title_015}}" as string),
+      "description": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_hero_data.highlights_description_016}}" as string),
       "marker": "02"
     },
     {
-      "title": "Commercial Intelligence",
-      "description": "Connect analytics, budgets and performance to growth.",
+      "title": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_hero_data.highlights_title_017}}" as string),
+      "description": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_hero_data.highlights_description_018}}" as string),
       "marker": "03"
     },
     {
-      "title": "AI in Marketing",
-      "description": "Apply AI responsibly across insight, planning and delivery.",
+      "title": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_hero_data.highlights_title_019}}" as string),
+      "description": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_hero_data.highlights_description_020}}" as string),
       "marker": "04"
     }
   ],
   "commitments": [],
   "secondaryAction": {
-    "label": "Explore the curriculum",
+    "label": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_hero_data.secondary_action_label_021}}" as string),
     "to": "#curriculum"
   },
   "cohortAction": {
-    "label": "Book an information session",
+    "label": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_hero_data.cohort_action_label_022}}" as string),
     "to": "/book-session"
   },
   "cohortEyebrow": null,
-  "cohortTitle": "Limited funded places from Kent Business College",
+  "cohortTitle": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_hero_data.cohort_title_023}}" as string),
   "cohortTitleAsBadge": true,
   "cohortDescription": null,
   "qualificationImage": {
-    "image": "/assets/images/cim-level-6-diploma.png",
-    "name": "CIM Diploma in Professional Marketing Level 6 logo"
+    "image": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_hero_data.qualification_image_image_024}}" as string),
+    "name": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_hero_data.qualification_image_name_025}}" as string)
   },
   "overlay": "default"
 } satisfies ProgrammeHeroData;
@@ -83,233 +83,233 @@ export const heroData = {
 export const programmeStats = [
   {
     "value": "100%",
-    "label": "Fully funded routes",
-    "description": "Subject to eligibility and available funding."
+    "label": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_programme_stats.label_026}}" as string),
+    "description": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_programme_stats.description_027}}" as string)
   },
   {
     "value": "L6",
-    "label": "Advanced Level 6",
-    "description": "Strategic judgement and commercial leadership."
+    "label": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_programme_stats.label_028}}" as string),
+    "description": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_programme_stats.description_029}}" as string)
   },
   {
     "value": "CIM",
-    "label": "Chartered pathway support",
-    "description": "Preparation for professional progression."
+    "label": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_programme_stats.label_030}}" as string),
+    "description": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_programme_stats.description_031}}" as string)
   }
 ] satisfies readonly { value: string; label: string; description: string }[];
 
 export const overviewData = {
   "id": "overview",
-  "eyebrow": "Why this programme",
-  "title": "Strategic marketing leadership grounded in commercial reality.",
-  "description": "Develop the strategic, analytical and leadership capability expected from senior marketing professionals while delivering measurable workplace value throughout the apprenticeship.",
+  "eyebrow": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_overview_data.eyebrow_032}}" as string),
+  "title": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_overview_data.title_033}}" as string),
+  "description": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_overview_data.description_034}}" as string),
   "feature": {
-    "title": "From marketing execution to strategic influence",
-    "description": "Move beyond campaigns and channels. Learn to shape strategy, influence investment, connect customer value to organisational priorities and lead cross-functional decision-making.",
+    "title": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_overview_data.feature_title_035}}" as string),
+    "description": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_overview_data.feature_description_036}}" as string),
     "items": [
-      "Commercial marketing strategy",
-      "Customer and market insight",
-      "Leadership and stakeholder influence",
-      "Performance, value and accountability"
+      ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_overview_data.feature_items_037}}" as string),
+      ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_overview_data.feature_items_038}}" as string),
+      ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_overview_data.feature_items_039}}" as string),
+      ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_overview_data.feature_items_040}}" as string)
     ],
-    "image": "/assets/images/marketing-manager-strategy.jpg",
-    "imageAlt": "Marketing professional developing a strategic marketing plan"
+    "image": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_overview_data.feature_image_041}}" as string),
+    "imageAlt": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_overview_data.feature_image_alt_042}}" as string)
   },
   "items": [
     {
-      "title": "Set strategic direction",
-      "description": "Translate business priorities into evidence-led marketing objectives, positioning and investment choices."
+      "title": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_overview_data.items_title_043}}" as string),
+      "description": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_overview_data.items_description_044}}" as string)
     },
     {
-      "title": "Lead people and delivery",
-      "description": "Build alignment, manage agencies and teams, and strengthen marketing capability across the organisation."
+      "title": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_overview_data.items_title_045}}" as string),
+      "description": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_overview_data.items_description_046}}" as string)
     },
     {
-      "title": "Use insight and analytics",
-      "description": "Interpret customer, competitor, channel and commercial data to recommend action with confidence."
+      "title": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_overview_data.items_title_047}}" as string),
+      "description": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_overview_data.items_description_048}}" as string)
     },
     {
-      "title": "Apply AI responsibly",
-      "description": "Use AI to accelerate research, analysis, planning and content while maintaining professional judgement."
+      "title": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_overview_data.items_title_049}}" as string),
+      "description": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_overview_data.items_description_050}}" as string)
     }
   ]
 } satisfies ItemSection & { feature: ProgrammeItem & { image: string; imageAlt: string } };
 
 export const curriculumData = {
   "id": "curriculum",
-  "eyebrow": "Marketing Manager Level 6 curriculum",
-  "title": "Four connected modules from strategic planning to AI-enabled marketing.",
-  "description": "The curriculum follows the learner journey in the Marketing Manager Level 6 programme: Strategy and Planning, Customer Journey Optimisation, Commercial Intelligence and AI in Marketing. Each module develops relevant knowledge, skills and behaviours through live learning, workplace application, reflection and evidence building before Gateway and End Point Assessment.",
+  "eyebrow": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_curriculum_data.eyebrow_051}}" as string),
+  "title": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_curriculum_data.title_052}}" as string),
+  "description": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_curriculum_data.description_053}}" as string),
   "modules": [
     {
-      "title": "Strategy and Planning",
-      "description": "The foundation stage connects Level 6 marketing theory with strategic business decisions and organisational objectives.",
+      "title": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_curriculum_data.modules_title_054}}" as string),
+      "description": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_curriculum_data.modules_description_055}}" as string),
       "items": [
-        "Strategic marketing theory and the extended marketing mix",
-        "Product, service and brand development",
-        "Market research, communications and business context",
-        "Evidence-led marketing plans, risks and priorities"
+        ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_curriculum_data.modules_items_056}}" as string),
+        ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_curriculum_data.modules_items_057}}" as string),
+        ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_curriculum_data.modules_items_058}}" as string),
+        ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_curriculum_data.modules_items_059}}" as string)
       ],
       "number": "01",
       "eyebrow": ""
     },
     {
-      "title": "Customer Journey Optimisation",
-      "description": "Develop a customer-focused view of the complete experience, from initial engagement to satisfaction, retention and loyalty.",
+      "title": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_curriculum_data.modules_title_060}}" as string),
+      "description": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_curriculum_data.modules_description_061}}" as string),
       "items": [
-        "Customer behaviours across B2B and B2C contexts",
-        "Journey mapping, touchpoints and friction analysis",
-        "CRM, brand perception, feedback and channel choices",
-        "Stakeholder collaboration and experience improvement"
+        ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_curriculum_data.modules_items_062}}" as string),
+        ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_curriculum_data.modules_items_063}}" as string),
+        ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_curriculum_data.modules_items_064}}" as string),
+        ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_curriculum_data.modules_items_065}}" as string)
       ],
       "number": "02",
       "eyebrow": ""
     },
     {
-      "title": "Commercial Intelligence",
-      "description": "Strengthen commercial judgement by connecting data, financial awareness and marketing performance to business value.",
+      "title": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_curriculum_data.modules_title_066}}" as string),
+      "description": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_curriculum_data.modules_description_067}}" as string),
       "items": [
-        "Campaign performance, KPIs and reliable information",
-        "Return on investment, customer value and budget use",
-        "Analytics, market insight and evidence-based decisions",
-        "Business cases, recommendations and growth opportunities"
+        ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_curriculum_data.modules_items_068}}" as string),
+        ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_curriculum_data.modules_items_069}}" as string),
+        ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_curriculum_data.modules_items_070}}" as string),
+        ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_curriculum_data.modules_items_071}}" as string)
       ],
       "number": "03",
       "eyebrow": ""
     },
     {
-      "title": "AI in Marketing",
-      "description": "Explore how emerging technology can improve marketing planning, personalisation, customer insight and performance.",
+      "title": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_curriculum_data.modules_title_072}}" as string),
+      "description": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_curriculum_data.modules_description_073}}" as string),
       "items": [
-        "Artificial intelligence, automation and marketing systems",
-        "Campaign planning, optimisation and content development",
-        "Analytics, digital tools and faster insight generation",
-        "Responsible, ethical and commercially appropriate use"
+        ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_curriculum_data.modules_items_074}}" as string),
+        ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_curriculum_data.modules_items_075}}" as string),
+        ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_curriculum_data.modules_items_076}}" as string),
+        ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_curriculum_data.modules_items_077}}" as string)
       ],
       "number": "04",
       "eyebrow": ""
     }
   ],
   "progression": {
-    "title": "Progression after the four modules",
-    "description": "Learners consolidate workplace evidence and prepare for Gateway. The End Point Assessment can include the Multiple Choice Test, Project Showcase and Professional Discussion. Learners completing the CIM route may then complete the remaining CIM Level 6 assessments before graduation.",
+    "title": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_curriculum_data.progression_title_078}}" as string),
+    "description": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_curriculum_data.progression_description_079}}" as string),
     "items": [
-      "EPA Gateway",
-      "End Point Assessment",
-      "Final CIM Level 6 assessments",
-      "Graduation and progression"
+      ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_curriculum_data.progression_items_080}}" as string),
+      ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_curriculum_data.progression_items_081}}" as string),
+      ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_curriculum_data.progression_items_082}}" as string),
+      ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_curriculum_data.progression_items_083}}" as string)
     ]
   }
 } satisfies ProgrammeCurriculumData;
 
 export const coreMarketingDisciplines = {
   "id": "disciplines",
-  "eyebrow": "Core marketing disciplines",
-  "title": "Build the capabilities behind effective marketing leadership.",
-  "description": "A balanced curriculum covering strategy, customers, brand, communications, analytics, digital capability, innovation and leadership.",
+  "eyebrow": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_core_marketing_disciplines.eyebrow_084}}" as string),
+  "title": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_core_marketing_disciplines.title_085}}" as string),
+  "description": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_core_marketing_disciplines.description_086}}" as string),
   "items": [
     {
-      "title": "Strategy and planning",
-      "description": "Business alignment, market opportunity, positioning, objectives, investment priorities and execution roadmaps."
+      "title": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_core_marketing_disciplines.items_title_087}}" as string),
+      "description": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_core_marketing_disciplines.items_description_088}}" as string)
     },
     {
-      "title": "Customer and market insight",
-      "description": "Research, segmentation, behaviour, customer experience, competitor intelligence and evidence quality."
+      "title": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_core_marketing_disciplines.items_title_089}}" as string),
+      "description": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_core_marketing_disciplines.items_description_090}}" as string)
     },
     {
-      "title": "Brand and communications",
-      "description": "Brand strategy, integrated communications, channel decisions, agency leadership and reputation."
+      "title": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_core_marketing_disciplines.items_title_091}}" as string),
+      "description": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_core_marketing_disciplines.items_description_092}}" as string)
     },
     {
-      "title": "Commercial analytics",
-      "description": "Measurement frameworks, performance interpretation, attribution, forecasting and decision-ready reporting."
+      "title": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_core_marketing_disciplines.items_title_093}}" as string),
+      "description": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_core_marketing_disciplines.items_description_094}}" as string)
     },
     {
-      "title": "Digital and AI capability",
-      "description": "Digital ecosystems, marketing technology, automation, responsible AI and data-informed optimisation."
+      "title": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_core_marketing_disciplines.items_title_095}}" as string),
+      "description": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_core_marketing_disciplines.items_description_096}}" as string)
     },
     {
-      "title": "Leadership and change",
-      "description": "Stakeholder influence, team development, ethical practice, organisational change and strategic communication."
+      "title": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_core_marketing_disciplines.items_title_097}}" as string),
+      "description": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_core_marketing_disciplines.items_description_098}}" as string)
     }
   ]
 } satisfies ItemSection;
 
 export const cimQualification = {
   "id": "cim",
-  "eyebrow": "CIM Chartered Level 6 pathway",
-  "title": "Turn advanced study into credible professional progression.",
-  "description": "The programme develops strategic marketing capability and supports learners to organise professional evidence, CPD and career progression towards Chartered Marketer status.",
+  "eyebrow": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_cim_qualification.eyebrow_099}}" as string),
+  "title": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_cim_qualification.title_100}}" as string),
+  "description": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_cim_qualification.description_101}}" as string),
   "items": [
     {
-      "title": "Level 6 strategic capability",
-      "description": "Demonstrate critical analysis, commercial judgement, leadership and the ability to apply marketing strategy autonomously."
+      "title": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_cim_qualification.items_title_102}}" as string),
+      "description": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_cim_qualification.items_description_103}}" as string)
     },
     {
-      "title": "Professional evidence and CPD",
-      "description": "Build a portfolio of workplace outputs, reflective practice and continuing professional development that supports future professional applications."
+      "title": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_cim_qualification.items_title_104}}" as string),
+      "description": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_cim_qualification.items_description_105}}" as string)
     }
   ],
-  "note": "Important: Chartered Marketer status is awarded separately by the Chartered Institute of Marketing and is subject to CIM membership, experience, CPD and application requirements. Completion of this apprenticeship does not automatically confer chartered status."
+  "note": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_cim_qualification.note_106}}" as string)
 } satisfies ProgrammeQualificationData;
 
 export const aiMarketingData = {
   "id": "ai",
-  "eyebrow": "AI-enabled marketing",
-  "title": "Use AI to strengthen strategy while keeping leaders accountable.",
-  "description": "Learners use AI as a practical marketing tool for research, planning, analysis and content development, while applying responsible governance and human review.",
-  "appliedTitle": "Applied AI capability",
+  "eyebrow": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_ai_marketing_data.eyebrow_107}}" as string),
+  "title": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_ai_marketing_data.title_108}}" as string),
+  "description": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_ai_marketing_data.description_109}}" as string),
+  "appliedTitle": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_ai_marketing_data.applied_title_110}}" as string),
   "items": [
     {
-      "title": "Plan",
-      "description": "Structure research and priorities"
+      "title": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_ai_marketing_data.items_title_111}}" as string),
+      "description": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_ai_marketing_data.items_description_112}}" as string)
     },
     {
-      "title": "Analyse",
-      "description": "Explore customer and performance data"
+      "title": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_ai_marketing_data.items_title_113}}" as string),
+      "description": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_ai_marketing_data.items_description_114}}" as string)
     },
     {
-      "title": "Challenge",
-      "description": "Test assumptions and scenarios"
+      "title": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_ai_marketing_data.items_title_115}}" as string),
+      "description": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_ai_marketing_data.items_description_116}}" as string)
     },
     {
-      "title": "Create",
-      "description": "Develop and refine outputs"
+      "title": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_ai_marketing_data.items_title_117}}" as string),
+      "description": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_ai_marketing_data.items_description_118}}" as string)
     }
   ],
-  "controlsTitle": "Professional controls",
+  "controlsTitle": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_ai_marketing_data.controls_title_119}}" as string),
   "controls": [
-    "Human review for important decisions",
-    "Confidentiality and approved data use",
-    "Evidence checks and source validation",
-    "Bias, ethics and brand-risk awareness",
-    "Clear accountability for final outputs"
+    ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_ai_marketing_data.controls_120}}" as string),
+    ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_ai_marketing_data.controls_121}}" as string),
+    ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_ai_marketing_data.controls_122}}" as string),
+    ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_ai_marketing_data.controls_123}}" as string),
+    ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_ai_marketing_data.controls_124}}" as string)
   ]
 } satisfies ItemSection & { appliedTitle: string; controlsTitle: string; controls: readonly string[] };
 
 export const eligibilityData = {
   "id": "funding",
-  "eyebrow": "Eligibility Criteria",
-  "title": "Check that you meet the apprenticeship funding requirements.",
+  "eyebrow": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_eligibility_data.eyebrow_125}}" as string),
+  "title": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_eligibility_data.title_126}}" as string),
   "main": {
-    "title": "Eligibility Criteria",
+    "title": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_eligibility_data.main_title_127}}" as string),
     "items": [
-      "UK resident for the past 3 years",
-      "Must not require sponsorship to work (must hold a British Passport, Indefinite Leave to Remain, or Tier 2 visa with at least three years of UK residency)",
-      "Not enrolled in other government-funded training at the time of this programme",
-      "Self-employed individuals are not eligible for DfE funding",
-      "Paid employment in England (normally 30+ hrs/week; minimum 16)",
-      "Employer based in England and registered with the Apprenticeship Service",
-      "Spend at least 50% of their working hours within England"
+      ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_eligibility_data.main_items_128}}" as string),
+      ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_eligibility_data.main_items_129}}" as string),
+      ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_eligibility_data.main_items_130}}" as string),
+      ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_eligibility_data.main_items_131}}" as string),
+      ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_eligibility_data.main_items_132}}" as string),
+      ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_eligibility_data.main_items_133}}" as string),
+      ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_eligibility_data.main_items_134}}" as string)
     ],
-    "eyebrow": "Who is eligible?"
+    "eyebrow": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_eligibility_data.main_eyebrow_135}}" as string)
   },
   "aside": {
-    "title": "Funded apprenticeship spaces",
-    "description": "Please note: We have a limited number of funded apprenticeship spaces available, and they are offered strictly on a first-come, first-served basis. Due to high demand, we encourage early applications to avoid disappointment.",
-    "eyebrow": "Limited",
+    "title": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_eligibility_data.aside_title_136}}" as string),
+    "description": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_eligibility_data.aside_description_137}}" as string),
+    "eyebrow": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_eligibility_data.aside_eyebrow_138}}" as string),
     "action": {
-      "label": "Check Eligibility",
+      "label": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_eligibility_data.aside_action_label_139}}" as string),
       "to": "/book-session"
     }
   }
@@ -317,125 +317,125 @@ export const eligibilityData = {
 
 export const employerBenefits = {
   "id": "employers",
-  "eyebrow": "Employer value",
-  "title": "Develop marketing leadership that stays in the business.",
-  "description": "The apprenticeship connects learning to real organisational priorities, giving employers practical outputs as well as long-term capability.",
+  "eyebrow": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_employer_benefits.eyebrow_140}}" as string),
+  "title": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_employer_benefits.title_141}}" as string),
+  "description": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_employer_benefits.description_142}}" as string),
   "items": [
     {
-      "title": "Commercial performance",
-      "description": "Stronger links between marketing objectives, customer value, investment and business outcomes."
+      "title": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_employer_benefits.items_title_143}}" as string),
+      "description": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_employer_benefits.items_description_144}}" as string)
     },
     {
-      "title": "Strategic capability",
-      "description": "More confident planning, prioritisation, challenge and decision support at senior level."
+      "title": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_employer_benefits.items_title_145}}" as string),
+      "description": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_employer_benefits.items_description_146}}" as string)
     },
     {
-      "title": "Applied innovation",
-      "description": "Responsible use of AI, digital capability and experimentation to improve marketing effectiveness."
+      "title": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_employer_benefits.items_title_147}}" as string),
+      "description": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_employer_benefits.items_description_148}}" as string)
     },
     {
-      "title": "Retention and progression",
-      "description": "A visible development route for high-potential marketing professionals and future leaders."
+      "title": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_employer_benefits.items_title_149}}" as string),
+      "description": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_employer_benefits.items_description_150}}" as string)
     }
   ]
 } satisfies ItemSection;
 
 export const faqHeading = {
   "id": "faq",
-  "eyebrow": "Frequently asked questions",
-  "title": "Clear answers before you take the next step."
+  "eyebrow": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_faq_heading.eyebrow_151}}" as string),
+  "title": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_faq_heading.title_152}}" as string)
 } satisfies ProgrammeSectionData;
 
 export const faqs = [
   {
-    "question": "Is the Marketing Manager Level 6 Apprenticeship fully funded?",
-    "answer": "It may be fully funded for eligible learners and employers through levy funding, levy transfer or applicable government support. Funding is confirmed after suitability, prior-learning and employer checks."
+    "question": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_faqs.question_153}}" as string),
+    "answer": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_faqs.answer_154}}" as string)
   },
   {
-    "question": "Are funded places limited?",
-    "answer": "Yes. Kent Business College has limited funded places for each intake, and places are confirmed only after the funding and suitability process is complete."
+    "question": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_faqs.question_155}}" as string),
+    "answer": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_faqs.answer_156}}" as string)
   },
   {
-    "question": "Does the programme automatically make me a Chartered Marketer?",
-    "answer": "No. Chartered Marketer status is awarded separately by CIM and is subject to its current membership, experience, CPD and application requirements. The programme supports advanced capability and professional evidence for progression."
+    "question": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_faqs.question_157}}" as string),
+    "answer": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_faqs.answer_158}}" as string)
   },
   {
-    "question": "Who is the programme designed for?",
-    "answer": "It is designed for employed marketing professionals whose role includes strategic planning, customer or market insight, integrated campaigns, performance management, leadership or cross-functional influence."
+    "question": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_faqs.question_159}}" as string),
+    "answer": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_faqs.answer_160}}" as string)
   },
   {
-    "question": "Can an existing employee become an apprentice?",
-    "answer": "Yes, where the apprenticeship develops substantial new knowledge, skills and behaviours and all eligibility and funding requirements are met."
+    "question": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_faqs.question_161}}" as string),
+    "answer": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_faqs.answer_162}}" as string)
   },
   {
-    "question": "How do I secure a limited funded place?",
-    "answer": "Book an information session or request an eligibility review. Kent Business College will discuss your role, employer support, prior learning and available funding before issuing an enrolment offer."
+    "question": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_faqs.question_163}}" as string),
+    "answer": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_faqs.answer_164}}" as string)
   }
 ] satisfies readonly { question: string; answer: string }[];
 
 export const finalCTA = {
   "id": "next-step",
-  "eyebrow": "September 2026 intake",
-  "title": "Ready to lead marketing with greater strategic and commercial confidence?",
-  "description": "Start with an eligibility and funding review. Limited fully funded Marketing Manager Level 6 places are available through Kent Business College.",
+  "eyebrow": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_final_cta.eyebrow_165}}" as string),
+  "title": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_final_cta.title_166}}" as string),
+  "description": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_final_cta.description_167}}" as string),
   "actions": [
     {
-      "label": "Check eligibility",
+      "label": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_final_cta.actions_label_168}}" as string),
       "to": "/book-session"
     },
     {
-      "label": "Email the admissions team",
+      "label": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_final_cta.actions_label_169}}" as string),
       "to": "mailto:Office@Kentbusinesscollege.org?subject=Marketing%20Manager%20Level%206%20Apprenticeship%20enquiry"
     }
   ],
-  "contact": "Office@Kentbusinesscollege.org | kentbusinesscollege.com"
+  "contact": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_final_cta.contact_170}}" as string)
 } satisfies ProgrammeSectionData & { actions: readonly ProgrammeAction[]; contact: string };
 
 export const enquiryData = {
-  "title": "Start your apprenticeship enquiry",
-  "description": "Share a few details so our admissions team can review your eligibility, potential funding route and programme suitability.",
-  "programme": "Marketing Manager Level 6 Apprenticeship",
+  "title": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_enquiry_data.title_171}}" as string),
+  "description": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_enquiry_data.description_172}}" as string),
+  "programme": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_enquiry_data.programme_173}}" as string),
   "enquiry": {
-    "eyebrow": "Application enquiry",
+    "eyebrow": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_enquiry_data.enquiry_eyebrow_174}}" as string),
     "steps": [
       {
-        "title": "Step 1: Your details",
+        "title": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_enquiry_data.enquiry_steps_title_175}}" as string),
         "fields": [
           {
-            "name": "name",
-            "label": "Full name",
+            "name": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_enquiry_data.enquiry_steps_fields_name_176}}" as string),
+            "label": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_enquiry_data.enquiry_steps_fields_label_177}}" as string),
             "type": "text",
             "required": true,
-            "placeholder": "Enter your full name",
+            "placeholder": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_enquiry_data.enquiry_steps_fields_placeholder_178}}" as string),
             "autoComplete": "name"
           },
           {
-            "name": "email",
-            "label": "Email address",
+            "name": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_enquiry_data.enquiry_steps_fields_name_179}}" as string),
+            "label": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_enquiry_data.enquiry_steps_fields_label_180}}" as string),
             "type": "email",
             "required": true,
-            "placeholder": "name@example.com",
+            "placeholder": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_enquiry_data.enquiry_steps_fields_placeholder_181}}" as string),
             "autoComplete": "email"
           },
           {
-            "name": "phone",
-            "label": "Phone number",
+            "name": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_enquiry_data.enquiry_steps_fields_name_182}}" as string),
+            "label": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_enquiry_data.enquiry_steps_fields_label_183}}" as string),
             "type": "tel",
             "required": false,
-            "placeholder": "Optional",
+            "placeholder": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_enquiry_data.enquiry_steps_fields_placeholder_184}}" as string),
             "autoComplete": "tel"
           },
           {
-            "name": "jobTitle",
-            "label": "Current job title",
+            "name": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_enquiry_data.enquiry_steps_fields_name_185}}" as string),
+            "label": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_enquiry_data.enquiry_steps_fields_label_186}}" as string),
             "type": "text",
             "required": true,
-            "placeholder": "Enter your current role",
+            "placeholder": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_enquiry_data.enquiry_steps_fields_placeholder_187}}" as string),
             "autoComplete": "organization-title"
           },
           {
-            "name": "preferredContact",
-            "label": "Preferred contact method",
+            "name": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_enquiry_data.enquiry_steps_fields_name_188}}" as string),
+            "label": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_enquiry_data.enquiry_steps_fields_label_189}}" as string),
             "type": "radio",
             "required": false,
             "options": [
@@ -448,26 +448,26 @@ export const enquiryData = {
         ]
       },
       {
-        "title": "Step 2: Employment and eligibility",
+        "title": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_enquiry_data.enquiry_steps_title_190}}" as string),
         "fields": [
           {
-            "name": "organisation",
-            "label": "Employer or organisation",
+            "name": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_enquiry_data.enquiry_steps_fields_name_191}}" as string),
+            "label": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_enquiry_data.enquiry_steps_fields_label_192}}" as string),
             "type": "text",
             "required": true,
-            "placeholder": "Enter your employer's name",
+            "placeholder": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_enquiry_data.enquiry_steps_fields_placeholder_193}}" as string),
             "autoComplete": "organization"
           },
           {
-            "name": "location",
-            "label": "Main workplace location",
+            "name": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_enquiry_data.enquiry_steps_fields_name_194}}" as string),
+            "label": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_enquiry_data.enquiry_steps_fields_label_195}}" as string),
             "type": "text",
             "required": true,
-            "placeholder": "Town or city"
+            "placeholder": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_enquiry_data.enquiry_steps_fields_placeholder_196}}" as string)
           },
           {
-            "name": "workplaceEngland",
-            "label": "Is your main workplace in England?",
+            "name": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_enquiry_data.enquiry_steps_fields_name_197}}" as string),
+            "label": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_enquiry_data.enquiry_steps_fields_label_198}}" as string),
             "type": "select",
             "required": true,
             "options": [
@@ -475,80 +475,80 @@ export const enquiryData = {
               "No",
               "Unsure"
             ],
-            "placeholder": "Select an option"
+            "placeholder": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_enquiry_data.enquiry_steps_fields_placeholder_199}}" as string)
           },
           {
-            "name": "employerSupport",
-            "label": "Has your employer agreed to support the apprenticeship?",
+            "name": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_enquiry_data.enquiry_steps_fields_name_200}}" as string),
+            "label": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_enquiry_data.enquiry_steps_fields_label_201}}" as string),
             "type": "select",
             "required": true,
             "options": [
-              "Yes, confirmed",
-              "Currently discussing it",
-              "Not yet discussed",
-              "I am completing this as an employer"
+              ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_enquiry_data.enquiry_steps_fields_options_202}}" as string),
+              ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_enquiry_data.enquiry_steps_fields_options_203}}" as string),
+              ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_enquiry_data.enquiry_steps_fields_options_204}}" as string),
+              ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_enquiry_data.enquiry_steps_fields_options_205}}" as string)
             ],
-            "placeholder": "Select an option"
+            "placeholder": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_enquiry_data.enquiry_steps_fields_placeholder_206}}" as string)
           },
           {
-            "name": "programme",
-            "label": "Programme of interest",
+            "name": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_enquiry_data.enquiry_steps_fields_name_207}}" as string),
+            "label": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_enquiry_data.enquiry_steps_fields_label_208}}" as string),
             "type": "text",
             "required": true,
             "readOnly": true,
             "value": "Marketing Manager Level 6 Apprenticeship"
           },
           {
-            "name": "helpWith",
-            "label": "What would you like help with?",
+            "name": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_enquiry_data.enquiry_steps_fields_name_209}}" as string),
+            "label": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_enquiry_data.enquiry_steps_fields_label_210}}" as string),
             "type": "checkbox",
             "required": false,
             "options": [
-              "Checking eligibility",
-              "Apprenticeship funding",
-              "Employer requirements",
-              "Programme content",
-              "Application process",
-              "Something else"
+              ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_enquiry_data.enquiry_steps_fields_options_211}}" as string),
+              ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_enquiry_data.enquiry_steps_fields_options_212}}" as string),
+              ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_enquiry_data.enquiry_steps_fields_options_213}}" as string),
+              ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_enquiry_data.enquiry_steps_fields_options_214}}" as string),
+              ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_enquiry_data.enquiry_steps_fields_options_215}}" as string),
+              ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_enquiry_data.enquiry_steps_fields_options_216}}" as string)
             ]
           },
           {
-            "name": "message",
-            "label": "Questions or additional information",
+            "name": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_enquiry_data.enquiry_steps_fields_name_217}}" as string),
+            "label": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_enquiry_data.enquiry_steps_fields_label_218}}" as string),
             "type": "textarea",
             "required": false,
-            "placeholder": "Tell us about your role, career goals or any questions about the programme."
+            "placeholder": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_enquiry_data.enquiry_steps_fields_placeholder_219}}" as string)
           }
         ]
       }
     ],
-    "consent": "I agree that Kent Business College may use my information to respond to this enquiry.",
-    "note": "Our admissions team will review your enquiry and contact you with the appropriate next steps. Submitting this form does not guarantee eligibility or funding.",
-    "submitLabel": "Submit enquiry"
+    "consent": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_enquiry_data.enquiry_consent_220}}" as string),
+    "note": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_enquiry_data.enquiry_note_221}}" as string),
+    "submitLabel": ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_enquiry_data.enquiry_submit_label_222}}" as string)
   }
 } satisfies ProgrammeInterestData;
 
 export const pageNavigation = [
-  { label: "Why this programme", href: "#overview" },
-  { label: "Curriculum", href: "#curriculum" },
-  { label: "Core marketing disciplines", href: "#disciplines" },
-  { label: "CIM Chartered Level 6 pathway", href: "#cim" },
-  { label: "AI-enabled marketing", href: "#ai" },
-  { label: "Eligibility Criteria", href: "#funding" },
-  { label: "Employer value", href: "#employers" },
-  { label: "Events", href: "#events" },
-  { label: "Recognition", href: "#recognition" },
-  { label: "Employer partnerships", href: "#partners" },
-  { label: "Learner testimonials", href: "#testimonials" },
+  { label: ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_page_navigation.label_223}}" as string), href: ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_page_navigation.href_224}}" as string) },
+  { label: ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_page_navigation.label_225}}" as string), href: ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_page_navigation.href_226}}" as string) },
+  { label: ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_page_navigation.label_227}}" as string), href: ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_page_navigation.href_228}}" as string) },
+  { label: ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_page_navigation.label_229}}" as string), href: ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_page_navigation.href_230}}" as string) },
+  { label: ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_page_navigation.label_231}}" as string), href: ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_page_navigation.href_232}}" as string) },
+  { label: ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_page_navigation.label_233}}" as string), href: ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_page_navigation.href_234}}" as string) },
+  { label: ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_page_navigation.label_235}}" as string), href: ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_page_navigation.href_236}}" as string) },
+  { label: ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_page_navigation.label_237}}" as string), href: ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_page_navigation.href_238}}" as string) },
+  { label: ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_page_navigation.label_239}}" as string), href: ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_page_navigation.href_240}}" as string) },
+  { label: ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_page_navigation.label_241}}" as string), href: ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_page_navigation.href_242}}" as string) },
+  { label: ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_page_navigation.label_243}}" as string), href: ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_page_navigation.href_244}}" as string) },
 ] as const;
 
 export const mobileActions = [
-  { label: "Check eligibility", to: "/book-session" },
-  { label: "Funding places", to: "#funding" },
+  { label: ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_mobile_actions.label_245}}" as string), to: "/book-session" },
+  { label: ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_mobile_actions.label_246}}" as string), to: "#funding" },
 ] as const;
 
 export const programmeMeta = {
-  title: "Marketing Manager Level 6 Apprenticeship | Kent Business College",
+  title: ("{{cms:programme_marketing_l6.pages_marketing_manager_level6_page_data_programme_meta.title_247}}" as string),
   description: heroData.hero.lead,
 };
 export const courseSchema = {

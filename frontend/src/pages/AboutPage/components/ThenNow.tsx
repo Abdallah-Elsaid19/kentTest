@@ -1,3 +1,4 @@
+import { useCmsBindings } from "@/features/cms/publicContent";
 import { ourStoryAsset } from "../assetPath";
 
 // Round 37: persistent scene — the ibis (+ its logo) enters from the left
@@ -7,37 +8,39 @@ import { ourStoryAsset } from "../assetPath";
 // finishes — see initThenNowScrub() in animations/initMain.ts (desktop-only scrub;
 // .is-static switches this to the plain stacked mobile fallback via CSS).
 export default function ThenNow() {
-  return (
+  const cms = useCmsBindings(["about"]);
+
+  return cms.render((
     <section className="then-now">
       <div className="then-now__pin" id="thenNowPin">
         <div className="then-now__frame">
           <div className="container">
             <div className="section-head center then-now__head">
-              <span className="eyebrow">Then &amp; Now</span>
-              <h2>Same purpose New emblem.</h2>
-              <p>The transformation was never about leaving the past behind — it was about giving a decade of expertise a bolder identity.</p>
+              <span className="eyebrow">{cms.text("about.pages_about_page_components_then_now_then_now.text_001")}</span>
+              <h2>{cms.text("about.pages_about_page_components_then_now_then_now.text_002")}</h2>
+              <p>{cms.text("about.pages_about_page_components_then_now_then_now.text_003")}</p>
             </div>
           </div>
 
           <div className="then-now__captions">
             <div className="then-now__copy then-now__copy--then">
-              <span className="badge">Then</span>
-              <h3>IBIS Consultancy</h3>
-              <div className="range">2016 – 2024</div>
-              <p>Wisdom · Knowledge · Contemplation — the ibis, symbol of Thoth, represented deep expertise and considered strategy.</p>
+              <span className="badge">{cms.text("about.pages_about_page_components_then_now_then_now.text_004")}</span>
+              <h3>{cms.text("about.pages_about_page_components_then_now_then_now.text_005")}</h3>
+              <div className="range">{cms.text("about.pages_about_page_components_then_now_then_now.text_006")}</div>
+              <p>{cms.text("about.pages_about_page_components_then_now_then_now.text_007")}</p>
             </div>
             <div className="then-now__copy then-now__copy--now">
-              <span className="badge">Now</span>
-              <h3>Kent Business College</h3>
-              <div className="range">2024 – Present</div>
-              <p>Strength · Momentum · Empowerment — the Kent horse carries that same wisdom forward, in motion.</p>
+              <span className="badge">{cms.text("about.pages_about_page_components_then_now_then_now.text_008")}</span>
+              <h3>{cms.text("about.pages_about_page_components_then_now_then_now.text_009")}</h3>
+              <div className="range">{cms.text("about.pages_about_page_components_then_now_then_now.text_010")}</div>
+              <p>{cms.text("about.pages_about_page_components_then_now_then_now.text_011")}</p>
             </div>
           </div>
 
           <div className="then-now__scene">
             <div className="then-now__side then-now__side--then">
               <img className="then-now__logo" src={ourStoryAsset("images/ibis-consultancy-logo-old.webp")} alt="" aria-hidden="true" />
-              <img className="then-now__figure" src={ourStoryAsset("images/ibis-then-now.png")} alt="The IBIS Consultancy mascot" />
+              <img className="then-now__figure" src={ourStoryAsset("images/ibis-then-now.png")} alt={cms.text("about.pages_about_page_components_then_now_then_now.alt_012")} />
             </div>
 
             <div className="then-now__connector" aria-hidden="true">
@@ -48,11 +51,11 @@ export default function ThenNow() {
 
             <div className="then-now__side then-now__side--now">
               <img className="then-now__logo" src={ourStoryAsset("images/kent-crest-white.png")} alt="" aria-hidden="true" />
-              <img className="then-now__figure" src={ourStoryAsset("images/horse-then-now.png")} alt="The Kent Business College horse emblem" />
+              <img className="then-now__figure" src={ourStoryAsset("images/horse-then-now.png")} alt={cms.text("about.pages_about_page_components_then_now_then_now.alt_013")} />
             </div>
           </div>
         </div>
       </div>
     </section>
-  );
+  ));
 }

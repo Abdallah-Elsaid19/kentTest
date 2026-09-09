@@ -1,3 +1,4 @@
+import { useCmsBindings } from "@/features/cms/publicContent";
 import { ProgrammeHero } from "@/components/programme/ProgrammeHero";
 import {
   accreditationMarks,
@@ -8,14 +9,17 @@ import {
 } from "../data";
 
 export function HeroSection() {
-  return (
+  const cms = useCmsBindings(["programme_apm_l4"]);
+  const cmsValues = cms.resolve({ hero, cohorts, heroProgrammeHighlights, heroProgrammeCommitments, accreditationMarks });
+
+  return cms.render((
     <ProgrammeHero
       titleId="apm-title"
-      hero={hero}
-      cohorts={cohorts}
-      highlights={heroProgrammeHighlights}
-      commitments={heroProgrammeCommitments}
-      marks={accreditationMarks}
+      hero={cmsValues.hero}
+      cohorts={cmsValues.cohorts}
+      highlights={cmsValues.heroProgrammeHighlights}
+      commitments={cmsValues.heroProgrammeCommitments}
+      marks={cmsValues.accreditationMarks}
     />
-  );
+  ));
 }

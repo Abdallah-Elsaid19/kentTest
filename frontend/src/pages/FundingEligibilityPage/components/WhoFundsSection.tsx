@@ -1,10 +1,14 @@
+import { useCmsBindings } from "@/features/cms/publicContent";
 import { Check } from "lucide-react";
 
 import { fundingLayers } from "../data";
 import { containerClass, sectionClass, SectionIntro } from "./shared";
 
 export function WhoFundsSection() {
-  return (
+  const cms = useCmsBindings(["funding"]);
+  const cmsValues = cms.resolve({ fundingLayers });
+
+  return cms.render((
     <section className={`${sectionClass} isolate overflow-hidden !bg-primary/[.025]`} id="who-funds-what">
       <img
         className="pointer-events-none absolute right-[clamp(-180px,-9vw,-75px)] top-1/2 z-0 w-[clamp(330px,30vw,540px)] -translate-y-1/2 select-none opacity-[.045] max-[600px]:opacity-[.025]"
@@ -16,7 +20,7 @@ export function WhoFundsSection() {
       <div className={containerClass}>
         <SectionIntro eyebrow="Understanding the funding" title="Different funding sources support different parts of the experience" copy="Government funding supports eligible apprenticeship delivery. KBC separately invests in additional professional benefits. Project Controls also has a specialist commercial route supported by IPC bursaries." />
         <div className="grid gap-5">
-          {fundingLayers.map((layer) => {
+          {cmsValues.fundingLayers.map((layer) => {
             const Icon = layer.icon;
             const gold = layer.tone === "gold";
             const purple = layer.tone === "purple";
@@ -31,5 +35,5 @@ export function WhoFundsSection() {
         <p className="mx-auto mt-10 max-w-3xl rounded-2xl border border-[#e8e0ef] bg-white px-6 py-6 text-center text-[17px] font-semibold leading-snug">One development journey can contain different funding sources. They must not be treated as interchangeable.</p>
       </div>
     </section>
-  );
+  ));
 }

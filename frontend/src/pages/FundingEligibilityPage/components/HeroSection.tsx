@@ -1,3 +1,4 @@
+import { useCmsBindings } from "@/features/cms/publicContent";
 import { ArrowRight } from "lucide-react";
 import { CollegeHeroSurface } from "@/components/college/CollegeHeroSurface";
 
@@ -5,7 +6,10 @@ import { fundingRoutes } from "../data";
 import { actionsClass, ArrowLink, containerClass, goldSectionEyebrowClass } from "./shared";
 
 export function HeroSection() {
-  return (
+  const cms = useCmsBindings(["funding"]);
+  const cmsValues = cms.resolve({ fundingRoutes });
+
+  return cms.render((
     <CollegeHeroSurface image="/assets/images/professional-development-employers.png" id="funding-overview" titleId="funding-title" variant="funding">
       <div className={`${containerClass} grid grid-cols-[minmax(0,1fr)_370px] items-end gap-[clamp(56px,8vw,110px)] pb-[clamp(70px,9vw,112px)] max-[1050px]:grid-cols-1 max-[1050px]:items-center max-[780px]:pb-[70px]`}>
         <div className="max-w-[790px] mb-7">
@@ -21,7 +25,7 @@ export function HeroSection() {
         </div>
         <aside className="rounded-[28px_10px] border border-[#f5c94f]/40 bg-[#160521]/60 p-7 shadow-[0_24px_70px_rgba(0,0,0,.22)] backdrop-blur-[18px] max-[1050px]:grid max-[1050px]:max-w-[760px] max-[1050px]:grid-cols-3 max-[1050px]:gap-x-[18px] max-[780px]:block" aria-label="Funding route navigator">
           <p className="mb-[19px] text-[11px] font-bold uppercase tracking-[.18em] text-[#f5c94f] max-[1050px]:col-span-full">Funding route navigator</p>
-          {fundingRoutes.map((route, index) => (
+          {cmsValues.fundingRoutes.map((route, index) => (
             <a className="grid grid-cols-[38px_1fr] gap-[13px] border-t border-white/10 py-[18px] text-white no-underline" key={route.eyebrow} href={route.href}>
               <b className="grid h-[34px] w-[34px] place-items-center rounded-full border border-[#f5c94f]/55 text-[11px] text-[#f5c94f]">0{index + 1}</b>
               <span className="grid gap-[3px]"><strong className="text-[13px] leading-[1.35]">{route.eyebrow}</strong><small className="text-[11px] leading-[1.45] text-white/50">{route.title}</small></span>
@@ -31,5 +35,5 @@ export function HeroSection() {
         </aside>
       </div>
     </CollegeHeroSurface>
-  );
+  ));
 }

@@ -1,3 +1,4 @@
+import { useCmsBindings } from "@/features/cms/publicContent";
 import { ArrowUpRight, Linkedin } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -8,7 +9,10 @@ type FacultySectionProps = {
 };
 
 export function FacultySection({ id }: FacultySectionProps) {
-  return (
+  const cms = useCmsBindings(["experts"]);
+  const cmsValues = cms.resolve({ experts });
+
+  return cms.render((
     <section
       id={id}
       className="faculty-section !bg-[#f8f6fa] !px-5 !py-16 font-['Poppins'] sm:!py-20 lg:!pb-32"
@@ -16,17 +20,16 @@ export function FacultySection({ id }: FacultySectionProps) {
     >
       <div className="faculty-section__inner mx-auto max-w-6xl">
         <div className="faculty-section__head mb-10 text-center">
-          <p className="kbc-eyebrow mx-auto text-xs font-bold uppercase tracking-[.17em] text-[#401B8C]">Professional faculty</p>
+          <p className="kbc-eyebrow mx-auto text-xs font-bold uppercase tracking-[.17em] text-[#401B8C]">{cms.text("experts.pages_people_page_components_faculty_sec_faculty_section.text_001")}</p>
           <h2
             id={id ? `${id}-title` : "faculty-title"}
             className="mx-auto mt-3 max-w-3xl text-center !text-[clamp(2rem,4vw,3.5rem)] !font-semibold !leading-tight !tracking-[-.025em] !text-kbc-purple-950"
           >
-            Meet the people behind the insight.
-          </h2>
+            {cms.text("experts.pages_people_page_components_faculty_sec_faculty_section.text_002")}</h2>
         </div>
 
         <div className="faculty-section__grid grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {experts.map((expert) => (
+          {cmsValues.experts.map((expert) => (
             <article
               className="faculty-card group flex min-h-full flex-col overflow-hidden rounded-[10px] border border-[#ddd6e2] bg-white shadow-[0_7px_20px_rgba(38,13,50,.14)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_16px_38px_rgba(64,27,140,.2)] motion-reduce:transform-none motion-reduce:transition-none"
               key={expert.id}
@@ -55,8 +58,7 @@ export function FacultySection({ id }: FacultySectionProps) {
                     className="faculty-card__profile inline-flex min-h-11 flex-1 items-center justify-center gap-2 rounded-md bg-[#401B8C] px-5 text-sm font-bold !text-white transition hover:-translate-y-0.5 hover:bg-[#2F1468] hover:!text-white hover:shadow-[0_8px_20px_rgba(64,27,140,.24)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#401B8C] focus-visible:ring-offset-2 motion-reduce:transform-none motion-reduce:transition-none"
                     to={`/our-experts/${expert.id}`}
                   >
-                    View Profile
-                    <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                    {cms.text("experts.pages_people_page_components_faculty_sec_faculty_section.text_003")}<ArrowUpRight className="h-4 w-4" aria-hidden="true" />
                   </Link>
                   <a
                     className="grid h-11 w-11 shrink-0 place-items-center rounded-md border border-[#401B8C]/25 !text-[#401B8C] transition hover:-translate-y-0.5 hover:bg-[#401B8C] hover:!text-white hover:shadow-[0_8px_20px_rgba(64,27,140,.18)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#401B8C] focus-visible:ring-offset-2 motion-reduce:transform-none motion-reduce:transition-none"
@@ -74,5 +76,5 @@ export function FacultySection({ id }: FacultySectionProps) {
         </div>
       </div>
     </section>
-  );
+  ));
 }

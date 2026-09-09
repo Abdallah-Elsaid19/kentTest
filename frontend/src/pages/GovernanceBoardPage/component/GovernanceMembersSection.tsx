@@ -1,9 +1,13 @@
+import { useCmsBindings } from "@/features/cms/publicContent";
 import { FigmaSectionHeading } from "@/components/ui/FigmaSectionHeading";
 import { section, shell } from "@/components/college/layout";
 import { governanceMembers } from "../data";
 
 export function GovernanceMembersSection() {
-  return (
+  const cms = useCmsBindings(["governance"]);
+  const cmsValues = cms.resolve({ governanceMembers });
+
+  return cms.render((
     <section
       id="governance-board-members"
       className={`${section} bg-white sm:!scroll-mt-64`}
@@ -13,15 +17,15 @@ export function GovernanceMembersSection() {
         <header className="mx-auto max-w-4xl">
           <FigmaSectionHeading
             id="governance-board-members-title"
-            eyebrow="People and roles"
-            title={governanceMembers.title}
-            description={governanceMembers.description}
+            eyebrow={cms.text("governance.pages_governance_board_page_component_go_governance_members_section.eyebrow_001")}
+            title={cmsValues.governanceMembers.title}
+            description={cmsValues.governanceMembers.description}
             align="center"
           />
         </header>
 
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3">
-          {governanceMembers.items.map((member) => (
+          {cmsValues.governanceMembers.items.map((member) => (
             <article
               key={member.name}
               className="group overflow-hidden rounded-2xl border border-kbc-purple-100 bg-white shadow-[0_16px_44px_rgba(47,20,104,.07)] transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-[0_22px_50px_rgba(47,20,104,.12)] motion-reduce:transform-none motion-reduce:transition-none"
@@ -50,5 +54,5 @@ export function GovernanceMembersSection() {
         </div>
       </div>
     </section>
-  );
+  ));
 }

@@ -16,6 +16,7 @@ export type FieldSchema = {
   maximum?: number;
   enum?: string[];
   format?: string;
+  mediaKind?: "image" | "video";
 };
 
 export const homeContract = contract as Record<HomeSection, FieldSchema>;
@@ -41,6 +42,8 @@ export function fieldValidator(schema: FieldSchema): z.ZodTypeAny {
   if (schema.type === "number") return z.number().min(schema.minimum!).max(schema.maximum!);
   if (schema.enum) return z.enum(schema.enum as [string, ...string[]]);
   const text = z.string().min(1).max(schema.maxLength ?? 12000).refine(value => Boolean(value.trim()), "Enter text.");
+  if (schema.format === "email-link") return text.refine(value => /^mailto:[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}(?:\?[^\s<>]*)?$/.test(value) && !/%0[ad]/i.test(value), "Use a valid mailto link.");
+  if (schema.format === "phone-link") return text.refine(value => /^tel:\+?[0-9() .\-]+$/.test(value), "Use a valid tel link.");
   return schema.format === "url" ? text.refine(safeContentUrl, "Use an HTTPS URL, root-relative path or anchor.") : text;
 }
 

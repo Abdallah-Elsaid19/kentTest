@@ -1,7 +1,8 @@
-import { renderToStaticMarkup } from "react-dom/server";
+import { resolvedFixture } from "./cmsFixtures";
+import { renderToStaticMarkup } from "./cmsFixtures";
 import { MemoryRouter } from "react-router-dom";
 import { describe, expect, it, vi } from "vitest";
-import { currentIntake, programmes } from "@/data/programmes";
+import { currentIntake, programmes as programmesTemplate } from "@/data/programmes";
 import ProgrammeListingPage from "@/pages/ProgrammeListingPage/page";
 import { clearProgrammeFilters, filterProgrammes, updateProgrammeFilters } from "@/pages/ProgrammeListingPage/filters";
 import routerSource from "@/router/router.tsx?raw";
@@ -87,3 +88,5 @@ describe("verified programme discovery", () => {
     expect(empty).not.toContain("<article");
   });
 });
+
+const { programmes } = resolvedFixture({ programmes: programmesTemplate });
