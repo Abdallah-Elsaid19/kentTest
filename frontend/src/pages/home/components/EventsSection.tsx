@@ -43,7 +43,7 @@ export function EventsSection() {
                   <li><MapPin aria-hidden="true" />{event.isOnline ? "Online event" : event.address || event.location || "Kent Business College"}</li>
                 </ul>
                 <div className="kbc-event-card__actions">
-                  {event.bookingUrl && <a className="kbc-button kbc-button--primary" href={event.bookingUrl} target="_blank" rel="noreferrer">Secure Your Seat</a>}
+                  {event.bookingUrl && <a className="kbc-button kbc-button--primary" href={event.bookingUrl} target="_blank" rel="noreferrer">Book your place</a>}
                   {isFallback ? <a className="kbc-arrow-link" href="https://kentbusinesscollege.com/events/">More Details <ArrowRight size={16} aria-hidden="true" /></a> : <Link className="kbc-arrow-link" to={`/events/${event.slug}`}>More Details <ArrowRight size={16} aria-hidden="true" /></Link>}
                 </div>
               </article>

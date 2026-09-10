@@ -29,7 +29,7 @@ export function EventCard({
   detailsTo,
   bookingUrl,
   detailsLabel = 'View details',
-  bookingLabel = 'Secure your seat',
+  bookingLabel = 'Book your place',
   contentSized = false,
 }: EventCardProps) {
   return (
