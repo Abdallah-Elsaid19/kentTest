@@ -45,7 +45,7 @@ export function FeaturedEventCard({
         {summary && <p className="mt-3.5 text-base leading-relaxed text-white/75">{summary}</p>}
         <div className="mt-auto flex w-full flex-wrap items-center justify-between gap-3 pt-7">
           <ArrowLink className="!text-sm" to={detailsTo} tone="inverse">View details</ArrowLink>
-          {bookingUrl && <a className="events-gold-button inline-flex min-h-12 items-center justify-center rounded-lg border border-kbc-gold-500 bg-kbc-gold-500 px-5 py-3 text-sm font-bold text-[#401B8C] transition-colors hover:text-white" href={bookingUrl} target="_blank" rel="noreferrer">Secure your seat</a>}
+          {bookingUrl && <a className="events-gold-button inline-flex min-h-12 items-center justify-center rounded-lg border border-kbc-gold-500 bg-kbc-gold-500 px-5 py-3 text-sm font-bold text-[#401B8C] transition-colors hover:text-white" href={bookingUrl} target="_blank" rel="noreferrer">Book your place</a>}
         </div>
       </div>
     </article>

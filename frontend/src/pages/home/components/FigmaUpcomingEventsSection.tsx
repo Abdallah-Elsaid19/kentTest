@@ -73,7 +73,7 @@ export function FigmaUpcomingEventsSection({
   getEventHref,
   getFeaturedEventHref,
   getEventDateLabel,
-  featuredActionLabel = "Reserve your place",
+  featuredActionLabel = "Book your place",
   compactActionLabel,
   viewAllLabel = "View all events",
 }: FigmaUpcomingEventsSectionProps = {}) {
